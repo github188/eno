@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- asset layout -->
+	 <definition name="dialog-layout" extends="window-layout">
+	 	<put-attribute name="navigation" value="" />
+	 </definition>
+
+   <definition name="dialog/*" extends="dialog-layout">
+      <put-attribute name="title" value="资产管理-" />
+      <put-attribute name="body" value="/WEB-INF/jsp/dialog/{1}.jsp" />
+   </definition>
+
+    <definition name="dialog/dlgClassStructureList" extends="dialog-layout">
+        <put-attribute name="title" value="分类" />
+        <put-attribute name="body" value="/WEB-INF/jsp/dialog/dlgClassStructureList.jsp" />
+        <put-attribute name="scripts" value="/WEB-INF/jsp/customJs/dialog/dlgClassStructureJs.jsp" />
+    </definition>
+</tiles-definitions>

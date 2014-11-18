@@ -1,0 +1,1 @@
+<script src="${pageContext.request.contextPath}/resources/scripts/jobplan/jobplan.js"></script>

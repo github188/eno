@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<!-- asset layout -->
+	 <definition name="jobplan-layout" extends="main-layout">
+	 	<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigationJobPlan.jsp" />
+	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/jobplan/jobplanJs.jsp" />
+	 </definition>
+
+   <definition name="jobplan/*" extends="jobplan-layout">
+      <put-attribute name="title" value="资产管理--工作计虹" />
+      <put-attribute name="body" value="/WEB-INF/jsp/jobplan/{1}.jsp" />
+   </definition>
+   
+
+</tiles-definitions>

@@ -1,0 +1,397 @@
+ /* 初始化CSS */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, hr { margin:0; padding:0; }
+fieldset, img { border:none; }
+img{display: block;}
+h1,h2,h3{line-height:40px}
+address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:normal; }
+ul, ol { list-style:none; }
+input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}
+input::-moz-focus-inner { border:none; padding:0; }
+select, input { vertical-align:middle; }
+select, input, textarea { font-size:12px; margin:0; }
+input[type="text"], input[type="password"], textarea { outline-style:none; -webkit-appearance:none; }
+textarea { resize:none; }
+table { border-collapse:collapse; }
+body { color:#333; font:12px/20px "Microsoft YaHei","SimSun","宋体","Arial Narrow",HELVETICA; background:#fff; /*text-shadow: 1px 1px 1px #666;*//* overflow-y:scroll;*/ }
+.clearfix:after { content:".";  height:0; visibility:hidden; clear:both; }
+.clearfix { zoom:1; }
+.clearit { clear:both; height:0; font-size:0; overflow:hidden; }
+a { color:#000; text-decoration:none; }
+a:visited { color:#fff; }
+a.Btn-big:hover, a:active, a:focus { color:#fff; text-decoration:underline; background-color: #39A6AE }
+i {color: #666; cursor: pointer;}
+.hidden{visibility:hidden;}
+
+.nav {
+	margin-bottom: 1px;
+}
+
+.navigation{
+	width: 100%;
+	height: 30px;
+	background-color: #333;
+}
+
+.logo {
+	margin-left: 30px;
+}
+
+.spec {
+	margin-right: 16px;
+}
+
+.navigation>li {
+	float: left;
+	color: #fff;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.pulldown_list {
+	margin-top: 2px;
+}
+
+.pulldown_list>li {
+	height: 27px;
+	line-height: 27px;
+	margin-top: 1px;
+}
+
+.positionRight {
+	float: right;
+}
+
+.division {
+	height: 0px;
+}
+
+.sub_nav {
+	width: 100%;
+	height: 120px;
+	background-color: #086761;
+}
+
+.sub_nav_bar {
+	width: 940px;
+	height: 20px;
+	margin: 0 auto;
+	padding-top: 80px;
+}
+
+.sub_nav_bar>li {
+	float: left;
+	background-color: #075C57;
+	margin-left: 10px;
+}
+
+.sub_nav_bar > li > a {
+	font-size: 16px;
+	padding: 10px;
+	color: #fff;
+}
+
+.sub_nav_bar > li > a:hover {
+	font-size: 16px;
+	padding: 10px;
+	background-color: #fff;
+	color: #f00;
+}
+
+.press_effect {
+	background-color: #fff;
+}
+
+.content {
+	width: 940px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.page_title {
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 20px;
+}
+
+.classify > ul {
+	padding-top: 20px;
+}
+
+.classify > ul > li {
+	float: left;
+	margin-left: 18px;
+	padding: 5px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.classify > ul > li:hover {
+	color:#00f;
+}
+
+.highlight {
+	color :#f00;
+}
+
+.basic_imformation {
+	height: 290px;
+	width: 100%;
+	margin-top: 16px;
+	color: #fff;
+	font-weight: normal;
+	display: none;
+}
+
+.client_pic {
+	background: url('../images/taobao.jpg') no-repeat top center;
+	width: 380px;
+	height: 100%;
+	float: left;
+}
+
+.client_pic_1 {
+	width: 560px;
+	height: 100%;
+	float: right;
+}
+
+.pic_specially {
+	float: right;
+}
+
+.pra_specially {
+	float: left;
+	width: 380px;
+	height: 100%;
+}
+
+.parameter {
+	background-color: #FF6600;
+	float: left;
+	width: 560px;
+	height: 100%;
+}
+
+.parameter_1 {
+	background-color: #FF6600;
+	float: left;
+	width: 380px;
+	height: 100%;
+}
+
+.outdoor {
+	background-color: #e778bc;
+}
+
+.passenger {
+	background-color: #f09609;
+}
+
+.build_energe {
+	background-color: #339933;
+}
+
+.build_electric {
+	background-color: #1ba1e2;
+}
+
+.bulid_elec_detail {
+	background-color: #5859b9;
+}
+
+.page_header h1 {
+	font-size: 32px;
+	padding: 27px 0 0 35px;
+}
+
+.parameter > h5 {
+	margin: 15px 10px 0 30px;
+	font-weight: normal;
+}
+
+.parameter_1 > h5 {
+	margin: 15px 10px 0 30px;
+	font-weight: normal;
+}
+
+.parameter_1 > .client_para {
+	width: 80%;
+}
+
+.division {
+	background-color: #fff;
+	width: 320px;
+	height: 1px;
+	margin: 20px 0 20px 30px;
+}
+
+.client_para {
+	text-align: center;
+	border-collapse: 0;
+	border: 0;
+	margin-left: 30px;
+}
+
+.client_para tr td {
+	padding: 5px;
+}
+
+.big_tr {
+	font-size: 20px;
+}
+
+/*#runMonitor {
+	min-height: 210px;
+}*/
+
+.report_form {
+	background-color: #8cbf27;
+	height: 200px;
+	font-size: 16px;
+	color: #fff;
+	font-weight: normal;
+}
+
+.report_form a{
+	color: #fff;
+}
+
+.default_show {
+	display: inline;
+}
+
+.form_detail {
+	margin: 15px 5px 5px 5px;
+	border-bottom: 1px solid #fff;
+}
+
+.inner_content {
+	display: none;
+}
+
+.cur {
+	display: inline;
+}
+
+.cold_module {
+	display: none;
+}
+
+.chart_group {
+	margin-top: 15px;
+	min-width: 944px;
+}
+
+.chart_describe {
+	height: 60px;
+	width: 100%;
+	color: #fff;
+	padding: 2px 5px;
+}
+
+.chart_describe>h4:hover {
+	cursor: default;
+	color: #f00;
+}
+
+.bottom_link>i {
+	margin-left: 30px;
+}
+
+.single_chart {
+	width: 460px;
+	float: left;
+	margin-top: 15px;
+}
+
+.pois_r {
+	float: right;
+}
+
+.vision_1>.single_chart>.chart_describe {
+	background-color: #99ccff;
+}
+
+.vision_2>.single_chart>.chart_describe {
+	background-color: #cc99ff;
+}
+
+.vision_3>.single_chart>.chart_describe {
+	background-color: #99cc66;
+}
+
+.vision_4>.single_chart>.chart_describe {
+	background-color: #ff66ff;
+}
+
+.vision_5>.single_chart>.chart_describe {
+	background-color: #00cc66;
+}
+
+.vision_6>.single_chart>.chart_describe {
+	background-color: #99ccff;
+}
+
+.vision_7>.single_chart>.chart_describe {
+	background-color: #cc66ff;
+}
+
+.poping {
+	background-color: #666;
+}
+
+.client_pic_1>div>i {
+	margin-left: 30px;
+}
+
+.sub_chart {
+	height: 210px;
+	width: 100%;
+	background-color: grey;
+}
+
+.chart_title {
+	background-color: #ecedf2;
+	border-bottom: 1px solid #cccdd2;
+	padding: 10px 0;
+	color: #5959ba;
+}
+
+.chart_title span {
+	margin-left: 47px;
+	font-size: 16px;
+}
+
+.detail_para {
+	height: 60px;
+	background-color: #ecedf2;
+	padding-top: 10px;
+	color: #5959ba;
+}
+
+.detail_para div {
+	width: 48px;
+	float: left;
+	margin-left: 40px;
+
+}
+
+.onoff_state {
+	font-size: 24px;
+}
+
+.onoff_state sup {
+	font-size: 10px;
+}
+
+.device_count {
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+.vertical_line {
+	width: 1px !important;
+	margin-left: 20px !important;
+	height: 80%;
+	background-color: #cccdd2;
+}

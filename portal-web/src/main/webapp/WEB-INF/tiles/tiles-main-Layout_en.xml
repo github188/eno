@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="main-layout" template="/WEB-INF/jsp/common/layout/mainLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="assets" value="/WEB-INF/jsp/common/assets.jsp" />
+		<put-attribute name="scripts" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+		<put-attribute name="sidebar" value="" />
+	</definition>
+
+
+	<definition name="window-layout" template="/WEB-INF/jsp/common/layout/assetms_dialogLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="assets" value="/WEB-INF/jsp/common/assetms_assets.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/assetms_footer.jsp" />
+	</definition>
+
+	
+	
+	<definition name="alarm-mainlayout" template="/WEB-INF/jsp/common/layout/alarm_layout.jsp">
+		<put-attribute name="title" value="报警管理" />
+		<put-attribute name="assets" value="/WEB-INF/jsp/common/assets.jsp" />
+		<put-attribute name="scripts" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+		<put-attribute name="sidebar" value="" />
+	</definition>
+	
+	
+	
+	
+
+</tiles-definitions>

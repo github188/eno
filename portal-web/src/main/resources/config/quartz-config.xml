@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 要调用的工作类 -->
+    <bean id="quartzJob" class="com.energicube.eno.common.PatternTimeTask">
+        <property name="scheduler" ref="schedulerFactory">
+        </property>
+    </bean>
+
+
+    <!-- 定义调用对象和调用对象的方法 -->
+    <bean id="jobtask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject" ref="quartzJob">
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>getDayCommand</value>
+        </property>
+        <!-- concurrent设为false，多个job不会并发运行 -->
+        <!--<property name="concurrent" value="false"/>-->
+    </bean>
+    <!-- 定义每年要执行的任务 -->
+    <bean id="getDayCommand" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobtask">
+        </property>
+        <!-- cron表达式 每分钟运行一次-->
+        <property name="cronExpression">
+            <value> 0 */1 * * * ?</value>
+        </property>
+    </bean>
+
+    <!-- 定义每小时更新天气信息 -->
+    <bean id="hourWeather" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject" ref="quartzJob">
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>doFindWeather</value>
+        </property>
+        <!-- concurrent设为false，多个job不会并发运行 -->
+        <!--<property name="concurrent" value="false"/>-->
+    </bean>
+    <!-- 定义每年要执行的任务 -->
+    <bean id="doFindWeather" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="hourWeather">
+        </property>
+        <!-- cron表达式 每小时运行一次-->
+        <property name="cronExpression">
+            <value> 0 0 0-23 * * ?</value>
+        </property>
+    </bean>
+
+    <!-- 定义每天更新天气信息 -->
+    <bean id="updateYesterdayWeather" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject" ref="quartzJob">
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>doUpdateYesterDayWeather</value>
+        </property>
+        <!-- concurrent设为false，多个job不会并发运行 -->
+        <!--<property name="concurrent" value="false"/>-->
+    </bean>
+    <!-- 定义每天更新天气信息 -->
+    <bean id="doUpdateYesterDayWeather" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="updateYesterdayWeather">
+        </property>
+        <!-- cron表达式 每天早晨运行一次-->
+        <property name="cronExpression">
+            <value> 0 1 * * * ?</value>
+        </property>
+    </bean>
+
+
+    <!-- 定义每年要执行的任务 -->
+    <bean id="yearTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject" ref="quartzJob">
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>doYearWork</value>
+        </property>
+    </bean>
+    <!-- 定义每年要执行的任务 -->
+    <bean id="doYearWork" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="yearTask">
+        </property>
+        <!-- cron表达式 每年的12月1号4点开始-->
+        <property name="cronExpression">
+            <value> 0 0 4 1 12 ?</value>
+        </property>
+    </bean>
+
+
+    <!-- 定义每天要执行的任务 -->
+    <bean id="dayTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject" ref="quartzJob">
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>doDayWork</value>
+        </property>
+    </bean>
+    <bean id="doDayWork" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="dayTask">
+        </property>
+        <!-- cron表达式 每天0点5分开始 -->
+        <property name="cronExpression">
+            <value>0 5 0  * * ?</value>
+        </property>
+    </bean>
+
+    <!-- 定义日志任务 -->
+    <bean id="logTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="concurrent">
+            <value>false</value>
+        </property>
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob"/>
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>processLog</value>
+        </property>
+    </bean>
+    <!-- 定义每年要执行的任务 -->
+    <bean id="doLogWork" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="logTask"/>
+        </property>
+        <!-- cron表达式 每年的12月1号4点开始-->
+        <property name="cronExpression">
+            <value> * */5 * * * ?</value>
+        </property>
+    </bean>
+
+    <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+    <bean id="schedulerFactory" lazy-init="true" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+<!--                 <ref bean="doYearWork"/> -->
+<!--                 <ref bean="doDayWork"/> -->
+<!--                 <ref bean="getDayCommand"/> -->
+<!--                 <ref bean="doUpdateYesterDayWeather"/> -->
+<!--                 <ref bean="doFindWeather"/> -->
+<!--                 <ref bean="doLogWork"/> -->
+            </list>
+        </property>
+    </bean>
+    
+</beans>
