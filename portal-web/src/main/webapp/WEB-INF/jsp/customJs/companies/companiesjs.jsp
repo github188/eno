@@ -1,1 +1,0 @@
-<script src="${pageContext.request.contextPath}/resources/scripts/companies/companies.js"></script>

@@ -1,2 +1,0 @@
-<script src="${pageContext.request.contextPath}/resources/scripts/jquery.easyui.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">

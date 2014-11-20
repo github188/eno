@@ -1,1 +1,0 @@
-<script src="${pageContext.request.contextPath}/resources/scripts/meter/metergroup.js"></script>

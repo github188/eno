@@ -1,1 +1,0 @@
-<script src="${pageContext.request.contextPath}/resources/scripts/class/classstructure.js"></script>
