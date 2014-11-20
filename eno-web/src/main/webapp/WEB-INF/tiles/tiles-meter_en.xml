@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<!-- asset layout -->
+	 <definition name="meter-layout" extends="main-layout">
+	 	<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigationMeter.jsp" />
+	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/meter/meter.jsp" />
+	 </definition>
+
+   <definition name="meter/*" extends="meter-layout">
+      <!-- <put-attribute name="tabBasic" value="active" /> -->
+      <put-attribute name="title" value="资产管理--计量器" />
+      <put-attribute name="body" value="/WEB-INF/jsp/meter/{1}.jsp" />
+   </definition>
+   
+
+</tiles-definitions>

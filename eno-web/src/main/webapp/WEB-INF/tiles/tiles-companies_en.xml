@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<!-- asset layout -->
+	 <definition name="companies-layout" extends="main-layout">
+	 	<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigationCompanies.jsp" />
+	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/companies/companiesjs.jsp" />
+	 </definition>
+
+   <definition name="companies/*" extends="companies-layout">
+      <put-attribute name="title" value="资产管理--供应商与生产商" />
+      <put-attribute name="body" value="/WEB-INF/jsp/companies/{1}.jsp" />
+   </definition>
+   
+
+</tiles-definitions>

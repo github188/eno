@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<!-- asset layout -->
+	 <definition name="pattern-layout" extends="main-layout">
+	 	<put-attribute name="navigation" value="" />
+	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/pattern/pattern.jsp" />
+	 	<put-attribute name="sidebar" value="/WEB-INF/jsp/common/sidebarPattern.jsp" />
+	 </definition>
+
+   <definition name="pattern/*" extends="pattern-layout">
+      <put-attribute name="title" value="模式管理" />
+      <put-attribute name="body" value="/WEB-INF/jsp/pattern/{1}.jsp" />
+   </definition>
+
+
+</tiles-definitions>

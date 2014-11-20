@@ -3,15 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.energicube</groupId>
-    <artifactId>energicube-portal</artifactId>
+    <artifactId>energicube-eno</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>energicube-portal</name>
+    <name>energicube-eno</name>
     <url>http://maven.apache.org</url>
 <!--多模块-->
     <modules>
-        <module>portal-core</module>
-        <module>portal-web</module>
+        <module>eno-core</module>
+        <module>eno-web</module>
         <module>energicube-common</module>
 
 
@@ -711,7 +711,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                    <warName>portal</warName>
+                    <warName>eno</warName>
                     <archive>
                         <compress>true</compress>
                     </archive>

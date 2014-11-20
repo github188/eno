@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ========================= shiro config ========================= -->
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
+    <!-- security datasource: -->
+    <bean id="myRealm" class="com.energicube.eno.author.service.AuthorizeRealm">
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
+        <property name="cachingEnabled" value="true"/>
+        <property name="authenticationCachingEnabled" value="true"/>
+        <property name="authenticationCacheName" value="authenticationCache"/>
+        <property name="authorizationCachingEnabled" value="true"/>
+        <property name="authorizationCacheName" value="authorizationCache"/>
+    </bean>
+
+    <!--<bean id="userService" class="com.energicube.eno.monitor.service.impl.UserServiceImpl"/>-->
+    <!-- Enable Shiro Annotations for Spring-configured beans.  Only run after -->
+    <!-- the lifecycleBeanProcessor has run: -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+
+    <!--缓存shiro-->
+    <bean id="ehCacheShiro" class="org.apache.shiro.cache.ehcache.EhCacheManager" scope="singleton">
+        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
+    </bean>
+
+
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="SHA-512" />
+        <property name="hashIterations" value="2"/>
+        <property name="storedCredentialsHexEncoded" value="true"/>
+    </bean>
+
+    <!-- 使用配置文件管理 -->
+    <bean id="iniRealm" class="org.apache.shiro.realm.text.IniRealm">
+        <property name="resourcePath" value="classpath:/shiro.ini" />
+        <property name="credentialsMatcher" ref="credentialsMatcher" />
+    </bean>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- override these for application-specific URLs if you like:-->
+        <property name="loginUrl" value="/login.do"/>
+        <property name="successUrl" value="/mctrl.do"></property><!-- 登录成功跳转到index.jsp  -->
+        <property name="unauthorizedUrl" value="/login.do"></property><!-- 没有认证成功，或者没有权限，跳转到错误页面 -->
+        <!-- The 'filters' property is not necessary since any declared javax.servlet.Filter bean  -->
+        <!-- defined will be automatically acquired and available via its beanName in chain        -->
+        <!-- definitions, but you can perform instance overrides or name aliases here if you like: -->
+        <!-- <property name="filters">
+            <util:map>
+                <entry key="anAlias" value-ref="someFilter"/>
+            </util:map>
+        </property> -->
+        <property name="filterChainDefinitions">
+            <value>
+                # some example chain definitions:
+                /resources/**=anon
+                <!--/admin/** = authc, roles[admin]-->
+                <!--/docs/** = authc, perms[document:read]-->
+                /** = anon
+                # more URL-to-FilterChain definitions here
+                <!--/init.action = authc-->
+                <!--/login.action = authc-->
+                <!--/test.action = authc-->
+
+                <!--/logout.action = logout-->
+            </value>
+        </property>
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
+        <property name="realm" ref="myRealm"/>
+        <!--<property name="realms">-->
+            <!--<list>-->
+                <!--<ref bean="iniRealm" />-->
+                <!--<ref bean="userRealm" />-->
+            <!--</list>-->
+        <!--</property>-->
+        <!-- By default the servlet container sessions will be used.  Uncomment this line
+             to use shiro's native sessions (see the JavaDoc for more): -->
+        <!-- <property name="sessionMode" value="native"/> -->
+        <property name="cacheManager" ref="ehCacheShiro"></property>
+    </bean>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,349 @@
+@CHARSET "UTF-8";
+
+/* Icons
+------------------------- */
+.the-icons {
+  margin-left: 0;
+  list-style: none;
+}
+.the-icons li {
+  float: left;
+  width: 20%;
+  line-height: 25px;
+}
+.the-icons i:hover {
+  background-color: rgba(255,0,0,.25);
+}
+
+
+[class^="meter-"],
+[class*=" meter-"] {
+  display: inline-block;
+  margin-top: 0px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("meter_icons.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+/**直梯状态icon */
+[class^="meter-ladder"],
+[class*=" meter-ladder"] {
+	width: 32px;
+  	height: 59px;
+}
+.meter-ladder-down {
+ background-position: 0 0;
+}
+.meter-ladder-up {
+  background-position: -64px 0;
+}
+.meter-ladder-alarm {
+  background-position: -128px 0;
+}
+/**扶梯状态icon */
+[class^="meter-escalator"],
+[class*=" meter-escalator"] {
+	width: 32px;
+  	height: 47px;
+}
+.meter-escalator-up {
+  background-position: -192px 0;
+}
+.meter-escalator-down {
+  background-position: -256px 0;
+}
+.meter-escalator-alarm {
+  background-position: -320px 0;
+}
+/**门状态icon */
+[class^="meter-door"],
+[class*=" meter-door"] {
+	width: 30px;
+  	height: 41px;
+}
+.meter-door-alarm {
+  background-position: -0px -64px;
+}
+.meter-door-close {
+  background-position: -64px -64px;
+}
+.meter-door-open {
+  background-position: -128px -64px;
+}
+.meter-door-fault {
+  background-position: -192px -64px;
+}
+
+/**电子巡更状态icon */
+[class^="meter-patrol"],
+[class*=" meter-patrol"] {
+	width: 32px;
+  	height: 29px;
+}
+.meter-patrol-normal {
+	background-position: -256px -64px;
+} 
+.meter-patrol-noconnect {
+	background-position: -315px -64px;
+} 
+.meter-patrol-fault {
+	background-position: -385px -64px;
+} 
+
+/**冷源图标 */
+[class^="meter-coolingsource"],
+[class*=" meter-coolingsource"] {
+	width: 145px;
+  	height: 34px;
+}
+.meter-coolingsource-normal {
+	background-position: -192px -256px;
+}
+.meter-coolingsource-fault {
+	background-position: -2px -256px;
+}
+
+/**消防系统图标 */
+[class^="meter-alarm"],
+[class*=" meter-alarm"] {
+	width: 32px;
+  	height: 27px;
+}
+.meter-alarm-normal {
+	background-position: -1px -300px;
+}
+.meter-alarm-noconnect {
+	background-position: -40px -300px;
+}
+.meter-alarm-warn {
+	background-position: -80px -300px;
+}
+
+
+
+
+/* CSS Document */
+.cicon { width:32px; height:32px; display:inline-block; background:url(all_small_icons.png) no-repeat;}
+.cicon_20_20 { width:20px; height:20px;}
+.cicon_20_40 { width:20px; height:40px;}
+.cicon_36_40 { width:36px; height:40px;}
+.cicon_32_14 { width:32px; height:14px;}
+.cicon_32_48 { width:32px; height:48px;}
+.cicon_32_60 { width:32px; height:60px;}
+.cicon_35_60 { width:35px; height:60px;}
+.cicon_20_20 { width:20px; height:20px;}
+.cicon_63_90{ width:63px; height:90px;}
+.cicon_60_54{ width:60px; height:54px;}
+.cicon_35_68{ width:35px; height:68px;}
+.cicon_50_50{ width:50px; height:50px;}
+.cicon_82_36{ width:82px; height:36px;}
+.cicon_80_80{ width:80px; height:80px;}
+.cicon_72_132{ width:72px; height:132px;}
+.cicon_90_130{ width:90px; height:130px;}
+.cicon_322_84{ width:322px; height:84px;}
+.cicon_500_100{ width:500px; height:100px;}
+.cicon_176_80{ width:176px; height:80px;}
+.cicon_32_27{ width:32px; height:27px;}
+.cicon_16_14{ width:16px; height:14px;}
+.cicon_16_31{ width:16px; height:31px;}
+.cicon_16_16{ width:16px; height:16px;}
+.cicon_24_20{ width:24px; height:20px;}
+.cicon_14_12{ width:14px; height:12px;}
+.cicon_20_8{ width:20px; height:8px;}
+.cicon_8_30{ width:8px; height:30px;}
+.cicon_60_60{ width:60px; height:60px;}
+.cicon_81_176{ width:81px; height:176px;}
+.cicon_87_120{ width:87px; height:120px;}
+.cicon_303_82{ width:303px; height:82px;}
+.cicon_316_54{ width:316px; height:54px;}
+.cicon_153_119{ width:153px; height:119px;}
+.cicon_137_106{ width:137px; height:106px;}
+.cicon322_84{ width:322px; height:84px;}
+.cicon88_40{ width:88px; height:40px;}
+
+
+
+
+
+
+
+
+
+
+.cicon01{ background-position:-20px -20px;}
+.cicon02{ background-position:-150px -20px;}
+.cicon03{ background-position:-280px -20px;}
+.cicon04{ background-position:-410px -20px;}
+.cicon05{ background-position:-540px -20px;}
+.cicon06{ background-position:-670px -20px;}
+.cicon07{ background-position:-800px -20px;}
+.cicon08{ background-position:-930px -20px;}
+.cicon09{ background-position:-1060px -20px;}
+.cicon10{ background-position:-20px -140px;}
+.cicon11{ background-position:-150px -140px;}
+.cicon12{ background-position:-280px -140px;}
+.cicon13{ background-position:-410px -140px;}
+.cicon14{ background-position:-540px -140px;}
+.cicon15{ background-position:-670px -140px;}
+.cicon16{ background-position:-800px -140px;}
+.cicon17{ background-position:-930px -140px;}
+.cicon18{ background-position:-1060px -140px;}
+.cicon19{ background-position:-20px -260px;}
+.cicon20{ background-position:-150px -260px;}
+.cicon21{ background-position:-280px -260px;}
+.cicon22{ background-position:-410px -260px;}
+.cicon23{ background-position:-540px -260px;}
+.cicon24{ background-position:-670px -260px;}
+.cicon25{ background-position:-25px -390px;}
+.cicon26{ background-position:-155px -390px;}
+.cicon27{ background-position:-285px -390px;}
+.cicon28{ background-position:-420px -390px;}
+.cicon29{ background-position:-550px -390px;}
+.cicon30{ background-position:-680px -390px;}
+.cicon31{ background-position:-800px -390px;}
+.cicon32{ background-position:-930px -390px;}
+.cicon33{ background-position:-1060px -390px;}
+.cicon34{ background-position:-20px -540px;}
+.cicon35{ background-position:-150px -540px;}
+.cicon36{ background-position:-280px -540px;}
+
+.cicon37{ background-position:-439px -540px;}
+.cicon38{ background-position:-569px -540px;}
+.cicon39{ background-position:-699px -540px;}
+.cicon40{ background-position:-829px -540px;}
+
+.cicon41{ background-position:-930px -558px;}
+.cicon42{ background-position:-1016px -558px;}
+.cicon43{ background-position:-1100px -558px;}
+
+.cicon44{ background-position:-20px -660px;}
+.cicon45{ background-position:-150px -660px;}
+.cicon46{ background-position:-280px -660px;}
+.cicon47{ background-position:-410px -660px;}
+.cicon48{ background-position:-540px -660px;}
+.cicon49{ background-position:-670px -660px;}
+.cicon50{ width: 38px; height: 30px; float: left; background: url("sys_icon.png") -755px -172px no-repeat;}
+.cicon51{ background-position:-930px -660px;}
+.cicon52{ background-position:-1060px -660px;}
+.cicon53{ background-position:-20px -780px;}
+.cicon54{ background-position:-150px -780px;}
+.cicon55{ background-position:-280px -780px;}
+.cicon56{ background-position:-410px -780px;}
+.cicon57{ background-position:-540px -780px;}
+.cicon58{ background-position:-670px -780px;}
+.cicon59{ background-position:-800px -780px;}
+.cicon60{ background-position:-930px -780px;}
+.cicon61{ background-position:-1060px -780px;}
+.cicon62{ background-position:-20px -900px;}
+.cicon63{ background-position:-150px -900px;}
+.cicon64{ background-position:-280px -900px;}
+.cicon65{ background-position:-410px -900px;}
+.cicon66{ background-position:-540px -900px;}
+.cicon67{ background-position:-670px -900px;}
+.cicon68{ background-position:-800px -900px;}
+.cicon69{ background-position:-930px -900px;}
+.cicon70{ background-position:-1060px -900px;}
+.cicon71{ background-position:-20px -1030px;}
+.cicon72{ background-position:-85px -1030px;}
+.cicon73{ background-position:-140px -1030px;}
+.cicon74{ background-position:-230px -1030px;}
+.cicon75{ background-position:-315px -1030px;}
+.cicon76{ background-position:-431px -1030px;}
+
+.cicon77{ background-position:-560px -1030px;}
+.cicon78{ background-position:-690px -1030px;}
+.cicon79{ background-position:-820px -1030px;}
+.cicon80{ background-position:-950px -1030px;}
+.cicon81{ background-position:-1080px -1030px;}
+
+.cicon82{ background-position:-20px -1130px;}
+.cicon83{ background-position:-140px -1130px;}
+.cicon84{ background-position:-260px -1130px;}
+.cicon85{ background-position:-380px -1130px;}
+.cicon86{ background-position:-517px -1130px;}
+.cicon87{ background-position:-654px -1130px;}
+.cicon88{ background-position:-800px -1130px;}
+.cicon89{ background-position:-0px -1340px;}
+.cicon90{ background-position:-540px -1230px;}
+.cicon91{ background-position:-0px -1230px;}
+
+.cicon92{ background-position:-20px -1532px;}
+.cicon93{ background-position:-150px -1532px;}
+.cicon94{ background-position:-280px -1532px;}
+.cicon95{ background-position:-410px -1532px;}
+.cicon96{ background-position:-540px -1532px;}
+.cicon97{ background-position:-670px -1532px;}
+
+.cicon98{ background-position:-10px -1800px;}
+.cicon99{ background-position:-130px -1800px;}
+.cicon100{ background-position:-250px -1800px;}
+.cicon101{ background-position:-590px -1402px;}
+.cicon102{ background-position:-639px -1402px;}
+.cicon103{ background-position:-686px -1402px;}
+.cicon104{ background-position:-734px -1402px;}
+
+
+
+.cicon105{ background-position:-670px -1650px;}   /** 遮阳帘    */
+.cicon106{ background-position:-550px -1340px;}  /**有车   */
+
+.cicon107{ background-position:-100px -1700px;}
+.cicon108{ background-position:-150px -1700px;}
+.cicon109{ background-position:-200px -1700px;}
+.cicon110{ background-position:-250px -1700px;}
+.cicon111{ background-position:-300px -1700px;}
+.cicon112{ background-position:-350px -1700px;}
+.cicon113{ background-position:-400px -1700px;}
+.cicon114{ background-position:-450px -1700px;}
+
+.cicon115{ background-position:-100px -1750px;}
+.cicon116{ background-position:-150px -1750px;}
+.cicon117{ background-position:-200px -1750px;}
+.cicon118{ background-position:-250px -1750px;}
+.cicon119{ background-position:-300px -1750px;}
+.cicon120{ background-position:-350px -1750px;}
+.cicon121{ background-position:-400px -1750px;}
+.cicon122{ background-position:-450px -1750px;}
+
+.cicon123{ background-position:-590px -1340px;}    /** 无车  */
+.cicon124{ background-position:-600px -1700px;}   /**卷帘门横黑*/
+.cicon125{ background-position:-750px -1700px;}   /** 小扳手*/
+.cicon126{ background-position:-600px -1850px;}    /*灰色图标*/
+.cicon127{ background-position:-650px -1850px;}    /**感温电缆红色图标*/
+.cicon128{ background-position:-650px -1700px;}   /**卷帘门竖黑*/
+.cicon129{ background-position:-800px -1700px;}   /** 大扳手*/
+.cicon130{ background-position:-650px -1800px;}   /**卷帘门竖绿*/
+.cicon131{ background-position:-600px -1800px;}   /**卷帘门横绿*/
+.cicon132{ background-position:-800px -1500px;} /** 透明图 变配站*/
+
+.cicon138{ background-position:-1050px -1700px;width:137px; height:106px;}/***/
+.cicon139{ background-position:-750px -1800px;}/** 气体灭火*/
+.cicon140{ background-position:-800px -1800px;}
+.cicon141{ background-position:-870px -1800px;}
+.cicon142{ background-position:-750px -1850px;}/**燃气*/
+.cicon143{ background-position:-800px -1850px;}
+.cicon144{ background-position:-870px -1850px;}
+.cicon145{ background-position:-650px -1340px;}/*停车探头正常*/
+.cicon146{ background-position:-700px -1340px;}
+.cicon147{ background-position:-750px -1340px;}
+.cicon148{ background-position:-600px -1430px;}/*照明灯具分类*/
+.cicon149{ background-position:-540px -1430px;}
+.cicon150{ background-position:-710px -1430px;}
+.cicon151{ background-position:-660px -1430px;}
+.cicon152{ background-position:-810px -1430px;}
+.cicon153{ background-position:-760px -1430px;}
+.cicon154{ background-position:-800px -1130px;}/*夜景照明*/
+
+
+
+.msem_online { width: 33px; height: 60px; float: left; background: url("msem_online.png") no-repeat;}
+.msem_offline { width: 33px; height: 60px; float: left; background: url("msem_offline.png") no-repeat;}
+
+
+
+                                                    
+
+.warning_gif{ float:left; width:32px; height:32px; display:inline-block; background:url(warning.gif) no-repeat;}
+

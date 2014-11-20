@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	 <!-- report layout -->
+	 <definition name="report-layout" extends="main-layout">
+	 	<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigationReport.jsp" />
+	 	<put-attribute name="sidebar" value="" />
+	 </definition>
+	 
+	 <definition name="report/*" extends="report-layout">
+	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/report/reportJs.jsp" />
+	 	<put-attribute name="sidebar" value="" />
+	 	<put-attribute name="title" value="报表查询" />
+      	<put-attribute name="body" value="/WEB-INF/jsp/report/{1}.jsp" />
+	 </definition>
+   	
+</tiles-definitions>

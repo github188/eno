@@ -1,0 +1,303 @@
+.energy_content h1,.energy_content h2,.energy_content h3,.energy_content h4,.energy_content h5 {font-weight: normal;}
+.energy_content {margin-left: 10px;}
+.energy_content > div {float: left;margin-left: 10px;}
+.energy_content > div > h1 {font-size: 30px; margin: 10px 0px;}
+
+@font-face {
+    font-family: 'helveticaneueltpro-ultlt';
+    src: url('../fonts/helveticaneueltpro-ultlt.eot');
+    src: url('../fonts/helveticaneueltpro-ultlt.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/helveticaneueltpro-ultlt.woff') format('woff'),
+    url('../fonts/helveticaneueltpro-ultlt.ttf') format('truetype'),
+    url('../fonts/helveticaneueltpro-ultlt.svg#Roboto Th') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Th';
+    src: url('../fonts/Roboto-Thin-webfont.eot');
+    src: url('../fonts/Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Roboto-Thin-webfont.woff') format('woff'),
+    url('../fonts/Roboto-Thin-webfont.ttf') format('truetype'),
+    url('../fonts/Roboto-Thin-webfont.svg#Roboto Th') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.energy_modle {
+    width: 470px;
+    height: 275px;
+    box-shadow: 3px 0px 5px #CCC;
+    margin-bottom: 10px;
+}
+
+.energy_modle .energy_modle_title .energy_title_detail {
+    float: right;
+    padding-right: 10px;
+}
+
+.energy_modle .energy_modle_title .energy_title_detail h4 {
+    line-height: 40px;
+    font-size: 12px;
+    color: #fff;
+    text-align: right;
+}
+
+.energy_modle .energy_modle_title .energy_title_detail h3 {
+    float: right;
+    line-height: 10px;
+    font-size: 46px;
+    color: #fff;
+    font-family: "Roboto Th";
+}
+
+#flow_passenger_total {
+    line-height: 10px;
+    font-size: 46px;
+    color: #fff;
+    font-family: "Roboto Th";
+}
+
+.energy_modle .energy_modle_title .energy_title_detail span {
+    line-height: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.energy_modle .energy_modle_title {
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+}
+
+.energy_modle .energy_modle_title h2 {font-size: 30px; font-weight: normal; color: #fff; line-height: 65px; text-indent: 12px; float: left;}
+
+.bg_color1 {background-color: #ABC057}
+.bg_color2 {background-color: #949CC2}
+.bg_color3 {background-color: #86D3D5}
+
+.bg_color4 {background-color: #ccc}
+.bg_color5 {background-color: #46afde}
+.bg_color6 {background-color: #f5b551}
+
+.bg_color7 {background-color: #f5b551}
+.bg_color8 {background-color: #66D7FF}
+.bg_color9 {background-color: #BBCF6E}
+
+.energy_modle .energy_modle_content {width: 100%; height: 210px; background: #fff; position: relative;}
+.energy_modle section {padding: 16px 16px 0px 16px;}
+.energy_modle .energy_modle_content .today_energy h1 {font-size: 50px;color: #66D7FF;}
+.energy_modle .energy_modle_content section p {font-size: 20px;}
+.energy_modle .energy_modle_content h1 {
+    padding-top: 70px;
+    font-size: 70px;
+    text-align: center;
+    color: #46AEDE;
+    font-family: "Roboto Th";
+    line-height: 70px;
+    /*font-weight: bold !important;*/
+}
+.energy_modle .energy_modle_content section div {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.energy_modle .energy_modle_content section > div  p {
+    width: 387px;
+    text-align: center;
+    font-size: 57px;
+    font-family: "Roboto Th";
+    float: left;
+    line-height: 57px;
+    color: #46AEDE;
+}
+
+.energy_modle .energy_modle_content div span {
+    float: right;
+    font-size: 20px;
+    color: #999;
+    line-height: 60px;
+    font-family: "Microsoft YaHei";
+}
+
+.energy_modle .energy_modle_content > h4 {
+    padding: 0px 28px;
+    text-align: right;
+    font-size: 26px;
+    color: #999;
+}
+
+.energy_modle .energy_modle_content .today_energy > div >p {
+    font-size: 50px;
+    color: #66D7FF;
+    line-height: 50px;
+}
+
+.energy_modle_content .left_chart {
+    height: 100%;
+    width: 210px;
+    float: left;
+    position: relative;
+}
+
+.energy_modle_content .right_detail {
+    width: 260px;
+    height: 100%;
+    float: right;
+}
+
+.energy_modle_content .left_chart .data_unit {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 12px;
+}
+
+.energy_modle_content .right_detail h4 {
+    font-size: 20px;
+    color: #666
+}
+
+.energy_modle_content .right_detail h3 {
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    color: #333;
+}
+
+.energy_modle_content .right_detail h2 {
+    font-size: 70px;
+    font-family: "Roboto Th";
+    padding: 10px 0px;
+    line-height: 70px;
+}
+
+.ydl .energy_modle_content .right_detail h2 {color: #854C37; }
+.ysl .energy_modle_content .right_detail h2 {color: #854C37; }
+.yql .energy_modle_content .right_detail h2 {color: #90BF41; }
+
+.ydl .energy_modle_content .left_chart .data_unit {color: #854C37; }
+.ysl .energy_modle_content .left_chart .data_unit {color: #46AEDE; }
+.yql .energy_modle_content .left_chart .data_unit {color: #90BF41; }
+
+.energy_modle_content .icon_energy {
+    width: 100px;
+    height: 100px;
+}
+
+.qcxs .energy_modle_content .icon_energy {
+    background: url("../../images/energy/icon-energy.png");
+    margin: 20px;
+}
+
+.fjdc .energy_modle_content .icon_energy {
+    background: url("../../images/energy/icon-energy.png") 0px -117px;
+    margin: 20px;
+}
+
+.dscz .energy_modle_content .icon_energy {
+    background: url("../../images/energy/icon-energy.png") -132px -117px;
+    margin: 20px;
+}
+
+.dpdl .energy_modle_content .icon_energy {
+    background: url("../../images/energy/icon-energy.png") -129px -1px;
+    margin: 20px;
+}
+
+.qcxs .energy_modle_content .right_detail h3, .dscz .energy_modle_content .right_detail h3, .fjdc .energy_modle_content .right_detail h3 {
+    font-size: 14px;
+    padding-top: 20px;
+}
+
+.qcxs .energy_modle_content .right_detail h2, .dscz .energy_modle_content .right_detail h2, .fjdc .energy_modle_content .right_detail h2 {
+    font-size: 40px;
+    font-weight: bold !important;
+    padding: 0px;
+}
+
+.energy_modle_content table {
+    height: 100%;
+    text-align: center;
+}
+
+.energy_modle_content table td:nth-child(1){
+    padding: 0px 10px;
+}
+
+.energy_modle_content table .low {
+    width: 152px;
+    height: 24px;
+    background: url("../../images/energy/icon-energy.png") -20px -260px;
+}
+
+.energy_modle_content table .mid {
+    width: 152px;
+    height: 24px;
+    background: url("../../images/energy/icon-energy.png") -20px -301px;
+}
+
+.energy_modle_content table .high {
+    width: 152px;
+    height: 24px;
+    background: url("../../images/energy/icon-energy.png") -20px -342px;
+}
+
+.energy_modle_content .level {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.ele_amount_class {
+    width: 22px;
+    height: 33px;
+    position: absolute;
+    right: 98px;
+    top: 167px;
+    background: url("../../images/energy/ele_amount.png") no-repeat;
+}
+
+.water_amount_class {
+    width: 22px;
+    height: 33px;
+    position: absolute;
+    right: 79px;
+    top: 106px;
+    background: url("../../images/energy/water_amount.png") no-repeat;
+}
+
+.gas_amount_class {
+    width: 26px;
+    height: 25px;
+    position: absolute;
+    right: 74px;
+    top: 110px;
+    background: url("../../images/energy/gas_amount.png") no-repeat;
+}
+
+.energy_modle_content .left_chart h3 {font-size:14px;position: absolute;left: 47px;top: 60px;color: #C0C0C0;}
+.energy_modle_content .left_chart .unit_ele_class {font-size:14px;position: absolute;left: 102px;top: 129px;color: #C0C0C0;}
+.energy_modle_content .left_chart h1 {font-size:35px;padding-top:77px; text-align:center;margin-left: -30px;font-weight: normal !important;}
+.energy_modle_content .left_chart h4 {position: absolute;right: 80px;top: 114px;font-weight: normal;}
+
+.input_class {
+    height: 20px;
+    margin-top: -4px;
+    text-align: center;
+    width: 90px;
+    border-color: #C1C1C1;
+    border: 1px;
+}
+
+.chart_class {
+    padding: 43px 0 0 5px;
+    height: 222px;
+    width: 705px;
+}	
+
+.chart_div_width {
+	width: 469px;
+}

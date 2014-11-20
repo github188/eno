@@ -1,0 +1,159 @@
+/*--------------------------------------------------|
+| dTree 2.05 | www.destroydrop.com/javascript/tree/ |
+|---------------------------------------------------|
+| Copyright (c) 2002-2003 Geir Landr?              |
+|--------------------------------------------------*/
+
+.dtree {
+	
+	white-space: nowrap;
+}
+
+.foldclose {
+  border: 0px;
+	vertical-align: middle;
+	background:url("eggplant/images/ui-icons_734d99_256x240.png") no-repeat 0px -98px;
+	height:14px;
+  width:16px;
+  display:inline-block;
+}
+
+.foldopen {
+  border: 0px;
+	vertical-align: middle;
+	background:url("eggplant/images/ui-icons_734d99_256x240.png") no-repeat -16px -98px;
+	height:14px;
+  width:16px;
+  display:inline-block;
+}
+.plus{
+  border: 0px;
+	vertical-align: middle;
+	background:url("../img/plus.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+.plusbottom{
+  border: 0px;
+	vertical-align: middle;
+	background:url("../img/plusbottom.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+
+
+.line{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/line.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.empty{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/empty.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+
+.join{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/join.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.joinbottom{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/joinbottom.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.plus{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/plus.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.plusBottom{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/plusbottom.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.minus{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/minus.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.minusBottom{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/minusbottom.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.nlPlus{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/nlplus.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+.nlMinus{
+	border: 0px;
+	vertical-align: middle;
+	background:url("../img/nlminus.gif") no-repeat;
+	height:18px;
+  width:18px;
+  display:inline-block;
+}
+
+
+.dtree input {margin-top:0px}
+.dtree a {
+	color: #333;
+	text-decoration: none;
+	vertical-align:middle;
+}
+.dtree a.node, .dtree a.nodeSel {
+	white-space: nowrap;
+	padding: 1px 2px 1px 2px;
+}
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+	color: #333;
+	text-decoration: underline;
+}
+.dtree a.nodeSel {
+	background-color: #c0d2ec;
+}
+.dtree .clip {
+	overflow: hidden;
+}

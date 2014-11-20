@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- DataSource configuration  -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${jdbc.driverClassName}" />
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 连接池中保留的最小连接数。 -->
+        <property name="minPoolSize">
+            <value>1</value>
+        </property>    <!-- 连接池中保留的最大连接数。Default: 15 -->
+        <property name="maxPoolSize">
+            <value>20</value>
+        </property>  <!-- 初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+        <property name="initialPoolSize">
+            <value>3</value>
+        </property>    <!-- 最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+        <property name="maxIdleTime">
+            <value>60</value>
+        </property>   <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+        <property name="acquireIncrement">
+            <value>5</value>
+        </property>   <!-- JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements 属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。
+			如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0 -->
+        <property name="maxStatements">
+            <value>0</value>
+        </property>    <!-- 每60秒检查所有连接池中的空闲连接。Default: 0 -->
+        <property name="idleConnectionTestPeriod">
+            <value>60</value>
+        </property>   <!-- 定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+        <property name="acquireRetryAttempts">
+            <value>30</value>
+        </property>    <!-- 获取连接失败将会引起所有等待连接池来获取连接的线程抛出异常。但是数据源仍有效 保留，并在下次调用getConnection()的时候继续尝试获取连接。如果设为true，那么在尝试
+			获取连接失败后该数据源将申明已断开并永久关闭。Default: false -->
+        <property name="breakAfterAcquireFailure">
+            <value>true</value>
+        </property>    <!-- 因性能消耗大请只在需要的时候使用它。如果设为true那么在每个connection提交的 时候都将校验其有效性。建议使用idleConnectionTestPeriod或automaticTestTable
+			等方法来提升连接测试的性能。Default: false -->
+        <property name="testConnectionOnCheckout">
+            <value>false</value>
+        </property>
+    </bean>
+
+<!--各数据源的配置-->
+    <!--  asset import-->
+    <bean id="dataSourceTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource">
+        </property>
+    </bean>
+
+
+    <bean id="subPatrolTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource">
+        </property>
+    </bean>
+
+    <bean id="epTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="ePDataSource">
+        </property>
+    </bean>
+    <bean id="ePDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close" p:driverClassName="${EP.driverClassName}"
+          p:url="${EP.url}" p:username="${EP.username}" p:password="${EP.password}" />
+
+    <bean id="parkmTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="parkmDataSource">
+        </property>
+    </bean>
+    <bean id="parkmDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close" p:driverClassName="${PARKM.driverClassName}"
+          p:url="${PARKM.url}" p:username="${PARKM.username}" p:password="${PARKM.password}" />
+
+    <bean id="sasacTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="sasacDataSource">
+        </property>
+    </bean>
+    <bean id="sasacDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close" p:driverClassName="${SASAC.driverClassName}"
+          p:url="${SASAC.url}" p:username="${SASAC.username}" p:password="${SASAC.password}" />
+
+    <bean id="pfeTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="pfeDataSource">
+        </property>
+    </bean>
+    <bean id="pfeDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close" p:driverClassName="${PFE.driverClassName}"
+          p:url="${PFE.url}" p:username="${PFE.username}" p:password="${PFE.password}"
+          p:timeBetweenEvictionRunsMillis="3600000" p:validationQuery="select 1 from dual"
+          p:testWhileIdle="true" />
+
+    <!--  Report DataSource  -->
+    <bean id="reportDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"
+          p:driverClassName="${report.driverClassName}" p:url="${report.url}"
+          p:username="${report.username}" p:password="${report.password}"/>
+    <bean id="reportTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource">
+            <ref bean="reportDataSource" />
+        </property>
+    </bean>
+</beans>

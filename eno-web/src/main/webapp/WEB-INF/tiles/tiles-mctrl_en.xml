@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<!-- asset layout -->
+	 <definition name="monitorctrl-layout" extends="main-layout">
+	 	<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigationMonitorctrl.jsp" />
+	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/monitorctrl/monitorctrlJs.jsp" />
+	 	<put-attribute name="sidebar" value="" />
+	 </definition>
+
+	<definition name="mctrl/subsys" extends="monitorctrl-layout">
+      <put-attribute name="title" value="监测与控制" />
+      <put-attribute name="sidebar" value="/WEB-INF/jsp/common/sidebarMCtrl.jsp" />
+      <put-attribute name="body" value="/WEB-INF/jsp/mctrl/subsys.jsp" />
+   </definition>
+   
+   <definition name="mctrl/mctrl" extends="monitorctrl-layout">
+      <put-attribute name="title" value="监测与控制" />
+      <put-attribute name="sidebar" value="/WEB-INF/jsp/common/sidebarMCtrl.jsp" />
+      <put-attribute name="body" value="/WEB-INF/jsp/mctrl/mctrl.jsp" />
+   </definition>
+   
+    <definition name="mctrl/*" extends="monitorctrl-layout">
+      <put-attribute name="title" value="监测与控制" />
+      <put-attribute name="sidebar" value="/WEB-INF/jsp/common/sidebarMCtrl.jsp" />
+      <put-attribute name="body" value="/WEB-INF/jsp/mctrl/{1}.jsp" />
+   </definition>
+   
+	<definition name="mctrl/monitorsum" extends="monitorctrl-layout">
+      <put-attribute name="title" value="监测与控制" />
+      <put-attribute name="body" value="/WEB-INF/jsp/mctrl/monitorsum.jsp" />
+      <put-attribute name="sidebar" value="" />
+   </definition>
+   
+</tiles-definitions>
