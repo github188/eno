@@ -1,0 +1,236 @@
+/**=============index css=============**/
+.allSummary_box{ border-top:#68d100 solid 8px; }
+.allSummary_box .s_b_one {
+	height:354px;
+	background:url(../images/index_pic01.jpg) no-repeat;
+}
+.allSummary_box .s_b_one p {
+	padding-right:18px; 
+	color:#fff;
+	line-height:40px;
+	text-align:right; 
+}
+.allSummary_box .s_b_two { 
+	height:128px; 
+	padding:20px 0 0 20px; 
+}
+.allSummary_box .s_b_two p { 
+	color:#9fa0a2; 
+	line-height:33px; 
+}
+.allSummary_box .s_b_two p span.line { border-left:#444 solid 1px; }
+.allSummary_box .s_b_three { 
+	height:420px; 
+	padding:0 15px; 
+}
+.day_weather { 
+	border-bottom:#444 solid 1px; 
+	padding:30px 20px 20px;
+	overflow:hidden;
+}
+.allSummary_box .day_w_t .w_s_range { font-family:"RobotoRegular"; }
+.allSummary_box .day_w_t .w_c_pic {
+	width:20px; 
+	height:18px;
+	background-position:-319px -8px;
+}
+.allSummary_box .day_w_q { 
+	height:60px; 
+	border-left:#444 solid 1px;
+	padding-left:20px; 
+}
+.day_weather_detail{
+	height:80px;
+	margin-top:10px;
+}
+.day_weather_detail dt, .day_weather_detail dd { float:left;}
+.day_weather_detail dt { 
+	width:120px; 
+	height:80px;
+	background-color:#101010;
+	margin-right:1px;
+}
+.day_weather_detail dd { 
+	width:239px;
+	height:70px; 
+	background-color:#000; 
+	padding:10px 0 0 10px;
+}
+.day_weather_detail dt h3 { 
+	color:#fff;
+	font-size:20px;
+	text-align:center; 
+	line-height:80px;
+}
+.day_weather_detail dd p {
+	height:30px;
+	line-height:30px;
+}
+.day_weather_detail dd p span { float:left; overflow:hidden; }
+.day_weather_detail dd p span:nth-child(odd){ width:130px;}
+.day_weather_detail dd p span:nth-child(even){ width:100px; }
+.icon_w_t, .icon_w_h, .icon_w_c {  float:left; width:30px; height:20px; margin-top:5px; }
+.icon_w_t { background-position:2px -8px; }
+.icon_w_h { background-position:-40px -8px; }
+.icon_w_c { background-position:-78px -8px; }
+
+/**=============index center content css=============**/
+.con_indexT280 { height:280px; overflow:hidden;}
+.con_indexT { height:370px; overflow:hidden;}
+.con_indexB { height:110px;}
+.con_indexB140 { height:140px;}
+.con_i_l { float:left; width:794px; }
+.con_i_r{ 
+	float:right; 
+	width:265px; 
+	height:350px;
+	margin:10px 0;
+	border-left:#444 solid 1px;
+}
+.con_i_r dl { 
+	padding:15px 25px 5px; 
+	border-bottom:#444 solid 1px;
+	overflow:hidden;
+}
+.con_i_r dl.last { border:none;}
+.con_i_r dl dt { font-size:20px; line-height:35px; }
+.con_i_r dl dd { line-height:55px;}
+.energy_use_status li { float:left; width:264px; border-left:#444 solid 1px;}
+.energy_use_status p { float:left; margin-top:24px; font-size:20px; }
+
+.chartPic_energy_havc, 
+.chartPic_energy_light, 
+.chartPic_energy_device, 
+.chartPic_energy_other { 
+	float:left; 
+	width:70px; 
+	height:70px; 
+	margin:20px 20px 20px 10px;
+	text-align:center;
+	line-height:70px;
+	position:relative;
+}
+.chartPic_energy_havc span, 
+.chartPic_energy_light span, 
+.chartPic_energy_device span, 
+.chartPic_energy_other span	{
+	display:block;
+	height:32px;
+	position:absolute;
+	top:19px;
+	left:13px;
+	line-height:32px;
+}
+
+.chartPic_energy_havc { background:url(../images/index_pic04.png) no-repeat; }
+.chartPic_energy_light { background:url(../images/index_pic05.png) no-repeat; }
+.chartPic_energy_device { background:url(../images/index_pic06.png) no-repeat; }
+.chartPic_energy_other { background:url(../images/index_pic07.png) no-repeat; }
+
+
+
+.index_tit { overflow:hidden; }
+.index_tit h2 { 
+	float:left;
+	font-size:30px; 
+	color:#fff; 
+	padding:20px 0 0 25px;
+}
+.chartBbox {}
+.chartPic_indexOne { width:744px; margin:10px auto 0; }
+.chartPic_indexTwo { width:306px; margin:20px auto 0; }
+.chartPic_indexThree { width:365px; height:180px; margin:30px auto 0;}
+.chart_tit { font-size:18px; text-align:center; }
+.chartValue { margin-top:10px; text-align:center; line-height:40px; }
+.energy_detail { float:left; width:177px; margin-top:10px; }
+.energy_detail dt { line-height:35px; }
+.energy_detail dd { line-height:65px; }
+.energy_detail dd p { line-height:25px; }
+
+.legend { float:right; margin-right:20px; }
+.legend ul li { 
+	float:left; 
+	height:20px; 
+	padding-top:40px; 
+	margin-left:30px;
+	font-size:14px;
+	line-height:20px;
+}
+.legend ul li i { display:inline-block; width:10px; height:10px; }
+.legend .icon_index_on { background-color:#68d100; }
+.legend .icon_index_error { background-color:#fb0; }
+.legend .icon_index_off { background-color:#999; }
+.subSystem_run { padding-top:5px; clear:both; }
+.subSystem_run li { 
+	float:left; 
+	width:240px; 
+	height:90px;
+	background-color:#333;
+	margin:20px 0 0 20px;
+}
+.subSystem_run ul li i { width:64px; height:64px; margin:13px 23px 13px 13px; }
+.subSystem_run ul li p { font-size:20px; line-height:40px; }
+.icon_index_hvac { background-position:0 -119px; }
+.icon_index_Plight { background-position:-83px -119px; }
+.icon_index_Nlight { background-position:-165px -119px; }
+.icon_index_elec { background-position:-248px -119px; }
+.icon_index_drainage { background-position:-330px -119px; }
+.icon_index_video { background-position:-413px -119px; }
+.icon_index_alarm { background-position:-495px -119px; }
+.icon_index_door { background-position:-577px -119px; }
+.icon_index_security { background-position:-660px -119px;}
+.icon_index_lift { background-position:-742px -119px; }
+.icon_index_fire { background-position:-825px -119px; }
+.icon_index_park { background-position:0 -200px; }
+
+.subSystem_run p span { float:right; width:20px; height:20px; margin:11px 15px 0 0 }
+.alarm_green { background-position:-222px -8px;}
+.alarm_grey { background-position:-178px -8px;}
+.alarm_yellow { background-position:-134px -8px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

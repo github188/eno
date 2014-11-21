@@ -1,0 +1,134 @@
+/**=============quotaManage css=============**/
+.quota_content { width:1880px; margin:20px; }
+.quota_top_content { width:100%; height:535px; }
+.quota_bottom_content { height:400px; margin-top:20px; }
+.amount_num{ 
+	height:50px; 
+	padding-left:30px; 
+	color:#fff; 
+	line-height:50px; 
+}
+.year_count, .month_count, .day_count { float:left; }
+.year_count { width:465px; border-right:#444 solid 1px; }
+.month_count { width:948px; border-right:#444 solid 1px; }
+.day_count { width:465px; }
+.quota_dateBar { height:30px; padding:25px; }
+.quota_dateBar .formBar label { 
+	float:left; 
+	font-size:20px;
+	color:#fff; 
+	line-height:25px;
+    cursor: default;
+}
+
+.chartPic_auotaOne { width:306px; margin:20px auto 0; }
+.quota_chartValue { margin-top:10px; text-align:center; line-height:30px; }
+
+.Echart_quota { height:330px;}
+.quota_viewBar { height:30px; padding:12px 15px; }
+.quota_viewBar .datetime { float:right; color:#fff; line-height:30px; }
+
+.chart_quota_detail ul { padding:25px 20px; }
+.chart_quota_detail ul li {
+	height:75px;
+	margin-bottom:10px;	
+}
+.chart_quota_d_t { float:left; margin:10px 15px 0 0; color:#fff; }
+.chart_quota_d_i { float:left; }
+.chart_quota_detail ul li p { line-height:35px; }
+
+/**=============quotaManage 弹出框 配置定额 css=============**/
+.quota_setAll_list {
+    float: left;
+    margin: 5px 0 20px 20px;
+}
+.quota_setAll_list .quota_setInfo {
+    float: left;
+    height: 30px;
+    margin: 0 25px 15px 0;
+    line-height: 30px;
+}
+.quota_setAll_list .quota_setInfo label {
+    float: left;
+    width: 140px;
+    height: 30px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 30px;
+}
+.quota_setAll_listS .quota_setInfo label { width: 120px; }
+.quota_setAll_list_month .quota_setInfo label { width: 55px;}
+.quota_setAll_list .quota_setInfo .formInput {
+    float: left;
+    width: 130px;
+    background-color: #000;
+}
+.quota_setAll_list .quota_setInfo .calendarBar { margin: 0; }
+.quota_input {
+    float: left;
+    width: 80px;
+    margin: 0 5px 0 0!important;
+    padding-left: 10px;
+}
+.history_dataCon { height: 528px; border: #444 solid 1px; }
+.history_showhide { }
+/*.history_dataCon { padding: 0 20px; }*/
+.export_showBtn, .export_hideBtn {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: url(../images/icon_small.png) no-repeat;
+    background-position: -255px -180px;
+    margin: 20px 20px 0 0;
+    cursor: pointer;
+}
+.export_hideBtn { background-position: -255px -220px; }
+.quota_set_tab { float: left; width: 280px; margin: 0 20px; }
+.quota_set_tab table { width: 100%; color: #fff; text-align: left; }
+.quota_set_tab table th { font-weight: normal; padding-bottom: 15px; }
+.quota_set_tab table td { padding: 5px 0; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

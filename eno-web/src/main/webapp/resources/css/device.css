@@ -1,0 +1,75 @@
+.device_content { width:100%; margin:15px 0 0; }
+.deviceBox { height:881px; }
+.device_edit_list .formBar {
+	height:30px;
+	margin:10px 0 15px 20px;
+}
+.device_edit_list .formBar_h75{ height: 75px;}
+.device_edit_list .formBar .formInput { float: left;}
+.device_edit_list label { 
+	float:left; 
+	width:130px;
+	font-size:18px;
+	color:#fff;
+	line-height:30px;
+    cursor: default;
+}
+.device_edit_list .formBar input { float: left;}
+.device_edit_list .formBar input.w130_input { width:130px; margin-right: 10px; }
+.device_edit_list .formBar .input_txt { float: left; font-size: 18px; color: #fff; line-height: 30px; margin-right: 10px; }
+.device_edit_list .formBar .calendarBar { margin: 0; }
+.device_edit_list .formBar .to { float: left; font-size: 18px; color: #fff; padding: 0 10px; line-height: 30px; }
+.device_sidebar {
+    float:left;
+    width:200px;
+    height:100%;
+}
+.device_sidebar h3 {
+    float:left;
+    width:200px;
+    height:64px;
+    font-size:20px;
+    line-height:64px;
+}
+.device_sidebar_subcon { clear:both; }
+.device_sidebar_subcon li { width:207px; }
+.device_sidebar_subcon li:hover,
+.device_sidebar_subcon li.selecton {
+    display:inline-block;
+    background:url(../images/selecton.png) no-repeat right center;
+}
+.device_sidebar_subcon li:hover a,
+.device_sidebar_subcon li.selecton a { background-color:#334354; font-size:22px; color:#fff; }
+.device_sidebar_subcon li a {
+    display:block;
+    width:181px;
+    height:64px;
+    border-bottom:#262626 solid 1px;
+    background-color:#111;
+    padding-left:19px;
+    font-size:18px;
+    color:#9fa0a2;
+    line-height:64px;
+}
+.device_main { float:right; width:1670px; }
+.device_viewBar {
+    height:30px;
+    border-bottom:#444 solid 1px;
+    padding:16px 40px 17px 45px;
+}
+.device_detail {
+    padding: 20px 40px;
+    overflow: hidden;
+}
+.device_main .funBtnBar {
+    float: right;
+    height: 30px;
+    margin: 0;
+}
+.formBar textarea {
+    width: 300px;
+    height: 75px;
+    border: none;
+    background-color: #000;
+    border-radius: 0;
+}

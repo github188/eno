@@ -1,0 +1,242 @@
+.viewList,.viewList_language { float:left; height:30px; }
+.viewList li,.viewList_language li {
+	float:left;
+	height:30px; 
+	background-color:#666;
+	margin-right:10px;
+	padding:0 10px;
+	font-size:16px;
+	color:#fff;
+	line-height:30px;
+	cursor:pointer;
+}
+.viewList li label {
+	float:left; 
+	height:30px;
+	font-size:18px;
+	line-height:30px;
+}
+.changeColor { background-color:#fc605e !important; }
+.viewList li.changeColor i{ background-position:-411px -10px; }
+.viewList li i { 
+	float:right; 
+	width:16px; 
+	height:16px; 
+	background-position:-645px -48px; 
+	margin:7px 0 7px 10px; 
+}
+.viewList li i.icon-calendar { background-position:-368px -10px; }
+.viewList li.compare { background-color:transparent; }
+.download_btn { 
+	float:right;
+}
+/**=============复选框样式=============**/
+input[type=checkbox].css-checkbox {
+	position:absolute; 
+	z-index:-1000; 
+	left:-1000px; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height:1px; 
+	width:1px;
+	margin:-1px; 
+	padding:0; 
+	border:0;
+}
+input[type=checkbox].css-checkbox + label.css-label {
+	display:inline-block;
+	height:24px; 
+	background-repeat:no-repeat;
+	background-position: 0 -220px;
+	padding-left:34px;
+	line-height:24px;
+	cursor:pointer;
+}
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -177px;
+}
+.label_w45 { width: 45px!important; }
+label.css-label {
+	background:url(../images/icon_small.png) no-repeat;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size:16px;
+	color:#fff;
+}
+
+input[type=checkbox].css-checkbox-small {
+    position:absolute;
+    z-index:-1000;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+input[type=checkbox].css-checkbox-small + label.css-label-small {
+    display:inline-block;
+    height:24px;
+    background-repeat:no-repeat;
+    background-position: -485px -220px;
+    padding-left:30px;
+    line-height:10px;
+    cursor:pointer;
+}
+input[type=checkbox].css-checkbox-small:checked + label.css-label-small {
+    background-position: -485px -180px;
+}
+label.css-label-small {
+    background:url(../images/icon_small.png) no-repeat;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size:18px;
+    color:#fff;
+}
+/**=============单选按钮样式=============**/
+input[type=radio].css-radio {
+    position:absolute;
+    z-index:-1000;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width:1px;
+    height:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+input[type=radio].css-radio + label.css-label-radio {
+    width:65px;
+    padding-left:30px;
+    height:30px;
+    display:inline-block;
+    line-height:30px;
+    background-repeat:no-repeat;
+    background-position: 0 -384px;
+    vertical-align:middle;
+    cursor:pointer;
+
+}
+input[type=radio].css-radio:checked + label.css-label-radio {
+    background-position: 0 -344px;
+}
+label.css-label-radio {
+    background:url(../images/icon_small.png) no-repeat;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 18px;
+    color: #fff;
+}
+/**=============下拉列表样式=============**/
+.filter_widget { float: left; }
+.dropdown-toggle { background-color: #000!important; }
+.bootstrap-select.btn-group,
+.bootstrap-select.btn-group[class*="span"]{
+    margin: 0;
+}
+.btn-group.open .btn.dropdown-toggle,
+.btn-group .btn.dropdown-toggle{
+    height: 30px;
+    background: #000;
+    color: #fff;
+    text-shadow: none;
+    outline: none!important;
+}
+.btn-group.open .btn.dropdown-toggle { box-shadow:0 0 5px #000; }
+.btn-group>.btn:first-child,
+.dropdown-menu{
+    border-radius: 0;
+}
+.btn-group>.btn,
+.btn-group>.dropdown-menu,
+.btn-group>.popover,
+.input-append input {
+    font-size:16px;
+}
+.btn { box-shadow: none; }
+.caret { border-top: 4px solid #4dafc9; }
+.dropdown-menu {
+    border:0;
+    background-color:#111;
+    box-shadow:0 0 5px #000;
+    margin-top:1px;
+    padding:0;
+}
+.dropdown-menu>li { border-bottom:#444 solid 1px; }
+.dropdown-menu>li:last-child, .btn { border:0; }
+.dropdown-menu>li>a {
+    height:29px;
+    padding:0 15px;
+    color:#fff;
+    line-height:29px;
+}
+.dropdown-menu>li>a:hover,
+.bootstrap-select.btn-group .dropdown-menu li.selected{
+    background-image:none;
+    background-color:#4dafc9;
+}
+/**=============日历样式=============**/
+.calendarBar {
+    float: left;
+    margin-left: 10px;
+}
+.calendarBar input {
+    width: 125px;
+    height: 20px;
+    margin: 0;
+    padding: 0 0 0 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="text"],input[type="password"],textarea { border:0; background-color:#000; border-radius:0; color: #fff; padding: 5px 6px; }
+input[type="text"]:focus,input[type="password"]:focus,textarea:focus { box-shadow:none; }
+.input-append input { width: 100px; border-radius:0; }
+.input-append .add-on {
+	height:30px;
+	border:0;
+	background-color:#000;
+	padding:0 5px 0 0;	
+}
+.input-append .add-on:last-child { border-radius:0;}
+.icon-calendar { background-position:-368px -10px; margin-top:6px; }
+.input-append { margin-bottom:0; }
+
+/**=============选项卡样式=============**/
+.nav-tabs>li>a {
+	border:0;
+	border-radius:0;
+}
+
+#loginBtn {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

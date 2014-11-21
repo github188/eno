@@ -1,0 +1,714 @@
+/**=============runMonitor css=============**/
+.top_content { width:1920px; margin:0;}
+.bottom_content { 
+	width:1920px; 
+	height:220px; 
+	margin:40px 0 0; 
+}
+
+.bg01 { background:url(../images/havc_bg.jpg) repeat-y; }  
+.bg02 { background:url(../images/light_bg.jpg) repeat-y; }
+.bg03 { background:url(../images/elec_bg.jpg) repeat-y; }
+.bg04 { background:url(../images/drainage_bg.jpg) repeat-y; }
+.bg_grain { height:80px; background:url(../images/bg_grain.png) no-repeat; padding:20px 20px 10px; }
+.bg_grain_big { height:185px; background:url(../images/bg_grain_big.png) no-repeat; }
+
+.monitor_tit {
+	height:95px;
+	font-size:60px;
+	text-align:right;
+	padding-right:20px;
+	line-height:95px;
+    cursor: pointer;
+}
+.monitor_tit a { color: #fff; }
+.chartPic_monoitorOne { width:410px; margin:0 auto;}
+.chartPic_monoitorTwo { width:410px; height:180px; margin:0 auto;}
+.systemBox { }
+.systemBox:after{ display:block; content:".";  height:0; visibility:hidden; clear:both; }
+.systemBox h3 { float:left; font-size:20px; color:#fff; }
+.floor_select {}
+
+.ulSystemOne {}
+.ulSystemOne li { 
+	border-bottom:#444 solid 1px; 
+	line-height:30px; 
+	overflow:hidden; 
+}
+.ulSystemOne li:last-child { border-bottom: none; }
+.ulSystemOne li.speacial { color:#9fa0a2; }
+.ulSystemOne li span.right{ margin-right: 5px; }
+.ulSystemOne li span em, .ulSystemOne li.speacial span em { color:#fff; }
+.ulSystemOne li span.unit { display: inline-block; width: 20px; text-align: left;}
+.ulSystemTwo { 
+	height:125px;
+}
+.ulSystemTwo_B { height: 378px; }
+.ulSystemTwo ul li {
+	float:left;
+	width:111px;
+	border-right:#444 solid 1px;
+	padding:10px 0;
+}
+.ulSystemTwo ul li:last-child { border-right:none; }
+.ulSystemTwo_B ul li { border-right: #262626 solid 2px; border-bottom: #262626 solid 2px; }
+.ulSystemTwo_B ul li:nth-child(4n) { border-right:0; }
+.ulSystemTwo ul li p { text-align:center; }
+.ulSystemTwo ul li p.common { height:24px; line-height:24px; margin-bottom: 2px; }
+.ulSystemTwo ul li p.curent { height:53px; line-height:53px; font-family: "RobotoThin"; font-size: 45px; font-weight: bold; color: #fff; }
+.ulSystemTwo ul li p.curent em { font-family: "RobotoThin"; font-weight: bold; }
+.ulSystemTwo ul li p.curent span.unit { font-size: 16px; font-weight: normal; color: #9fa0a2; }
+.ulSystemTwo ul li p.videoPic { 
+	width:37px; 
+	height:20px; 
+	background-position:-648px -66px; 
+	margin:25px 37px 15px; 
+}
+/**=============滚动条css=============**/
+#js_scroll_container {
+    position: relative;
+    width: 450px;
+    height: 380px;
+    overflow: hidden;
+}
+#js_scroll_content {
+    width: 450px;
+}
+.pubCon_blue h3 {
+	height:70px; 
+	background-color:#363636; 
+	padding-right:20px; 
+	font-size:30px; 
+	color:#fff; 
+	text-align:right; 
+	line-height:70px; 
+}
+.pubCon_blue h3 a {
+    display: block;
+    color: #fff;
+}
+
+/**=============main_menu css=============**/
+.main_content {
+    width: 100%;
+    height: 971px;
+    margin: 0;
+}
+.main_menu {
+    float: left;
+    width: 240px;
+    height: 100%;
+    background-color: #17252f;
+    margin: 0;
+}
+.main_menu li {
+    height: 80px;
+    border-bottom: #2f3b44 solid 1px;
+    line-height: 80px;
+}
+.main_menu li.main_menu_current { background-color: #334354; border-left: #0f0 solid 4px; }
+.main_menu li.main_menu_current a { font-size: 24px; color: #fff; }
+.main_menu li:last-child { border: 0; }
+.main_menu li i { width: 32px; height: 33px; margin: 24px 25px 24px 20px; }
+.main_menu li a { font-size: 20px; color: #9fa0a2; }
+.icon_hvac { background-position: -83px -200px; }
+.icon_lamp { background-position: -136px -200px; }
+.icon_moon { background-position: -190px -200px; }
+.icon_elec { background-position: -243px -200px; }
+.icon_water { background-position: -297px -200px; }
+.icon_video { background-position: -348px -200px; }
+.icon_alarm { background-position: -402px -200px; }
+.icon_door { background-position: -455px -200px; }
+.icon_watch { background-position: -509px -200px; }
+.icon_fire { background-position: -562px -200px; }
+.icon_lift { background-position: -616px -200px; }
+.icon_park { background-position: -670px -200px; }
+.second_menu {
+    float: left;
+    width: 240px;
+    height: 100%;
+    background-color: #334354;
+    margin: 0;
+}
+.second_menu li {
+    cursor: pointer;
+}
+.second_menu li i {
+    width: 20px;
+    height: 20px;
+    background-position: -742px 0;
+    margin: 30px 0 0 14px;
+}
+.second_menu li h2 {
+    height: 80px;
+    padding-right: 30px;
+    font-size: 20px;
+    text-align: right;
+    line-height: 80px;
+}
+.second_menu li.on i { background-position: -742px -65px; }
+.second_menu li.on h2 {
+    font-size: 22px;
+    color: #fff;
+}
+#js_floor_container {
+    position: relative;
+    width: 240px;
+    height: 311px;
+    overflow: hidden;
+}
+#js_floor_content {
+    width: 240px;
+}
+.subcon {
+    display: none;
+    background-color: #141B21;
+}
+.second_menu li.on .subcon{ display: block; }
+.subcon a {
+    display: block;
+    height: 38px;
+    border-bottom: #293643 solid 1px;
+    font-size: 20px;
+    color: #9fa0a2;
+    text-align: right;
+    line-height: 38px;
+    padding-right: 30px;
+}
+.subcon a:last-child { border: 0; }
+.subcon a.focus {
+    background-color: #00ff67;
+    font-size: 24px;
+    color: #000;
+}
+/**=============systemBox 暖通空调结构图 css=============**/
+.system_rightBox {
+    float: right;
+    width: 1440px;
+    height: 100%;
+}
+.js_system_viewBar {
+    float: right;
+    height: 60px;
+    margin: 10px 20px 0 0;
+}
+.js_system_viewBar li {
+    float: left;
+    width: 90px;
+    height: 60px;
+}
+.js_system_viewBar li.js_system_viewBar_on {
+    height: 56px;
+    border-top: #73dcff solid 4px;
+    background-color: #576a83;
+    box-shadow: -1px 0 5px rgba(0,0,0,0.2), 0 -1px 5px rgba(0,0,0,0.2),1px 0 5px rgba(0,0,0,0.2);
+}
+.js_system_viewBar li a {
+    width: 25px;
+    height: 25px;
+    margin: 18px 33px;
+}
+.js_system_viewBar li.js_system_viewBar_on a/*, 
+.js_system_viewBar li:hover a */{ margin-top: 14px; }
+.icon_plan { background-position: -37px -288px; }
+.icon_structure { background-position: -148px -288px; }
+.icon_list { background-position: -259px -288px; }
+.icon_plan_disable { background-position: -74px -288px; }
+.icon_structure_disable { background-position: -184px -288px; }
+.icon_list_disable { background-position: -298px -288px; }
+.js_system_viewBar li.js_system_viewBar_on a.icon_plan, .js_system_viewBar li:hover a.icon_plan { background-position: 0 -288px; }
+.js_system_viewBar li.js_system_viewBar_on a.icon_structure, .js_system_viewBar li:hover a.icon_structure { background-position: -112px -288px; }
+.js_system_viewBar li.js_system_viewBar_on a.icon_list, .js_system_viewBar li:hover a.icon_list { background-position: -221px -288px; }
+.js_system_content { clear: both; }
+.system_top_content {
+    width: 1440px;
+    height: 645px;
+    background-color: #566881;
+    box-shadow: 3px 0 5px rgba(0,0,0,8);
+}
+.system_structure {
+    height: 645px;
+    background: url(../images/system_structure.png) no-repeat;
+}
+.system_bottom_content {
+    padding: 0 25px;
+    height: 256px;
+    background: rgba(0, 0, 0, 0.1) !important; /* IE无效，FF有效 */
+    background: #000;
+    -ms-filter: alpha(opacity=30);
+    filter: alpha(opacity=30);
+    overflow: hidden;
+}
+.system_bottom_content h3 {
+    font-size: 40px;
+    color: #fff;
+    padding: 10px 0;
+    line-height: 50px;
+}
+.system_data_detail {
+    overflow: hidden;
+}
+.sys_dataL {
+    float: left;
+    width: 790px;
+    height: 170px;
+    background-color: #17252f;
+}
+.sys_data_list {
+    padding: 10px 0;
+}
+
+.tooltip_list { clear: both; }
+.list_w720{ width: 720px; padding-bottom: 10px; overflow: hidden; }
+.list_w540{ width: 540px; padding-bottom: 10px; overflow: hidden; }
+.list_w400{ width: 400px; overflow: hidden; }
+.list_w250{ width: 250px;}
+.sys_data_list li, .tooltip_list li {
+    float: left;
+    width: 220px;
+    margin: 0 20px;
+    line-height: 36px;
+    overflow: hidden;
+}
+.tooltip_list li {
+    margin: 0 10px 0 0;
+    line-height: 26px;
+}
+.list_w400 li, .list_w250 li { width: 250px;}
+.list_w540 li { width:170px; line-height: 35px; }
+.sys_data_list li span.sys_data_name, .tooltip_list li span.tooltip_data_name {
+    float: left;
+    display: inline-block;
+    min-width: 100px;
+    width: 130px;
+    margin-right: 5px;
+    color: #fff;
+    overflow: hidden;
+}
+.list_w540 li span.tooltip_data_name {
+    min-width: 80px;
+    width: 80px;
+}
+.sys_data_list li em, .tooltip_list li em {
+    float: left;
+    width: 40px;
+    font-size: 20px;
+    color: #fff;
+    text-align: right;
+}
+.list_w400 li em, .list_w250 li em {
+    width: 50px;
+    font-size: 16px;
+}
+.sys_data_list li span.unit, .tooltip_list li span.unit {
+    float: left;
+    width: 40px;
+    margin-left: 5px;
+    color: #9fa0a2;
+}
+.sys_dataR {
+    float: right;
+    width: 570px;
+    height: 170px;
+    background-color: #1a1c1f;
+}
+.system_echart_pic {
+    height: 132px;
+}
+.system_echart_legend {
+    height: 38px;
+    background-color: #111;
+    line-height: 38px;
+    padding: 0 12px;
+}
+.system_echart_legend p a { color: #868686; }
+.system_echart_legend p a:hover, .system_echart_legend p a.echartOn { color: #fff; }
+.pmt_block {}
+.pmt {
+    width: 1440px;
+    height: 645px;
+    position: relative;
+}
+.tooltipBox {
+    display: block;
+    position: absolute;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+}
+.tooltipBox_plan {
+    height: 34px;
+    line-height: 34px;
+}
+.tooltip_orange { background-color: #ff9a35; }
+.tooltip_red { background-color: #ff465a; }
+.tooltip_red02 { background-color: #f99; }
+.tooltip_green { background-color: #60bc04; }
+.tooltip_green02 { background-color: #98ce33; }
+.tooltip_blue { background-color: #459fe2; }
+.tooltip_arrow {
+    position: absolute;
+    left: -8px;
+    top: 8px;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+.tooltip_arrow_orange { border-right: 8px solid #ff9a35;}
+.tooltip_arrow_red { border-right: 8px solid #ff465A;}
+.tooltip_arrow_red02 { border-right: 8px solid #f99;}
+.tooltip_arrow_green { border-right: 8px solid #60bc04;}
+.tooltip_arrow_green02 { border-right: 8px solid #98ce33;}
+.tooltip_arrow_blue { border-right: 8px solid #459fe2;}
+.tooltip_txt {
+    display: block;
+    color: #fff;
+    line-height: 21px;
+    padding: 2px 10px;
+}
+.tooltip_txt_name {
+    background-color: #fff;
+    padding:0 7px;
+    font-size: 14px;
+    color: #d85233;
+}
+.borderL_blue { border-left: #459fe2 solid 3px; }
+.borderL_green { border-left: #98ce33 solid 3px; }
+.tooltip_showBox {
+    display: none;
+    position: absolute;
+    border-left: #ff465A solid 4px;
+    background: rgba(23, 37, 47, 0.9) !important; /* IE无效，FF有效 */
+    background: #17252f;
+    -ms-filter: alpha(opacity=90);
+    filter: alpha(opacity=90);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    z-index: 5;
+}
+.triangle_up {
+    position: absolute;
+    top: -10px;
+    left: 35px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 10px solid rgba(23, 37, 47, 0.9)!important;
+}
+.tooltip_top_con {
+    padding: 15px 0 5px 20px;
+    overflow: hidden;
+}
+.tooltip_top_con h4 {
+    float: left;
+    height: 30px;
+    padding-bottom: 10px;
+    font-size: 22px;
+    color: #fff;
+    line-height: 30px;
+}
+.tooltip_top_con h4 .video_pic {
+    float: none;
+    width: 20px;
+    height: 12px;
+    background-position: -787px -65px;
+    margin: 9px 0 0 10px;
+}
+.tooltip_top_con .tooltip_closeBtn {
+    float: right;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    background-position: -2px -54px;
+    margin-right: 20px;
+}
+.tooltip_bom_con {
+    height: 41px;
+    background: rgba(204, 204, 204, 0.3) !important; /* IE无效，FF有效 */
+    background: #ccc;
+    -ms-filter: alpha(opacity=30);
+    filter: alpha(opacity=30);
+    padding-left: 30px;
+    color: #fff;
+    line-height: 40px;
+}
+.tooltip_alertBtn {
+    float: right;
+    height: 30px;
+    background-color: #17252f;
+    margin: 5px;
+    padding: 0 10px;
+    color: #fff;
+    line-height: 30px;
+}
+.tooltipBox_plan i.icon_trend {
+    width: 18px;
+    height: 14px;
+    background-position: -95px -155px;
+}
+.tooltip_picBox { margin-right: 20px;}
+/**=============systemBox 设备列表 css=============**/
+.system_content {
+    width: 1400px;
+    height: 861px;
+    background-color: #566881;
+    box-shadow: 3px -1px 5px rgba(0,0,0,8);
+    padding: 20px;
+}
+.system_deviceList{
+    height: 821px;
+    padding: 20px;
+    background-color: #1a1c1f;
+}
+/**=============systemBox 平面图 css=============**/
+.tooltipBox_plan i { width: 34px; height: 34px; }
+.tooltipBox i.icon_havcSub_on { background-position: -348px -288px; }
+.tooltipBox i.icon_havcSub_off { background-position: -454px -288px; }
+.tooltipBox i.icon_havcSub_error { background-position: -401px -288px; }
+.tooltipBox i.icon_pubLightSub_on { background-position: -511px -288px; }
+.tooltipBox i.icon_pubLightSub_off { background-position: -617px -288px; }
+.tooltipBox i.icon_pubLightSub_error { background-position: -564px -288px; }
+/*.tooltipBox i.icon_nightLightSub_on { background-position: -511px -288px; }*/
+/*.tooltipBox i.icon_nightLightSub_off { background-position: -617px -288px; }*/
+/*.tooltipBox i.icon_nightLightSub_error { background-position: -564px -288px; }*/
+.tooltipBox i.icon_DrainageSub_on { background-position: -671px -288px; }
+.tooltipBox i.icon_DrainageSub_off { background-position: -49px -338px; }
+.tooltipBox i.icon_DrainageSub_error { background-position: 0 -338px; }
+/*.tooltipBox i.icon_securitySub_on { background-position: -98px -338px; }*/
+/*.tooltipBox i.icon_securitySub_off { background-position: -197px -338px; }*/
+/*.tooltipBox i.icon_securitySub_error { background-position: -147px -338px; }*/
+.tooltipBox i.icon_alarmSub_on { background-position: -98px -338px; }
+.tooltipBox i.icon_alarmSub_off { background-position: -197px -338px; }
+.tooltipBox i.icon_alarmSub_error { background-position: -147px -338px; }
+.tooltipBox i.icon_doorSub_on_open { background-position: -295px -338px; }
+.tooltipBox i.icon_doorSub_on_close { background-position: -246px -338px; }
+.tooltipBox i.icon_doorSub_off_open { background-position: -493px -338px; }
+.tooltipBox i.icon_doorSub_off_close { background-position: -443px -338px; }
+.tooltipBox i.icon_doorSub_error_open { background-position: -394px -338px; }
+.tooltipBox i.icon_doorSub_error_close { background-position: -345px -338px; }
+.tooltipBox i.icon_nightPatrolSub_on { background-position: -542px -338px; }
+.tooltipBox i.icon_nightPatrolSub_off { background-position: -641px -338px; }
+.tooltipBox i.icon_nightPatrolSub_error { background-position: -591px -338px; }
+.tooltipBox i.icon_fireSub_on { background-position: -690px -338px; }
+.tooltipBox i.icon_fireSub_off { background-position: -791px -338px; }
+.tooltipBox i.icon_fireSub_error { background-position: -738px -338px; }
+.tooltipBox i.icon_liftSub_on { background-position: -690px -338px; }
+.tooltipBox i.icon_liftSub_off { background-position: -791px -338px; }
+.tooltipBox i.icon_liftSub_error { background-position: -738px -338px; }
+.tooltipBox i.icon_parkSub_on { background-position: -296px -444px; }
+.tooltipBox i.icon_parkSub_off { background-position: -395px -444px; }
+.tooltipBox i.icon_parkSub_error { background-position: -345px -444px; }
+
+.plan_legend {
+    position: absolute;
+    bottom: 10px;
+    right:  25px;
+    width: 80px;
+}
+.plan_legend li {
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.plan_legend input[type=checkbox].css-checkbox {
+    position:absolute;
+    z-index:-1000;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+.plan_legend input[type=checkbox].css-checkbox-on + label.css-label-on,
+.plan_legend input[type=checkbox].css-checkbox-error + label.css-label-error,
+.plan_legend input[type=checkbox].css-checkbox-off + label.css-label-off{
+    display:inline-block;
+    width: 48px;
+    height:30px;
+    background-repeat:no-repeat;
+    background-position: 0 -258px;
+    padding-left:32px;
+    line-height:30px;
+    cursor:pointer;
+}
+.plan_legend input[type=checkbox].css-checkbox-error + label.css-label-error {
+    background-position: -99px -258px;
+}
+.plan_legend input[type=checkbox].css-checkbox-off + label.css-label-off {
+    background-position: -199px -258px;
+}
+.plan_legend input[type=checkbox].css-checkbox-on:checked + label.css-label-on {
+    background-position: 0 -301px;
+}
+.plan_legend input[type=checkbox].css-checkbox-error:checked + label.css-label-error {
+    background-position: -99px -301px;
+}
+.plan_legend input[type=checkbox].css-checkbox-off:checked + label.css-label-off {
+    background-position: -199px -301px;
+}
+.plan_legend label.css-label-on,
+.plan_legend label.css-label-error,
+.plan_legend label.css-label-off{
+    background:url(../images/icon_small.png) no-repeat;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size:16px;
+    color:#fff;
+}
+.chartPic_systemOne {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    background-color: #0b1217;
+    padding: 15px 30px;
+}
+.system_havc_chartTxt {
+    position: absolute;
+}
+.chart_systemOne_detail { padding-top: 13px;}
+.chart_systemOne_d_t {
+    float: left;
+    margin: 5px 16px 0;
+}
+.chart_systemOne_d_i { float: left;}
+.chart_systemOne_detail ul li p { line-height: 24px;}
+
+/**=============systemBox 弹出框 css=============**/
+.modal_w1880 {
+    height: 958px;
+    left: 20px;
+    top: 80px;
+    margin-left: 0;
+}
+.modal_w1880.fade.in { top: 50px;}
+.alert_body_h890 { max-height: 870px;}
+.system_alert_boxL {
+    float: left;
+    width: 250px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.system_alert_boxR {
+    float: right;
+}
+.zoomBar {
+    float: right;
+    width: 1553px;
+    height: 40px;
+    margin-top: 3px;
+    background-color: red;
+}
+.tab_viewBtn_monitor { margin: 17px 30px 17px 0;}
+.download_btn_monitor {
+    float: right;
+    height: 30px;
+    border-left: #777 solid 1px;
+    border-right: #777 solid 1px;
+    padding: 15px;
+}
+/**=============systemBox electricity css=============**/
+.scroll_btnL,
+.scroll_btnR {
+    position: absolute;
+    top: 315px;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: url(../images/left_btn.png) no-repeat;
+    margin: 0;
+    opacity: 1;
+}
+.scroll_btnL:hover, .scroll_btnL:focus { background: url(../images/left_btn_hover.png) no-repeat; }
+.scroll_btnR { background: url(../images/right_btn.png) no-repeat; }
+.scroll_btnR:hover, .scroll_btnR:focus { background: url(../images/right_btn_hover.png) no-repeat; }
+
+.sys_elec_param {
+    width: 1390px;
+    height: 226px;
+    background-color: #17252f;
+    margin: 15px 0;
+    overflow: hidden;
+}
+.sys_elec_param ul { margin: 5px 0; }
+.sys_elec_param ul li {
+    float: left;
+    width: 107px;
+    color: #fff;
+    font-family: "RobotoRegular";
+}
+.sys_elec_param ul li:first-child {
+    width: 106px;
+    font-family: "Microsoft Yahei";
+}
+.sys_elec_param ul li:nth-child(even){
+    background: rgba(102, 102, 102, 0.12) !important; /* IE无效，FF有效 */
+    background: #666;
+    -ms-filter: alpha(opacity=12);
+    filter: alpha(opacity=12);
+}
+.sys_elec_param ul li p {
+    height: 43px;
+    text-align: center;
+    line-height: 43px;
+}
+.sys_elec_param ul li p:first-child {
+    height: 44px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 44px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
