@@ -1,4 +1,15 @@
-/*html { overflow: hidden;}*/
+@font-face {
+    font-family: 'roboto thin';
+    src: url('font/roboto-thin-webfont.eot');
+    src: url('font/roboto-thin-webfont.eot?#iefix') format('embedded-opentype'),
+    url('font/roboto-thin-webfont.woff') format('woff'),
+    url('font/roboto-thin-webfont.ttf') format('truetype'),
+    url('font/roboto-thin-webfont.svg#roboto thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html { overflow: hidden;}
 html, body, span, h1, h2, h3, h4, h5, h6, p, a, q, em, ul, li, ol, dl, dt, dd, table, td, th, input, button, form, fieldset, legend, textarea, label, strong, img { margin:0; padding:0; }
 body { width:1920px; height:1080px; background:url(../images/body_bg.jpg) no-repeat; font-family:"Microsoft Yahei"; font-size:16px; color:#9fa0a2; }
 table { border-collapse:collapse; }
@@ -38,7 +49,7 @@ a:hover, a:active, a:focus { text-decoration:none; outline:none; color:#fff; }
 }
 em, .unit,.ft_robotoB { font-family:"RobotoRegular"; }
 strong { font-family:"RobotoThin"; font-weight: bold; }
-/**=============icon背景=============**/
+/**=============icon鑳屾櫙=============**/
 .icon_big { float:left; display:inline-block; background:url(../images/icon_big.png) no-repeat; }
 .icon_small { display:inline-block; background:url(../images/icon_small.png) no-repeat; }
 .flag { float:left; width:4px; height:24px; }
@@ -54,15 +65,15 @@ strong { font-family:"RobotoThin"; font-weight: bold; }
 .flag_purple_deep { background-color:#e599ff;}
 .flag_yellow { background-color:#f9ab35;}
 
-/**=============字体种类=============**/
-.ft_roboto { font-family:"Roboto Thin";}
-/**=============字体颜色=============**/
+/**=============瀛椾綋绉嶇被=============**/
+.ft_roboto { font-family:"roboto thin";}
+/**=============瀛椾綋棰滆壊=============**/
 .col9fa0a2 { color:#9fa0a2; }
 .colfff { color:#fff; }
 .col6cf { color:#6cf; }
 .col646472 { color: #646472!important; }
 
-/**=============字体大小=============**/
+/**=============瀛椾綋澶у皬=============**/
 .ft60 { font-size:60px; }
 .ft50 { font-size:50px; }
 .ft45 { font-size:45px; }
@@ -78,7 +89,7 @@ strong { font-family:"RobotoThin"; font-weight: bold; }
 .ft15 { font-size:15px; }
 .ft14 { font-size:14px; }
 
-/**=============按钮颜色=============**/
+/**=============鎸夐挳棰滆壊=============**/
 .btn_pub{ display: inline-block; height: 30px; padding: 0 15px; font-size: 16px; color: #fff; line-height: 30px; letter-spacing: 2px; }
 .btn_pub:hover,.btn_pub:active { color:#fff; text-decoration:none;}
 input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; line-height:30px; letter-spacing:2px; }
@@ -96,7 +107,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .funBtnBar { float:right; height:30px; margin:23px 30px 0 0; }
 .funBtnBar input[type="button"] { display:inline-block; /*margin-left:5px;*/}
 
-/**=============宽度大小=============**/
+/**=============瀹藉害澶у皬=============**/
 .w1880 { width:1876px; }
 .w1455 { width:1451px; left: 24%; }
 .w1430 { width:1430px; }
@@ -116,7 +127,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .w240 { width:240px; }
 .w185 { width:185px; }
 
-/**=============高度大小=============**/
+/**=============楂樺害澶у皬=============**/
 .h930 { height:930px; }
 .h660 { height:660px; }
 .h560 { height:560px; }
@@ -135,7 +146,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .h120 { height:120px; }
 .h110 { height:110px; }
 
-/**=============内外边距=============**/
+/**=============鍐呭杈硅窛=============**/
 .mt30 { margin-top:30px; }
 .mt25 { margin-top:25px; }
 .mt20 { margin-top:20px; }
@@ -175,7 +186,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 	width:1920px; 
 	height:82px;
 	border-bottom:#e6c475 solid 2px;
-    background: rgba(0, 0, 0, 0.8) !important; /* IE无效，FF有效 */
+    background: rgba(0, 0, 0, 0.8) !important; /* IE鏃犳晥锛孎F鏈夋晥 */
     background: #000;
     -ms-filter: alpha(opacity=80);
     filter: alpha(opacity=80);
@@ -279,14 +290,15 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
     background: #666 url(../images/user_bg.png) no-repeat left center;
     color: #fff;
 }
-.datebox { 
-	float:right;
-	width:375px;
-	height:82px;
-	border-left:#000 solid 1px; 
-	padding-left:28px;
-	color:#9fa0a2;
+.datebox {
+	float: right;
+	width: 390px;
+	height: 82px;
+	border-left: #000 solid 1px;
+	padding-left: 28px;
+	color: #9fa0a2;
 }
+
 .datebox .weather_pic {
 	float:left;
 	width:42px;
@@ -296,21 +308,20 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 }
 .datebox .weather_detail, .datebox .date .date_info {
 	float:left;
-	width:75px;
+	width:90px;
 	margin-left:20px;
 	padding-top:20px;
 }
-.datebox .weather_detail, .datebox .date .time { font-family:"Roboto Thin"; }
+.datebox .weather_detail, .datebox .date .time { font-family:"roboto thin"; }
 .datebox .weather_detail p, .datebox .date .date_info { line-height:25px; }
 .datebox .date .time { float:left; height:65px; margin-top:10px; line-height:65px; }
 .datebox .date {
-	float:left;
 	width:auto;
 	margin-left:10px;
 }
 .datebox .date .date_info { 
 	float:left;
-	width:80px;
+	width:85px;
 	margin-left:19px;
 }
 .pubBox { float:left; }
@@ -335,7 +346,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 }
 .chartBbox {}
 
-/**=============一级页面子导航tab切换=============**/
+/**=============涓�骇椤甸潰瀛愬鑸猼ab鍒囨崲=============**/
 .js_subnav { 
 	width:1820px;
 	height:80px; 
@@ -388,7 +399,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 }
 .pub_title .to{ float: left; font-size:20px; padding:0 0 0 10px; line-height: 30px; }
 .pub_title .small_txt { float:left; margin:30px 0 0 50px; }
-/*表格样式*/
+/*琛ㄦ牸鏍峰紡*/
 .tableBox { width:1830px; }
 .tableList { width:100%; }
 .tableList tr { height:40px; }
@@ -415,7 +426,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .tab_delete:hover { background-position: -47px -53px; }
 .tab_edit { background-position:-192px -152px; }
 .tab_edit:hover { background-position:-91px -53px; }
-/**=============分页样式=============**/
+/**=============鍒嗛〉鏍峰紡=============**/
 .pagination { margin:10px 0 0; }
 .pagination p { line-height:30px; }
 .pagination ul>li:first-child>a, .pagination ul>li:first-child>span, .pagination ul>li:last-child>a, .pagination ul>li:last-child>span { border-radius:0; }
@@ -425,7 +436,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .pagination ul li a.pre_disabled { background-position:-458px -8px; }
 .pagination ul li a.next { background-position:-593px -8px; }
 .pagination ul li a.next_disabled { background-position:-503px -8px; }
-/**=============弹出框样式=============**/
+/**=============寮瑰嚭妗嗘牱寮�============**/
 .alert_box { background-color:#777; border-radius:0; border:0; border-left:#ff465a solid 4px; }
 .alert_box_header { height:60px; background-color:#535353; border:0; padding: 0 15px; }
 .alert_box_header h4 { font-size:40px; color:#fff; line-height:60px; }
@@ -443,7 +454,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .systemBox { }
 .systemBox:after{ display:block; content:".";  height:0; visibility:hidden; clear:both; }
 .systemBox h3 { float:left; font-size:20px; color:#fff; }
-/**=============用户管理 弹出框样式=============**/
+/**=============鐢ㄦ埛绠＄悊 寮瑰嚭妗嗘牱寮�============**/
 .user_manage {
     height: 505px;
 }
@@ -466,7 +477,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
     padding-left: 30px;
     font-size: 14px;
 }
-/**=============图表形式切换按钮样式=============**/
+/**=============鍥捐〃褰㈠紡鍒囨崲鎸夐挳鏍峰紡=============**/
 .tab_viewBtn {
     float:right;
     height:26px;

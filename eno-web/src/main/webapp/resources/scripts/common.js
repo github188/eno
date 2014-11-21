@@ -173,7 +173,54 @@ $(function(){
         $(".history_showhide").slideToggle("slow");
         //console.log(event);
     });
+    
+    setInterval("GetTime()", 1000); // 动态设置时间和星期
 });
+
+/**
+ * 动态设置日期时间和星期
+ */
+function GetTime() {
+    var mon, day, now, hour, min, sec;
+
+    mon = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+        "11", "12");
+    day = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    now = new Date();
+    hour = now.getHours();
+    min = now.getMinutes();
+    sec = now.getSeconds();
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
+    if (min < 10) {
+        min = "0" + min;
+    }
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+
+    var time = hour + ":" + min;
+    var date = now.getFullYear() + "-" + mon[now.getMonth()] + "-"
+        + now.getDate();
+    var week = day[now.getDay()];
+
+    if ($("#global_time").length) {
+        $("#global_time").html(time);
+    }
+    if ($("#global_date").length) {
+        $("#global_date").html(date);
+    }
+    if ($("#global_week").length) {
+        $("#global_week").html(week);
+    }
+
+    $("#Timer").html(
+            "<nobr>" + day[now.getDay()] + ", " + mon[now.getMonth()] + " "
+            + now.getDate() + ", " + now.getFullYear() + " " + hour
+            + ":" + min + ":" + sec + "</nobr>");
+
+}
 
 // 选择时间
 function chooseTime(format) {
