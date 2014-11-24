@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../taglib.jsp"%>
+<%@ include file="../../user/userManager.jsp"%>
 <%
 	org.joda.time.DateTimeZone.setDefault(org.joda.time.DateTimeZone.forID("Asia/Shanghai"));
 	pageContext.setAttribute("now", new org.joda.time.LocalDateTime());
@@ -67,7 +68,7 @@
     </div>
     <div class="login_user"><a href="#" class="ft20">admin</a><i class="icon_small hideUp"></i>
         <ul class="login_user_box">
-            <li><a href="#userManage" data-toggle="modal">用户管理</a></li>
+            <li><a href="#userManager" data-toggle="modal">用户管理</a></li>
             <li><a href="#changePwd " data-toggle="modal" class="on">修改密码</a></li>
             <li><a href="<c:url value="/logout" />" class="last">退出管理</a></li>
         </ul>
