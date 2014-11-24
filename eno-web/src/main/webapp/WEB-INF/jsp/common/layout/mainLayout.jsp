@@ -41,7 +41,7 @@
     <h1 class="logo">ENO</h1>
     <div class="topnav">
         <ul>
-            <li class="current"><a href="index.html" class="icon_big dashboard" title="dashboard"></a><span class="ft_robotoB">Dashboard</span></li>
+            <li class="current"><a href="dashboard.html" class="icon_big dashboard" title="DashBoard"></a><span class="ft_robotoB">DashBoard</span></li>
             <li><a href="runMonitor/runMonitor.html" class="icon_big runMonitor" title="运行监测"></a></li>
             <li><a href="alarmManage/alarmManage.html" class="icon_big alarmManage" title="报警管理"></a></li>
             <li><a href="energyManage/energyManage.html" class="icon_big energyManage" title="能源管理"></a></li>
@@ -58,10 +58,10 @@
             <p class="ft_robotoB ft15">12℃-20℃</p>
         </div>
         <div class="date">
-            <span class="time ft50"><joda:format value="${now}" pattern="HH:mm" /></span>
+            <span class="time ft50" id="global_time"><joda:format value="${now}" pattern="HH:mm" /></span>
             <div class="date_info">
-                <p class="ft18">星期三</p>
-                <p class="ft_robotoB ft15"><joda:format value="${now}" pattern="yyyy-MM-dd" /></p>
+                <p class="ft18" id="global_week">星期三</p>
+                <p class="ft_robotoB ft15" id="global_date"><joda:format value="${now}" pattern="yyyy-MM-dd" /></p>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
         <ul class="login_user_box">
             <li><a href="#userManage" data-toggle="modal">用户管理</a></li>
             <li><a href="#changePwd " data-toggle="modal" class="on">修改密码</a></li>
-            <li><a href="#exit" class="last">退出管理</a></li>
+            <li><a href="<c:url value="/logout" />" class="last">退出管理</a></li>
         </ul>
     </div>
 </div>
@@ -77,6 +77,8 @@
 
 <tiles:importAttribute name="sidebar" />
 <tiles:importAttribute name="navigation" />
+<tiles:insertAttribute name="commoninclude" />
+
 <c:set var="hasSidebar" value="${sidebar}" />
 <c:set var="hasNavigation" value="${navigation}" />
 <div class="span12 main row-fluid" style="margin: 0px;">
@@ -94,8 +96,6 @@
 		</c:otherwise>
 	</c:choose>
 </div>
-
-<tiles:insertAttribute name="commoninclude" />
 
 <c:if test="${!ajaxRequest}">
 	<tiles:insertAttribute name="footer" />

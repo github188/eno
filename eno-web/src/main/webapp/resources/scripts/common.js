@@ -182,9 +182,7 @@ $(function(){
  */
 function GetTime() {
     var mon, day, now, hour, min, sec;
-
-    mon = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
-        "11", "12");
+    mon = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
     day = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
     now = new Date();
     hour = now.getHours();
@@ -201,8 +199,7 @@ function GetTime() {
     }
 
     var time = hour + ":" + min;
-    var date = now.getFullYear() + "-" + mon[now.getMonth()] + "-"
-        + now.getDate();
+    var date = now.getFullYear() + "-" + mon[now.getMonth()] + "-" + now.getDate();
     var week = day[now.getDay()];
 
     if ($("#global_time").length) {
@@ -214,12 +211,6 @@ function GetTime() {
     if ($("#global_week").length) {
         $("#global_week").html(week);
     }
-
-    $("#Timer").html(
-            "<nobr>" + day[now.getDay()] + ", " + mon[now.getMonth()] + " "
-            + now.getDate() + ", " + now.getFullYear() + " " + hour
-            + ":" + min + ":" + sec + "</nobr>");
-
 }
 
 // 选择时间

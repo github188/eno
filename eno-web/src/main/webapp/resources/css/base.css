@@ -9,6 +9,17 @@
     font-style: normal;
 }
 
+@font-face {
+   font-family: 'RobotoRegular';
+   src: url('font/roboto-regular-webfont.eot');
+   src: url('font/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('font/roboto-regular-webfont.woff') format('woff'),
+    url('font/roboto-regular-webfont.ttf') format('truetype'),
+    url('font/roboto-regular-webfont.svg#RobotoRegular') format('svg');
+   font-weight: normal;
+   font-style: normal;
+}
+
 html { overflow: hidden;}
 html, body, span, h1, h2, h3, h4, h5, h6, p, a, q, em, ul, li, ol, dl, dt, dd, table, td, th, input, button, form, fieldset, legend, textarea, label, strong, img { margin:0; padding:0; }
 body { width:1920px; height:1080px; background:url(../images/body_bg.jpg) no-repeat; font-family:"Microsoft Yahei"; font-size:16px; color:#9fa0a2; }
@@ -27,29 +38,9 @@ a:hover, a:active, a:focus { text-decoration:none; outline:none; color:#fff; }
 .right { float:right!important; }
 .center { text-align:center; }
 .bold { font-weight:bold; }
-@font-face {
-   font-family: 'RobotoThin';
-   src: url('font/roboto-thin-webfont.eot');
-   src: url('font/roboto-thin-webfont.eot?#iefix') format('embedded-opentype'),
-        url('font/roboto-thin-webfont.woff') format('woff'),
-    url('font/roboto-thin-webfont.ttf') format('truetype'),
-    url('font/roboto-thin-webfont.svg#RobotoThin') format('svg');
-   font-weight: normal;
-   font-style: normal;
-}
-@font-face {
-   font-family: 'RobotoRegular';
-   src: url('font/roboto-regular-webfont.eot');
-   src: url('font/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
-        url('font/roboto-regular-webfont.woff') format('woff'),
-    url('font/roboto-regular-webfont.ttf') format('truetype'),
-    url('font/roboto-regular-webfont.svg#RobotoRegular') format('svg');
-   font-weight: normal;
-   font-style: normal;
-}
 em, .unit,.ft_robotoB { font-family:"RobotoRegular"; }
-strong { font-family:"RobotoThin"; font-weight: bold; }
-/**=============icon鑳屾櫙=============**/
+strong { font-family:"roboto thin"; font-weight: bold; }
+/**=============icon背景=============**/
 .icon_big { float:left; display:inline-block; background:url(../images/icon_big.png) no-repeat; }
 .icon_small { display:inline-block; background:url(../images/icon_small.png) no-repeat; }
 .flag { float:left; width:4px; height:24px; }
@@ -65,15 +56,15 @@ strong { font-family:"RobotoThin"; font-weight: bold; }
 .flag_purple_deep { background-color:#e599ff;}
 .flag_yellow { background-color:#f9ab35;}
 
-/**=============瀛椾綋绉嶇被=============**/
+/**=============字体种类=============**/
 .ft_roboto { font-family:"roboto thin";}
-/**=============瀛椾綋棰滆壊=============**/
+/**=============字体颜色=============**/
 .col9fa0a2 { color:#9fa0a2; }
 .colfff { color:#fff; }
 .col6cf { color:#6cf; }
 .col646472 { color: #646472!important; }
 
-/**=============瀛椾綋澶у皬=============**/
+/**=============字体大小=============**/
 .ft60 { font-size:60px; }
 .ft50 { font-size:50px; }
 .ft45 { font-size:45px; }
@@ -89,7 +80,7 @@ strong { font-family:"RobotoThin"; font-weight: bold; }
 .ft15 { font-size:15px; }
 .ft14 { font-size:14px; }
 
-/**=============鎸夐挳棰滆壊=============**/
+/**=============按钮颜色=============**/
 .btn_pub{ display: inline-block; height: 30px; padding: 0 15px; font-size: 16px; color: #fff; line-height: 30px; letter-spacing: 2px; }
 .btn_pub:hover,.btn_pub:active { color:#fff; text-decoration:none;}
 input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; line-height:30px; letter-spacing:2px; }
@@ -107,11 +98,11 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .funBtnBar { float:right; height:30px; margin:23px 30px 0 0; }
 .funBtnBar input[type="button"] { display:inline-block; /*margin-left:5px;*/}
 
-/**=============瀹藉害澶у皬=============**/
+/**=============宽度大小=============**/
 .w1880 { width:1876px; }
 .w1455 { width:1451px; left: 24%; }
 .w1430 { width:1430px; }
-.w1060 { width:1060px; }
+.w1060 { width:1060px !important; }
 .w930 { width:930px; }
 .w830 { width:826px; }
 .w800 { width:796px; }
@@ -122,12 +113,12 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .w535 { width:535px; }
 .w455 { width:455px; }
 .w450 { width:450px; }
-.w400 { width:400px; }
+.w400 { width:400px !important; }
 .w260 { width:260px; }
 .w240 { width:240px; }
 .w185 { width:185px; }
 
-/**=============楂樺害澶у皬=============**/
+/**=============高度大小=============**/
 .h930 { height:930px; }
 .h660 { height:660px; }
 .h560 { height:560px; }
@@ -146,7 +137,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .h120 { height:120px; }
 .h110 { height:110px; }
 
-/**=============鍐呭杈硅窛=============**/
+/**=============内外边距=============**/
 .mt30 { margin-top:30px; }
 .mt25 { margin-top:25px; }
 .mt20 { margin-top:20px; }
@@ -164,9 +155,9 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .mb10 { margin-bottom:10px; }
 .mb5 { margin-bottom:5px; }
 .ml25 { margin-left:25px; }
-.ml20 { margin-left:20px; }
+.ml20 { margin-left:20px !important; }
 .ml15 { margin-left:15px; }
-.ml10 { margin-left:10px; }
+.ml10 { margin-left:10px !important; }
 .ml5 { margin-left:5px; }
 .pt25 { padding-top:25px; }
 .pt20 { padding-top:20px; }
@@ -186,7 +177,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 	width:1920px; 
 	height:82px;
 	border-bottom:#e6c475 solid 2px;
-    background: rgba(0, 0, 0, 0.8) !important; /* IE鏃犳晥锛孎F鏈夋晥 */
+    background: rgba(0, 0, 0, 0.8) !important;  /* IE无效，FF有效 */
     background: #000;
     -ms-filter: alpha(opacity=80);
     filter: alpha(opacity=80);
@@ -295,7 +286,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 	width: 390px;
 	height: 82px;
 	border-left: #000 solid 1px;
-	padding-left: 28px;
+	padding-left: 0px;
 	color: #9fa0a2;
 }
 
@@ -321,7 +312,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 }
 .datebox .date .date_info { 
 	float:left;
-	width:85px;
+	width:100px;
 	margin-left:19px;
 }
 .pubBox { float:left; }
@@ -346,7 +337,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 }
 .chartBbox {}
 
-/**=============涓�骇椤甸潰瀛愬鑸猼ab鍒囨崲=============**/
+/**=============一级页面子导航tab切换=============**/
 .js_subnav { 
 	width:1820px;
 	height:80px; 
@@ -399,7 +390,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 }
 .pub_title .to{ float: left; font-size:20px; padding:0 0 0 10px; line-height: 30px; }
 .pub_title .small_txt { float:left; margin:30px 0 0 50px; }
-/*琛ㄦ牸鏍峰紡*/
+/*表格样式*/
 .tableBox { width:1830px; }
 .tableList { width:100%; }
 .tableList tr { height:40px; }
@@ -426,7 +417,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .tab_delete:hover { background-position: -47px -53px; }
 .tab_edit { background-position:-192px -152px; }
 .tab_edit:hover { background-position:-91px -53px; }
-/**=============鍒嗛〉鏍峰紡=============**/
+/**=============分页样式=============**/
 .pagination { margin:10px 0 0; }
 .pagination p { line-height:30px; }
 .pagination ul>li:first-child>a, .pagination ul>li:first-child>span, .pagination ul>li:last-child>a, .pagination ul>li:last-child>span { border-radius:0; }
@@ -436,7 +427,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .pagination ul li a.pre_disabled { background-position:-458px -8px; }
 .pagination ul li a.next { background-position:-593px -8px; }
 .pagination ul li a.next_disabled { background-position:-503px -8px; }
-/**=============寮瑰嚭妗嗘牱寮�============**/
+/**=============弹出框样式=============**/
 .alert_box { background-color:#777; border-radius:0; border:0; border-left:#ff465a solid 4px; }
 .alert_box_header { height:60px; background-color:#535353; border:0; padding: 0 15px; }
 .alert_box_header h4 { font-size:40px; color:#fff; line-height:60px; }
@@ -454,7 +445,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .systemBox { }
 .systemBox:after{ display:block; content:".";  height:0; visibility:hidden; clear:both; }
 .systemBox h3 { float:left; font-size:20px; color:#fff; }
-/**=============鐢ㄦ埛绠＄悊 寮瑰嚭妗嗘牱寮�============**/
+/**=============用户管理 弹出框样式=============**/
 .user_manage {
     height: 505px;
 }
@@ -477,7 +468,7 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
     padding-left: 30px;
     font-size: 14px;
 }
-/**=============鍥捐〃褰㈠紡鍒囨崲鎸夐挳鏍峰紡=============**/
+/**=============图表形式切换按钮样式=============**/
 .tab_viewBtn {
     float:right;
     height:26px;
@@ -495,43 +486,3 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .tab_viewBtn li:hover a.Echart_column_btn, .tab_viewBtn li.view_current a.Echart_column_btn { background-position:-779px -108px; }
 .tab_viewBtn li:hover a.Echart_line_btn, .tab_viewBtn li.view_current a.Echart_line_btn { background-position:-822px -108px; }
 .tab_viewBtn li:hover a.Echart_pie_btn, .tab_viewBtn li.view_current a.Echart_pie_btn { background-position:-865px -108px; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

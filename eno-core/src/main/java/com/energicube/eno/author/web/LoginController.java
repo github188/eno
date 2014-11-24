@@ -130,10 +130,6 @@ public class LoginController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String initUserTypePage(Model model) {
-        SysInfo sysInfo = sysPropService.findSysInfo();
-        if (sysInfo != null) {
-            model.addAttribute("sysinfo", sysInfo);
-        }
         return "login/loginForm";
     }
 
@@ -142,10 +138,6 @@ public class LoginController {
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(Model model) {
-        SysInfo sysInfo = sysPropService.findSysInfo();
-        if (sysInfo != null) {
-            model.addAttribute("sysinfo", sysInfo);
-        }
         Subject user = SecurityUtils.getSubject();
         user.logout();
         return "login/loginForm";

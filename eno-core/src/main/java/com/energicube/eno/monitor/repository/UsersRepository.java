@@ -33,6 +33,6 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
     public List<Users> findByLoginidAndStatusBy(String loginid);
 
 
-    @Query("select u from Users u where u.loginid=?1 and u.pwd=?2 and  u.status != '2'")
+    @Query("select u from Users u where u.loginid=?1 and u.pwd=?2")
     public Users findByLoginidAndPwd(String loginId, String password);
 }
