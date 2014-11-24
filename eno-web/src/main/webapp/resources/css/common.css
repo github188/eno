@@ -205,7 +205,7 @@ label.css-label-radio {
     cursor: pointer;
 }
 
-input[type="text"],input[type="password"],textarea { border:0; background-color:#000; border-radius:0; color: #fff; padding: 5px 6px; }
+input[type="text"],input[type="password"],textarea { border:0 !important; background-color:#000 !important; border-radius:0; color: #fff; padding: 5px 6px; }
 input[type="text"]:focus,input[type="password"]:focus,textarea:focus { box-shadow:none; }
 .input-append input { width: 100px; border-radius:0; }
 .input-append .add-on {
