@@ -597,7 +597,7 @@
                         <div class="pubBox mr8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_red mr15 mt20"></i>单位面积用电量</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic20.jpg"></spring:url>.jpg"></div>
+                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic20.jpg"></spring:url>"></div>
                             </div>
                         </div>
                         <div class="pubBox">

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<script src="${pageContext.request.contextPath}/resources/plugins/highcharts/highcharts.js"></script>
-
 <!--container start-->
 <div class="container">
     <div class="span12 wrapper">
@@ -254,6 +252,3 @@
         </div>
     </div>
 </div>
-
-<script src="${pageContext.request.contextPath}/resources/scripts/dashboard/dashboard.js"></script>
-
