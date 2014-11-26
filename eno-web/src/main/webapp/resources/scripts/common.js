@@ -216,6 +216,7 @@ function GetTime() {
 
 // 选择时间
 function chooseTime(format) {
+	alert(format);
     WdatePicker({
         el : 'hidden_date',	//只操作这个日历控件
         dateFmt : format, //定义时间的格式
