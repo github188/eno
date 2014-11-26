@@ -8,8 +8,7 @@
 		<put-attribute name="title" value="EnergyManage" />
 		<put-attribute name="body" value="/WEB-INF/jsp/energyManage/{1}.jsp" />
 		<put-attribute name="navigation" value="" />
-	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/dashboard/dashboardJs.jsp" />
+	 	<put-attribute name="scripts" value="/WEB-INF/jsp/customJs/energyManage/energyManageJs.jsp" />
 	 	<put-attribute name="sidebar" value="" />
 	</definition>
-   
 </tiles-definitions>
