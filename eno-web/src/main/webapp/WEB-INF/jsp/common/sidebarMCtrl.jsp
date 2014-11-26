@@ -4,10 +4,8 @@
 
 <script type = "text/javascript" charset="utf-8">
 window.onload=getMenu();
-function getMenu()		// 获取菜单 [ ChengKang 2014-08-28 ]
-{
-	//console.log("getMenu");
-	// 依据URL地址，获取当前页面二级菜单的编码和进入的三级或四级菜单的MuneId [ ChengKang 2014-08-29 ]
+function getMenu() { // 获取菜单
+	// 依据URL地址，获取当前页面二级菜单的编码和进入的三级或四级菜单的MuneId
 	var path = window.location.href;
 	var pathsub = path.split("/");
 	var TitleCode = pathsub[pathsub.length-2];

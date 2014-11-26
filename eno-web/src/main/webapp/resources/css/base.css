@@ -103,20 +103,20 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .w1455 { width:1451px; left: 24%; }
 .w1430 { width:1430px; }
 .w1060 { width:1060px !important; }
-.w930 { width:930px; }
-.w830 { width:826px; }
-.w800 { width:796px; }
-.w776 { width:776px; }
-.w618 { width:618px; }
-.w613 { width:613px; }
-.w550 { width:646px; }
-.w535 { width:535px; }
-.w455 { width:455px; }
-.w450 { width:450px; }
+.w930 { width:930px !important; }
+.w830 { width:826px !important; }
+.w800 { width:796px !important; }
+.w776 { width:776px !important; }
+.w618 { width:618px !important; }
+.w613 { width:613px !important; }
+.w550 { width:646px !important; }
+.w535 { width:535px !important; }
+.w455 { width:455px !important; }
+.w450 { width:450px !important; }
 .w400 { width:400px !important; }
-.w260 { width:260px; }
-.w240 { width:240px; }
-.w185 { width:185px; }
+.w260 { width:260px !important; }
+.w240 { width:240px !important; }
+.w185 { width:185px !important; }
 
 /**=============高度大小=============**/
 .h930 { height:930px; }
@@ -154,9 +154,9 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 .mb15 { margin-bottom:15px; }
 .mb10 { margin-bottom:10px; }
 .mb5 { margin-bottom:5px; }
-.ml25 { margin-left:25px; }
+.ml25 { margin-left:25px !important; }
 .ml20 { margin-left:20px !important; }
-.ml15 { margin-left:15px; }
+.ml15 { margin-left:15px !important; }
 .ml10 { margin-left:10px !important; }
 .ml5 { margin-left:5px; }
 .pt25 { padding-top:25px; }
@@ -355,9 +355,9 @@ input[type="button"]{ height:30px;  padding:0 15px; font-size:16px; color:#fff; 
 }
 .js_subnav ul li.js_subnav_current { color:#fff; }
 .js_tab_content {
-	width:1880px;
+	width:1880px !important;
     height: 916px;
-	margin-left:20px; 
+	margin-left:20px !important; 
 	margin-right:20px;
     overflow: hidden;
 }

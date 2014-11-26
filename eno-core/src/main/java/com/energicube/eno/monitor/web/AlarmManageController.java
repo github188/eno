@@ -9,23 +9,24 @@ import org.springframework.web.bind.annotation.*;
 import com.energicube.eno.common.Config;
 
 /**
- * Dahboard页面控制
+ * 报警管理页面控制
  * @author zouzhixiang
- * @date 2014-11-21
+ * @date 2014-11-24
  */
 @Controller
-public class DashboardController extends BaseController {
+@RequestMapping("/alarmManage")
+public class AlarmManageController extends BaseController {
 
-	private static final Log logger = LogFactory.getLog(DashboardController.class);
+	private static final Log logger = LogFactory.getLog(AlarmManageController.class);
 
 	private Config config = new Config();
 
 	/**
-	 * Dahboard页面
+	 * 报警管理主页面
 	 */
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	@RequestMapping(value = "/alarmManage", method = RequestMethod.GET)
 	public String initMctrlView(Model model) {
-		return "dashboard/dashboard";
+		return "alarmManage/alarmManage";
 	}
 
 }

@@ -1,10 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="../common/taglib.jsp"%>
-<script src="<spring:url value="/resources/scripts/angular.min.js" />"></script>
-<script src="<spring:url value="/resources/plugins/sockjs/sockjs.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/stomp/dist/stomp.js"></spring:url>"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<script src="${pageContext.request.contextPath}/resources/plugins/highcharts/highcharts.js"></script>
 
 <!--container start-->
 <div class="container">
@@ -215,7 +211,9 @@
                     <div class="index_tit"><h2>用能定额</h2></div>
                     <p class="ft20 mt25 ml25">今日能耗已到定额的<em class="ml20 mr5">75</em>%</p>
                     <div class="chartBbox">
-                        <div class="chartPic_indexTwo"><img src="resources/images/index_pic03.jpg" /></div>
+                        <div class="chartPic_indexTwo">
+                        	<div id="energyquota" class="energyquota"></div>
+                        </div>
                         <p class="chartValue"><strong class="ft40 colfff mr5">75</strong>%</p>
                     </div>
                 </div>
@@ -234,7 +232,9 @@
                 <div class="pubCon_black con_indexT280">
                     <div class="index_tit"><h2>碳足迹曲线</h2></div>
                     <div class="chartBbox">
-                        <div class="chartPic_indexThree"><img src="resources/images/index_pic08.jpg" /></div>
+                        <div class="chartPic_indexThree">
+                        	<div id="cartonchart" class="cartonchart"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="pubCon_grey con_indexB140">
@@ -254,3 +254,6 @@
         </div>
     </div>
 </div>
+
+<script src="${pageContext.request.contextPath}/resources/scripts/dashboard/dashboard.js"></script>
+

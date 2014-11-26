@@ -175,6 +175,7 @@ $(function(){
     });
     
     setInterval("GetTime()", 1000); // 动态设置时间和星期
+    
 });
 
 /**
@@ -226,4 +227,4 @@ function chooseTime(format) {
 }
 
 
-	
+

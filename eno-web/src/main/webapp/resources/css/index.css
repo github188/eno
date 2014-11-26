@@ -188,49 +188,11 @@
 .alarm_grey { background-position:-178px -8px;}
 .alarm_yellow { background-position:-134px -8px;}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.energyquota {
+	width: 309px;
+	height: 169px;
+}
+.cartonchart {
+	width: 365px;
+	height: 180px;
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../taglib.jsp"%>
-<%@ include file="../../user/userManager.jsp"%>
+
 <%
 	org.joda.time.DateTimeZone.setDefault(org.joda.time.DateTimeZone.forID("Asia/Shanghai"));
 	pageContext.setAttribute("now", new org.joda.time.LocalDateTime());
@@ -27,12 +27,13 @@
 	var LOCALADDR = "${pageContext.request.serverName}";
     var PORT="${pageContext.request.serverPort}";
 </script>
-
+<tiles:insertAttribute name="commoninclude" />
+<tiles:insertAttribute name="scripts" />
 </head>
 
-<style type="text/css">
-
-</style>
+<c:if test="${not fn:contains(okcMenu.views,'LIST')}">
+	<c:set var="current" value="current"></c:set>
+</c:if>
 <body style="width:1920px;height:1080px;" scroll="no">
 </c:if>
 <!-- script移动到张天乐【08031440】 -->
@@ -42,14 +43,14 @@
     <h1 class="logo">ENO</h1>
     <div class="topnav">
         <ul>
-            <li class="current"><a href="dashboard.html" class="icon_big dashboard" title="DashBoard"></a><span class="ft_robotoB">DashBoard</span></li>
-            <li><a href="runMonitor/runMonitor.html" class="icon_big runMonitor" title="运行监测"></a></li>
-            <li><a href="alarmManage/alarmManage.html" class="icon_big alarmManage" title="报警管理"></a></li>
-            <li><a href="energyManage/energyManage.html" class="icon_big energyManage" title="能源管理"></a></li>
-            <li><a href="quotaManage/quotaManage.html" class="icon_big quotaManage" title="定额管理"></a></li>
-            <li><a href="deviceManage/deviceManage.html" class="icon_big deviceManage" title="设备管理"></a></li>
-            <li><a href="lowCarbon/lowCarbon.html" class="icon_big lowCarbon" title="低碳管理"></a></li>
-            <li><a href="reportForm/reportForm.html" class="icon_big reportForm" title="报表管理"></a></li>
+            <li <c:if test="${fn:contains(requestURL, 'dashboard')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/dashboard.html" class="icon_big dashboard" title="DashBoard"></a><c:if test="${fn:contains(requestURL, 'dashboard')}"><span>DashBoard</span></c:if></li>
+            <li <c:if test="${fn:contains(requestURL, 'runMonitor')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/runMonitor/runMonitor.html" class="icon_big runMonitor" title="运行监测"></a><c:if test="${fn:contains(requestURL, 'runMonitor')}"><span>运行监测</span></c:if></li>
+            <li <c:if test="${fn:contains(requestURL, 'alarmManage')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/alarmManage/alarmManage.html" class="icon_big alarmManage" title="报警管理"></a><c:if test="${fn:contains(requestURL, 'alarmManage')}"><span>报警管理</span></c:if></li>
+            <li <c:if test="${fn:contains(requestURL, 'energyManage')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/energyManage/energyManage.html" class="icon_big energyManage" title="能源管理"></a><c:if test="${fn:contains(requestURL, 'energyManage')}"><span>能源管理</span></c:if></li>
+            <li <c:if test="${fn:contains(requestURL, 'quotaManage')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/quotaManage/quotaManage.html" class="icon_big quotaManage" title="定额管理"></a><c:if test="${fn:contains(requestURL, 'quotaManage')}"><span>定额管理</span></c:if></li>
+            <li <c:if test="${fn:contains(requestURL, 'deviceManage')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/deviceManage/deviceManage.html" class="icon_big deviceManage" title="设备管理"></a><c:if test="${fn:contains(requestURL, 'deviceManage')}"><span>设备管理</span></c:if></li>
+            <li <c:if test="${fn:contains(requestURL, 'lowCarbon')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/lowCarbon/lowCarbon.html" class="icon_big lowCarbon" title="低碳管理"></a><c:if test="${fn:contains(requestURL, 'lowCarbon')}"><span>低碳管理</span></c:if></li>
+            <li <c:if test="${fn:contains(requestURL, 'reportForm')}"> class="current"</c:if>><a href="${pageContext.request.contextPath}/reportForm/reportForm.html" class="icon_big reportForm" title="报表管理"></a><c:if test="${fn:contains(requestURL, 'reportForm')}"><span>报表管理</span></c:if></li>
         </ul>
     </div>
     <div class="datebox">
@@ -78,7 +79,7 @@
 
 <tiles:importAttribute name="sidebar" />
 <tiles:importAttribute name="navigation" />
-<tiles:insertAttribute name="commoninclude" />
+
 
 <c:set var="hasSidebar" value="${sidebar}" />
 <c:set var="hasNavigation" value="${navigation}" />
@@ -98,6 +99,7 @@
 	</c:choose>
 </div>
 
+<%@ include file="../../user/userManager.jsp"%>
 <c:if test="${!ajaxRequest}">
 	<tiles:insertAttribute name="footer" />
 	</body>

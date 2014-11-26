@@ -1,9 +1,9 @@
 /**=============runMonitor css=============**/
 .top_content { width:1920px; margin:0;}
-.bottom_content { 
-	width:1920px; 
-	height:220px; 
-	margin:40px 0 0; 
+.bottom_content {
+	width: 1920px;
+	height: 220px;
+	margin: 40px 0px 0px 0px !important;
 }
 
 .bg01 { background:url(../images/havc_bg.jpg) repeat-y; }  
@@ -55,8 +55,8 @@
 .ulSystemTwo_B ul li:nth-child(4n) { border-right:0; }
 .ulSystemTwo ul li p { text-align:center; }
 .ulSystemTwo ul li p.common { height:24px; line-height:24px; margin-bottom: 2px; }
-.ulSystemTwo ul li p.curent { height:53px; line-height:53px; font-family: "RobotoThin"; font-size: 45px; font-weight: bold; color: #fff; }
-.ulSystemTwo ul li p.curent em { font-family: "RobotoThin"; font-weight: bold; }
+.ulSystemTwo ul li p.curent { height:53px; line-height:53px; font-family: "roboto thin"; font-size: 45px; font-weight: bold; color: #fff; }
+.ulSystemTwo ul li p.curent em { font-family: "roboto thin"; font-weight: bold; }
 .ulSystemTwo ul li p.curent span.unit { font-size: 16px; font-weight: normal; color: #9fa0a2; }
 .ulSystemTwo ul li p.videoPic { 
 	width:37px; 

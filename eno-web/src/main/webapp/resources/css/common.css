@@ -167,24 +167,24 @@ label.css-label-radio {
 .btn-group>.dropdown-menu,
 .btn-group>.popover,
 .input-append input {
-    font-size:16px;
+    font-size:16px !important;
 }
-.btn { box-shadow: none; }
-.caret { border-top: 4px solid #4dafc9; }
+.btn { box-shadow: none !important; }
+.caret { border-top: 4px solid #4dafc9 !important; }
 .dropdown-menu {
     border:0;
-    background-color:#111;
+    background-color:#111 !important;
     box-shadow:0 0 5px #000;
     margin-top:1px;
-    padding:0;
+    padding:0 !important;
 }
 .dropdown-menu>li { border-bottom:#444 solid 1px; }
-.dropdown-menu>li:last-child, .btn { border:0; }
+.dropdown-menu>li:last-child, .btn { border:0 !important; }
 .dropdown-menu>li>a {
-    height:29px;
-    padding:0 15px;
-    color:#fff;
-    line-height:29px;
+    height:29px !important;
+    padding:0 15px !important;
+    color:#fff !important;
+    line-height:29px !important;
 }
 .dropdown-menu>li>a:hover,
 .bootstrap-select.btn-group .dropdown-menu li.selected{

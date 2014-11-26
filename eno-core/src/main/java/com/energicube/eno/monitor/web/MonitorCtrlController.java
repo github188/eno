@@ -108,15 +108,15 @@ public class MonitorCtrlController extends BaseController {
     public String initMctrlView(Model model) {
         List<OkcMenu> menus = menuService.findAll();
         model.addAttribute("menus", menus);
-        return "mctrl/monitorsum";
+        return "dashboard/dashboard";
     }
 
     /**
      * 监测与控制页面控制首页（子系统概要页）
      */
-    @RequestMapping(value = "/mctrl/monitorsum", method = RequestMethod.GET)
+    @RequestMapping(value = "/dashboard/dashboard", method = RequestMethod.GET)
     public String initMonitorSumView(Model model) {
-        return "mctrl/monitorsum";
+        return "dashboard/dashboard";
     }
 
 
