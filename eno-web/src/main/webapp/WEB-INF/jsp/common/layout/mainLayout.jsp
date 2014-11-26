@@ -45,7 +45,7 @@
             <li class="current"><a href="dashboard.html" class="icon_big dashboard" title="DashBoard"></a><span class="ft_robotoB">DashBoard</span></li>
             <li><a href="runMonitor/runMonitor.html" class="icon_big runMonitor" title="运行监测"></a></li>
             <li><a href="alarmManage/alarmManage.html" class="icon_big alarmManage" title="报警管理"></a></li>
-            <li><a href="nergyManage/energyManage.html" class="icon_big energyManage" title="能源管理"></a></li>
+            <li><a href="energyManage/energyManage.html" class="icon_big energyManage" title="能源管理"></a></li>
             <li><a href="quotaManage/quotaManage.html" class="icon_big quotaManage" title="定额管理"></a></li>
             <li><a href="deviceManage/deviceManage.html" class="icon_big deviceManage" title="设备管理"></a></li>
             <li><a href="lowCarbon/lowCarbon.html" class="icon_big lowCarbon" title="低碳管理"></a></li>

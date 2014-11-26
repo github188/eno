@@ -31,9 +31,9 @@
 .js_Echart_nav li.js_Echart_nav_current a.Echart_viewNine, .js_Echart_nav li:hover a.Echart_viewNine { background-position:-796px -50px; }
 
 .js_Echart_content {
-	height:809px;
+	height:809px !important;
 	background-color:#657b8d;
-	padding:25px;
+	padding:25px !important;
 	clear:both;
 }
 .js_Echart_content_special { height:851px; padding:8px 25px 0; }
@@ -48,7 +48,7 @@
 	color:#fff;
 	line-height:60px;
 }
-/**=============一宫格左侧菜单 css=============**/
+/**=============涓�鏍煎乏渚ц彍鍗�css=============**/
 .Echart_sidebar {
 	float:left;
 	width:200px;
@@ -81,7 +81,7 @@
 	color:#9fa0a2; 
 	line-height:64px;  
 }
-/**=============一宫格右侧内容 css=============**/
+/**=============涓�鏍煎彸渚у唴瀹�css=============**/
 .Echart_main { float:right; width:1670px; }
 .Echart_viewBar { 
 	height:30px;
@@ -144,7 +144,7 @@
 .icon_down { background-position:-835px -8px; }
 
 .chartBboxh240 { height:240px; }
-
+ <!-- 建筑能耗情况统计 -->
 
 
 
