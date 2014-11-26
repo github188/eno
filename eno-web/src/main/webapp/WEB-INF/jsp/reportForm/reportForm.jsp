@@ -2,14 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/taglib.jsp"%>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/reportform.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/base.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/energy.css">
-<script src="<spring:url value="/resources/scripts/jquery-1.9.1.min.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/bootstrap/js/bootstrap.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/My97DatePicker/WdatePicker.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/bootstrap-select/bootstrap-select.min.js"></spring:url>"></script>
 <!--container start-->
 <div class="container">
 	<div class="span12 js_subnav">

@@ -2,32 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/taglib.jsp"%>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/quota.css">
-<script src="<spring:url value="/resources/plugins/bootstrap/js/bootstrap.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/My97DatePicker/WdatePicker.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/bootstrap-select/bootstrap-select.min.js"></spring:url>"></script>
-<script>
-    function chooseTimeY(format) {
-        WdatePicker({
-            el : 'year_date',	//只操作这个日历控件
-            dateFmt : "yyyy", //定义时间的格式
-            onpicked : function(dp) {
-                // 具体的对比时间，格式为（yyyy），此时间会传递到后台
-                var paretime= dp.cal.getDateStr("yyyy");
-            }
-        });
-    }
-    function chooseTimeM(format) {
-        WdatePicker({
-            el : 'month_date',	//只操作这个日历控件
-            dateFmt : "yyyy-MM", //定义时间的格式
-            onpicked : function(dp) {
-                // 具体的对比时间，格式为（yyyy-MM），此时间会传递到后台
-                var paretime= dp.cal.getDateStr("yyyy-MM");
-            }
-        });
-    }
-</script>
 <!--container start-->
 <div class="container">
     <div class="span12 quota_content">

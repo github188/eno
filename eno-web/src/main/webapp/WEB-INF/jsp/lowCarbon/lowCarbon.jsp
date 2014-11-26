@@ -2,22 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/taglib.jsp"%>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/base.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/lowcarbon.css">
-<script src="<spring:url value="/resources/plugins/pdfObject/pdfobject.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/scripts/lowCarbon.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/scripts/jquery-1.9.1.min.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/bootstrap/js/bootstrap.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/My97DatePicker/WdatePicker.js"></spring:url>"></script>
-<script src="<spring:url value="/resources/plugins/bootstrap-select/bootstrap-select.min.js"></spring:url>"></script>
-
-<script type="text/javascript">
-window.onload = function (){
-    var success = new PDFObject({ url: "123.pdf" }).embed("pdf_doc");
-};
-</script>
 <!--container start-->
 <div class="container">
 	<div class="span12 js_subnav">
@@ -50,7 +34,7 @@ window.onload = function (){
                 </div>
             </div>
             <!-- 碳足迹计算器 -->
-            <div class="span4 lowC_box_right pubCon_blackOne lowCarbon_js_left">
+            <div class="span4 lowC_box_right pubCon_blackOne" style="margin-top: -459px !important;">
             	<div class="pub_title">
                     <h3 class="ft30"><i class="flag flag_h40 flag_purple mt15 mr15"></i>碳足迹计算器</h3>
                     <ul class="js_lowC_nav">
@@ -272,7 +256,7 @@ window.onload = function (){
         </div>
         <div class="span12 lowCarbon_bottom_content">
         	<!-- 会议室碳足迹 -->
-        	<div class="span4 lowC_Box pubCon_blackOne lowCarbon_hy_left">
+        	<div class="span4 lowC_Box pubCon_blackOne" style=" margin-left: -40px;">
             	<div class="pub_title">
                     <h3 class="ft30"><i class="flag flag_h40 flag_green mt15 mr15"></i>会议室碳足迹</h3>
                     <div class="download_btn mt25 mr20"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
@@ -293,7 +277,7 @@ window.onload = function (){
                 </div>
             </div>
             <!-- 客房碳足迹 -->
-            <div class="span4 lowC_Box pubCon_blackOne lowCarbon_kf_left">
+            <div class="span4 lowC_Box pubCon_blackOne" style=" margin-left: 1px;">
             	<div class="pub_title">
                     <h3 class="ft30"><i class="flag flag_h40 flag_blue mt15 mr15"></i>客房碳足迹</h3>
                     <div class="download_btn mt25 mr20"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
