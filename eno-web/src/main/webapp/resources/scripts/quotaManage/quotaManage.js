@@ -1,7 +1,7 @@
 $(function() {
 
-	quotaManage.chooseTimeY(format); // 生成用能定额图表
-	quotaManage.chooseTimeM(format); // 生成用能定额图表
+	quotaManage.chooseTimeY(); 
+	quotaManage.chooseTimeM(); 
 	
 });
 
