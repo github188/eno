@@ -262,5 +262,6 @@
 </div>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/quota.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user.css">
+<%-- <script src="<spring:url value="/resources/plugins/bootstrap/js/bootstrap.js"></spring:url>"></script> --%>
 <script src="<spring:url value="/resources/plugins/My97DatePicker/WdatePicker.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/scripts/user/user.js"></spring:url>"></script>

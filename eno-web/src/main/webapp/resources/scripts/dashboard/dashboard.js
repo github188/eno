@@ -1,7 +1,7 @@
 $(function() {
 
 	dashboard.buildQuotaChart(); // 生成用能定额图表
-	//dashboard.buildCartonChart(); // 生成碳足迹曲线
+	dashboard.buildCartonChart(); // 生成碳足迹曲线
 	
 });
 
