@@ -21,112 +21,12 @@
              </div>
          </div>
           <div class="user_manage_info">
+          <form name="tableform" id="tableform">
               <table cellpadding="0" cellspacing="0" border="0" class="tableList">
-                <thead>
-                   <tr>
-                       <th class="edit">&nbsp;</th>
-                       <th class="delete">&nbsp;</th>
-                       <th>姓名</th>
-                       <th>部门</th>
-                       <th>性别</th>
-                       <th>生日</th>
-                       <th>入职日期</th>
-                       <th>手机号码</th>
-                   </tr>
-                </thead>
-                <tbody>
-				<tr>
-				   <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                   <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                   <td><input type="checkbox" name="" id="张三" class="css-checkbox-small"><label for="张三" class="css-label-small">张三</label></td>
-                   <td>注意部门名称最多十字</td>
-                   <td>男</td>
-                   <td>1986/8/1</td>
-                   <td>2012/6/6</td>
-                   <td></td>
-				 </tr>
-				 <tr>
-                     <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                     <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                     <td><input type="checkbox" name="" id="李四" class="css-checkbox-small"><label for="李四" class="css-label-small">李四</label></td>
-                     <td>注意部门名称最多十字</td>
-                     <td>女</td>
-                     <td>1986/8/1</td>
-                     <td>2012/6/6</td>
-                     <td></td>
-                 </tr>
-			     <tr>
-                      <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                      <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                      <td><input type="checkbox" name="" id="王五" class="css-checkbox-small"><label for="王五" class="css-label-small">王五</label></td>
-                      <td>注意部门名称最多十字</td>
-                      <td>女</td>
-                      <td>1986/8/1</td>
-                      <td>2012/6/6</td>
-                      <td></td>
-                   </tr>
-                   <tr>
-                      <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                      <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                      <td><input type="checkbox" name="" id="王五" class="css-checkbox-small"><label for="王五" class="css-label-small">王五</label></td>
-                      <td>注意部门名称最多十字</td>
-                      <td>女</td>
-                      <td>1986/8/1</td>
-                      <td>2012/6/6</td>
-                      <td></td>
-                   </tr>
-                   <tr>
-                      <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                      <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                      <td><input type="checkbox" name="" id="王五" class="css-checkbox-small"><label for="王五" class="css-label-small">王五</label></td>
-                      <td>注意部门名称最多十字</td>
-                      <td>女</td>
-                      <td>1986/8/1</td>
-                      <td>2012/6/6</td>
-                      <td></td>
-                   </tr>
-                   <tr>
-                      <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                      <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                      <td><input type="checkbox" name="" id="王五" class="css-checkbox-small"><label for="王五" class="css-label-small">王五</label></td>
-                      <td>注意部门名称最多十字</td>
-                      <td>女</td>
-                      <td>1986/8/1</td>
-                      <td>2012/6/6</td>
-                      <td></td>
-                   </tr>
-                   <tr>
-                      <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                      <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                      <td><input type="checkbox" name="" id="王五" class="css-checkbox-small"><label for="王五" class="css-label-small">王五</label></td>
-                      <td>注意部门名称最多十字</td>
-                      <td>女</td>
-                      <td>1986/8/1</td>
-                      <td>2012/6/6</td>
-                      <td></td>
-                   </tr>
-                   <tr>
-                      <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                      <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                      <td><input type="checkbox" name="" id="王五" class="css-checkbox-small"><label for="王五" class="css-label-small">王五</label></td>
-                      <td>注意部门名称最多十字</td>
-                      <td>女</td>
-                      <td>1986/8/1</td>
-                      <td>2012/6/6</td>
-                      <td></td>
-                   </tr>
-                   <tr>
-                       <td class="edit"><a href="#edit_user" data-toggle="modal" class="icon_small tab_edit"></a></td>
-                      <td class="delete"><a href="#" class="icon_small tab_delete"></a></td>
-                      <td><input type="checkbox" name="" id="王五" class="css-checkbox-small"><label for="王五" class="css-label-small">王五</label></td>
-                      <td>注意部门名称最多十字</td>
-                      <td>女</td>
-                      <td>1986/8/1</td>
-                      <td>2012/6/6</td>
-                      <td></td>
-                   </tr>
+                <tbody id="tbodyQz">
                 </tbody>
               </table>
+           </form>
           </div>
         </div>
     </div>
@@ -140,27 +40,28 @@
     <div class="modal-body alert_body">
         <div class="moduleBox_black user_manage_new left">
             <div class="quota_setAll_list quota_setAll_listS">
+            <form name="form" id="form">
                 <div class="quota_setInfo">
                     <label>姓名</label>
-                    <div class="formInput"><input type="text" class="quota_input"></div>
+                    <div class="formInput"><input type="text" class="quota_input" id="firstname" name="firstname"></div>
                 </div>
                 <div class="quota_setInfo">
                     <label>性别</label>
-                    <input type="radio" name="sex" id="sex-male" class="css-radio" checked="checked" /><label for="sex-male" class="css-label-radio radGroup1">男</label>
+                    <input type="radio" name="sex" id="sex-male" class="css-radio" checked="checked" /><label for="sex-male" class="css-label-radio radGroup1" >男</label>
                     <input type="radio" name="sex" id="sex-female" class="css-radio" /><label for="sex-female" class="css-label-radio radGroup1">女</label>
                 </div>
                 <div class="quota_setInfo">
                     <label>生日</label>
-                    <div class="calendarBar"><input id="month_date" class="Wdate" type="text" onclick="WdatePicker()"></div>
+                    <div class="calendarBar"><input id="month_date" class="Wdate" type="text" onclick="WdatePicker()" name="birthday"></div>
                 </div>
                 <div class="quota_setInfo">
                     <label>入职日期</label>
-                    <div class="calendarBar"><input id="month_date" class="Wdate" type="text" onclick="WdatePicker()"></div>
+                    <div class="calendarBar"><input id="month_date" class="Wdate" type="text" onclick="WdatePicker()" name="workdate"></div>
                 </div>
                 <div class="quota_setInfo">
                     <label>部门</label>
                     <div class="filter_widget">
-                        <select class="selectpicker_w197">
+                        <select class="selectpicker_w197" name="department">
                             <option>产品部</option>
                             <option>宣传部</option>
                             <option>人事</option>
@@ -170,8 +71,9 @@
                 </div>
                 <div class="quota_setInfo">
                     <label>手机</label>
-                    <input type="text" value=" 请输入11位数字" class="w185">
+                    <input type="text" value=" 请输入11位数字" class="w185" name="phone">
                 </div>
+            </form>
             </div>
         </div>
     </div>
@@ -191,7 +93,7 @@
             <div class="quota_setAll_list quota_setAll_listS">
                 <div class="quota_setInfo">
                     <label>姓名</label>
-                    <div class="formInput"><input type="text" class="quota_input" placeholder="王晓明"></div>
+                    <div class="formInput"><input type="text" class="quota_input" id="firstname" name="firstname" placeholder="王晓明"></div>
                 </div>
                 <div class="quota_setInfo">
                     <label>性别</label>
@@ -264,4 +166,5 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user.css">
 <%-- <script src="<spring:url value="/resources/plugins/bootstrap/js/bootstrap.js"></spring:url>"></script> --%>
 <script src="<spring:url value="/resources/plugins/My97DatePicker/WdatePicker.js"></spring:url>"></script>
+<script src="<spring:url value="/resources/plugins/bootstrap/js/bootstrap.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/scripts/user/user.js"></spring:url>"></script>
