@@ -1,8 +1,5 @@
 $(function() {
 
-	quotaManage.chooseTimeY(); 
-	quotaManage.chooseTimeM(); 
-	
 });
 
 var quotaManage = {
