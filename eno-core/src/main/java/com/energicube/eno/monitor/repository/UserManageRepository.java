@@ -23,4 +23,7 @@ public interface UserManageRepository extends JpaRepository<User, Long> {
     
     @Query(" delete from User u where u.userid=?1")
     public List<User> delUser(String userid) throws DataAccessException;
+    
+    @Query(" select u from User u where u.userid=?1")
+    public User findUserid(String userid) throws DataAccessException;
 }

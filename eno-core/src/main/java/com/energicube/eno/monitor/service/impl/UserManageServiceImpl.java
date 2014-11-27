@@ -1,7 +1,6 @@
 package com.energicube.eno.monitor.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -36,6 +35,15 @@ public class UserManageServiceImpl implements UserManageService {
         List<User> userList = new ArrayList<User>();
         userList = userManageRepository.findAll();
         return userList;
+    }
+    
+    /**
+     * 获取单个用户信息列表
+     */
+    public User findUserid(String userid){
+    	 User user = new User();
+    	 user = userManageRepository.findUserid(userid);
+         return user;
     }
     
     /**
