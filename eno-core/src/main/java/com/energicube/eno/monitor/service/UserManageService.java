@@ -22,6 +22,11 @@ public interface UserManageService {
     public List<User> findUserList();
     
     /**
+     * 获取单个用户信息列表
+     */
+    public User findUserid(String userid);
+    
+    /**
      * 用户管理用户新建
      */
     public String saveUser(User user);

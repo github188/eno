@@ -1,11 +1,9 @@
 package com.energicube.eno.monitor.web;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,50 +33,17 @@ public class UserManageController extends BaseController {
     private Log logger = LogFactory.getLog(UserManageController.class);
 
     private UserManageService userManageService;
-    private String firstname;
-    
-    public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	//新建用户信息
-    private  User user=new User();
-    
-    public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	/**
      * 用户管理用户查询
-     *
-     * @param pageSize
-     * @param model
-     * @param request
-     * @param response
      * @return 
      */
     @RequestMapping(value = "/findUserList", method = RequestMethod.GET)
     @ResponseBody
     public List<User> findUserList() {
     	List<User> userList = new ArrayList<User>();
-    	//userList = userManageService.findUserList();
-        	User user= new User();
-        	user.setUserid("1");
-        	user.setFirstname("张三");
-        	user.setDepartment("adsfasdf");
-        	user.setSex("男");
-        	user.setBirthday(new Date());
-        	user.setWorkdate(new Date());
-        	user.setPhone("12123123");
-        	userList.add(user);
+    	userList = userManageService.findUserList();
+        	
     	return userList;
     }
     
@@ -91,8 +56,9 @@ public class UserManageController extends BaseController {
     @RequestMapping(value = "/saveUser", method = RequestMethod.GET)
     @ResponseBody
     public String saveUser( HttpServletRequest request) {
-    	request.getParameter("firstname");
-    	//userManageService.saveUser(user);
+    	//request.getParameter("firstname");
+    	User user=new User();
+    	userManageService.saveUser(user);
     	return "";
     }
 
@@ -103,15 +69,9 @@ public class UserManageController extends BaseController {
      */
     @RequestMapping(value = "/findUserId", method = RequestMethod.GET)
     @ResponseBody
-    public User findUserId() {
-    	User user= new User();
-    	user.setUserid("1");
-    	user.setFirstname("张三");
-    	user.setDepartment("adsfasdf");
-    	user.setSex("男");
-    	user.setBirthday(new Date());
-    	user.setWorkdate(new Date());
-    	user.setPhone("12123123");
+    public User findUserId( HttpServletRequest request) {
+    	User user=new User();
+    	user = userManageService.findUserid("userid");
     	return user;
     }
     /**
@@ -122,7 +82,8 @@ public class UserManageController extends BaseController {
      */
     @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
     @ResponseBody
-    public String updateUser(@Valid User user) {
+    public String updateUser( HttpServletRequest request) {
+    	User user=new User();
     	userManageService.updateUser(user);
         return "";
     }
@@ -135,8 +96,8 @@ public class UserManageController extends BaseController {
      */
     @RequestMapping(value = "/delUser", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> delUser(String userId) {
-    	userManageService.delUser(userId);
+    public List<User> delUser( HttpServletRequest request) {
+    	userManageService.delUser(request.getParameter("userid"));
     	List<User> userList = new ArrayList<User>();
     	userList=this.findUserList();
         return userList;
