@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  * 作业计划序列表
  */
 @Entity
-@Table(name = "PMSEQUENCE", schema = "dbo")
+@Table(name = "PMSEQUENCE", schema = "zclfsys")
 public class PMSequence implements java.io.Serializable {
 
     private static final long serialVersionUID = -888012172984701029L;

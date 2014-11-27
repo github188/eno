@@ -7,7 +7,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "OKCDMALPHANUM", schema = "dbo")
+@Table(name = "OKCDMALPHANUM", schema = "zclfsys")
 public class OkcDMAlphaNum implements java.io.Serializable {
 
     private static final long serialVersionUID = 8766169278084507271L;

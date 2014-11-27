@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author lihuihui
  */
 @Entity
-@Table(name = "SUB_parking", schema = "dbo")
+@Table(name = "SUB_parking", schema = "zclfsys")
 public class SubParking implements Serializable {
     private String id;
     private String carNum;//车牌号

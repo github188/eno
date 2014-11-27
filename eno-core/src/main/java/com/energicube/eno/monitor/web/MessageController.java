@@ -401,7 +401,7 @@ public class MessageController extends BaseController {
         String fistName = "";
         for (int i = 0; i < users.size(); i++) {
             Users user = users.get(i);
-            if (user.getStatus().equals("0") && user.getType().equals("1")) {
+            if (user.getStatus().equals("0")) { // && user.getType().equals("1")
                 Persons Persons = userService.findPersonsByUserid(user.getUserid());
                 fistName = Persons.getFirstname() + Persons.getLastname();
                 Persons.setFirstname(fistName);

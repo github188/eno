@@ -6,7 +6,7 @@ import javax.persistence.*;
  * 长描述
  */
 @Entity
-@Table(name = "LONGDESCRIPTION", schema = "dbo")
+@Table(name = "LONGDESCRIPTION", schema = "zclfsys")
 public class LongDescription implements java.io.Serializable {
 
     private static final long serialVersionUID = 5739264475792366593L;

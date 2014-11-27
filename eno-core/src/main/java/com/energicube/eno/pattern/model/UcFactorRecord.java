@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "UC_factorRecord"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcFactorRecord implements java.io.Serializable {
 

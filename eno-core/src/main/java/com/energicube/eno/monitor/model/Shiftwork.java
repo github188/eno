@@ -7,7 +7,7 @@ import java.util.Date;
  * 交接班信息
  */
 @Entity
-@Table(name = "SHIFTWORK", schema = "dbo")
+@Table(name = "SHIFTWORK", schema = "zclfsys")
 public class Shiftwork implements java.io.Serializable {
 
     private static final long serialVersionUID = 7205571354986767070L;

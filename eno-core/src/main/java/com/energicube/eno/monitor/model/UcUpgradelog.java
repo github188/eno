@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "UC_upgradelog", schema = "dbo")
+@Table(name = "UC_upgradelog", schema = "zclfsys")
 public class UcUpgradelog implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;

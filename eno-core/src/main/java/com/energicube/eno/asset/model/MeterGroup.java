@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 计量器组
  */
 @Entity
-@Table(name = "METERGROUP", schema = "dbo")
+@Table(name = "METERGROUP", schema = "zclfsys")
 public class MeterGroup implements java.io.Serializable {
 
     private static final long serialVersionUID = 8016481764632559700L;

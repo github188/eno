@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  * 预防性维护表，PM相当于工单模板，可从此生成PM工单（系统由于无主PM，就没有关联预防性维护，只有类似季节性预防性维护概念）
  */
 @Entity
-@Table(name = "PM", schema = "dbo")
+@Table(name = "PM", schema = "zclfsys")
 public class PM implements java.io.Serializable {
 
     private static final long serialVersionUID = -6303582265196561484L;

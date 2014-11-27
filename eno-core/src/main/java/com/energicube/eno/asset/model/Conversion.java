@@ -9,7 +9,7 @@ import java.util.Date;
  * 计量单位换算
  */
 @Entity
-@Table(name = "CONVERSION", schema = "dbo")
+@Table(name = "CONVERSION", schema = "zclfsys")
 public class Conversion implements java.io.Serializable {
 
     private static final long serialVersionUID = -4706962658376602894L;

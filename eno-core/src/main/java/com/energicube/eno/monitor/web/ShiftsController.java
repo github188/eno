@@ -5,6 +5,7 @@ import com.energicube.eno.monitor.repository.*;
 import com.energicube.eno.monitor.service.OpLogService;
 import com.energicube.eno.monitor.service.ShiftsService;
 import com.energicube.eno.monitor.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -185,7 +187,7 @@ public class ShiftsController extends BaseController {
             // TODO: handle exception
         }
 
-        List<Persons> PersonsList = usersRepository.selectUserorderBy();
+        List<Persons> PersonsList = new ArrayList<Persons>(); // usersRepository.selectUserorderBy();
         List<Shifts> shiftsList = new ArrayList<Shifts>();
         int kb = 1;
         for (int i = 0; i < PersonsList.size(); i++) {
@@ -355,7 +357,7 @@ public class ShiftsController extends BaseController {
             // TODO: handle exception
         }
 
-        List<Persons> PersonsList = usersRepository.selectUserorderBy();
+        List<Persons> PersonsList = new ArrayList<Persons>(); // usersRepository.selectUserorderBy();
         List<Shifts> shiftsList = new ArrayList<Shifts>();
         int kb = 1;
         for (int i = 0; i < PersonsList.size(); i++) {
@@ -534,7 +536,7 @@ public class ShiftsController extends BaseController {
             // TODO: handle exception
         }
 
-        List<Persons> PersonsList = usersRepository.selectUserorderBy();
+        List<Persons> PersonsList = new ArrayList<Persons>(); // usersRepository.selectUserorderBy();
         List<Shifts> shiftsList = new ArrayList<Shifts>();
         int kb = 1;
         for (int i = 0; i < PersonsList.size(); i++) {
@@ -713,7 +715,7 @@ public class ShiftsController extends BaseController {
             // TODO: handle exception
         }
 
-        List<Persons> PersonsList = usersRepository.selectUserorderBy();
+        List<Persons> PersonsList = new ArrayList<Persons>(); // usersRepository.selectUserorderBy();
         List<Shifts> shiftsList = new ArrayList<Shifts>();
         int kb = 1;
         for (int i = 0; i < PersonsList.size(); i++) {

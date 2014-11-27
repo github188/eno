@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "UC_runParam"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcRunParam implements java.io.Serializable {
 

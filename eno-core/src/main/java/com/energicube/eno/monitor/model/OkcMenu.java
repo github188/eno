@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  *
  */
 @Entity
-@Table(name = "OKCMENU", schema = "dbo")
+@Table(name = "OKCMENU", schema = "zclfsys")
 public class OkcMenu implements java.io.Serializable {
 
     private static final long serialVersionUID = 3857959727331102320L;

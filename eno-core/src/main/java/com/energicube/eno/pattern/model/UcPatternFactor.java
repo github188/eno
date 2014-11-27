@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "UC_patternFactor"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcPatternFactor implements java.io.Serializable {
 

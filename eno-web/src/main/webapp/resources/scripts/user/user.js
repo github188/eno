@@ -10,11 +10,12 @@ $(function() {
  * 用户管理用户信息查询
  */
 function findUsersList(){
-	var url = CONTEXT_PATH + "/user/findUserList";
+	var url = CONTEXT_PATH + "/okcsys/findUserList";
 	$.ajax({
 		type: "GET",
 		url: url,
 		success: function (data) {
+			console.log(data);
 			try {
 				if(data!=null){
 					//加载列表数据

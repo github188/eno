@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "rules", schema = "dbo")
+@Table(name = "rules", schema = "zclfsys")
 public class Rules implements java.io.Serializable {
 
     private static final long serialVersionUID = 4690533365864849928L;

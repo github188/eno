@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "UC_weather"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcWeather implements java.io.Serializable {
 

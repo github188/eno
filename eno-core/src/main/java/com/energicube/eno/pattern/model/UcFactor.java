@@ -14,7 +14,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "UC_factor"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcFactor implements java.io.Serializable {
 

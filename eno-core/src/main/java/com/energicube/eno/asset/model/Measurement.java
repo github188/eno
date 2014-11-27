@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  * @author CHENPING
  */
 @Entity
-@Table(name = "MEASUREMENT", schema = "dbo")
+@Table(name = "MEASUREMENT", schema = "zclfsys")
 public class Measurement implements java.io.Serializable {
 
     private static final long serialVersionUID = -7717995786878703922L;

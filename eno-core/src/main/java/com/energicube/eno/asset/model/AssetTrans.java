@@ -8,7 +8,7 @@ import java.util.Date;
  * 资产移动记录
  */
 @Entity
-@Table(name = "ASSETTRANS", schema = "dbo")
+@Table(name = "ASSETTRANS", schema = "zclfsys")
 public class AssetTrans implements java.io.Serializable {
 
     private static final long serialVersionUID = 7504027654586279708L;

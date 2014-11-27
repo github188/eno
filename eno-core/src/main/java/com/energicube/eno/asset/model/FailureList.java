@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 故障层次结构
  */
 @Entity
-@Table(name = "FAILURELIST", schema = "dbo")
+@Table(name = "FAILURELIST", schema = "zclfsys")
 public class FailureList implements java.io.Serializable {
 
     private static final long serialVersionUID = -7840201211234058510L;

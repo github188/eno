@@ -34,9 +34,9 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     public List<UserInfo> findUsersByCategory(String category) {
-        List<Object[]> list = usersRepository.findByCategory(category);
-        List<UserInfo> userinfos = getUserinfoList(list);
-        return userinfos;
+//        List<Object[]> list = usersRepository.findByCategory(category);
+//        List<UserInfo> userinfos = getUserinfoList(list);
+        return new ArrayList<UserInfo>();
     }
 
     private List<UserInfo> getUserinfoList(List<Object[]> list) {
@@ -44,10 +44,10 @@ public class UserServiceImpl implements UserService {
         for (Object[] objs : list) {
             UsersSet usersSet = getUsersSet(objs);
             UserInfo userinfo = new UserInfo();
-            userinfo.setCategory(usersSet.getUsers().getCategory());
-            userinfo.setLoginid(usersSet.getUsers().getLoginid());
-            userinfo.setPwd(usersSet.getUsers().getPwd());
-            userinfo.setStatus(usersSet.getUsers().getStatus());
+//            userinfo.setCategory(usersSet.getUsers().getCategory());
+//            userinfo.setLoginid(usersSet.getUsers().getLoginid());
+//            userinfo.setPwd(usersSet.getUsers().getPwd());
+//            userinfo.setStatus(usersSet.getUsers().getStatus());
             userinfo.setUserface(usersSet.getPersons().getUserface());
             userinfo.setFullname(usersSet.getPersons().getFirstname()
                     + usersSet.getPersons().getLastname());
@@ -116,7 +116,7 @@ public class UserServiceImpl implements UserService {
         Users users = new Users();
         List<Users> usersList = usersRepository.findByLoginid(loginid);
         for (int i = 0; i < usersList.size(); i++) {
-            if (usersList.get(i).getStatus().equals("0") && usersList.get(i).getType().equals("1"))
+            if (usersList.get(i).getStatus().equals("0"))
                 users = usersList.get(i);
         }
         return users;

@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 计量器定义
  */
 @Entity
-@Table(name = "METER", schema = "dbo")
+@Table(name = "METER", schema = "zclfsys")
 public class Meter implements java.io.Serializable {
 
     private static final long serialVersionUID = -3753915973234174467L;

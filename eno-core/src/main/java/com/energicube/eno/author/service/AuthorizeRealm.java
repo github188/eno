@@ -102,7 +102,7 @@ public class AuthorizeRealm extends AuthorizingRealm {
         //验证用户
         Users users = userService.checkUserLogin(username, md);
 
-        if (users==null || users.getUseruid()<=0) {
+        if (users==null) { //  || users.getUseruid()<=0
             throw new AccountException("account error...");
         }
 

@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 资产属性
  */
 @Entity
-@Table(name = "ASSETATTRIBUTE", schema = "dbo")
+@Table(name = "ASSETATTRIBUTE", schema = "zclfsys")
 public class AssetAttribute implements java.io.Serializable {
 
     private static final long serialVersionUID = -587726797455763284L;

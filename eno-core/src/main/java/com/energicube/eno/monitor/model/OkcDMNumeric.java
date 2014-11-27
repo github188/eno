@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  *
  */
 @Entity
-@Table(name = "OKCDMNUMERIC", schema = "dbo")
+@Table(name = "OKCDMNUMERIC", schema = "zclfsys")
 public class OkcDMNumeric implements java.io.Serializable {
 
     private static final long serialVersionUID = -5544305085262075631L;

@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "UC_alarmlog", schema = "dbo")
+@Table(name = "UC_alarmlog", schema = "zclfsys")
 public class UcAlarmlog implements java.io.Serializable {
 
     private static final long serialVersionUID = -5807305794686534141L;

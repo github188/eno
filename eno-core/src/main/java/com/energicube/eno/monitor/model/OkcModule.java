@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 系统模块定义
  */
 @Entity
-@Table(name = "OKCMODULE", schema = "dbo")
+@Table(name = "OKCMODULE", schema = "zclfsys")
 public class OkcModule implements java.io.Serializable {
 
     private static final long serialVersionUID = -6017115650688137948L;

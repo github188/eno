@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 权限组中包含用户
  */
 @Entity
-@Table(name = "GROUPMEMBER", schema = "dbo")
+@Table(name = "GROUPMEMBER", schema = "zclfsys")
 public class GroupMember implements java.io.Serializable {
 
     private static final long serialVersionUID = 7758997238913343232L;

@@ -8,7 +8,7 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "OKCSYSPROP", schema = "dbo")
+@Table(name = "OKCSYSPROP", schema = "zclfsys")
 public class OkcSysProp implements java.io.Serializable {
 
     private static final long serialVersionUID = -8793334854801618399L;

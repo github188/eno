@@ -7,7 +7,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "OKCDMNUMRANGE", schema = "dbo")
+@Table(name = "OKCDMNUMRANGE", schema = "zclfsys")
 public class OkcDMNumRange implements java.io.Serializable {
 
     private long okcdmnumrangeid;

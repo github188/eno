@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 
 @Entity
-@Table(name = "OKCLOGS", schema = "dbo")
+@Table(name = "OKCLOGS", schema = "zclfsys")
 public class OkcLogs implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;

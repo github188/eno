@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 各国语言字母码，使用
  */
 @Entity
-@Table(name = "LANGUAGE", schema = "dbo")
+@Table(name = "LANGUAGE", schema = "zclfsys")
 public class Language implements java.io.Serializable {
     private static final long serialVersionUID = -426869020129961912L;
     private long languageid;

@@ -70,14 +70,14 @@ public class BaseController {
         // 当前请求路径，与OkcMenu中的url一致
         String reqPath = request.getRequestURI().substring(
                 request.getContextPath().length());
-        OkcMenu parentOkcMenu = menuService.findByUrl(reqPath);
-        if (parentOkcMenu != null) {
-            ownerelement = parentOkcMenu.getOwnerelement();
-        } else {
+//        OkcMenu parentOkcMenu = menuService.findByUrl(reqPath);
+//        if (parentOkcMenu != null) {
+//            ownerelement = parentOkcMenu.getOwnerelement();
+//        } else {
             String ret = reqPath.replace(".html", "");
             String[] arrPath = ret.split("/");
             ownerelement = arrPath[arrPath.length - 2].toUpperCase();
-        }
+//        }
 
         if (!StringUtils.hasLength(ownerelement))
             return null;
@@ -116,35 +116,35 @@ public class BaseController {
         return strResult;
     }
 
-    @ModelAttribute("sidebarMCtrs")
-    public Map sidebarMCtrs() {
-        Map jo = new HashMap<>();
-        try {
-            AppAuth appAuth = new AppAuth();
-            jo.put("HVAC", "00");
-            jo.put("LSPUB", "00");
-            jo.put("LSN", "00");
-            List<GroupMember> groupMembers = groupMemberRepository
-                    .findByUserid(this.getFinalUserId());
-            String groupName = "";
-            if (groupMembers.size() > 0)
-                groupName = groupMembers.get(0).getGroupname();
-            List<AppAuth> appAuths = appAuthRepository
-                    .findByGroupnameAndAppcode(groupName, "MCTRL");
-            if (appAuths.size() > 0) {
-                appAuth = appAuths.get(0);
-            }
-            String signame = appAuth.getSigname();
-            logger.debug("signame----"+signame+"---getAppcode--"+appAuth.getAppcode());
-            if (signame != null) {
-                String appAuth_Str[] = appAuth.getSigname().split("\\|");
-                jo.put("HVAC", appAuth_Str[0].substring(2, 4));
-                jo.put("LSPUB", appAuth_Str[1].substring(2, 4));
-                jo.put("LSN", appAuth_Str[2].substring(2, 4));
-            }
-        } catch (Exception e) {
-            logger.error("-----sidebarMCtrs------", e);
-        }
-        return jo;
-    }
+//    @ModelAttribute("sidebarMCtrs")
+//    public Map sidebarMCtrs() {
+//        Map jo = new HashMap<>();
+//        try {
+//            AppAuth appAuth = new AppAuth();
+//            jo.put("HVAC", "00");
+//            jo.put("LSPUB", "00");
+//            jo.put("LSN", "00");
+//            List<GroupMember> groupMembers = groupMemberRepository
+//                    .findByUserid(this.getFinalUserId());
+//            String groupName = "";
+//            if (groupMembers.size() > 0)
+//                groupName = groupMembers.get(0).getGroupname();
+//            List<AppAuth> appAuths = appAuthRepository
+//                    .findByGroupnameAndAppcode(groupName, "MCTRL");
+//            if (appAuths.size() > 0) {
+//                appAuth = appAuths.get(0);
+//            }
+//            String signame = appAuth.getSigname();
+//            logger.debug("signame----"+signame+"---getAppcode--"+appAuth.getAppcode());
+//            if (signame != null) {
+//                String appAuth_Str[] = appAuth.getSigname().split("\\|");
+//                jo.put("HVAC", appAuth_Str[0].substring(2, 4));
+//                jo.put("LSPUB", appAuth_Str[1].substring(2, 4));
+//                jo.put("LSN", appAuth_Str[2].substring(2, 4));
+//            }
+//        } catch (Exception e) {
+//            logger.error("-----sidebarMCtrs------", e);
+//        }
+//        return jo;
+//    }
 }

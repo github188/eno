@@ -14,7 +14,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "UC_pattern"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcPattern implements java.io.Serializable {
 

@@ -8,7 +8,7 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "OKCSYSCONF", schema = "dbo")
+@Table(name = "OKCSYSCONF", schema = "zclfsys")
 public class OkcSysConf implements java.io.Serializable {
 
     private static final long serialVersionUID = -5773378946832120042L;

@@ -9,7 +9,7 @@ import javax.persistence.*;
  * @author CHENPING
  */
 @Entity
-@Table(name = "ADDRESS", schema = "dbo")
+@Table(name = "ADDRESS", schema = "zclfsys")
 public class Address implements java.io.Serializable {
 
     private static final long serialVersionUID = -4404140875328833441L;

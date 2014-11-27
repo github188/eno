@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 作业计划
  */
 @Entity
-@Table(name = "JOBPLAN", schema = "dbo", uniqueConstraints = @UniqueConstraint(columnNames = {
+@Table(name = "JOBPLAN", schema = "zclfsys", uniqueConstraints = @UniqueConstraint(columnNames = {
         "JPNUM", "ORGID", "SITEID"}))
 public class JobPlan implements java.io.Serializable {
 

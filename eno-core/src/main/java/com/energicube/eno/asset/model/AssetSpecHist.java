@@ -9,7 +9,7 @@ import java.util.Date;
  * 资产规范变更历史
  */
 @Entity
-@Table(name = "ASSETSPECHIST", schema = "dbo")
+@Table(name = "ASSETSPECHIST", schema = "zclfsys")
 public class AssetSpecHist implements java.io.Serializable {
 
     private static final long serialVersionUID = -2558921454068984785L;

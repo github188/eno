@@ -10,7 +10,7 @@ import javax.persistence.*;
  * 单个文档信息
  */
 @Entity
-@Table(name = "DOCINFO", schema = "dbo")
+@Table(name = "DOCINFO", schema = "zclfsys")
 public class Docinfo implements java.io.Serializable {
 
     private static final long serialVersionUID = 1612928399807603895L;

@@ -9,7 +9,7 @@ import javax.persistence.Table;
  * ID Generated
  */
 @Entity
-@Table(name = "ID_GEN", schema = "dbo")
+@Table(name = "ID_GEN", schema = "zclfsys")
 public class IdGen implements java.io.Serializable {
 
     private static final long serialVersionUID = -565329315647791268L;

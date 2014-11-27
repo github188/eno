@@ -6,7 +6,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "MENUOPTION", schema = "dbo")
+@Table(name = "MENUOPTION", schema = "zclfsys")
 public class MenuOption implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -15,7 +15,7 @@ import java.util.Date;
  * @Description CS设备运行日志
  */
 @Entity
-@Table(name = "UC_eventlog", schema = "dbo")
+@Table(name = "UC_eventlog", schema = "zclfsys")
 public class UcEventLog {
 
     private long id;

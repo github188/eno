@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "UC_strategyItem"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcStrategyItem implements java.io.Serializable {
 

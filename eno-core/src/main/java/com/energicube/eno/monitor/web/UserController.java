@@ -57,6 +57,21 @@ public class UserController extends BaseController {
     private static int seq = 0;
     private static final int MAX = 9999;
 
+    
+    /**
+     * 用户管理用户查询
+     * @return 
+     */
+    @RequestMapping(value = "/findUserList", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Users> findUserList() {
+    	List<Users> userList = new ArrayList<Users>();
+    	userList = userService.findAllUsers();
+        	
+    	return userList;
+    }
+    
+    
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String inituserList(Model model) {
         List<Persons> Personses = userService.findPersons();
@@ -414,8 +429,8 @@ public class UserController extends BaseController {
                     listTotal.setStat("false");
                 } else {
                     listTotal.setStat("true");
-                    userGroupsTotal = userGroupService.findByLangcode(users
-                            .get(0).getClientip());
+//                    userGroupsTotal = userGroupService.findByLangcode(users
+//                            .get(0).getClientip());
                     groupMembers = userGroupService
                             .getGroupMembersByUserid(users.get(0).getUserid());
                     for (int j = 0; j < groupMembers.size(); j++) {
@@ -575,10 +590,10 @@ public class UserController extends BaseController {
                     if (userslist.size() > 0)
                         users = userslist.get(0);
                 }
-                users.setType(type);
+//                users.setType(type);
                 users.setUserid(Persons.getUserid());
                 users.setLoginid("-1");
-                users.setPwd(Constants.getMdPassword(pwd));
+                users.setPassword(Constants.getMdPassword(pwd));
                 users.setStatus(status);
                 userService.saveUsers(users);
 
@@ -591,17 +606,17 @@ public class UserController extends BaseController {
                 }
                 if (users.getLoginid() == null || users.getLoginid() == "null"
                         || users.getLoginid() == "") {
-                    users.setPwd(Constants.getMdPassword(pwd));
+                    users.setPassword(Constants.getMdPassword(pwd));
                 } else {
-                    if (!users.getPwd().equals(pwd)) {
-                        users.setPwd(Constants.getMdPassword(pwd));
+                    if (!users.getPassword().equals(pwd)) {
+                        users.setPassword(Constants.getMdPassword(pwd));
                     }
                 }
-                users.setType(type);
+//                users.setType(type);
                 users.setUserid(Persons.getUserid());
                 users.setLoginid(loginid);
                 users.setStatus(status);
-                users.setClientip(roleSelect);
+//                users.setClientip(roleSelect);
                 userService.saveUsers(users);
             }
             userService.savePersons(Persons);
@@ -705,11 +720,11 @@ public class UserController extends BaseController {
     /**
      * 用户类别
      */
-    @ModelAttribute("userclasses")
-    public List<OkcDMAlphaNum> GetUserClass() {
-        // 用户类型,取字典表
-        return dictionaryService.findALNDictionaryByDictid("USERCATEGORY");
-    }
+//    @ModelAttribute("userclasses")
+//    public List<OkcDMAlphaNum> GetUserClass() {
+//        // 用户类型,取字典表
+//        return dictionaryService.findALNDictionaryByDictid("USERCATEGORY");
+//    }
 
 
 }

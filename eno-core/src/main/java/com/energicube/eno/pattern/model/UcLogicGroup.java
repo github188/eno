@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "UC_logicGroup"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcLogicGroup implements java.io.Serializable {
 

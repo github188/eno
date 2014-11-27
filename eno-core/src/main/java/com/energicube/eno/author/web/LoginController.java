@@ -84,7 +84,7 @@ public class LoginController {
                 List<Users> UsersList = new ArrayList<Users>();
                 UsersList = userService.findByUserid(groupMembersAll.get(k).getUserid());
                 LoginUser loginUser = new LoginUser();
-                if (UsersList.get(0).getStatus().equals("0") && UsersList.get(0).getType().equals("1")) {
+                if (UsersList.get(0).getStatus().equals("0")) { //  && UsersList.get(0).getType().equals("1")
                     loginUser.setName(UsersList.get(0).getLoginid());
                     loginUser.setValue(UsersList.get(0).getLoginid());
                     if (userService.findPersonsByUserid(UsersList.get(0).getUserid()).getSex().equals("0")) {

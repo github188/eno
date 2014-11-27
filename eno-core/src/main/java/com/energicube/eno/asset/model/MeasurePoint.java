@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  * @author CHENPING
  */
 @Entity
-@Table(name = "MEASUREPOINT", schema = "dbo")
+@Table(name = "MEASUREPOINT", schema = "zclfsys")
 public class MeasurePoint implements java.io.Serializable {
 
     private static final long serialVersionUID = 6574125162469200224L;

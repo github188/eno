@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 资产类别定义
  */
 @Entity
-@Table(name = "CLASSIFICATION", schema = "dbo")
+@Table(name = "CLASSIFICATION", schema = "zclfsys")
 public class Classification implements java.io.Serializable {
 
     private static final long serialVersionUID = 3733577649389449972L;

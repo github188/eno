@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * 位置技术参数模板
  */
 @Entity
-@Table(name = "LOCATIONSPEC", schema = "dbo")
+@Table(name = "LOCATIONSPEC", schema = "zclfsys")
 public class LocationSpec implements java.io.Serializable {
 
     private static final long serialVersionUID = -7372575356556239223L;

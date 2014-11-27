@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 系统对 Global Data 或 Global Function 的必要全局授权项，例如门户、公告牌、日志、报表等
  */
 @Entity
-@Table(name = "GLOBALAUTH", schema = "dbo")
+@Table(name = "GLOBALAUTH", schema = "zclfsys")
 public class GlobalAuth implements java.io.Serializable {
 
     private static final long serialVersionUID = 2669215611282539710L;

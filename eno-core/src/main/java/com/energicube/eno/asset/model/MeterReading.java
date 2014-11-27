@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * 计量器读数记录
  */
 @Entity
-@Table(name = "METERREADING", schema = "dbo")
+@Table(name = "METERREADING", schema = "zclfsys")
 public class MeterReading implements java.io.Serializable {
 
     private static final long serialVersionUID = -3608995847275474970L;

@@ -12,7 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "UC_calendar"
-        , schema = "dbo"
+        , schema = "zclfsys"
 )
 public class UcCalendar implements java.io.Serializable {
 

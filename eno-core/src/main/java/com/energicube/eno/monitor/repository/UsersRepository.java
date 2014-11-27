@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface UsersRepository extends JpaRepository<Users, Long> {
 
-    @Query("select a from Persons a where a.userid in (select b.userid from Users b where b.status='0' and b.type='1') order by a.jobcode,a.userid")
-    public List<Persons> selectUserorderBy() throws DataAccessException;
+//    @Query("select a from Persons a where a.userid in (select b.userid from Users b where b.status='0' and b.type='1') order by a.jobcode,a.userid")
+//    public List<Persons> selectUserorderBy() throws DataAccessException;
 
     public List<Users> findByUserid(String userid);
 
@@ -22,8 +22,8 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
      * @param category 类别名称
      * @return 用户列表
      */
-    @Query("select p,u from Persons p,Users u where p.userid=u.userid and u.category=?1")
-    public List<Object[]> findByCategory(String category) throws DataAccessException;
+//    @Query("select p,u from Persons p,Users u where p.userid=u.userid and u.category=?1")
+//    public List<Object[]> findByCategory(String category) throws DataAccessException;
 
 
     public List<Users> findByLoginid(String loginid);
@@ -33,6 +33,6 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
     public List<Users> findByLoginidAndStatusBy(String loginid);
 
 
-    @Query("select u from Users u where u.loginid=?1 and u.pwd=?2")
+    @Query("select u from Users u where u.loginid=?1 and u.password=?2")
     public Users findByLoginidAndPwd(String loginId, String password);
 }
