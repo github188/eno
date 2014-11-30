@@ -16,10 +16,7 @@ var dashboard = {
 		$('#cartonchart').highcharts({
 			chart : {
 				type : 'areaspline',
-				backgroundColor : '#101010'
-			},
-			title : {
-				text : ''
+				backgroundColor : '#000000'
 			},
 			legend : {
 				enabled : false
@@ -32,21 +29,15 @@ var dashboard = {
 					style : {
 						color : '#A2A2A2',
 						fontWeight : 'bold',
-						fontFamily : ''
+						fontFamily : 'RobotoRegular'
 					}
 				}
 			},
 			yAxis : {
 				gridLineColor : '#5F5F5F',
-				title : {
-					text : ''
-				},
 				labels : {
 					style : {
-						color : '#A2A2A2',
-						fontSize : '14px',
-						fontWeight : 'bold',
-						fontFamily : ''
+						fontSize : '14px'
 					}
 				}
 			},
@@ -54,16 +45,13 @@ var dashboard = {
 				shared : true,
 				valueSuffix : ''
 			},
-			credits : {
-				enabled : false
-			},
 			plotOptions : {
 				areaspline : {
 					fillOpacity : 0.5
 				}
 			},
 			series : [{
-				name : 'John',
+				name : '碳排放',
 				lineWidth : 1.5,
 				marker : {
 					radius : 3

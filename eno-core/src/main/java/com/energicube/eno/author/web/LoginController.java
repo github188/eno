@@ -55,52 +55,51 @@ public class LoginController {
     /**
      * 用户类别
      */
-    @ModelAttribute("userclasses")
-    public List<OkcDMAlphaNum> GetUserClass(HttpServletRequest request) {
-        // 用户类型,取字典表
-        return dictionaryService.findALNDictionaryByDictid("USERCATEGORY");
-    }
+//    @ModelAttribute("userclasses")
+//    public List<OkcDMAlphaNum> GetUserClass(HttpServletRequest request) {
+//        // 用户类型,取字典表
+//        return dictionaryService.findALNDictionaryByDictid("USERCATEGORY");
+//    }
 
-    @RequestMapping(value = "/login/findUserListByDmValue", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    List<LoginUser> findUserListByDmValue(HttpServletRequest request,
-                                          HttpServletResponse response, Model model) {
-        List<OkcGroup> okcGroups = new ArrayList<OkcGroup>();
-        List<GroupMember> groupMembersAll = new ArrayList<GroupMember>();
-        List<LoginUser> loginUsers = new ArrayList<LoginUser>();
-        try {
-            String dmValue = request.getParameter("DmValue");
-            okcGroups = okcGroupRepository.findByLangcode(dmValue);
-            for (int i = 0; i < okcGroups.size(); i++) {
-                OkcGroup okcGroup = okcGroups.get(i);
-                List<GroupMember> groupMembers = new ArrayList<GroupMember>();
-                groupMembers = groupMemberRepository.findByGroupname(okcGroup.getGroupname());
-                for (int j = 0; j < groupMembers.size(); j++) {
-                    groupMembersAll.add(groupMembers.get(j));
-                }
-            }
-            for (int k = 0; k < groupMembersAll.size(); k++) {
-                List<Users> UsersList = new ArrayList<Users>();
-                UsersList = userService.findByUserid(groupMembersAll.get(k).getUserid());
-                LoginUser loginUser = new LoginUser();
-                if (UsersList.get(0).getStatus().equals("0")) { //  && UsersList.get(0).getType().equals("1")
-                    loginUser.setName(UsersList.get(0).getLoginid());
-                    loginUser.setValue(UsersList.get(0).getLoginid());
-                    if (userService.findPersonsByUserid(UsersList.get(0).getUserid()).getSex().equals("0")) {
-                        loginUser.setImg("user0.png");
-                    } else {
-                        loginUser.setImg("user1.png");
-                    }
-                    loginUsers.add(loginUser);
-                }
-            }
-        } catch (Exception e) {
-            logger.info("-----", e);
-        }
-        return loginUsers;
-
-    }
+//    @RequestMapping(value = "/login/findUserListByDmValue", method = RequestMethod.GET)
+//    public
+//    @ResponseBody
+//    List<LoginUser> findUserListByDmValue(HttpServletRequest request, HttpServletResponse response, Model model) {
+//        List<OkcGroup> okcGroups = new ArrayList<OkcGroup>();
+//        List<GroupMember> groupMembersAll = new ArrayList<GroupMember>();
+//        List<LoginUser> loginUsers = new ArrayList<LoginUser>();
+//        try {
+//            String dmValue = request.getParameter("DmValue");
+//            okcGroups = okcGroupRepository.findByLangcode(dmValue);
+//            for (int i = 0; i < okcGroups.size(); i++) {
+//                OkcGroup okcGroup = okcGroups.get(i);
+//                List<GroupMember> groupMembers = new ArrayList<GroupMember>();
+//                groupMembers = groupMemberRepository.findByGroupname(okcGroup.getGroupname());
+//                for (int j = 0; j < groupMembers.size(); j++) {
+//                    groupMembersAll.add(groupMembers.get(j));
+//                }
+//            }
+//            for (int k = 0; k < groupMembersAll.size(); k++) {
+//                List<Users> UsersList = new ArrayList<Users>();
+//                UsersList = userService.findByUserid(groupMembersAll.get(k).getUserid());
+//                LoginUser loginUser = new LoginUser();
+//                if (UsersList.get(0).getStatus().equals("0")) { //  && UsersList.get(0).getType().equals("1")
+//                    loginUser.setName(UsersList.get(0).getLoginid());
+//                    loginUser.setValue(UsersList.get(0).getLoginid());
+//                    if (userService.findPersonsByUserid(UsersList.get(0).getUserid()).getSex().equals("0")) {
+//                        loginUser.setImg("user0.png");
+//                    } else {
+//                        loginUser.setImg("user1.png");
+//                    }
+//                    loginUsers.add(loginUser);
+//                }
+//            }
+//        } catch (Exception e) {
+//            logger.info("-----", e);
+//        }
+//        return loginUsers;
+//
+//    }
 
     /**
      * 判断用户是否登录
@@ -117,7 +116,7 @@ public class LoginController {
         token.setRememberMe(true);
         try {
             user.login(token);
-            return "redirect:/mctrl";
+            return "redirect:/dashboard";
         } catch (Exception e) {
             logger.error("登录失败错误信息:", e);
             token.clear();

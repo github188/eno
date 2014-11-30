@@ -669,46 +669,81 @@
     line-height: 44px;
 }
 
+#waterTemperature {
+	width: 450px;
+	height: 130px;
+	padding-top: 50px;
+	margin-left: -20px;
+}
+.chwp_left_unit {
+	font-size: 12px;
+	float: left;
+	padding-top: 48px;
+	margin-left: -179px;
+}
+.chwp_right_unit {
+	float: right;
+	font-size: 12px;
+	padding: 48px 104px 0px 0px;
+}
+#waterFlow {
+	width: 450px;
+	height: 80px;
+	margin-left: -20px;
+}
+.flow_left_unit {
+	font-size: 12px;
+	float: left;
+	padding-top: 48px;
+	margin-left: -179px;
+}
+#highPressure {
+	width: 450px;
+	height: 110px;
+	padding-top: 60px;
+	margin-left: -20px;
+}
+.highPressure_left_unit {
+	font-size: 12px;
+	float: left;
+	padding-top: 50px;
+	margin-left: -36px;
+}
+#etdTemperature {
+	width: 450px;
+	height: 70px;
+	padding-top: 40px;
+	margin-left: -20px;
+}
+.etdTemperature_left_unit {
+	font-size: 12px;
+	float: left;
+	padding-top: 50px;
+	margin-left: -125px;
+}
 
+#wsdFrequency {
+	width: 450px;
+	height: 110px;
+	padding-top: 40px;
+	margin-left: -20px;
+}
+.wsdFrequency_left_unit {
+	font-size: 12px;
+	float: left;
+	padding-top: 50px;
+	margin-left: -114px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#giveWater {
+	width: 450px;
+	height: 110px;
+	padding-top: 40px;
+	margin-left: -20px;
+}
+.giveWater_left_unit {
+	font-size: 12px;
+	float: left;
+	padding-top: 50px;
+	margin-left: -106px;
+}

@@ -10,12 +10,19 @@
                 <div class="pubCon_blackOne h325">
                     <div class="systemBox">
                         <h3 class="pt10 pb5"><i class="flag flag_green mr15 mt8"></i>冷冻水/冷却水温度</h3>
+                        <div class="chwp_left_unit">(℃)</div>
+						<div class="chwp_right_unit">(％)</div>
                         <div class="chartBbox">
-                            <div class="chartPic_monoitorOne"><img src="../resources/images/monitor_pic01.jpg" /></div>
+                            <div class="chartPic_monoitorOne">
+								<div id="waterTemperature"></div>
+							</div>
                         </div>
                         <h3 class="pt10 pb5"><i class="flag flag_green mr15 mt8"></i>冷冻水/冷却水流量</h3>
+                        <div class="flow_left_unit">(m³/h)</div>
                         <div class="chartBbox">
-                            <div class="chartPic_monoitorOne"><img src="../resources/images/monitor_pic02.jpg" /></div>
+                            <div class="chartPic_monoitorOne">
+								<div id="waterFlow"></div>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -197,10 +204,13 @@
                 <div class="pubCon_blackOne h250">
                     <div class="systemBox">
                         <h3 class="pt10 pb5"><i class="flag flag_red mr15 mt8"></i>高压</h3>
+                        <div class="highPressure_left_unit">(v)</div>
                         <div class="chartBbox">
-                            <div class="chartPic_monoitorOne"><img src="../resources/images/monitor_pic03.jpg" /></div>
+                            <div class="chartPic_monoitorOne">
+								<div id="highPressure"></div>
+							</div>
                         </div>
-                        <div class="ml20 mr20 mt15">
+                        <div class="ml20 mr20 mt10">
                             <ul class="ulSystemOne">
                                 <li><span class="right"><em class="ft24 mr5">3</em><span class="unit col9fa0a2">A</span></span>电流</li>
                                 <li><span class="right"><em class="ft24 mr5">3</em><span class="unit col9fa0a2">V</span></span>电压</li>
@@ -235,7 +245,8 @@
                 </div>
                 <div class="pubCon_blackOne h125">
                     <div class="systemBox">
-                        <h3 class="pt5"><i class="flag flag_red mr15 mt8"></i>
+                        <h3 class="pt5">
+                        	<i class="flag flag_red mr15 mt8"></i>
                             <div class="filter_widget">
                                 <select class="selectpicker">
                                     <option>1号变压器</option>
@@ -245,7 +256,10 @@
                                 </select>
                             </div>
                         </h3>
-                        <div class="chartPic_monoitorOne"><img src="../resources/images/monitor_pic04.jpg" /></div>
+                        <div class="etdTemperature_left_unit">(v)</div>
+                        <div class="chartPic_monoitorOne">
+							<div id="etdTemperature"></div>
+						</div>
                     </div>
                 </div>
             </div>
@@ -257,23 +271,22 @@
                 <div class="pubCon_blackOne h435">
                     <div class="systemBox">
                         <h3 class=" mt10 mb5"><i class="flag flag_purple mr15 mt8"></i>1号水泵频率</h3>
+                        <div class="wsdFrequency_left_unit">(Hz)</div>
                         <div class="chartBbox">
-                            <div class="chartPic_monoitorTwo"><img src="../resources/images/monitor_pic05.jpg" /></div>
+                            <div class="chartPic_monoitorTwo">
+								<div id="wsdFrequency"></div>
+							</div>
                         </div>
                         <h3 class="mt10 mb5"><i class="flag flag_purple mr15 mt8"></i>水泵房给水</h3>
+                        <div class="giveWater_left_unit">(℃)</div>
                         <div class="chartBbox">
-                            <div class="chartPic_monoitorTwo"><img src="../resources/images/monitor_pic06.jpg" /></div>
+                            <div class="chartPic_monoitorTwo">
+								<div id="giveWater"></div>
+							</div>
                         </div>
                     </div>
                     
                 </div>
-                <!--<div class="pubCon_blackTwo h110 pl20 pr20 pt10">
-                    <ul class="ulSystemOne">
-                        <li><span class="right"><em class="ft24 mr5">3</em><span class="unit col9fa0a2">Pa</span></span>室外干球温度</li>
-                        <li><span class="right"><em class="ft24 mr5">3</em><span class="unit col9fa0a2">m3/h</span></span>室外相对湿度</li>
-                        <li class="last"><span class="right"><em class="ft24 mr5">3</em><span class="unit col9fa0a2">Pa</span></span>室外相对湿度</li>
-                    </ul>
-                </div>-->
                 <div class="ulSystemTwo pubCon_grey">
                     <ul>
                         <li>
