@@ -1,5 +1,10 @@
 $(function() {
 
+	// 变压器_下拉列表切换
+	$("#etdSelect").change(function(a, b) {
+		runMonitor.buildETDTemperatureChart(); // 生成变配电_温度图
+	});
+	
 	runMonitor.buildWaterTemperatureChart(); // 生成暖通空调_冷冻水/冷却水温度图
 	runMonitor.buildWaterFlowChart(); // 生成暖通空调_冷冻水/冷却水流量图
 	runMonitor.buildETDChart(); // 生成变配电高压图
@@ -31,7 +36,7 @@ var runMonitor = {
 		
 		$('#waterTemperature').highcharts({
 					chart : {
-						type : 'spline'
+						type : 'line'
 					},
 					xAxis : {
 						labels : {
@@ -63,15 +68,6 @@ var runMonitor = {
 							color : '#FFF' // 提示内容颜色
 						},
 						borderWidth : 0
-					},
-					plotOptions : {
-						spline : {
-							marker : {
-								radius : 0,
-								lineColor : '#666666',
-								lineWidth : 0
-							}
-						}
 					},
 					legend : {
 						shadow : true,
@@ -148,7 +144,7 @@ var runMonitor = {
 		
 		$('#waterFlow').highcharts({
 			chart : {
-				type : 'spline'
+				type : 'line'
 			},
 			xAxis : {
 				labels : {
@@ -172,15 +168,6 @@ var runMonitor = {
 					color : '#FFF' // 提示内容颜色
 				},
 				borderWidth : 0
-			},
-			plotOptions : {
-				spline : {
-					marker : {
-						radius : 0,
-						lineColor : '#666666',
-						lineWidth : 0
-					}
-				}
 			},
 			legend : {
 				shadow : true,
@@ -228,7 +215,7 @@ var runMonitor = {
 		
 		$('#highPressure').highcharts({
 				chart : {
-					type : 'spline',
+					type : 'line',
 					marginBottom : 15
 				},
 				xAxis : {
@@ -248,14 +235,6 @@ var runMonitor = {
 						color : '#FFF' // 提示内容颜色
 					},
 					borderWidth : 0
-				},
-				plotOptions : {
-					spline : {
-						marker : {
-							lineColor : '#666666',
-							lineWidth : 1
-						}
-					}
 				},
 				legend: {
 					shadow : true,
@@ -310,7 +289,7 @@ var runMonitor = {
 
 		$('#etdTemperature').highcharts({
 					chart : {
-						type : 'spline',
+						type : 'line',
 						marginBottom : 15
 					},
 					xAxis : {
@@ -331,18 +310,10 @@ var runMonitor = {
 						},
 						borderWidth : 0
 					},
-					plotOptions : {
-						spline : {
-							marker : {
-								lineColor : '#666666',
-								lineWidth : 1
-							}
-						}
-					},
 					legend : {
 						shadow : true,
 						layout : 'vertical',
-						itemMarginTop : 7,
+//						itemMarginTop : 7,
 						verticalAlign : 'top',
 						align : 'right'
 					},
@@ -371,7 +342,7 @@ var runMonitor = {
 
 		$('#wsdFrequency').highcharts({
 					chart : {
-						type : 'spline',
+						type : 'line',
 						marginBottom : 15
 					},
 					xAxis : {
@@ -391,14 +362,6 @@ var runMonitor = {
 							color : '#FFF' // 提示内容颜色
 						},
 						borderWidth : 0
-					},
-					plotOptions : {
-						spline : {
-							marker : {
-								lineColor : '#666666',
-								lineWidth : 1
-							}
-						}
 					},
 					legend : {
 						shadow : true,
@@ -432,7 +395,7 @@ var runMonitor = {
 
 		$('#giveWater').highcharts({
 					chart : {
-						type : 'spline',
+						type : 'line',
 						marginBottom : 15
 					},
 					xAxis : {
@@ -452,14 +415,6 @@ var runMonitor = {
 							color : '#FFF' // 提示内容颜色
 						},
 						borderWidth : 0
-					},
-					plotOptions : {
-						spline : {
-							marker : {
-								lineColor : '#666666',
-								lineWidth : 1
-							}
-						}
 					},
 					legend : {
 						shadow : true,

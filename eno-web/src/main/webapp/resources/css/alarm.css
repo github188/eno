@@ -4,7 +4,7 @@
 .alarmBox { float:left !important; width:930px !important; height:400px; margin-left:0 !important; }
 .alarm_time { height:30px; line-height:30px; margin-right:20px;}
 .alarmCon_history { height:875px; }
-.chartPic_alarmTwo { width:860px; height:246px; margin:50px auto 0; }
+.chartPic_alarmTwo { width:860px; height:246px; margin:30px auto 0; }
 .chartPic_alarmOne { width:160px; height:160px; position:relative; margin:60px 45px 0 90px; }
 .chartTxt { position:absolute; left:47px; top:50px; height:60px; font-size:60px; color:#fff; line-height:60px; }
 .alarm_count { width:160px; margin:15px 0 0 90px; font-size:22px; color:#fff; text-align:center; }
@@ -17,51 +17,8 @@
 .alarm_deal_list li { color:#fff; line-height:23px; letter-spacing:1px; }
 .alarm_deal_list li span { display:inline-block; width:105px; color:#9fa0a2; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#alarmTrendChart {
+	width: 920px;
+	height: 286px;
+	margin-left: -30px;
+}

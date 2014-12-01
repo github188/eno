@@ -248,7 +248,7 @@
                         <h3 class="pt5">
                         	<i class="flag flag_red mr15 mt8"></i>
                             <div class="filter_widget">
-                                <select class="selectpicker">
+                                <select class="selectpicker" id="etdSelect">
                                     <option>1号变压器</option>
                                     <option>2变压器</option>
                                     <option>3号变压器</option>

@@ -67,7 +67,7 @@
                     <div class="formBar mt30" style="margin-left:65px;">
                     	<label>选择子系统</label>
                         <div class="filter_widget">
-                            <select class="selectpicker">
+                            <select class="selectpicker" id="choosechildsystem">
                                 <option>全部系统</option>
                                 <option>暖通空调</option>
                                 <option>照明系统</option>
@@ -78,7 +78,9 @@
                     <span class="right alarm_time mt30">截至<em>15:21</em></span>
                 </div>
                 <div class="chartBbox">
-                	<div class="chartPic_alarmTwo"><img src="../resources/images/alarm_pic05.png" /></div>
+                	<div class="chartPic_alarmTwo">
+						<div id="alarmTrendChart"></div>
+					</div>
                 </div>
             </div>
         </div>
