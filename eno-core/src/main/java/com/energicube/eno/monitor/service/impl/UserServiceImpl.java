@@ -3,12 +3,15 @@ package com.energicube.eno.monitor.service.impl;
 import com.energicube.eno.monitor.model.*;
 import com.energicube.eno.monitor.repository.*;
 import com.energicube.eno.monitor.service.UserService;
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,12 +140,51 @@ public class UserServiceImpl implements UserService {
         okcUserStatusRepository.save(okcUserStatus);
     }
 
+    /**
+     * 获取所有用户信息列表
+     */
     public List<Users> findAllUsers() {
         List<Users> users = usersRepository.findAll();
         return users;
     }
 
+    /**
+     * 用户管理部门用户查询
+     * 
+     * @return  userList List<Users>
+     */
+    public List<Users> findDepartmentList(String department){
+    	 List<Users> users = usersRepository.findDepartmentList(department);
+         return users;
+    }
+    
+    /**
+     * 用户管理用户查询
+     * 
+     * @return  Users users
+     */
+    public Users findUserid(String userid){
+    	Users users = usersRepository.findUserid(userid);
+    	return users;
+    }
 
+    /**
+     * 用户管理用户查询
+     */
+    public void delUsers(String userid){
+    	Users users = usersRepository.findUserid(userid);
+    	usersRepository.delete(users);
+    }
+    
+    /**
+     * 用户管理用户密码修改
+     */
+    public void updateUsersPassword(Users user){
+    	Users users = usersRepository.findUserid(user.getUserid());
+    	users.setPassword(user.getPassword());
+    	usersRepository.save(users);
+    }
+    
     public List<GroupMember> findGroupMemberByUserid(String userId) {
         return groupMemberRepository.findByUserid(userId);
     }

@@ -19,3 +19,4 @@
 <script src="<spring:url value="/resources/plugins/My97DatePicker/WdatePicker.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/scripts/common.js" />"></script>
 <script src="<spring:url value="/resources/scripts/user/user.js"></spring:url>"></script>
+<script src="<spring:url value="/resources/scripts/longToDate.js"></spring:url>"></script>

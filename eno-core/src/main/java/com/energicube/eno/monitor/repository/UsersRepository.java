@@ -2,6 +2,7 @@ package com.energicube.eno.monitor.repository;
 
 import com.energicube.eno.monitor.model.Persons;
 import com.energicube.eno.monitor.model.Users;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,8 +15,13 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 //    public List<Persons> selectUserorderBy() throws DataAccessException;
 
     public List<Users> findByUserid(String userid);
+    
+    @Query("select u from Users u where u.userid=?1 ")
+    public Users findUserid(String userid);
 
-
+    @Query("select u from Users u where u.department=?1 ")
+    public List<Users> findDepartmentList(String department);
+    
     /**
      * 查找指定类别的用户
      *
