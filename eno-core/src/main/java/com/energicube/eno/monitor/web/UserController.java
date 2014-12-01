@@ -7,9 +7,12 @@ import com.energicube.eno.monitor.repository.*;
 import com.energicube.eno.monitor.service.DictionaryService;
 import com.energicube.eno.monitor.service.UserGroupService;
 import com.energicube.eno.monitor.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,11 +20,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.UnsupportedEncodingException;
 import java.text.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 用户登陆处理控制
@@ -32,6 +38,8 @@ import java.util.List;
 @RequestMapping("/okcsys")
 public class UserController extends BaseController {
 
+	private static final Log logger = LogFactory.getLog(UserController.class);
+	
     @Autowired
     private UserGroupService userGroupService;
     @Autowired
@@ -60,18 +68,123 @@ public class UserController extends BaseController {
     
     /**
      * 用户管理用户查询
-     * @return 
+     * 
+     * @return  userList List<Users>
      */
     @RequestMapping(value = "/findUserList", method = RequestMethod.GET)
     @ResponseBody
     public List<Users> findUserList() {
     	List<Users> userList = new ArrayList<Users>();
     	userList = userService.findAllUsers();
-        	
     	return userList;
     }
     
+    /**
+     * 用户管理部门用户查询
+     * 
+     * @return  userList List<Users>
+     */
+    @RequestMapping(value = "/finddepartmentList", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Users> findDepartmentList(HttpServletRequest request) {
+		String department=null;
+		try {
+			department = new String(request.getParameter("department").getBytes("ISO-8859-1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			logger.error(e);
+		}
+		 List<Users> userlist = userService.findDepartmentList(department);
+    	return userlist;
+    }
     
+    /**
+     * 用户管理用户查询
+     * 
+     * @return  Users users
+     */
+    @RequestMapping(value = "/findUserid", method = RequestMethod.GET)
+    @ResponseBody
+    public Users findByUserid(HttpServletRequest request) {
+		String userid = request.getParameter("userid");
+		Users users = userService.findUserid(userid);
+    	return users;
+    }
+    
+    /**
+     * 用户管理用户密码修改
+     *
+     * @param user
+     */
+    @RequestMapping(value = "/updateUsersPassword", method = RequestMethod.GET)
+    @ResponseBody
+    public String updateUsersPassword(HttpServletRequest request) {
+    	//用户信息
+    	Users user= new Users();
+    	//存放userid
+    	user.setUserid(request.getParameter("useruid"));
+    	user.setPassword(Constants.getMdPassword(request.getParameter("passwordnew")));
+    	userService.updateUsersPassword(user);
+    	return "success";
+    }
+    
+    /**
+     * 用户管理用户新建&修改
+     *
+     * @param user
+     */
+    @RequestMapping(value = "/saveUser", method = RequestMethod.GET)
+    @ResponseBody
+    public String saveUser(HttpServletRequest request) {
+    	//定义日期格式
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    	//用户信息
+    	Users user= new Users();
+    	//存放userid
+    	String userid=request.getParameter("useruid");
+    	//判断userid是否为空， 空：新增用户，不为空：修改用户
+    	if(userid==null || "".equals(userid)){
+    		//自动生成userid
+    		user.setUserid(UUID.randomUUID().toString());
+    	}else{
+    		user.setUserid(userid);
+    	}
+    	user.setFirstname(request.getParameter("firstname"));
+    	user.setLoginid(request.getParameter("loginid"));
+    	user.setPassword(Constants.getMdPassword(request.getParameter("password")));
+    	user.setSex(request.getParameter("sex"));
+    	Date date;
+		try {
+			date = sdf.parse(request.getParameter("birthday"));
+			user.setBirthday(date);
+			date = sdf.parse(request.getParameter("workdate"));
+			user.setWorkdate(date);
+		} catch (ParseException e) {
+			logger.error(e);
+		}
+    	user.setPhone(request.getParameter("phone"));
+    	String department;
+		try {
+			department = new String(request.getParameter("department").getBytes("ISO-8859-1"), "UTF-8");
+			user.setDepartment(department);
+		} catch (UnsupportedEncodingException e) {
+			 logger.error(e);
+		}
+    	userService.saveUsers(user);
+    	return "success";
+    }
+    
+  
+    /**
+     * 用户管理用户删除
+     *
+     * @param user
+     */
+    @RequestMapping(value = "/delUsers", method = RequestMethod.GET)
+    @ResponseBody
+    public String delUsers(HttpServletRequest request){
+    	userService.delUsers(request.getParameter("userid"));
+    	return "success";
+    }
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String inituserList(Model model) {
         List<Persons> Personses = userService.findPersons();

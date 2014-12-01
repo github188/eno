@@ -103,7 +103,7 @@ public class Users implements java.io.Serializable {
 		this.loginid = loginid;
 	}
 
-	@Column(name = "PASSWORD", length = 50)
+	@Column(name = "PASSWORD", length = 150)
 	public String getPassword() {
 		return password;
 	}

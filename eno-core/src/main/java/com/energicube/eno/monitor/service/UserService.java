@@ -52,7 +52,36 @@ public interface UserService {
     // 更新状态
     public void saveOkcUserStatus(OkcUserStatus okcUserStatus);
 
+    /**
+     * 获取所有用户信息列表
+     * 
+     * @return  List<Users> 
+     */
     public List<Users> findAllUsers();
+    
+    /**
+     * 用户管理部门用户查询
+     * 
+     * @return  userList List<Users>
+     */
+    public List<Users> findDepartmentList(String department);
+    
+    /**
+     * 用户管理用户查询
+     * 
+     * @return  Users 
+     */
+    public Users findUserid(String userid);
+    
+    /**
+     * 用户管理用户查询
+     */
+    public void delUsers(String userid);
+    
+    /**
+     * 用户管理用户密码修改
+     */
+    public void updateUsersPassword(Users user);
 
     /**
      * 根据用户ID查询组
