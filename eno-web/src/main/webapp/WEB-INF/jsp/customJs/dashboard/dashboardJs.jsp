@@ -1,6 +1,7 @@
 
 <!-- Echarts -->
 <script src="${pageContext.request.contextPath}/resources/plugins/echarts/echarts-plain.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/echarts/echarts.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <spring:url value="${pageContext.request.contextPath}/resources/plugins/echarts/html5shiv.min.js" var="html5shiv"/>

@@ -66,6 +66,7 @@ public class UserController extends BaseController {
     private static final int MAX = 9999;
 
     
+    
     /**
      * 用户管理用户查询
      * 
@@ -135,6 +136,7 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/saveUser", method = RequestMethod.GET)
     @ResponseBody
     public String saveUser(HttpServletRequest request) {
+    	String flg="";
     	//定义日期格式
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     	//用户信息
@@ -145,8 +147,10 @@ public class UserController extends BaseController {
     	if(userid==null || "".equals(userid)){
     		//自动生成userid
     		user.setUserid(UUID.randomUUID().toString());
+    		flg="save";
     	}else{
     		user.setUserid(userid);
+    		flg="update";
     	}
     	user.setFirstname(request.getParameter("firstname"));
     	user.setLoginid(request.getParameter("loginid"));
@@ -170,7 +174,7 @@ public class UserController extends BaseController {
 			 logger.error(e);
 		}
     	userService.saveUsers(user);
-    	return "success";
+    	return flg;
     }
     
   
@@ -183,8 +187,9 @@ public class UserController extends BaseController {
     @ResponseBody
     public String delUsers(HttpServletRequest request){
     	userService.delUsers(request.getParameter("userid"));
-    	return "success";
+    	return "del";
     }
+    
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String inituserList(Model model) {
         List<Persons> Personses = userService.findPersons();
