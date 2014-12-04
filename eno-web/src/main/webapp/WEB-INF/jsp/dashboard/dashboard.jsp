@@ -81,7 +81,9 @@
                         <div class="index_tit"><h2>今日用能状况</h2></div>
                         <div class="chartBbox">
                             <p class="chart_tit">今日实时用电功率</p>
-                            <div class="chartPic_indexOne"><img src="resources/images/index_pic02.jpg" /></div>
+                            <div class="chartPic_indexOne">
+								<div id="todayenergy"></div>
+							</div>
                         </div>
                     </div>
                     <div class="con_i_r">
