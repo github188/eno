@@ -153,51 +153,51 @@
                         <li>
                             <i class="icon_big icon_index_Nlight"></i>
                             <p class="mt5"><span class="icon_small alarm_yellow"></span>夜景照明</p>
-                            <p class="colfff">共 <em>99+</em> 条报警</p>
-                        </li>
-                        <li>
-                            <i class="icon_big icon_index_elec"></i>
-                            <p class="mt5"><span class="icon_small alarm_green"></span>暖通空调</p>
                             <p class="colfff">共 <em>1</em> 条报警</p>
                         </li>
                         <li>
+                            <i class="icon_big icon_index_elec"></i>
+                            <p class="mt5"><span class="icon_small alarm_green"></span>变配电</p>
+                            <p class="colfff">共 <em>99+</em> 条报警</p>
+                        </li>
+                        <li>
                             <i class="icon_big icon_index_drainage"></i>
-                            <p class="mt5"><span class="icon_small alarm_green"></span>暖通空调</p>
+                            <p class="mt5"><span class="icon_small alarm_green"></span>给水排水</p>
                             <p class="colfff">暂无报警</p>
                         </li>
                         <li>
                             <i class="icon_big icon_index_video"></i>
-                            <p class="mt5"><span class="icon_small alarm_grey"></span>公共照明</p>
+                            <p class="mt5"><span class="icon_small alarm_grey"></span>视频监控</p>
                             <p class="colfff">共 <em>1</em> 条报警</p>
                         </li>
                         <li>
                             <i class="icon_big icon_index_alarm"></i>
-                            <p class="mt5"><span class="icon_small alarm_yellow"></span>夜景照明</p>
+                            <p class="mt5"><span class="icon_small alarm_yellow"></span>入侵报警</p>
                             <p class="colfff">共 <em>1</em> 条报警</p>
                         </li>
                         <li>
                             <i class="icon_big icon_index_door"></i>
-                            <p class="mt5"><span class="icon_small alarm_green"></span>暖通空调</p>
+                            <p class="mt5"><span class="icon_small alarm_green"></span>门禁管理</p>
                             <p class="colfff">共 <em>1</em> 条报警</p>
                         </li>
                         <li>
                             <i class="icon_big icon_index_security"></i>
-                            <p class="mt5"><span class="icon_small alarm_green"></span>暖通空调</p>
+                            <p class="mt5"><span class="icon_small alarm_green"></span>电子巡查</p>
                             <p class="colfff">暂无报警</p>
                         </li>
                         <li>
                             <i class="icon_big icon_index_lift"></i>
-                            <p class="mt5"><span class="icon_small alarm_grey"></span>公共照明</p>
+                            <p class="mt5"><span class="icon_small alarm_grey"></span>电梯运行</p>
                             <p class="colfff">共 <em>1</em> 条报警</p>
                         </li>
                         <li>
                             <i class="icon_big icon_index_fire"></i>
-                            <p class="mt5"><span class="icon_small alarm_yellow"></span>夜景照明</p>
+                            <p class="mt5"><span class="icon_small alarm_yellow"></span>消防监控</p>
                             <p class="colfff">共 <em>1</em> 条报警</p>
                         </li>
                         <li>
                             <i class="icon_big icon_index_park"></i>
-                            <p class="mt5"><span class="icon_small alarm_green"></span>暖通空调</p>
+                            <p class="mt5"><span class="icon_small alarm_green"></span>停车管理</p>
                             <p class="colfff">共 <em>1</em> 条报警</p>
                         </li>
                     </ul>

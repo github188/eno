@@ -21,7 +21,7 @@ var dashboard = {
 		$('#todayenergy').highcharts({
 					chart : {
 						backgroundColor : '#000000',
-						marginBottom : 60
+						marginBottom : 50
 					},
 					legend : {
 						x: 240,

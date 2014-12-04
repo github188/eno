@@ -10,11 +10,11 @@
             <div class="userform_Bar">
                 <div class="filter_widget">
                     <select class="selectpicker" id="finddepartment">
-                        <option value="0">所有用户</option>
-                        <option value="1">产品部</option>
-                        <option value="2">宣传部</option>
-                        <option value="3">人事</option>
-                        <option value="4">测试部</option>
+                        <option value="所有用户">所有用户</option>
+                        <option value="产品部">产品部</option>
+                        <option value="宣传部">宣传部</option>
+                        <option value="人事">人事</option>
+                        <option value="测试部">测试部</option>
                     </select>
                 </div>
                 <div class="funBtnBar" style="margin: 0;">
@@ -42,15 +42,15 @@
             		<input type="hidden" name="useruid" id="useruid" >
 	                <div class="quota_setInfo">
 	                    <label>姓名</label>
-	                    <div class="formInput"><input type="text" class="quota_input" name="firstname" id="firstname" ></div>
+	                    <div class="formInput"><input type="text" class="quota_input inputWidth" name="firstname" id="firstname" ></div>
 	                </div>
 	                <div class="quota_setInfo">
 	                    <label>登录id</label>
-	                    <div class="formInput"><input type="text" class="quota_input" name="loginid" id="loginid"></div>
+	                    <div class="formInput"><input type="text" class="quota_input inputWidth" name="loginid" id="loginid"></div>
 	                </div>
 	                <div class="quota_setInfo">
 	                    <label>密码</label>
-	                    <div class="formInput"><input type="password" class="quota_input" name="password" id="password"></div>
+	                    <div class="formInput"><input type="password" class="quota_input inputWidth" name="password" id="password"></div>
 	                </div>
 	                <div class="quota_setInfo">
 	                    <label>性别</label>

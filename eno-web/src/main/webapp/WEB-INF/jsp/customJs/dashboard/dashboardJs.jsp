@@ -10,7 +10,6 @@
 <script src="${respond}"></script>
 <![endif]-->
 
-
 <!-- HighCharts -->
 <script src="${pageContext.request.contextPath}/resources/plugins/highcharts/highcharts.js"></script>
 <script src="${pageContext.request.contextPath}/resources/scripts/dashboard/dashboard.js"></script>

@@ -20,3 +20,7 @@
 	-moz-background-clip: padding-box;
 	background-clip: padding-box;
 }
+
+.inputWidth {
+	width: 120px;
+}

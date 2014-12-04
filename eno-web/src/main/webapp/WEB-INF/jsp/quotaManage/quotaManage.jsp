@@ -24,7 +24,9 @@
                 <div class="pubCon_grey Echart_quota">
                 	<p class="ft18 center pt20">年用电情况仪表盘</p>
                     <div class="chartBbox">
-                    	<div class="center mt30"><img src="<spring:url value="/resources/images/quota_pic05.jpg"></spring:url>"></div>
+                    	<div class="chartPic_indexTwo">
+                        	<div id="energyquotaManage" class="energyquota"></div>
+                        </div>
                         <p class="quota_chartValue"><strong class="ft40 colfff mr5">75</strong>%</p>
                     </div>
                 </div>
@@ -41,7 +43,7 @@
                 <div class="pubCon_grey Echart_quota">
                 	<p class="ft18 center pt20">今年实际用电/定额</p>
                     <div class="chartBbox">
-                    	<div class="center mt5"><img src="<spring:url value="/resources/images/quota_pic06.jpg"></spring:url>"></div>
+                    	<div    class="monthElectricity" id="monthElectricity"></div>
                     </div>
                 </div>
                 <p class="amount_num"><i class="icon_small arrow_down_y mr10"></i>截至到目前，2014年总用电慢于定额计划10%</p>
@@ -57,7 +59,7 @@
                 <div class="pubCon_grey Echart_quota">
                 	<p class="ft18 center pt20">九月每日用电情况</p>
                     <div class="chartBbox">
-                    	<div class="center mt10"><img src="<spring:url value="/resources/images/quota_pic07.jpg"></spring:url>"></div>
+                    	<div  id="calendar"></div>
                     </div>
                 </div>
                 <p class="amount_num"><i class="icon_small arrow_down_y mr10"></i>截至到目前，2014年总用电慢于定额计划10%</p>
