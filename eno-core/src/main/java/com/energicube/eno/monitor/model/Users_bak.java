@@ -9,7 +9,7 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "USERS", schema = "zclfsys")
+@Table(name = "USERS")
 public class Users_bak implements java.io.Serializable {
 
     private static final long serialVersionUID = 6864670836615506994L;

@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "UC_systemBusinessTime"
-        , schema = "zclfsys"
+        
 )
 public class UcSystemBusinessTime implements java.io.Serializable {
 

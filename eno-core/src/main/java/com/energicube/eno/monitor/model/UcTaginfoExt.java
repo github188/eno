@@ -8,7 +8,7 @@ import javax.persistence.*;
  * @author CHENPING
  */
 @Entity
-@Table(name = "UC_TAGINFOEXT", schema = "zclfsys")
+@Table(name = "UC_TAGINFOEXT")
 public class UcTaginfoExt implements java.io.Serializable {
 
     private static final long serialVersionUID = 2959563503144523757L;

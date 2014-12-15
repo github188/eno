@@ -14,7 +14,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "UC_deviceRecord"
-        , schema = "zclfsys"
+        
 )
 public class UcDeviceRecord implements java.io.Serializable {
 

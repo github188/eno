@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  * 资产信息
  */
 @Entity
-@Table(name = "ASSET", schema = "zclfsys")
+@Table(name = "ASSET")
 public class Asset implements java.io.Serializable {
 
     private static final long serialVersionUID = 7647679150251168973L;

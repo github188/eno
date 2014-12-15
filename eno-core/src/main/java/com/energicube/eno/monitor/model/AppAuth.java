@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 @Entity
-@Table(name = "APPAUTH", schema = "zclfsys")
+@Table(name = "APPAUTH")
 public class AppAuth implements java.io.Serializable {
 
     private static final long serialVersionUID = -768423732547346486L;

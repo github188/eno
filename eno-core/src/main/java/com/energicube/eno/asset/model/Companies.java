@@ -10,7 +10,7 @@ import java.util.Date;
  * 公司定义（用于资产的供应商与生产商）
  */
 @Entity
-@Table(name = "COMPANIES", schema = "zclfsys")
+@Table(name = "COMPANIES")
 public class Companies implements java.io.Serializable {
 
     private static final long serialVersionUID = -2466114221353344873L;

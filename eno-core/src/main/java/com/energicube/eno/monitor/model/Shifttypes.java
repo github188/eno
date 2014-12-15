@@ -7,7 +7,7 @@ import java.util.Date;
  * 班次类型
  */
 @Entity
-@Table(name = "SHIFTTYPES", schema = "zclfsys")
+@Table(name = "SHIFTTYPES")
 public class Shifttypes implements java.io.Serializable {
 
     private static final long serialVersionUID = -6112172564043377506L;

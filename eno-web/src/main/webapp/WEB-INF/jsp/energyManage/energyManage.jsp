@@ -19,7 +19,7 @@
                 <li><a href="#" class="icon_small Echart_viewNine"></a></li>
             </ul>
             <!-- 一宫格 开始 -->
-            <div class="js_Echart_content" id="js_Echart_content_one">
+            <div class="js_Echart_content" id="js_Echart_content_one" style="display: none;">
             	<div class="pubCon_blackOne Echart_view_con">
                 	<div class="Echart_sidebar pubCon_blackTwo">
                     	<h3><i class="flag flag_green mr15 mt20"></i>建筑总体能耗</h3>
@@ -103,7 +103,7 @@
             </div>
             <!-- 一宫格 结束 -->
             <!-- 六宫格 开始 -->
-            <div class="js_Echart_content" style="display:none;">
+            <div class="js_Echart_content" style="display: none;">
             	<div class="Echart_view_con">
                 	<div class="Echart_view_box">
                         <div class="pubBox mr15">
@@ -122,7 +122,7 @@
                                     </ul>
                                 </div>
                                 <div class="chartBbox chartBboxh240 pubCon_grey">
-                                    <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic02.jpg"></spring:url>"></div>
+                                    <div class="chartPic_energyTwo energy_sex_chart" id="energy_sex_energytotal"></div>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                                     </ul>
                                 </div>
                                 <div class="chartBbox chartBboxh240 pubCon_grey">
-                                    <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic03.jpg"></spring:url>"></div>
+                                    <div class="chartPic_energyTwo energy_sex_chart" id="energy_sex_energysubentry"></div>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                     </ul>
                                 </div>
                                 <div class="chartBbox chartBboxh240 pubCon_grey">
-                                    <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic04.jpg"></spring:url>"></div>
+                                    <div class="chartPic_energyTwo energy_sex_chart" id="energy_sex_electricitytotal"></div>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                                     </ul>
                                 </div>
                                 <div class="chartBbox chartBboxh240 pubCon_grey">
-                                    <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic05.jpg"></spring:url>"></div>
+                                    <div class="chartPic_energyTwo energy_sex_chart" id="energy_sex_hvacsubentry"></div>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                                     </ul>
                                 </div>
                                 <div class="chartBbox chartBboxh240 pubCon_grey">
-                                    <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic06.jpg"></spring:url>"></div>
+                                    <div class="chartPic_energyTwo energy_sex_chart" id="energy_sex_datacenter"></div>
                                 </div>
                             </div>
                         </div>
@@ -222,7 +222,7 @@
                                     </ul>
                                 </div>
                                 <div class="chartBbox chartBboxh240 pubCon_grey">
-                                    <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic07.jpg"></spring:url>"></div>
+                                    <div class="chartPic_energyTwo energy_sex_chart" id="energy_sex_deviceenergy"></div>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
             </div>
             <!-- 六宫格 结束 -->
             <!-- 九宫格 开始 -->
-            <div class="js_Echart_content js_Echart_content_special" style="display:none;">
+            <div class="js_Echart_content js_Echart_content_special" style="display:block;">
             	<div class="Echart_view_con">
                 	<div class="Echart_viewBar_n">
                     	<i class="flag_h60 flag_blue_light"></i>
@@ -259,55 +259,55 @@
                         <div class="pubBox mr8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_green mr15 mt20"></i>建筑总能耗</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic08.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_energytotal"></div>
                             </div>
                         </div>
                         <div class="pubBox mr8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_red mr15 mt20"></i>建筑总能耗分项</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic09.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_energysubentry"></div>
                             </div>
                         </div>
                         <div class="pubBox">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_blue mr15 mt20"></i>建筑总用电</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic10.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_electricitytotal"></div>
                             </div>
                         </div>
                         <div class="pubBox mr8 mt8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_purple mr15 mt20"></i>建筑总用水</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic11.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_watertotal"></div>
                             </div>
                         </div>
                         <div class="pubBox mr8 mt8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_yellow mr15 mt20"></i>建筑总用气</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic12.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_gastotal"></div>
                             </div>
                         </div>
                         <div class="pubBox mt8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_purple_deep mr15 mt20"></i>建筑用电分项</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic13.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_buildsubentry"></div>
                             </div>
                         </div>
                         <div class="pubBox mr8 mt8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_green_light mr15 mt20"></i>空调系统用电分项</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic14.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_hvacsubentry"></div>
                             </div>
                         </div>
                         <div class="pubBox mr8 mt8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_red mr15 mt20"></i>数据中心用电趋势</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic15.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_datacenter"></div>
                             </div>
                         </div>
                         <div class="pubBox mt8">
                             <div class="pubCon_blackThree w618 h240">
                                 <div class="Echart_view_title"><h3><i class="flag flag_blue_light mr15 mt20"></i>建筑设备能耗</h3></div>
-                                <div class="chartPic_energyTwo"><img src="<spring:url value="/resources/images/energy_pic16.jpg"></spring:url>"></div>
+                                <div class="chartPic_energyTwo energy_nine_chart" id="energy_nine_deviceenergy"></div>
                             </div>
                         </div>
                     </div>

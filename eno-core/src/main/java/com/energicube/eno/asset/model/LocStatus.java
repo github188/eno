@@ -7,7 +7,7 @@ import java.util.Date;
  * 位置状态变更记录
  */
 @Entity
-@Table(name = "LOCSTATUS", schema = "zclfsys")
+@Table(name = "LOCSTATUS")
 public class LocStatus implements java.io.Serializable {
 
     private static final long serialVersionUID = 6486104414731357511L;

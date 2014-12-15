@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 特殊型计量器的读数
  */
 @Entity
-@Table(name = "CHARPOINTACTION", schema = "zclfsys")
+@Table(name = "CHARPOINTACTION")
 public class CharPointAction implements java.io.Serializable {
 
     private static final long serialVersionUID = 3556601089690959057L;

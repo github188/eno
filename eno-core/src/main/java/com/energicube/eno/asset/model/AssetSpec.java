@@ -11,7 +11,7 @@ import javax.persistence.*;
  * 资产当前使用的技术规范参数
  */
 @Entity
-@Table(name = "ASSETSPEC", schema = "zclfsys")
+@Table(name = "ASSETSPEC")
 public class AssetSpec implements java.io.Serializable {
 
     private static final long serialVersionUID = 5631357740871480613L;

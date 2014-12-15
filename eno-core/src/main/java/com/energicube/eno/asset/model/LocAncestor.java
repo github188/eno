@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 记录每个位置的根位置
  */
 @Entity
-@Table(name = "LOCANCESTOR", schema = "zclfsys")
+@Table(name = "LOCANCESTOR")
 public class LocAncestor implements java.io.Serializable {
 
     private static final long serialVersionUID = 8773765658281600263L;

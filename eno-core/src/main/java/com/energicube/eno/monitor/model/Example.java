@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "example", schema = "zclfsys")
+@Table(name = "example")
 public class Example implements java.io.Serializable {
 
     private static final long serialVersionUID = -3145054618939465487L;

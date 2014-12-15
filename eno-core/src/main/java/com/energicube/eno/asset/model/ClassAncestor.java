@@ -6,7 +6,7 @@ import javax.persistence.*;
  * 分类结构祖代和层级
  */
 @Entity
-@Table(name = "CLASSANCESTOR", schema = "zclfsys")
+@Table(name = "CLASSANCESTOR")
 public class ClassAncestor implements java.io.Serializable {
 
     private static final long serialVersionUID = -1666284038784960034L;

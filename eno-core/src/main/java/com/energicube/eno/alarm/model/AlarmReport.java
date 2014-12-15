@@ -11,7 +11,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "AlarmReport", schema = "zclfsys")
+@Table(name = "AlarmReport")
 public class AlarmReport implements java.io.Serializable {
     private long id;
     private Date reportTime;

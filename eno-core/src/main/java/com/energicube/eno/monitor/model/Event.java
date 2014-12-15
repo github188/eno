@@ -8,7 +8,7 @@ import java.util.Date;
  * 事件信息模型
  */
 @Entity
-@Table(name = "events", schema = "zclfsys")
+@Table(name = "events")
 public class Event implements java.io.Serializable {
 
     private static final long serialVersionUID = -4236938935992172463L;

@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "UC_paramRecord"
-        , schema = "zclfsys"
+        
 )
 public class UcParamRecord implements java.io.Serializable {
 

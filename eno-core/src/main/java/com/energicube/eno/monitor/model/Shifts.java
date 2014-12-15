@@ -8,7 +8,7 @@ import java.util.List;
  * 交接班班次定义
  */
 @Entity
-@Table(name = "SHIFTS", schema = "zclfsys")
+@Table(name = "SHIFTS")
 public class Shifts implements java.io.Serializable {
 
     private static final long serialVersionUID = 3676036009975577742L;

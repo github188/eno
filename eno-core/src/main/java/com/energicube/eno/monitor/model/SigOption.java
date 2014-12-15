@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 登记的签名项
  */
 @Entity
-@Table(name = "SIGOPTION", schema = "zclfsys")
+@Table(name = "SIGOPTION")
 public class SigOption implements java.io.Serializable {
 
     private static final long serialVersionUID = 1754374252096339566L;

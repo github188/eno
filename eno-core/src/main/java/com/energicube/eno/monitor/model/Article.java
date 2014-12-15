@@ -11,7 +11,7 @@ import java.util.Set;
  * 文章模型
  */
 @Entity
-@Table(name = "article", schema = "zclfsys")
+@Table(name = "article")
 public class Article implements java.io.Serializable {
 
     private static final long serialVersionUID = 9058934674934486479L;
@@ -253,7 +253,7 @@ public class Article implements java.io.Serializable {
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "categoryArticle", schema = "zclfsys", joinColumns = {@JoinColumn(name = "articleId", nullable = false, updatable = false)}, inverseJoinColumns = {@JoinColumn(name = "categoryId", nullable = false, updatable = false)})
+    @JoinTable(name = "categoryArticle", joinColumns = {@JoinColumn(name = "articleId", nullable = false, updatable = false)}, inverseJoinColumns = {@JoinColumn(name = "categoryId", nullable = false, updatable = false)})
     public Set<ArticleCategory> getArticleCategories() {
         return this.articleCategories;
     }

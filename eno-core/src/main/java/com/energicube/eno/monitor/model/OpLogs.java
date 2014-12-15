@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "OPLOGS", schema = "zclfsys")
+@Table(name = "OPLOGS")
 public class OpLogs implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;

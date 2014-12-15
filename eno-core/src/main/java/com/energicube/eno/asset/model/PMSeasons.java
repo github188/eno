@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  * 在定义的季节性日期内PM有效
  */
 @Entity
-@Table(name = "PMSEASONS", schema = "zclfsys")
+@Table(name = "PMSEASONS")
 public class PMSeasons implements java.io.Serializable {
 
     private static final long serialVersionUID = -4271392360281676184L;

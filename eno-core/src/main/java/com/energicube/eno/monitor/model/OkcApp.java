@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 应用定义
  */
 @Entity
-@Table(name = "OKCAPP", schema = "zclfsys")
+@Table(name = "OKCAPP")
 public class OkcApp implements java.io.Serializable {
 
     private static final long serialVersionUID = -7130056703897216617L;

@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 计量单位定义
  */
 @Entity
-@Table(name = "MEASUREUNIT", schema = "zclfsys")
+@Table(name = "MEASUREUNIT")
 public class MeasureUnit implements java.io.Serializable {
 
     private static final long serialVersionUID = 4423527293423888936L;

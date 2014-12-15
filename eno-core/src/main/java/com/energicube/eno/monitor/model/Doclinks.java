@@ -10,7 +10,7 @@ import javax.persistence.*;
  * 与文档链接的库存项目注册
  */
 @Entity
-@Table(name = "DOCLINKS", schema = "zclfsys")
+@Table(name = "DOCLINKS")
 public class Doclinks implements java.io.Serializable {
 
     private static final long serialVersionUID = 9083087483405162923L;

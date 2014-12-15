@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 故障代码
  */
 @Entity
-@Table(name = "FAILURECODE", schema = "zclfsys")
+@Table(name = "FAILURECODE")
 public class FailureCode implements java.io.Serializable {
 
     private static final long serialVersionUID = 2740772609992251229L;

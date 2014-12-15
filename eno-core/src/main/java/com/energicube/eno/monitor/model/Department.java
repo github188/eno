@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 部门科室
  */
 @Entity
-@Table(name = "CUDEPT", schema = "zclfsys")
+@Table(name = "CUDEPT")
 public class Department implements java.io.Serializable {
 
     private static final long serialVersionUID = 5336032031219967416L;

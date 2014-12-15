@@ -8,7 +8,7 @@ import java.util.Set;
  * 事件类型
  */
 @Entity
-@Table(name = "eventType", schema = "zclfsys")
+@Table(name = "eventType")
 public class EventType implements java.io.Serializable {
 
     private static final long serialVersionUID = -5333494794989165836L;

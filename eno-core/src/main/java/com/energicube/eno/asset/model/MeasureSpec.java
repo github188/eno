@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * 测点使用的技术规范参数
  */
 @Entity
-@Table(name = "MEASURESPEC", schema = "zclfsys")
+@Table(name = "MEASURESPEC")
 public class MeasureSpec implements java.io.Serializable {
 
     private static final long serialVersionUID = 8324113027145170682L;

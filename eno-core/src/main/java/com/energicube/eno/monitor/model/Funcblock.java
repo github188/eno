@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "funcblock", schema = "zclfsys")
+@Table(name = "funcblock")
 public class Funcblock implements java.io.Serializable {
 
     private static final long serialVersionUID = -6461543583706041579L;

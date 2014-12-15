@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 位置层次结构
  */
 @Entity
-@Table(name = "LOCHIERARCHY", schema = "zclfsys")
+@Table(name = "LOCHIERARCHY")
 public class LocHierarchy implements java.io.Serializable {
 
 

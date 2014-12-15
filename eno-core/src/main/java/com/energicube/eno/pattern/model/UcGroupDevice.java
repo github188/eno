@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "UC_groupDevice"
-        , schema = "zclfsys"
+        
 )
 public class UcGroupDevice implements java.io.Serializable {
 

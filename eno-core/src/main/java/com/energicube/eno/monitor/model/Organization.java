@@ -7,7 +7,7 @@ import java.util.Date;
  * 组织机构信息
  */
 @Entity
-@Table(name = "ORGANIZATION", schema = "zclfsys")
+@Table(name = "ORGANIZATION")
 public class Organization implements java.io.Serializable {
 
     private static final long serialVersionUID = -2271859789905610629L;

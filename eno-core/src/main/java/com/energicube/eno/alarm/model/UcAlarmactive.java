@@ -12,7 +12,7 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "UC_alarmactive", schema = "zclfsys")
+@Table(name = "UC_alarmactive")
 public class UcAlarmactive implements java.io.Serializable {
 
 

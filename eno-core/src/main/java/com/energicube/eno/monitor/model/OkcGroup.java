@@ -7,7 +7,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "OKCGROUP", schema = "zclfsys")
+@Table(name = "OKCGROUP")
 public class OkcGroup implements java.io.Serializable {
 
     private long ugroupid;

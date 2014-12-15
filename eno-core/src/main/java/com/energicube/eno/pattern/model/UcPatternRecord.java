@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "UC_patternRecord"
-        , schema = "zclfsys"
+        
 )
 public class UcPatternRecord implements java.io.Serializable {
 

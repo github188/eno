@@ -6,7 +6,7 @@ import javax.persistence.*;
  * 报警组
  */
 @Entity
-@Table(name = "UC_alarmgroup", schema = "zclfsys")
+@Table(name = "UC_alarmgroup")
 public class UcAlarmgroup implements java.io.Serializable {
 
     private static final long serialVersionUID = -3505066661176760493L;

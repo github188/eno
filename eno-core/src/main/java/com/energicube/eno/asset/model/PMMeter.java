@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  * PM计量器表，对应计量器必须是连续型计量器，并且在PM上添加基于计量器的频率之前必须附加到PM使用的资产或位置
  */
 @Entity
-@Table(name = "PMMETER", schema = "zclfsys", uniqueConstraints = @UniqueConstraint(columnNames = {
+@Table(name = "PMMETER", uniqueConstraints = @UniqueConstraint(columnNames = {
         "METERNAME", "PMNUM", "SITEID"}))
 public class PMMeter implements java.io.Serializable {
 

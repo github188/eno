@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * 资产使用的计量器
  */
 @Entity
-@Table(name = "ASSETMETER", schema = "zclfsys")
+@Table(name = "ASSETMETER")
 public class AssetMeter implements java.io.Serializable {
 
     private static final long serialVersionUID = 4176483029129021687L;

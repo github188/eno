@@ -95,83 +95,63 @@ var quotaManage = {
 		}
 	},
 	monthElectricity : function() { // 生成逐月用电定额情况
-			var catalist = [];
-			for (var i = 1; i <= 12; i++) {
-				catalist.push(i);
+			var catalist = [], data1 = [], data2 = [];
+			for (var i = 0; i < 24; i++) {
+				catalist.push(i); // + ":00"
+				data1.push(parseFloat((Math.random() * 50).toFixed(1)));
+				data2.push(parseFloat((Math.random() * 15).toFixed(1)));
 			}
+			var columnColor = '#00C98A', lineColor = '#FDB700';
 			$('#monthElectricity').highcharts({
-				chart : {
-					type : 'column',
-					marginBottom : 60
-				},
-				title : {
-					text : '' // <span style="font-family: 微软雅黑;">今年实际用电/定额</span>
-				},
-				xAxis : {
-					categories : catalist
-				},
-				yAxis : [{ // Primary yAxis
-					title : {
-						text : ''
-					}
-				}, {	// Secondary yAxis
-							title : {
-								text : ''
-							},
-							opposite : true
-						}],
-				legend : {
-					layout : 'horizontal',
-					align : 'right',
-					verticalAlign : 'bottom',
-					x : 0,
-					y : 10,
-					floating : true,
-					itemStyle : {
-						cursor : 'pointer',
-						color : '#3E576F',
-						fontFamily : '微软雅黑',
-						fontSize : '18px'
-					},
-					symbolPadding : 10,
-					borderWidth : 0
-				},
-				tooltip : {
-					crosshairs : true,
-					shared : true,
-					backgroundColor : '#FFD419',
-					borderColor : '#FFD419',
-					style : {
-						color : '#FFF',
-						fontSize : '14px',
-						fontFamily : '微软雅黑'
-					},
-					headerFormat : '<span style="font-size:18px">{point.key}月</span><table>',
-					pointFormat : '<tr><td><br />{series.name}: </td></tr>'
-							+ '<tr><td><b><span style="font-size: 16px;">{point.y:.1f}</span> kWh</b></td></tr>',
-					footerFormat : '</table>'
-				},
-				plotOptions : {
-					spline : {
-						marker : {
-							radius : 4,
-							lineColor : '#666666',
-							lineWidth : 1
-						}
-					}
-				},
-				colors : ['#FFD4B2', '#FFD419'],
-				series : [{
-					name : '实际用电(kWh)',
-					data : [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3,
-							13.9, 9.6]
-				}, {
-					name : '定额(kWh)',
-					yAxis : 1,
-					data : [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3,
-							6.6, 4.8]
-				}]
-			});
+						chart : {
+							backgroundColor : '#333333',
+							marginBottom : 50
+						},
+						legend : {
+							x: 320,
+							y: 10
+						},
+						xAxis : {
+							tickColor : '#333333',
+							categories : catalist,
+							labels : {
+								step : 4,
+								style : {
+									color : '#F3F3F3',
+									fontSize : '14px',
+									fontWeight : 'bold',
+									fontFamily : 'RobotoRegular'
+								}
+							}
+						},
+						yAxis : [{ // Primary yAxis
+								}, { // Secondary yAxis
+									opposite : true
+								}],
+						tooltip : {
+							crosshairs : true,
+							shared : true
+						},
+						series : [{
+									type : 'column',
+									borderColor : columnColor,
+									name : '实际用电（kWh）',
+									color : columnColor,
+									data : data1
+								}, {
+									type : 'column',
+									name : '定额（mWh）',
+									borderColor : lineColor,
+									color : lineColor,
+									data : data2,
+									yAxis : 1,
+									lineWidth : 2,
+									marker : {
+										radius : 3,
+										lineColor : lineColor
+									}
+								}]
+					});
 	},
 	buildQuotaChart : function() { // 生成用能定额图表
 		var myChart = echarts.init(document.getElementById('energyquotaManage'));

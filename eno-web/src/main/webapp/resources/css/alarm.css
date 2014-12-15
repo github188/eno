@@ -8,10 +8,10 @@
 .chartPic_alarmOne { width:160px; height:160px; position:relative; margin:60px 45px 0 90px; }
 .chartTxt { position:absolute; left:47px; top:50px; height:60px; font-size:60px; color:#fff; line-height:60px; }
 .alarm_count { width:160px; margin:15px 0 0 90px; font-size:22px; color:#fff; text-align:center; }
-.chart_alarmOne_detail { float:left; margin-top:60px; }
-.chart_alarmOne_detail ul li { height:55px; margin-bottom:10px;}
-.chart_d_t { float:left; font-size:22px; margin:6px 40px 0 0;}
-.chart_d_i { float:left; }
+.chart_alarmOne_detail { float:left; margin-top:45px; }
+.chart_alarmOne_detail ul li { height:55px; margin-bottom:-19px;}
+.chart_d_t { float:left; font-size:22px; margin:-6px 40px 0 0;}
+/* .chart_d_i { float:left; } */
 .chart_d_i p { line-height:30px;}
 .alarm_deal_list { padding-left:20px; }
 .alarm_deal_list li { color:#fff; line-height:23px; letter-spacing:1px; }
@@ -21,4 +21,32 @@
 	width: 920px;
 	height: 286px;
 	margin-left: -30px;
+}
+
+.chart_d_i {
+	width: 428px;
+	margin-bottom: 21px;
+	height: 10px;
+	background-color: #777777;
+	margin-left: 130px;
+	margin-top: 29px;
+}
+
+.alarams_red {
+	height: 10px;
+	margin: 10px 0 10px 0;
+	background-color: #FF7372;
+}
+
+.alarams_blue {
+	height: 10px;
+	margin: 10px 0 10px 0;
+	background-color: #74DCFF;
+}
+
+.alarams_all {
+	width: 1%;
+	height: 10px;
+	margin: 10px 0 10px 0;
+	background-color: #DDDDDD;
 }

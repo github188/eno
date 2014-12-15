@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 资产属性模板
  */
 @Entity
-@Table(name = "CLASSSPEC", schema = "zclfsys")
+@Table(name = "CLASSSPEC")
 public class ClassSpec implements java.io.Serializable {
 
     private static final long serialVersionUID = 4445157212064167093L;

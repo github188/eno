@@ -7,7 +7,7 @@ import java.util.Date;
  * 站内短消息
  */
 @Entity
-@Table(name = "message", schema = "zclfsys")
+@Table(name = "message")
 public class Message implements java.io.Serializable {
 
     private static final long serialVersionUID = -3243893623750804123L;

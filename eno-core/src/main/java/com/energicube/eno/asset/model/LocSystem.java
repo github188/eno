@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 位置系统定义
  */
 @Entity
-@Table(name = "LOCSYSTEM", schema = "zclfsys")
+@Table(name = "LOCSYSTEM")
 public class LocSystem implements java.io.Serializable {
 
     private static final long serialVersionUID = 3610930712851908736L;

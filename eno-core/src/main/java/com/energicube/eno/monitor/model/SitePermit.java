@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 权限组的地点授权，据此限制用户在业务对象地点字段上可访问的数据级别
  */
 @Entity
-@Table(name = "SITEPERMIT", schema = "zclfsys")
+@Table(name = "SITEPERMIT")
 public class SitePermit implements java.io.Serializable {
 
     private static final long serialVersionUID = -3705808632145499547L;

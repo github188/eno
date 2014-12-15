@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * 附加到位置的计量器
  */
 @Entity
-@Table(name = "LOCATIONMETER", schema = "zclfsys")
+@Table(name = "LOCATIONMETER")
 public class LocationMeter implements java.io.Serializable {
 
     private static final long serialVersionUID = -3234611765138268877L;

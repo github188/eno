@@ -144,52 +144,15 @@
 .icon_down { background-position:-835px -8px; }
 
 .chartBboxh240 { height:240px; }
- <!-- 建筑能耗情况统计 -->
 
+/* 六宫格图表大小  */
+.energy_sex_chart {
+	width: 613px;
+	height: 240px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* 九宫格图表大小  */
+.energy_nine_chart {
+	width: 618px;
+	height: 180px;
+}

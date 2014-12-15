@@ -40,21 +40,21 @@
                         <li>
                             <span class="chart_d_t">报警总数</span>
                             <div class="chart_d_i">
-                                <p><img src="../resources/images/alarm_pic02.jpg" /></p>
+                                <div class="alarams_all"></div>
                                 <p><em class="colfff ft22">13</em> 次</p>
                             </div>
                         </li>
                         <li>
                             <span class="chart_d_t">已处理数</span>
                             <div class="chart_d_i">
-                                <p><img src="../resources/images/alarm_pic03.jpg" /></p>
+								<div class="alarams_red"></div>
                                 <p><em class="colfff ft22">5</em> 次</p>
                             </div>
                         </li>
                         <li>
                             <span class="chart_d_t">未处理数</span>
                             <div class="chart_d_i">
-                                <p><img src="../resources/images/alarm_pic04.jpg" /></p>
+                                <div class="alarams_blue"></div>
                                 <p><em class="colfff ft22">8</em> 次</p>
                             </div>
                         </li>

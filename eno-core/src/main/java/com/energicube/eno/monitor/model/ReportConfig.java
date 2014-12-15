@@ -7,7 +7,7 @@ import javax.persistence.*;
  * user:zengyin
  */
 @Entity
-@Table(name = "reportconfig", schema = "zclfsys")
+@Table(name = "reportconfig")
 public class ReportConfig implements java.io.Serializable {
     private static final long serialVersionUID = 8989193834006410770L;
     private int uid;

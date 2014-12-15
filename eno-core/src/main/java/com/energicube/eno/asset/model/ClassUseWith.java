@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 分类结构使用的对象
  */
 @Entity
-@Table(name = "CLASSUSEWITH", schema = "zclfsys")
+@Table(name = "CLASSUSEWITH")
 public class ClassUseWith implements java.io.Serializable {
 
     /**

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "EXPRESSION", schema = "zclfsys")
+@Table(name = "EXPRESSION")
 public class Expression implements Serializable {
 
     /**

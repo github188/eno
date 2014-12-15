@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 类别层次结构定义
  */
 @Entity
-@Table(name = "CLASSSTRUCTURE", schema = "zclfsys")
+@Table(name = "CLASSSTRUCTURE")
 public class ClassStructure implements java.io.Serializable {
 
     private static final long serialVersionUID = -4428168197446992139L;

@@ -8,7 +8,7 @@ import java.util.Set;
  * 文章类别定义
  */
 @Entity
-@Table(name = "articleCategory", schema = "zclfsys")
+@Table(name = "articleCategory")
 public class ArticleCategory implements java.io.Serializable {
 
     private static final long serialVersionUID = 657887162576680971L;

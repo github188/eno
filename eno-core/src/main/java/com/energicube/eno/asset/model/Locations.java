@@ -12,7 +12,7 @@ import javax.persistence.*;
  * 位置定义
  */
 @Entity
-@Table(name = "LOCATIONS", schema = "zclfsys")
+@Table(name = "LOCATIONS")
 public class Locations implements java.io.Serializable {
 
     private static final long serialVersionUID = -5932721158460779941L;

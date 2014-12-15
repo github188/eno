@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 每条PM记录的顶级PM关联，PM层次结构可生成工单层次结构。
  */
 @Entity
-@Table(name = "PMANCESTOR", schema = "zclfsys")
+@Table(name = "PMANCESTOR")
 public class PMAncestor implements java.io.Serializable {
 
     private static final long serialVersionUID = 337886183691612227L;

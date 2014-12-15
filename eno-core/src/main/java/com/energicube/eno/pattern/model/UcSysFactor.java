@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "UC_sysFactor"
-        , schema = "zclfsys"
+        
 )
 public class UcSysFactor implements java.io.Serializable {
 

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * 计划任务
  */
 @Entity
-@Table(name = "JOBTASK", schema = "zclfsys")
+@Table(name = "JOBTASK")
 public class JobTask implements java.io.Serializable {
 
     private static final long serialVersionUID = -9195136117894654126L;

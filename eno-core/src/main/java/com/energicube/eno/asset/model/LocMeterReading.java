@@ -8,7 +8,7 @@ import java.util.Date;
  * 位置上的计量器读数和观测值记录
  */
 @Entity
-@Table(name = "LOCMETERREADING", schema = "zclfsys")
+@Table(name = "LOCMETERREADING")
 public class LocMeterReading implements java.io.Serializable {
 
     private static final long serialVersionUID = -8587308440627547009L;

@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@Table(name = "USERS", schema = "zclfsys")
+@Table(name = "USERS")
 public class Users implements java.io.Serializable {
 
 	private static final long serialVersionUID = 6864670836615506994L;

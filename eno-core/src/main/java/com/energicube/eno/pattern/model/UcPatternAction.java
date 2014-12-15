@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "UC_patternAction"
-        , schema = "zclfsys"
+        
 )
 public class UcPatternAction implements java.io.Serializable {
 

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * 计量器组包含的计量器
  */
 @Entity
-@Table(name = "METERINGROUP", schema = "zclfsys")
+@Table(name = "METERINGROUP")
 public class MeterInGroup implements java.io.Serializable {
 
     private static final long serialVersionUID = -1024831436964128634L;

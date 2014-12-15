@@ -7,7 +7,7 @@ import javax.persistence.*;
  * 同义数值域的定义
  */
 @Entity
-@Table(name = "SYNONYMDOMAIN", schema = "zclfsys")
+@Table(name = "SYNONYMDOMAIN")
 public class SynonymDomain implements java.io.Serializable {
 
     private static final long serialVersionUID = -1541599142095847443L;
