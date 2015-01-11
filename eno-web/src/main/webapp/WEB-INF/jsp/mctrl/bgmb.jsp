@@ -12,11 +12,12 @@
       href="${pageContext.request.contextPath}/resources/css/bootstrap-switch.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/bootstrap-switch.js"></script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/mctrl/light_func.js"></script>--%>
+
 <div class="pmt_block">
     <div class="operate_board">
 			<div class="mode_operate">
-				<h1 class="mode_name" style="font-size: 24px; width: 1440px;">园区西区<span style="float: right;">状态：<span style="color: green;">播放</span></span></h1>
-				<div class="eachFatherBlock marginleft" style="width: 348px; height:100px; border-right: 1px solid #CCC;margin-top: -10px; padding-top: 10px ;">
+				<h1 class="mode_name" style="font-size: 24px; width: ${currentStructurePagelayout.width}px;">园区西区<span style="float: right;">状态：<span style="color: green;">播放</span></span></h1>
+				<div class="eachFatherBlock" style="width: 348px; height:100px; border-right: 1px solid #CCC;margin-top: -10px; padding-top: 10px ;">
 					<div style="font-size: 18px;">音量控制<img style="display: inline; margin-left: 5px;" src="/portal/resources/img/ylkz.jpg">
 					</div>
 					<ul>

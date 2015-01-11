@@ -1,11 +1,12 @@
 package com.energicube.eno.monitor.service.impl;
-
+import com.energicube.eno.asset.model.Measurement;
 import com.energicube.eno.asset.model.MeasurementAttribute;
 import com.energicube.eno.asset.repository.AssetAttributeRepository;
 import com.energicube.eno.asset.repository.AssetRepository;
 import com.energicube.eno.asset.service.MeasurementService;
+import com.energicube.eno.common.Config;
+import com.energicube.eno.common.Const;
 import com.energicube.eno.message.redis.RedisOpsService;
-import com.energicube.eno.message.redis.TagInfo;
 import com.energicube.eno.monitor.model.*;
 import com.energicube.eno.monitor.repository.DeviceConfigRepository;
 import com.energicube.eno.monitor.repository.PagelayoutRepository;
@@ -14,15 +15,20 @@ import com.energicube.eno.monitor.repository.SyscontrolRepository;
 import com.energicube.eno.monitor.repository.jpa.AssetMeasurementRepository;
 import com.energicube.eno.monitor.service.PagelayoutService;
 import com.energicube.eno.monitor.service.PagetagService;
+import com.energicube.eno.monitor.service.PassengerFlowService;
 import com.energicube.eno.monitor.service.SubSystemService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Service
@@ -60,7 +66,15 @@ public class PagetagServiceImpl implements PagetagService {
 
     @Autowired
     private SubSystemService subSystemService;
-
+    
+    @Autowired
+    private PassengerFlowService passengerFlowService;
+    
+    private Config config = new Config();
+	
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+    
     @Autowired
     public PagetagServiceImpl(PagelayoutRepository pagelayoutRepository,
                               PagetagRepository pagetagRepository) {
@@ -70,15 +84,30 @@ public class PagetagServiceImpl implements PagetagService {
 
     public List<Pagetag> findByPagelayoutuid(long pagelayoutuid) {
         Pagelayout pagelayout = pagelayoutRepository.findOne(pagelayoutuid);
-        List<Pagetag> returnList = new ArrayList<Pagetag>();
-        List<Pagetag> list = pagetagRepository.findByLayoutid(pagelayout.getLayoutid());
-        for (int i = 0; i < list.size(); i++) {
-            Pagetag pt = (Pagetag) list.get(i);
-            pt.setCreatedate(null);
-            returnList.add(pt);
-        }
-        return returnList;
+//        List<Pagetag> returnList = new ArrayList<Pagetag>();
+        List<Pagetag> list = pagetagRepository.findByLayoutid(pagelayout.getPagelayoutuid()+"");
+//        for (int i = 0; i < list.size(); i++) {
+//            Pagetag pt = (Pagetag) list.get(i);
+//            pt.setCreatedate(null);
+//            returnList.add(pt);
+//        }
+        return list;
     }
+
+    /**
+     * 根据classstructureid查询指定页面的对应的数据
+     */
+    public List<Pagetag> findByLayoutidAndClassId(long pagelayoutuid, String classid) {
+    	Pagelayout pagelayout = pagelayoutRepository.findOne(pagelayoutuid);
+    	List<Pagetag> list = new ArrayList<Pagetag>();
+    	if (!org.apache.commons.lang3.StringUtils.isEmpty(classid)) {
+    		list = pagetagRepository.findByLayoutidAndClassId(pagelayout.getPagelayoutuid() + "", classid);
+    	} else {
+			list = pagetagRepository.findByLayoutid(pagelayout.getPagelayoutuid() + "");
+    	}
+    	return list;
+    }
+    
 
     @Transactional(readOnly = true)
     public Pagetag findOne(long id) {
@@ -101,11 +130,12 @@ public class PagetagServiceImpl implements PagetagService {
             }
             pagetag = pagetagRepository.save(pagetag);
 
+            String classstructureid = "";
             // 如果选择的设备为资产数据，则同时保存资产属性到列表
             if (pagetag.getPagetagtype() == 3) {
                 List<MeasurementAttribute> attrs = measurementService.findMeasurementsByAssetnum(pagetag.getTagid(), "", "");
-                String classstructureid = "";
-                for (MeasurementAttribute attr : attrs) {
+                for (int i = 0; i < attrs.size(); i++) {
+                	MeasurementAttribute attr = attrs.get(i);
                     if (!StringUtils.isEmpty(attr.getValuetag()) && !"null".equalsIgnoreCase(attr.getValuetag())) {
                         Pagetag tag = new Pagetag();
                         tag.setTagid(attr.getValuetag());
@@ -113,7 +143,7 @@ public class PagetagServiceImpl implements PagetagService {
                         tag.setLabel(attr.getDescrption());
                         tag.setMeasureunitid("".equals(attr.getMeasureunitid()) ? "" : attr.getMeasureunitid());
                         tag.setControlid(pagetag.getControlid());
-                        tag.setCreatedate(DateTime.now());
+//                        tag.setCreatedate(DateTime.now());
                         tag.setParentid(pagetag.getPagetagid() + "");
                         tag.setGroupname(pagetag.getGroupname());
                         tag.setLayoutid(pagetag.getLayoutid());
@@ -121,15 +151,16 @@ public class PagetagServiceImpl implements PagetagService {
                         tag.setUsesetting(pagetag.getUsesetting());
                         tag.setTagval(pagetag.getTagval());
                         tag.setShowrange(pagetag.getShowrange());
-                        tag.setClassstructureid(attr.getClassstructureid()); // 为适应WEB版万达设备列表和面板数据字典对应而加[2014-10-16,zzx]
+                        tag.setClassstructureid(attr.getClassstructureid()); // 为适应WEB版万达设备列表和面板数据字典对应而加
+                        tag.setOrderindex(pagetag.getOrderindex()*10 + i);
                         tag = pagetagRepository.save(tag);
                         classstructureid = tag.getClassstructureid();
                     }
                 }
 //				logger.debug("classstructureid--" + classstructureid);
-//				if (!attrs.isEmpty() && !StringUtils.isEmpty(classstructureid)) {
-//					pagetagRepository.updateParentClassId(classstructureid, pagetag.getTagid()); // 更新父级的分类id
-//				}
+				if (!attrs.isEmpty() && !StringUtils.isEmpty(classstructureid)) {
+					pagetagRepository.updateParentClassId(classstructureid, pagetag.getTagid()); // 更新父级的分类id
+				}
             }
         } else {
             // 修改时，为了防止坐标丢失，先加载在历史坐标
@@ -142,6 +173,31 @@ public class PagetagServiceImpl implements PagetagService {
         return pagetag;
     }
 
+    @Transactional
+	public Pagetag savePassengerPagetag(Pagetag pagetag) {
+    	// 新增时
+        if (pagetag.getPagetagid() == null || pagetag.getPagetagid() == 0) {
+            if (pagetag.getShowrange() == null || pagetag.getShowrange().equals("")) {
+                pagetag.setShowrange("list"); // 默认作用于设备列表.[2014-08-26 zzx]
+            }
+            Measurement measurement = measurementService.findMeasurementByAssetnum(pagetag.getTagid());
+            if(measurement != null) {
+            	String valueTag = measurement.getValuetag();
+            	pagetag.setTagid(valueTag.substring(0, valueTag.indexOf("_")));
+            }
+            pagetag = pagetagRepository.save(pagetag);
+
+        } else {
+            // 修改时，为了防止坐标丢失，先加载在历史坐标
+            String coodrs = pagetagRepository.findOne(pagetag.getPagetagid()).getCoords();
+            pagetag.setCoords(coodrs);
+            pagetag = pagetagRepository.save(pagetag);
+            // 更新资产子级对应的作用范围
+            pagetagRepository.updateValue(pagetag.getShowrange(), pagetag.getControlid(), pagetag.getControlid2(), pagetag.getControlid3(), pagetag.getTagtype(), pagetag.getPagetagtype(), pagetag.getTagval(), pagetag.getTagid());
+        }
+        return pagetag;
+	}
+	
     @Transactional
     public Pagetag updatePagetagCoordinate(long pagetagid, String left,
                                            String top) {
@@ -216,7 +272,7 @@ public class PagetagServiceImpl implements PagetagService {
     }
 
     @Transactional(readOnly = true)
-    public Map<String, List> findPagetagAndControlByMenuid(String menuid, String layoutid, String elementvalue, List<TagInfo> taginfo, Map<String, Dict> contextMap) {
+    public Map<String, List> findPagetagAndControlByMenuid(String menuid, String layoutid, String elementvalue) {
 
         Map<String, List> map = new HashMap<String, List>();
         //获取控件列表
@@ -228,19 +284,43 @@ public class PagetagServiceImpl implements PagetagService {
         //获取指定布局ID所属的所有设备点
         List<Pagetag> pagetagList = pagetagRepository.findByLayoutid(layoutid);
 
-        // 返回前台设备列表需要的数据[2014-08-25 zouzhixiang]
+        // 返回前台设备列表需要的数据
         List<PagetagTemp> pagetagTemps = new ArrayList<>();
-        for (Pagetag pagetag : pagetagList) {
-            if (pagetag.getParentid() == null || "".equals(pagetag.getParentid())) {
-                pagetagTemps.add(dealPagetages(pagetag, pagetagList));
+        if(elementvalue != null && !"".equals(elementvalue) && "PFE".equals(elementvalue)) {
+        	List<Pagetag> pagetags = new ArrayList<Pagetag>();
+        	List<String> pagetagids = new ArrayList<String>();
+        	String allShopType = config.getProps().getProperty("pfe.allShopType500");
+            String type1 = config.getProps().getProperty("pfe.allShopType600");
+            DateTime dt = DateTime.parse(getTodayStartTime(), DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
+            List<UcPassengerFlowDay> ucPassengerFlowDetailList = passengerFlowService.findAllShopPassenger(allShopType, type1, dt.getYear(), dt.getMonthOfYear(), dt.getDayOfMonth());
+            Pagetag pt = null;
+            PagetagTemp pagetagTemp = null;
+            for (UcPassengerFlowDay ucPassengerFlowDay : ucPassengerFlowDetailList) {
+            	for(int i=0; i<pagetagList.size(); i++) {
+            		pt = pagetagList.get(i);
+            		if(pt.getTagid().equals(ucPassengerFlowDay.getShopCode())) {
+            			pt.setPassenger(ucPassengerFlowDay);
+            			pagetagTemp = new PagetagTemp();
+            			pagetagTemp.setPagetage(pt);
+            			pagetagTemps.add(pagetagTemp);
+            			
+            		}
+    			}
+
+			}
+        }else {
+        	for (Pagetag pagetag : pagetagList) {
+                if (pagetag.getParentid() == null || "".equals(pagetag.getParentid())) {
+                    pagetagTemps.add(dealPagetages(pagetag, pagetagList));
+                }
             }
-        }
+		}
         logger.debug("findPagetagAndControlByMenuid---"+pagetagTemps.size());
         map.put("pagetag", pagetagTemps);
-        map = subSystemService.getDeviceMap(layoutid, map, pagetagList, taginfo, contextMap); // 设备列表
+        map = subSystemService.getDeviceMap(layoutid, map, pagetagList); // 设备列表
 
         if ("HVAC".equals(elementvalue) || "WSD".equals(elementvalue)) { // 针对暖通空调、给排水的面板
-            List<Object> panel = subSystemService.getPanelHtml(layoutid, pagetagList, taginfo, contextMap);
+            List<Object> panel = subSystemService.getPanelHtml(layoutid, pagetagList);
             map.put("panel", panel);
 //		} else {
 //			map.put("pagetag", pagetagList);
@@ -256,15 +336,28 @@ public class PagetagServiceImpl implements PagetagService {
         PagetagTemp pagetagTemp = new PagetagTemp();
         pagetagTemp.setPagetage(pagetag);
         List<Pagetag> pts = new ArrayList<>();
+        String value = "0.00";
+        BigDecimal bigDecimal;
+        RedisConnection rc = redisTemplate.getConnectionFactory().getConnection();
         for (Pagetag pt : pagetags) {
             if ((pagetag.getPagetagid() + "").equals(pt.getParentid())) {
+            	value = redisOpsService.getTagInfoByRedisConnectionAndKey(rc, pt.getTagid());
+            	logger.debug("----dealPagetages----value----" + value);
+            	try {
+					bigDecimal = new BigDecimal(value);
+					value = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()+"";
+				} catch (Exception e) {
+					logger.error("---dealPagetages---error---" + e);
+				}
+				pt.setTagvalue(value);
+//				pt.setTagvalue("");
                 pts.add(pt);
             }
         }
+        rc.close();
         pagetagTemp.setPagetags(pts);
         return pagetagTemp;
     }
-
     /**
      * 获取有表达式的pagetag
      */
@@ -286,7 +379,7 @@ public class PagetagServiceImpl implements PagetagService {
     }
 
     @Transactional(readOnly = true)
-    public List<Pagetag> getTagLastValues(String menuid, List<TagInfo> taginfo) {
+    public List<Pagetag> getTagLastValues(String menuid) {
 
         List<Pagelayout> list = pagelayoutRepository.findByMenuid(menuid);
         List<Pagetag> pagetagList = new ArrayList<Pagetag>();
@@ -295,42 +388,23 @@ public class PagetagServiceImpl implements PagetagService {
             pagetagList.addAll(pagetagRepository.findByLayoutid(layout.getLayoutid()));
         }
 
-//		String[] tagids = new String[pagetagList.size()];
-        // 获取tagid列表
-//		for (int i = 0; i < pagetagList.size(); i++) {
-//			Pagetag tag = pagetagList.get(i);
-//			if (tag.getPagetagtype() == 0 || (tag.getPagetagtype() > 3 && tag.getPagetagtype() < 99)) {
-//				tagids[i] = String.format("tags:%s", tag.getTagid());
-//			}
-//		}
-
         try {
+        	RedisConnection rc = redisTemplate.getConnectionFactory().getConnection();
             // 从redis中获取tagid最后的测量值
-//			List<TagInfo> lastValues = redisOpsService.mGetByKeys(tagids);
-//			for (int i = 0; i < pagetagList.size(); i++) {
-//				TagInfo currInfo = lastValues.get(i);
-//				// 设置值
-//				if (currInfo != null && pagetagList.get(i).getTagid().equals(currInfo.getId().toString())) {
-//					pagetagList.get(i).setTagval(lastValues.get(i).getV());
-//				}
-//			}
-
             for (int i = 0; i < pagetagList.size(); i++) {
                 Pagetag tag = pagetagList.get(i);
                 String tagval = "0"; // 缺省为0
                 try {
-                    int tagid = Integer.parseInt(tag.getTagid());
-                    tagval = taginfo.get(tagid).getV();
+                	tagval = redisOpsService.getTagInfoByRedisConnectionAndKey(rc, tag.getTagid());
                 } catch (Exception e) {
                     tagval = "0";
                     logger.error("tagid为【" + tag.getTagid() + "】的记录获取value失败！");
                 }
-
-                pagetagList.get(i).setTagval(tagval);
+                pagetagList.get(i).setTagval(Const.formatValue(tagval));
             }
-
+            rc.close();
         } catch (Exception ex) {
-            logger.error("Redis获取TAG值失败," + ex.getMessage());
+            logger.error("getTagLastValues---Redis获取TAG值失败," + ex.getMessage());
         }
         return pagetagList;
     }
@@ -426,4 +500,94 @@ public class PagetagServiceImpl implements PagetagService {
     public void addPagetags(Collection<Pagetag> pagetags) {
         pagetagRepository.save(pagetags);
     }
+
+	@Override
+	public Map<String, Object> findETDPanelDatas(String pagelayoutuid) throws Exception {
+		
+		Map<String, Object> etdMap = new HashMap<String, Object>();
+		if(pagelayoutuid != null && !"".equals(pagelayoutuid)) {
+			try {
+				long id = Long.valueOf(pagelayoutuid);
+				Pagelayout currentPagelayout = pagelayoutService.findOne(id);
+				List<Pagetag> pagetags = this.findByLayoutid(currentPagelayout.getLayoutid());
+				List<PagetagTemp> pagetagTemps = new ArrayList<PagetagTemp>();
+				for (Pagetag pagetag : pagetags) {
+					if (pagetag.getParentid() == null || "".equals(pagetag.getParentid())) {
+		                pagetagTemps.add(dealPagetages(pagetag, pagetags));
+		            }
+				}
+				etdMap.put("edtPanel", pagetagTemps);
+			} catch (NumberFormatException e) {
+				logger.debug(e);
+			}
+		}
+		
+		return etdMap;
+	}
+
+	@Override
+	public void sortTags(long pagetagid, boolean type) throws Exception {
+		List<Pagetag> pagetags = pagetagRepository.findByPagetagid(pagetagid);
+		if(pagetags != null && pagetags.size()>0) {
+			Pagetag pagetag = pagetags.get(0);
+			List<Pagetag> listPagetags = pagetagRepository.findParentTagByLayoutid(pagetag.getLayoutid());
+			for(int i=0; i<listPagetags.size(); i++) {
+				if(listPagetags.get(i).getPagetagid() == pagetagid) {
+					Pagetag pt = new Pagetag();
+					if(type && i>0){
+						pt = listPagetags.get(i-1);
+						int index = pt.getOrderindex();
+						pt.setOrderindex(pagetag.getOrderindex());
+						pagetag.setOrderindex(index);
+						listPagetags.set(i-1, pt);
+						listPagetags.set(i, pagetag);
+						break;
+					}else if(i<listPagetags.size()){
+						pt = listPagetags.get(i+1);
+						int index = pt.getOrderindex();
+						pt.setOrderindex(pagetag.getOrderindex());
+						pagetag.setOrderindex(index);
+						listPagetags.set(i, pagetag);
+						break;
+					}
+				}
+			}
+			this.addPagetags(listPagetags);
+		}
+	}
+    /**
+     * 得到本日的统计的开始时间;
+     * 统计时间从早晨6点开始
+     *
+     * @return 时间 “yyyy-MM-dd HH:mm:ss”
+     */
+    private String getTodayStartTime() {
+        DateTime dateTime = DateTime.now();
+        int hour = dateTime.getHourOfDay();
+        String startHour = config.getProps().getProperty("pfe.startHour");
+        if (hour < Integer.parseInt(startHour)) {
+            DateTime temp = DateTime.now().plusDays(-1);
+            return temp.toString("yyyy-MM-dd ") + startHour + ":00:00";
+        } else {
+            return dateTime.toString("yyyy-MM-dd ") + startHour + ":00:00";
+        }
+    }
+
+	@Override
+	public void deletePagetags(String[] pagetagids) throws Exception {
+		if (pagetagids != null && pagetagids.length>0) {
+			long id;
+			for (String string : pagetagids) {
+				try {
+					id = Long.parseLong(string);
+					if (pagetagRepository.exists(id)) {
+			            pagetagRepository.delete(id);
+			        }
+				} catch (Exception e) {
+					logger.error(e);
+				}
+			}
+		}
+	}
+
 }

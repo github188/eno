@@ -1,9 +1,8 @@
+<%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/taglib.jsp"%>
 
-<head>
-<meta charset="UTF-8">
 <link rel="stylesheet" href="<spring:url value="/resources/css/pfe/pfeMain.css"></spring:url>" />
 <link rel="stylesheet" href="<spring:url value="/resources/css/jquery.mCustomScrollbar.css"/>" />
 <link rel="stylesheet" href="<spring:url value="/resources/plugins/jeasyui/themes/default/easyui.css"></spring:url>" />
@@ -13,13 +12,17 @@
 <link rel="stylesheet" href="<spring:url value="/resources/plugins/bootstrap-switch/bootstrap-switch.css"></spring:url>" />
 <link rel="stylesheet" href="<spring:url value="/resources/css/pfe/pfeCustom.css"></spring:url>" />
 <link rel="stylesheet" href="<spring:url value="/resources/plugins/select2/select2.css"></spring:url>" />
+<link rel="stylesheet" href="<spring:url value="/resources/css/slider.css"></spring:url>" />
+
 <script src="<spring:url value="/resources/plugins/jeasyui/jquery.easyui.min.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/scripts/pfe/jquery.mCustomScrollbar.concat.min.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/plugins/imagemapster/jquery.imagemapster.min.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/plugins/bootstrap-switch/bootstrap-switch.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/plugins/select2/select2.min.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/scripts/My97DatePicker/WdatePicker.js"></spring:url>"></script>
-</head>
+<script src="<spring:url value="/resources/plugins/treetable/jquery.ui.draggable.js"></spring:url>"></script>
+<script src="<spring:url value="/resources/scripts/sliderZoom.js"></spring:url>"></script>
+<script src="<spring:url value="/resources/scripts/shiftzoom.js"></spring:url>"></script>
 <!-- 监视控制页 -->
 <div class="span10 right_content nomargin">
 <input id="layoutid" value="${layoutid }" type="hidden">
@@ -70,7 +73,25 @@
 						        </thead>
 						        <tbody data-bind="foreach: { data: taglist().devicelist}">
 									<tr data-bind="foreach: dlist">
-										 <td data-bind="css: dcss, html: dvalue"></td>
+										<!-- ko if: (dvalue == 99999)  -->
+						                <td>
+											<div class="switch-small dev_switch" data-bind="attr: { tagid: dtagid }">
+									            <input type="checkbox" checked />
+<!-- 									             data-bind='checked: $index % 2 == 0' -->
+									        </div>
+										</td>
+						                <!-- /ko -->
+										<!-- ko if: (dvalue == 99998)  -->
+						                <td>
+											<div class="switch-small dev_switch" data-bind="attr: { tagid: dtagid }">
+									            <input type="checkbox" />
+									        </div>
+										</td>
+						                <!-- /ko -->
+										
+										<!-- ko if: (dvalue != 99999 && dvalue != 99998)  -->
+						                <td data-bind="css: dcss, text: dvalue"></td>
+						                <!-- /ko -->
 						            </tr>
 							    </tbody>
 						    </table>
@@ -159,25 +180,25 @@
 				<div class="carousel-inner">
 					<div class="item active"
 						style="height:${currentStructurePagelayout.height}px">
-						<div class="structure"
-							style="position:absolute;width:${currentStructurePagelayout.width}px;height:${currentStructurePagelayout.height }px;background:url('${fn:trim(currentStructurePagelayout.background)}') no-repeat top left;"
+						<div class="structure tagdiv"
+							style="position:absolute;width:${currentStructurePagelayout.width}px;height:${currentStructurePagelayout.height }px;background:url('${pageContext.request.contextPath}/${fn:trim(currentStructurePagelayout.background)}') no-repeat top left;"
 							layoutid="${currentStructurePagelayout.layoutid}"
 							layouttype="${currentStructurePagelayout.layouttype}">
 							
 							<!-- 变配电右上角面板 -->
 							<c:if test="${fn:contains(requestURL,'/ETD')}">
-								<div class="etd_right_panel">
+								<div class="etd_right_panel" data-bind="visible: currETDAssetClassSpecArray().length>0">
 									<div class="parameter_box">
 								    	<div class="parameter_title">
 								        	<div class="on_off">闭合状态：<span>断开</span></div>
-								        	<h3 data-bind="text: currETDAssetNum()">WY-1Y-01参数</h3>
+								        	<h3 data-bind="text: currETDAssetNum">WY-1Y-01参数</h3>
 								        </div>
 								    	<div class="parameter_detail">
 								        	<ul data-bind="foreach: currETDAssetClassSpecArray">
 								        		<li>
-								        			<span class="options" data-bind="text: DESCRIPTION">A相电流</span>
-								        			<span class="unit" data-bind="text: MEASUREUNITID">A</span>
-								        			<strong></strong>
+								        			<span class="options" data-bind="text: label">A相电流</span>
+								        			<span data-bind="attr: { class:'p_'+tagid}, text: tagvalue"></span>
+								        			<span class="unit" data-bind="text: measureunitid=='—'?'':measureunitid">A</span>
 							        			</li>
 								        	</ul>
 								        </div>
@@ -185,45 +206,73 @@
 								</div>
 							</c:if>
 							
-							<div id="component2" class="panel" style="position:absolute;top:${currentStructurePagelayout.height-200 }px;width:${currentStructurePagelayout.width}px;">
-							
-							<c:if test="${fn:contains(requestURL,'/ETD')}">							
-							<table>
-								<tr>
-									<table border="0" cellpadding="0" cellspacing="0" class="tab_elec">
-										<tr data-bind="foreach: currETDAssetClassSpecArray">
-											<!-- ko if: ($index() == 0)  -->
-											<td height="30px" width="100px" style="word-wrap:break-word;word-break:break-all;">设备名称\参数</td>
-											<td height="30px" width="100px" style="word-wrap:break-word;word-break:break-all;" data-bind="text: DESCRIPTION">接地状态</td>
-											<!-- /ko -->
-											
-											<!-- ko if: ($index() > 0)  -->
-											<td width="100px" style="word-wrap:break-word;word-break:break-all;" data-bind="text: DESCRIPTION">接地状态</td>
-											<!-- /ko -->
-										</tr>
-									</table>									
-								</tr>
-								<tr>
-									<table border="0" cellpadding="0" cellspacing="0" class="tab_elec" data-bind="foreach: allETDAssetClassSpecArrayForTable">
-										<tr data-bind="foreach: $data">
-											<td height="30px" width="100px" style="word-wrap:break-word;word-break:break-all;" data-bind="text: $data">接地状态</td>
-										</tr>
-									</table>									
-								</tr>							
-							</table>							
-							</c:if>
-							
-							
+							<div id="component2" class="panel" style="position:absolute;top:${fn:contains(requestURL,'/ETD') ?currentStructurePagelayout.height-400 : currentStructurePagelayout.height-200 }px;width:${currentStructurePagelayout.width}px;">
+								<!-- 变配电面板 --> 
+								<c:if test="${fn:contains(requestURL,'/ETD')}">
+									<c:import url="../../etd/etdPanel.jsp"/>			
+								</c:if>
 							</div>
 							<!-- ko foreach: taglist().structureItmes -->
-							<div style="position:absolute;"
-								data-bind="attr: { class: classvalue,id: tagid,pagetagid: pagetagid,pagetagtype:pagetagtype,pagetab:'structure',exp:expressions },draggable: { cursor: 'pointer' },style:{background:value,top:structure_top + 'px',left:structure_left + 'px',zIndex:zindex},click:$root.operate().showOperation"
-								>
+<!-- 							<div style="position:absolute;" -->
+<!-- 								data-bind="attr: { class: classvalue,id: tagid,pagetagid: pagetagid,pagetagtype:pagetagtype,pagetab:'structure',exp:expressions },draggable: { cursor: 'pointer' },style:{background:value,top:structure_top + 'px',left:structure_left + 'px',zIndex:zindex},click:$root.operate().showOperation" > -->
 								<!-- <span data-bind="text: value"></span> -->
-								<span data-bind="css: arrow"><span
-									data-bind="text: label,style:{fontSize: labelFontSize},css:labelClassName,visible:showlabel"></span></span>
-								<div data-bind="html:template,visible:pagetagtype==99"></div>
-							</div>
+<!-- 								<span data-bind="css: arrow"><span -->
+<!-- 									data-bind="text: label,style:{fontSize: labelFontSize},css:labelClassName,visible:showlabel"></span></span> -->
+<!-- 								<div data-bind="html:template,visible:pagetagtype==99"></div> -->
+
+								
+								<div style="position:absolute;"
+									data-bind="visible:visible,attr: { id: tagid,pagetagid: pagetagid,pagetagtype:pagetagtype,pagetab:'plan',title:tagname,exp:expressions },draggable: { cursor: 'pointer' },style:{background:value,top:plan_top + 'px',left:plan_left + 'px',zIndex:zindex},click:$root.operate().showOperation"
+									class="meter ui-draggable custompage">
+									<!-- ko if: (pagetagtype==2) -->
+									<a data-bind="attr:{onclick:deviceUrl,title:label}"><span data-bind="css: arrow"></span></a>
+									<!-- /ko -->
+									<!-- ko if: (pagetagtype<2 || (pagetagtype>2&&pagetagtype<98))  -->
+										<c:choose>
+										  	<c:when test="${fn:contains(requestURL,'/HVAC')}">
+											   	<!-- 暖通空调图标组件显示，2014-09-18，zouzhixiang -->
+												<i style="position: absolute; z-index: 1;" data-bind="css: baseicon, attr:{title: $parent.tagname, childtagid: childtagid}"></i>
+												<!-- ko foreach: deviceslist -->
+													<!-- ko if: (tagname === icon1_text() && value() === icon1_value()) -->
+														<i data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 3;"></i>
+													<!-- /ko -->
+													<!-- ko if: (tagname === icon2_text() && value() === icon2_value()) -->
+														<i data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 2;"></i>
+													<!-- /ko -->
+												<!-- /ko -->
+												<div data-bind="text: tagname, css:labelClassName"></div> 
+										   	</c:when>
+										    <c:otherwise>
+											  
+											 	<!--  系统图标组件显示，2014-09-26，zouzhixiang -->
+												<span style="position: absolute; z-index: 1;" data-bind="css: baseicon, attr:{title: $parent.tagname, childtagid: childtagid}">
+												</span>
+												<!-- ko foreach: deviceslist -->
+													<!-- ko if: (tagname === icon1_text() && value() === icon1_value()) -->
+														<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 5;"></span>
+													<!-- /ko -->
+													<!-- ko if: (tagname === icon2_text() && value() === icon2_value()) -->
+														<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 4;"></span>
+													<!-- /ko -->
+												<!-- /ko -->
+												<span style="background: url('') no-repeat;" data-bind="css: baseicon"></span>
+	
+										    </c:otherwise>
+										</c:choose>
+									<!-- /ko -->
+									<!-- ko if:(pagetagtype!=98) -->
+									<span class="showTagname" style="display:none;" data-bind="text:tagname"></span>
+									<!-- /ko -->
+									<div class="P_98" style="cursor: Default;" data-bind="html:template,visible:pagetagtype==98"></div>
+									<div style="cursor: Default;" data-bind="html:template,visible:pagetagtype==99"></div>
+								</div>
+								
+								
+
+
+
+
+<!-- 							</div> -->
 							<!-- /ko -->
 						</div>
 					</div>
@@ -263,25 +312,54 @@
 
 			<div id="planCarousel" class="carousel slide">
 
-
+		<!-- 平面图 sliderZoom -->
+		<!-- 
+		<div class="BMap_stdMpPan" >
+			<div class="BMap_button BMap_panN"></div>
+			<div class="BMap_button BMap_panE"></div>
+			<div class="BMap_button BMap_panW"></div>
+			<div class="BMap_button BMap_panS"></div>
+		</div>
+		<div class="map-slider">
+			<div class="buttons">
+			   <span class="fa fa-plus">+</span>
+				<div class="drag-line">
+				  <div class="line"></div> 
+				  <div class="draggable-button">1</div>   
+				</div>
+				<div class="draggable-buton"></div>   
+				<span class="fa fa-minus">-</span>
+			</div>
+		</div>
+		 -->
+		<!-- 平面图 sliderZoom  end-->
         <div class="carousel-inner">
 					<div class="item active"
 						style="height:${currentPlanPagelayout.height}px">
-						<div class="structure"
+						<div id="stru_id" onLoad="shiftzoom.add(this,{showcoords:true,zoom:100})" class="structure tagdiv"
 							style="position:absolute;width:${currentPlanPagelayout.width}px;height:${currentPlanPagelayout.height }px;background:url('${pageContext.request.contextPath}/${fn:trim(currentPlanPagelayout.planbg)}') no-repeat top left;"
 							layoutid="${currentPlanPagelayout.layoutid}" layouttype="${currentPlanPagelayout.layouttype}">
-							
-							<img id="backgroundImg" src = "${pageContext.request.contextPath}/${fn:trim(currentPlanPagelayout.planbg)}" border="0" usemap="#HotMap" id="HotMap" style="border:0;">
+							<c:if test="${!fn:contains(requestURL,'/PFE')}">
+								<!-- 客流 -->
+							       <img id="backgroundImg" src = "${pageContext.request.contextPath}/${fn:trim(currentPlanPagelayout.planbg)}" border="0" usemap="#HotMap" id="HotMap" style="border:0;">
+						    </c:if>
 							<div style="float:left;width:100px;" id="statelist"></div>
-							<div id="component3" class="panel" style="position:absolute;top:${(fn:contains(requestURL,'/PFE') or fn:contains(requestURL,'/LSPUB')) ? currentStructurePagelayout.height-238 : (fn:contains(requestURL,'/LSN') ? currentStructurePagelayout.height-10 : currentStructurePagelayout.height-285) }px;width:${currentStructurePagelayout.width}px;">
-							
-								<c:if test="${fn:contains(requestURL,'/LSPUB')}">
+							<div id="component3" class="panel" style="position:absolute;top:${(fn:contains(requestURL,'/PFE') or fn:contains(requestURL,'/LSPUB') or fn:contains(requestURL,'/BGMB')) ? currentStructurePagelayout.height-238 : (fn:contains(requestURL,'/LSN') ? currentStructurePagelayout.height-180 : currentStructurePagelayout.height-285) }px;width:${currentStructurePagelayout.width}px;">
+								<!-- 背景音乐面板 -->
+								<c:if test="${fn:contains(requestURL,'/BGMB')}">
+							       <c:import url="../../mctrl/bgmb.jsp"/>
+							    </c:if>
 								<!-- 公共照明面板 -->
+								<c:if test="${fn:contains(requestURL,'/LSPUB')}">
 							       <c:import url="../../mctrl/lspub.jsp"/>
 							    </c:if>
+							    <!-- 夜景照明面板 -->
 								<c:if test="${fn:contains(requestURL,'/LSN')}">
-								<!-- 公共照明面板 -->
 							       <c:import url="../../mctrl/lsn.jsp"/>
+							    </c:if>
+							    <!-- 客流 -->
+							    <c:if test="${fn:contains(requestURL,'/PFE')}">
+							       <c:import url="../../pfe/pfePanel.jsp"/>
 							    </c:if>
 							</div>
 							
@@ -301,21 +379,7 @@
                              <c:import url="../../elecpatrol/parkmList.jsp"/>
 						</c:if>
 					    	<c:if test="${fn:contains(requestURL,'/PFE')}">
-								<!-- 客流排名zzx -->
-								<div class="pfe_custom_rank">
-									<div class="pfe_asc_div">
-										<h1 class="pfe_asc_text">客流排名</h1>
-										<div class="pfe_flip">&gt;&gt;</div>
-									</div>
-									
-									<div id="pfe_content">
-										<table>
-											<tbody></tbody>
-										</table>
-									</div>	
-								</div>
-								<div class="pfe_show_rank">&lt;&lt;</div>
-								<!-- 客流排名END -->
+								<c:import url="../../pfe/passengerView.jsp" />
 							</c:if>
 							
 							<!-- 热区定义  [ ChengKang 2014-08-01 ] -->
@@ -335,28 +399,26 @@
 									<c:choose>
 										<c:when test="${fn:contains(requestURL,'/PFE')}">
 											<!-- 客流 -->
-										   	<div class="pfe_bg">
-												<div data-bind="css: pfe_rank_icon">
-													<p class="rank_num" data-bind="text: pfe_sort"></p>
-													<div data-bind="css: pfe_rank_arrow"></div>
-												</div>
-												<div class="pfe_cus_info">
-													<div class="pfe_store_name" data-bind="text: tagname"></div>
-													<div class="pfe_store_custom_num" data-bind="text: sum_day"></div>
-												</div>
-											</div>
+											<span data-bind="attr:{id:label}, css:passenger.showClass" >
+												<input name="inCount" type="hidden" data-bind="value: passenger.inCount">
+												<input name="outCount" type="hidden" data-bind="value: passenger.outCount">
+												<input name="insideCount" type="hidden" data-bind="value: passenger.insideCount">
+												<i class="cus_icon cus_icon_b"></i>
+												<span class="cus_text cus_text_b" data-bind="text: passenger.showinCount"></span>
+											</span>
 									   	</c:when>
 									  	<c:when test="${fn:contains(requestURL,'/HVAC')}">
 										   	<!-- 暖通空调图标组件显示，2014-09-18，zouzhixiang -->
 											<i style="position: absolute; z-index: 1;" data-bind="css: baseicon, attr:{title: $parent.tagname, childtagid: childtagid}"></i>
 											<!-- ko foreach: deviceslist -->
 												<!-- ko if: (tagname === icon1_text() && value() === icon1_value()) -->
-													<i data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 3;"></i>
+													<i data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 3;"></i>
 												<!-- /ko -->
 												<!-- ko if: (tagname === icon2_text() && value() === icon2_value()) -->
-													<i data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 2;"></i>
+													<i data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 2;"></i>
 												<!-- /ko -->
 											<!-- /ko -->
+											<div data-bind="text: tagname, css:labelClassName"></div> 
 									   	</c:when>
 									  	<c:when test="${fn:contains(requestURL,'/FAS')}">
 										   	<!--  消防系统图标组件显示，2014-09-26，zouzhixiang -->
@@ -364,11 +426,13 @@
 											</span>
 											<!-- ko foreach: deviceslist -->
 												<!-- ko if: (tagname === icon1_text() && value() === icon1_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 3;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 3;"></span>
 												<!-- /ko -->
 												<!-- ko if: (tagname === icon2_text() && value() === icon2_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 2;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 2;"></span>
 												<!-- /ko -->
+												<!-- 消防系统有显示文字的需求 -->
+<!-- 												<span data-bind="text: value, visible: $parent.showValue, css: valueClassName, attr:{style:{fontSize: valueFontSize}, title: $parent.tagname}"></span> -->
 											<!-- /ko -->
 											<span style="background: url('') no-repeat;" data-bind="css: baseicon"></span>
 									   	</c:when>
@@ -378,10 +442,10 @@
 											</span>
 											<!-- ko foreach: deviceslist -->
 												<!-- ko if: (tagname === icon1_text() && value() === icon1_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 100;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 100;"></span>
 												<!-- /ko -->
 												<!-- ko if: (tagname === icon2_text() && value() === icon2_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 4;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 4;"></span>
 												<!-- /ko -->
 												<!-- ko if: (tagname === 'position') -->
 													<span class="msem_pos" data-bind="text: value, attr:{title: $parent.tagname}"></span>
@@ -398,13 +462,13 @@
 											</span>
 											<!-- ko foreach: deviceslist -->
 												<!-- ko if: (tagname === icon1_text() && value() === icon1_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 5;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 5;"></span>
 												<!-- /ko -->
 												<!-- ko if: (tagname === icon2_text() && value() === icon2_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 4;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 4;"></span>
 												<!-- /ko -->
 												<!-- ko if: (tagname === icon3_text() && value() === icon3_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 3;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 3;"></span>
 												<!-- /ko -->
 											<!-- /ko -->
 											<span style="background: url('') no-repeat;" data-bind="css: baseicon"></span>
@@ -416,10 +480,10 @@
 											</span>
 											<!-- ko foreach: deviceslist -->
 												<!-- ko if: (tagname === icon1_text() && value() === icon1_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 5;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 5;"></span>
 												<!-- /ko -->
 												<!-- ko if: (tagname === icon2_text() && value() === icon2_value()) -->
-													<span data-bind="css: arrow,attr:{title: $parent.tagname}" style="position: absolute; z-index: 4;"></span>
+													<span data-bind="css: arrow,attr:{id: 'show_' + tagid, title: $parent.tagname}" style="position: absolute; z-index: 4;"></span>
 												<!-- /ko -->
 											<!-- /ko -->
 											<span style="background: url('') no-repeat;" data-bind="css: baseicon"></span>
@@ -808,7 +872,43 @@
 	</div>
 
 </div>
-
+<%-- 提示框内容Start --%>
+<div class="custom_info_box" style="display: none;">
+	<span class="triangle-up"></span> <a href="#" class="close_btn"></a>
+	<div class="wd">
+		<div class="wd_l">
+			<div class="wd_icon"></div>
+		</div>
+		<div class="wd_r">
+			<div class="wd_title">
+				<span id="tipText">万达百货</span><span class="sp_video"></span>
+			</div>
+			<p id="tipNum" style="display: none;"></p>
+			<%--<p>联系电话： 13717850772</p>--%>
+			<div class="wd_chart">
+				<div class="wd_chart_pic" id="tipChart">
+					<div class="wd_chart_time">今日</div>
+				</div>
+				<div class="wd_chart_state">
+					<p class="wd_custom_list">
+						<a href="#" onClick="trendChart('in', 'tip')" class="trendChart">总进</a>|<a
+							href="#" onClick="trendChart('out', 'tip')">总出</a>|<a href="#"
+							onClick="trendChart('inside', 'tip')" style="display: none;">场内</a>
+					</p>
+					<span class="wd_chart_tit">客流趋势图</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wd_bottom">
+		<ul>
+			<li><span>总进</span><cite id="zongjin"></cite></li>
+			<li><span>总出</span><cite id="zongchu"></cite></li>
+			<li><span>场内</span><cite id="changnei" class="red"></cite></li>
+		</ul>
+	</div>
+</div>
+<%-- 提示框内容End --%>
 
 
 <script src="<spring:url value="/resources/scripts/mctrl/submenu.js" />"></script>
@@ -818,6 +918,7 @@
 <!-- application -->
 <script src="<spring:url value="/resources/scripts/okcsys/configuration.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/scripts/mctrl/mctrl.js"></spring:url>"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/pfe/pfecommon.js"></script>
 <script src="<spring:url value="/resources/scripts/highcharts.js"></spring:url>"></script>
 <script src="<spring:url value="/resources/scripts/pfe/pfeConfig.js"></spring:url>"></script>
 

@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.energicube.eno.common.Config;
-
 /**
  * Dahboard页面控制
  * @author zouzhixiang
@@ -17,8 +15,6 @@ import com.energicube.eno.common.Config;
 public class DashboardController extends BaseController {
 
 	private static final Log logger = LogFactory.getLog(DashboardController.class);
-
-	private Config config = new Config();
 
 	/**
 	 * Dahboard页面

@@ -1,14 +1,17 @@
 package com.energicube.eno.message.redis;
 
+import com.energicube.eno.common.Const;
 import com.energicube.eno.monitor.model.AssetMeasurement;
 import com.energicube.eno.monitor.model.OkcLogs;
 import com.energicube.eno.monitor.service.AssetLogsService;
 import com.energicube.eno.monitor.service.OkcLogsService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -17,6 +20,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,13 +50,6 @@ public class RedisOpsService {
 
     @Autowired
     private AssetLogsService assetLogsService;
-    /*private final SimpMessageSendingOperations messagingTemplate;
-	
-	@Autowired
-	public RedisOpsService(SimpMessageSendingOperations messagingTemplate){
-		this.messagingTemplate = messagingTemplate;
-	}
-	*/
 
     /**
      * 通过指定的通道更新对象
@@ -75,13 +72,6 @@ public class RedisOpsService {
      */
     public void sendTagInfo(TagInfo taginfo) {
 
-//		logger.debug("send taginfo:" + taginfo.toSendString());
-
-		/*if("".equals(taginfo.toSendString())) {
-			String payload = "Rejected taginfo " + taginfo;
-			this.messagingTemplate.convertAndSendToUser("guest","/queue/errors", payload);
-			return;
-		}*/
         sendMessage("chan:from_all_to_uckernal:value", taginfo.toSendString());
         // 记录日志信息  [ ChengKang 2014-08-02 ]
         OkcLogs Logs = new OkcLogs();
@@ -95,8 +85,7 @@ public class RedisOpsService {
             AssetMByTag = (AssetMeasurement) assetLogsService.findByTag(AssetTagid, TagValues);
             AssetMByTagId = (AssetMeasurement) assetLogsService.findByTagId(AssetTagid);
         } catch (Exception e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
+        	logger.error(e1);
         }
 
         String locations = AssetMByTag.getLocationName();
@@ -106,12 +95,12 @@ public class RedisOpsService {
         String tagidStr = AssetMByTagId.getTagId();
         String tagnamestrStr = AssetMByTagId.getTagname();
 
-        String strlogs = locations + "    " + tagidStr + "    " + tagnamestrStr + "    " + assetattribute + "    " + tagvalue;
+		String strlogs = locations + "    " + tagidStr + "    " + tagnamestrStr + "    " + assetattribute + "    " + tagvalue;
         Logs.WriteLogMsg(this.getClass().getName(), OkcLogs.LOG_TAGINFO, strlogs);
         try {
             okcLogsService.save(Logs);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -122,7 +111,6 @@ public class RedisOpsService {
      * @param commandInfo
      */
     public void sendCommand(CommandInfo commandInfo) {
-//		logger.debug("send taginfo:" + commandInfo.toSendString());
         // 记录日志信息  [ ChengKang 2014-08-02 ]
         OkcLogs Logs = new OkcLogs();
         String Message = "Update TagInfo : [ " + commandInfo.toSendString() + " ]";
@@ -189,7 +177,6 @@ public class RedisOpsService {
         for (String key : keys) {
             result.add(hGetAllValueByKey(key));
         }
-        ;
         return result;
     }
 
@@ -202,11 +189,13 @@ public class RedisOpsService {
      * @return 值对象
      */
     public String hGetAllValueByKey(String key) {
-        Map<byte[], byte[]> map = redisTemplate.getConnectionFactory().getConnection().hGetAll(key.getBytes());
+    	RedisConnection rConnection = redisTemplate.getConnectionFactory().getConnection();
+        Map<byte[], byte[]> map = rConnection.hGetAll(key.getBytes());
         if (map.size() > 0 && map.containsKey("Value".getBytes())) {
             byte[] val = map.get("Value".getBytes());
             return new String(val, 0, val.length);
         }
+        rConnection.close();
         return null;
     }
 
@@ -217,7 +206,10 @@ public class RedisOpsService {
      * @return Map of fields
      */
     public Map<byte[], byte[]> hGetAllByKey(String key) {
-        return redisTemplate.getConnectionFactory().getConnection().hGetAll(key.getBytes());
+    	RedisConnection rConnection = redisTemplate.getConnectionFactory().getConnection();
+    	Map<byte[], byte[]> map = rConnection.hGetAll(key.getBytes());
+    	rConnection.close();
+        return map;
     }
 
 
@@ -228,32 +220,130 @@ public class RedisOpsService {
      * @return list of {@link TagInfo}
      */
     public List<TagInfo> mGetByKeys(String[] fields) {
-        List<TagInfo> result = new ArrayList<TagInfo>();
+		List<TagInfo> result = new ArrayList<TagInfo>();
 
+		byte[][] args = new byte[fields.length][];
+		for (int i = 0; i < fields.length; i++) {
+			if (fields[i] != null)
+				args[i] = fields[i].getBytes();
+		}
 
-        byte[][] args = new byte[fields.length][];
-        for (int i = 0; i < fields.length; i++) {
-            if (fields[i] != null)
-                args[i] = fields[i].getBytes();
-        }
+		RedisConnection rConnection = redisTemplate.getConnectionFactory().getConnection();
+		// Redis mget command line
+		List<byte[]> list = rConnection.mGet(args);
 
-        //Redis mget command line
-        List<byte[]> list = redisTemplate.getConnectionFactory().getConnection().mGet(args);
+		// 解析结果
+		for (byte[] data : list) {
+			if (data != null && "null".equals(data)) {
+				String content = new String(data, 0, data.length);
+				if (StringUtils.hasLength(content)) {
+					try {
+						TagInfo taginfo = deserialize(content);
+						result.add(taginfo);
+					} catch (Exception e) {
+					}
+				}
+			}
+		}
+		rConnection.close();
 
-        //解析结果
-        for (byte[] data : list) {
-            String content = new String(data, 0, data.length);
-            if (StringUtils.hasLength(content)) {
-                TagInfo taginfo = deserialize(content);
-                result.add(taginfo);
-            }
-        }
-
-        return result;
+		return result;
     }
 
+    /**
+     * 获取指定的数组的值
+     * 
+     * @param fields 要取值的数组
+     * @return 返回一个map，key对应tagid
+     */
+    public Map<String, Object> mGetByKeysMap(String[] fields) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		byte[][] args = new byte[fields.length][];
+		for (int i = 0; i < fields.length; i++) {
+			if (fields[i] != null) {
+				args[i] = fields[i].getBytes();
+			}
+		}
+
+		RedisConnection rConnection = redisTemplate.getConnectionFactory().getConnection();
+		// Redis mget command line
+		List<byte[]> list = rConnection.mGet(args);
+		// 解析结果
+		for (byte[] data : list) {
+			if (data != null && !"null".equals(data)) {
+				String content = new String(data, 0, data.length);
+				if (StringUtils.hasLength(content)) {
+					try {
+						TagInfo taginfo = deserialize(content);
+						map.put(taginfo.getId().toString(), taginfo.getV());
+					} catch (Exception e) {
+					}
+				}
+			}
+		}
+
+		rConnection.close();
+		return map;
+    }
+    
+	/**
+	 * 获取指定的key在redis中的值
+	 * 
+	 * @param key Redis中对应的key
+	 * @return
+	 */
+	public String getTagInfoByRedisKey(String key) {
+		RedisConnection rc = redisTemplate.getConnectionFactory().getConnection();
+		
+		String val = "";
+		byte[] data = rc.get((Const.TAGS_VAL + ":" + key).getBytes());
+		// 解析取到结果
+		if (data != null && !"null".equals(data)) {
+			String content = new String(data, 0, data.length);
+			if (StringUtils.hasLength(content)) {
+				try {
+					TagInfo tagInfo = deserialize(content);
+					val = tagInfo.getV();
+				} catch (Exception e) {
+					val = "";
+				}
+			}
+		}
+		rc.close();
+		
+		return val;
+	}
+
+	/**
+	 * 获取指定的key在redis中的值
+	 * 
+	 * @param rc Redis连接，对于重复调用此方法的业务需求，直接将连接当参数传递
+	 *						 方法调用完需要手动的关闭Redis连接
+	 * @param key Redis中对应的key
+	 * @return
+	 */
+	public String getTagInfoByRedisConnectionAndKey(RedisConnection rc, String key) {
+		
+		String val = "";
+		byte[] data = rc.get((Const.TAGS_VAL + ":" + key).getBytes());
+		// 解析取到结果
+		if (data != null && !"null".equals(data)) {
+			String content = new String(data, 0, data.length);
+			if (StringUtils.hasLength(content)) {
+				try {
+					TagInfo tagInfo = deserialize(content);
+					val = tagInfo.getV();
+				} catch (Exception e) {
+					val = "";
+				}
+			}
+		}
+		
+		return val;
+	}
+
     private final ObjectMapper mapper = new ObjectMapper();
-    //private JsonNode node;
 
     /**
      * 反序列化字符内容
@@ -275,11 +365,12 @@ public class RedisOpsService {
         try {
             taginfo = mapper.readValue(strJson, TagInfo.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         }
 
         return taginfo;
     }
+    
 }

@@ -1,6 +1,7 @@
 package com.energicube.eno.monitor.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
@@ -58,6 +59,12 @@ public class Pagetag implements java.io.Serializable {
     private String expressions;//表达式
 
     private String classstructureid; // 分类id，用于对应设备列表和面板对应的显示值[2014-10-16, zzx]
+    
+    private int orderindex; // 排序编号，用于变配电面板[2014-12-04, spb]
+    
+    private String tagvalue;  // 自定义扩展字段（非数据库字段）,为Pagtag 设置初次加载值[2014-12-12, spb]
+    
+    private UcPassengerFlowDay passenger; // 自定义扩展字段（非数据库字段）,为客流使用[2014-12-18, spb]
 
     public Pagetag() {
     }
@@ -68,7 +75,53 @@ public class Pagetag implements java.io.Serializable {
         this.layoutid = layoutid;
     }
 
-    public Pagetag(Long pagetagid, String tagid, String tagname, String label,
+    public Pagetag(Long pagetagid, String tagid, String tagname, int tagtype,
+			String tagval, String label, String comments, String measureunitid,
+			String controlid, String controlid2, String controlid3,
+			String left, String top, String parentid, Boolean children,
+			String groupname, String layoutid, String createby,
+			DateTime createdate, int pagetagtype, int usesetting,
+			String setting, String attrctrlid, String showrange, String coords,
+			int isProgLinkage, String progLinkage, String pagetab, int zindex,
+			String scripts, String expressions, String classstructureid,
+			int orderindex) {
+		super();
+		this.pagetagid = pagetagid;
+		this.tagid = tagid;
+		this.tagname = tagname;
+		this.tagtype = tagtype;
+		this.tagval = tagval;
+		this.label = label;
+		this.comments = comments;
+		this.measureunitid = measureunitid;
+		this.controlid = controlid;
+		this.controlid2 = controlid2;
+		this.controlid3 = controlid3;
+		this.left = left;
+		this.top = top;
+		this.parentid = parentid;
+		this.children = children;
+		this.groupname = groupname;
+		this.layoutid = layoutid;
+		this.createby = createby;
+		this.createdate = createdate;
+		this.pagetagtype = pagetagtype;
+		this.usesetting = usesetting;
+		this.setting = setting;
+		this.attrctrlid = attrctrlid;
+		this.showrange = showrange;
+		this.coords = coords;
+		this.isProgLinkage = isProgLinkage;
+		this.progLinkage = progLinkage;
+		this.pagetab = pagetab;
+		this.zindex = zindex;
+		this.scripts = scripts;
+		this.expressions = expressions;
+		this.classstructureid = classstructureid;
+		this.orderindex = orderindex;
+	}
+
+	public Pagetag(Long pagetagid, String tagid, String tagname, String label,
                    String measureunitid, String controlid, String left, String top,
                    String layoutid, String createby, DateTime createdate) {
         this.pagetagid = pagetagid;
@@ -381,8 +434,35 @@ public class Pagetag implements java.io.Serializable {
     public void setClassstructureid(String classstructureid) {
         this.classstructureid = classstructureid;
     }
+    
+    @Column(name = "ORDERINDEX")
+	public int getOrderindex() {
+		return orderindex;
+	}
 
-    @Override
+	public void setOrderindex(int orderindex) {
+		this.orderindex = orderindex;
+	}
+
+	@Transient
+    public String getTagvalue() {
+		return tagvalue;
+	}
+
+	public void setTagvalue(String tagvalue) {
+		this.tagvalue = tagvalue;
+	}
+	
+	@Transient
+	public UcPassengerFlowDay getPassenger() {
+		return passenger;
+	}
+
+	public void setPassenger(UcPassengerFlowDay passenger) {
+		this.passenger = passenger;
+	}
+
+	@Override
     public String toString() {
         return "Pagetag [pagetagid=" + pagetagid + ", tagid=" + tagid
                 + ", tagname=" + tagname + ", tagtype=" + tagtype + ", tagval="
@@ -398,4 +478,5 @@ public class Pagetag implements java.io.Serializable {
                 + ", coords=" + coords + ", pagetab=" + pagetab + ", zindex=" + zindex + ", classstructureid="
                 + classstructureid + "]";
     }
+
 }

@@ -1,7 +1,5 @@
 package com.energicube.eno.monitor.service;
 
-import com.energicube.eno.message.redis.TagInfo;
-import com.energicube.eno.monitor.model.Dict;
 import com.energicube.eno.monitor.model.Pagetag;
 
 import java.util.Collection;
@@ -23,6 +21,15 @@ public interface PagetagService {
     public List<Pagetag> findByPagelayoutuid(long pagelayoutuid);
 
     /**
+     * 根据classstructureid查询指定页面的对应的数据
+     * 
+     * @param pagelayoutuid
+     * @param classid
+     * @return
+     */
+    public List<Pagetag> findByLayoutidAndClassId(long pagelayoutuid, String classid);
+
+    /**
      * 根据主键查找一个
      *
      * @param id 主键
@@ -34,6 +41,11 @@ public interface PagetagService {
      * 保存pagetag
      */
     public Pagetag savePagetag(Pagetag pagetag);
+    
+    /**
+     * 保存客流pagetag
+     */
+    public Pagetag savePassengerPagetag(Pagetag pagetag);
 
     /**
      * 删除指定ID的设备点
@@ -45,8 +57,7 @@ public interface PagetagService {
     /**
      * 更新设备点坐标信息
      */
-    public Pagetag updatePagetagCoordinate(long pagetagid, String left,
-                                           String top);
+    public Pagetag updatePagetagCoordinate(long pagetagid, String left, String top);
 
     /**
      * 更新设备点坐标信息
@@ -69,11 +80,9 @@ public interface PagetagService {
      * @param menuid
      * @param layoutid
      * @param elementvalue
-     * @param taginfo
-     * @param contextMap
      * @return
      */
-    public Map<String, List> findPagetagAndControlByMenuid(String menuid, String layoutid, String elementvalue, List<TagInfo> taginfo, Map<String, Dict> contextMap);
+    public Map<String, List> findPagetagAndControlByMenuid(String menuid, String layoutid, String elementvalue);
 
     /**
      * 获取指定菜单对应设备点的最后测量值
@@ -81,7 +90,7 @@ public interface PagetagService {
      * @param menuid 菜单ID
      * @return {@link Pagetag} of list
      */
-    public List<Pagetag> getTagLastValues(String menuid, List<TagInfo> taginfo);
+    public List<Pagetag> getTagLastValues(String menuid);
 
 
     /**
@@ -120,4 +129,28 @@ public interface PagetagService {
      * @param pagetags1
      */
     public void addPagetags(Collection<Pagetag> pagetags1);
+    
+    /**
+     * 根据pagelayoutuid 获取变配电面板
+     * 
+     * @param pagelayoutuid 页面编号
+     * @return Map<String, Object>
+     * @throws Exception
+     */
+	public Map<String, Object> findETDPanelDatas(String pagelayoutuid) throws Exception;
+
+	/**
+	 * 设备排序
+	 * 
+	 * @param pagetagid
+	 * @param type (type=true, 向上移动; type=false, 往下移动)
+	 */
+	public void sortTags(long pagetagid, boolean type) throws Exception;
+
+	/**
+	 *  从配置好的Pagetag中批量删除 PageTags
+	 * @param pagetagids
+	 */
+	public void deletePagetags(String[] pagetagids) throws Exception;
+
 }

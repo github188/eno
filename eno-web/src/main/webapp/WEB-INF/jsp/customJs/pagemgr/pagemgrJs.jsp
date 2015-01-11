@@ -12,7 +12,7 @@
 <script src="${pageContext.request.contextPath}/resources/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/mcustomscrollbar/jquery.mCustomScrollbar.css">
-<script src="${pageContext.request.contextPath}/resources/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script> --%>
 
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/easyui.css">

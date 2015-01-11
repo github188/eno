@@ -14,7 +14,15 @@
             <pattern>[%thread] %d{HH:mm:ss.SSS} %-5level %logger %line - %msg%n</pattern>
         </encoder>
     </appender>
-
+    <appender name="logError" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>../logs/logError.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%thread] %d{HH:mm:ss.SSS} %-5level %logger %line - %msg%n</pattern>
+        </encoder>
+    </appender>
     <!--输出到tomcat的控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder 默认配置为PatternLayoutEncoder -->
@@ -30,12 +38,9 @@
     </logger>
 
     <!--顶级根目录打印级别-->
-	<root level="error">
-		<appender-ref ref="console" />
-	</root>
-	
 	<root level="info">
 		<appender-ref ref="console" />
+        <appender-ref ref="logError"/>
 	</root>
 
 </configuration>

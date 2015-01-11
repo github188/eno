@@ -1,12 +1,16 @@
 package com.energicube.eno.common;
 
 import com.energicube.eno.common.dto.DeviceCommand;
+import com.energicube.eno.message.redis.CommandInfo;
+import com.energicube.eno.message.redis.RedisOpsService;
+
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -31,6 +35,9 @@ public class SendCommandToSystem {
     private static Log logger = LogFactory.getLog(SendCommandToSystem.class);
 
     private static Config config = new Config();
+    
+    @Autowired
+    private static RedisOpsService redisOpsService;
 
     public static String sendCommand(String requestUrl, String tagId, String value) {
 
@@ -155,11 +162,15 @@ public class SendCommandToSystem {
     public static void sendCommand(DeviceCommand deviceCommand) {
         List<DeviceCommand> deviceCommandList1 = deviceCommand.getParams();
 
-        String url = config.getProps().getProperty("sendCommandUrl");
+//        String url = config.getProps().getProperty("sendCommandUrl");
         for (DeviceCommand command : deviceCommandList1) {
             logger.info(deviceCommand.getTagId() + "----------" + command.getTagId() + "-----" + command.getParamValue());
-            String cmd = "tagid=" + command.getTagId() + "&value=" + command.getParamValue() + "&jsoncallback=?";
-            sendCommand(url, cmd);
+//            String cmd = "tagid=" + command.getTagId() + "&value=" + command.getParamValue() + "&jsoncallback=?";
+//            sendCommand(url, cmd);
+            CommandInfo commandInfo = new CommandInfo();
+            commandInfo.setP1(command.getTagId());
+            commandInfo.setValue(command.getParamValue());
+            redisOpsService.sendCommand(commandInfo);
         }
         Date date = new Date();
         deviceCommand.setExecuteTime(date.getTime());
@@ -207,14 +218,18 @@ public class SendCommandToSystem {
      * @param patternName 模式名称
      */
     public static void sendCommandPatternName(String tagId, String patternName) {
-        String url = config.getProps().getProperty("sendCommandUrl");
+//        String url = config.getProps().getProperty("sendCommandUrl");
         logger.debug("------sendCommandPatternName----" + tagId + "---" + patternName);
         try {
             String name = URLEncoder.encode(patternName, "utf-8");
-            String cmd = "tagid=" + tagId + "&value=" + name + "&jsoncallback=?";
-            sendCommand(url, cmd);
+//            String cmd = "tagid=" + tagId + "&value=" + name + "&jsoncallback=?";
+//            sendCommand(url, cmd);
+            CommandInfo commandInfo = new CommandInfo();
+            commandInfo.setP1(tagId);
+            commandInfo.setValue(name);
+            redisOpsService.sendCommand(commandInfo);
         } catch (Exception e) {
-            logger.error("");
+            logger.error(e);
         }
     }
 

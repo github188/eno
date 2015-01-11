@@ -4,6 +4,7 @@ import com.energicube.eno.asset.model.Asset;
 import com.energicube.eno.asset.model.ClassStructure;
 import com.energicube.eno.calendar.model.UcWeather;
 import com.energicube.eno.common.Config;
+import com.energicube.eno.common.Const;
 import com.energicube.eno.common.PatternConst;
 import com.energicube.eno.common.SendCommandToSystem;
 import com.energicube.eno.common.dto.DeviceCommand;
@@ -108,15 +109,15 @@ public class MonitorCtrlController extends BaseController {
     public String initMctrlView(Model model) {
         List<OkcMenu> menus = menuService.findAll();
         model.addAttribute("menus", menus);
-        return "dashboard/dashboard";
+        return "mctrl/monitorsum";
     }
 
     /**
      * 监测与控制页面控制首页（子系统概要页）
      */
-    @RequestMapping(value = "/dashboard/dashboard", method = RequestMethod.GET)
+    @RequestMapping(value = "/mctrl/monitorsum", method = RequestMethod.GET)
     public String initMonitorSumView(Model model) {
-        return "dashboard/dashboard";
+        return "mctrl/monitorsum";
     }
 
 
@@ -894,9 +895,11 @@ public class MonitorCtrlController extends BaseController {
     @RequestMapping(value = "/msum/getMonitorSumData", method = RequestMethod.GET)
     @ResponseBody
     public Object getMonitorSumData(HttpServletRequest httpServletRequest) {
+        Map<String,Object> retMap = new HashMap<String,Object>();
         List<Map<String, String>> retList = new ArrayList<Map<String, String>>();
         //读取配置文件
         Properties monitorSumConfig = new Properties();
+        Map<String, String> expPropertiesMap = new HashMap<String, String>();
         Resource resource = new ClassPathResource("/properties/monitorsum.properties");
         EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
         try {
@@ -906,13 +909,14 @@ public class MonitorCtrlController extends BaseController {
             logger.error("读取/properties/monitorsum.properties文件失败!", e1);
         }
 
+        List<String> expList = new ArrayList<String>();
+
         for (String name : monitorSumConfig.stringPropertyNames()) {
             if (name.startsWith("Exp")) {
-                //是表达式则发送给Redis
-                CommandInfo commandInfo = new CommandInfo();
-                commandInfo.setP1(name);
-                commandInfo.setCmd(monitorSumConfig.getProperty(name));
-                this.redisOpsService.sendCommand(commandInfo);
+                //把变量对应的id发送给Redis
+                String tagsValkey = Const.TAGS_VAL + ":" + monitorSumConfig.getProperty(name);
+                expPropertiesMap.put(monitorSumConfig.getProperty(name), name);
+                expList.add(tagsValkey);
             } else {
                 //静态数据直接显示
                 Map<String, String> monitorSumDataMap = new HashMap<String, String>();
@@ -922,7 +926,17 @@ public class MonitorCtrlController extends BaseController {
             }
         }
 
-        return retList;
+        Map<String,Object> expMap = redisOpsService.mGetByKeysMap(expList.toArray(new String[expList.size()]));
+        for (String key : expMap.keySet()) {
+            Map<String, String> monitorSumDataMap = new HashMap<String, String>();
+            monitorSumDataMap.put("name", expPropertiesMap.get(key));
+            monitorSumDataMap.put("value", (String)expMap.get(key));
+            retList.add(monitorSumDataMap);
+        }
+
+        retMap.put("initData", retList);
+        retMap.put("expPropertiesMap", expPropertiesMap);
+        return retMap;
 
     }
 

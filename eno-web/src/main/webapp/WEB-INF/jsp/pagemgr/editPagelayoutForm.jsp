@@ -180,6 +180,22 @@
 												<option>7</option>
 												<option>8</option>
 												<option>9</option>
+												<option>10</option>
+												<option>11</option>
+												<option>12</option>
+												<option>13</option>
+												<option>14</option>
+												<option>15</option>
+												<option>16</option>
+												<option>17</option>
+												<option>18</option>
+												<option>19</option>
+												<option>20</option>
+												<option>21</option>
+												<option>22</option>
+												<option>23</option>
+												<option>24</option>
+												<option>25</option>
 											</select>
 												
 										</div>
@@ -241,10 +257,10 @@
 						<div class="btn-toolbar">
 							<button class="btn" type="button" id="quanxuan">全选</button>
 							<button class="btn" type="button" id="fanxuan">反选</button>
-							<button class="btn" type="button" data-bind="click: $root.buildAsset">生成设备</button>
-							<button class="btn" type="button" data-bind="click: $root.newPagetag">添加设备(0)</button>
+<!-- 							<button class="btn" type="button" data-bind="click: $root.buildAsset">生成设备</button> -->
+<!-- 							<button class="btn" type="button" data-bind="click: $root.newPagetag">添加设备(0)</button> -->
 							<button class="btn" id="btnSubmitDrawMap">新建热区(1)</button>
-							<button class="btn" type="button" data-bind="">添加视频(2)</button>
+<!-- 							<button class="btn" type="button" data-bind="">添加视频(2)</button> -->
 							<button class="btn" type="button" data-bind="click: $root.addAssets">添加资产(3)</button>
 							<button class="btn" type="button" data-bind="click: $root.addPassengers">添加客流(5)</button>
 							<button class="btn" type="button" data-bind="click: $root.newPanelControl">添加统计面板(98)</button>
@@ -253,11 +269,25 @@
 							<a href="#" class="btn">批量添加设备</a> <a href="#" class="btn"
 								data-bind="click:$root.batchSetTagProp">批量设置</a> <a href="#"
 								class="btn btn-success" id="btnSetCoordinate">设置设备点位置</a>
+							<button class="btn" type="button" data-bind="click: $root.deletePagetags">批量删除组件</button>
 						</div>
 						<div class="alert">
 							<span data-bind="text:message"></span>
 						</div>
+
+						<div>
+							资产类别： <select name="q_classstructureid" id="q_classstructureid"
+								data-bind="options: classifications,
+			                       optionsText: 'description',
+			                       optionsValue: 'classificationid',
+			                       optionsCaption: 'Choose...',
+								   select2: { width : '220px' }"></select>
+							<button id="queryListAssets" data-bind="click:queryListAssets"
+								class="btn btn-default">查询</button>
+						</div>
+
 					</div>
+					
 				</div>
 				<!-- /pagetag list -->
 			</div>
@@ -341,6 +371,80 @@
 		<button class="btn btn-default" data-dismiss="modal"
 			aria-hidden="true">关闭</button>
 	</div>
+</div>
+
+<!-- Passenger Modal -->
+<div id="passengerModal"  class="modal middle hide fade" tabindex="-1"
+	role="dialog" aria-labelledby="assetModalLabel" aria-hidden="true" style="width:710px;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">×</button>
+		<h3 id="assetModalLabel">
+			客流信息<span data-bind="text:totalAssets"></span>
+		</h3>
+	</div>
+	<div class="modal-body">
+		<form id="passengerQueryForm">
+			客流类别： <select name="classstructureid"
+				data-bind="options: classifications,
+                       optionsText: 'description',
+                       optionsValue: 'classificationid',
+                       optionsCaption: 'Choose...',
+					   select2: { width : '220px' }"></select>
+			专业分类：<select name="specclass"
+				data-bind="options: specclass,
+                       optionsText: 'description',
+                       optionsValue: 'dmvalue',
+                       optionsCaption: 'Choose...',
+					   select2: { width : '220px' }"></select>
+			<br /> 资产位置： <select name="location"
+				data-bind="options: locations,
+                       optionsText: 'description',
+                       optionsValue: 'location',
+                       optionsCaption: 'Choose...'"></select>
+			资产编码：<input type="text" name="assetnum" />
+			<button id="queryAsset" data-bind="click:queryPassengers"
+				class="btn btn-default">查询</button>
+		</form>
+		<table class="table table-hover table-condensed table-striped">
+			<thead>
+				<tr>
+					<td></td>
+					<td>设备编码</td>
+					<td>描述</td>
+					<td>专业</td>
+					<td>类别</td>
+					<td>位置</td>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach:assets()">
+				<tr>
+					<td><input type="checkbox" name="chk"
+						data-bind="checkedValue:assetnum,click:$root.chosenAssets"></td>
+					<td data-bind="text:assetnum"></td>
+					<td data-bind="text:description"></td>
+					<td data-bind="text:specclass"></td>
+					<td data-bind="text:classstructureid"></td>
+					<td data-bind="text:location"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div data-bind="foreach: $root.selectedAssets" style="display:none;">
+			<span data-bind="text: assetnum"></span> <br />
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" id="btnSubmitPagetag"
+			data-bind="click:selectAll">全选</button>
+		<button class="btn btn-primary" id="btnSubmitPagetag"
+			data-bind="click:selectOthers">反选</button>
+		<button class="btn btn-primary" id="btnSubmitPagetag"
+			data-bind="click:selectPassengers">选择</button>
+		<button class="btn btn-default" data-dismiss="modal"
+			aria-hidden="true">关闭</button>
+	</div>
+
 </div>
 
 <!-- Modal -->
@@ -528,138 +632,6 @@
 			data-bind="click:buildAssetAttrInfo">生成</button>
 		<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
 	</div>
-</div>
-
-<!-- Passenger Modal -->
-<div id="passengerModal" class="modal small hide fade" tabindex="-1"
-	role="dialog" aria-labelledby="passengerModalLabel" aria-hidden="true">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal"
-			aria-hidden="true">×</button>
-		<h3 id="editModalLabel">客流店铺信息</h3>
-	</div>
-	<div class="modal-body">
-		<form:form class="form-horizontal" modelAttribute="pagetag"
-			action="${pageContext.request.contextPath}/okcsys/page/pagetag/${pagelayout.pagelayoutuid}"
-			role="form">
-			<div class="control-group">
-				<label for="tagid" class="control-label">店铺ID：</label>
-				<div class="controls" style="z-index:10;">
-					<input name="tagid" id="tagid" placeholder="请输入TagID"
-						data-bind="value:currentPagetagRow().tagid" required="required"
-						type="text" title="TagID"> <input type="hidden"
-						name="layoutid" data-bind="value:currentPagetagRow().layoutid" />
-					<input type="hidden" name="pagetagid"
-						data-bind="value:currentPagetagRow().pagetagid" />
-				</div>
-			</div>
-			<div class="control-group">
-				<form:label path="tagname" class="control-label">店铺名称：</form:label>
-				<div class="controls">
-					<form:input path="tagname" required="required"
-						data-bind="value:currentPagetagRow().tagname" placeholder="设备名称" />
-				</div>
-			</div>
-			<div class="control-group">
-				<form:label path="tagtype" class="control-label">值类型：</form:label>
-				<div class="controls">
-					<select name="tagtype"
-						data-bind="value:currentPagetagRow().tagtype">
-						<option value="1">布尔型</option>
-						<option value="2">数值型</option>
-						<option value="3">整数型</option>
-						<option value="4">字符串</option>
-					</select>
-				</div>
-			</div>
-			<div class="control-group">
-				<form:label path="label" class="control-label">标签名称：</form:label>
-				<div class="controls">
-					<form:input path="label" placeholder="店铺描述名称"
-						data-bind="value:currentPagetagRow().label" />
-				</div>
-			</div>
-
-			<div class="control-group">
-				<form:label path="measureunitid" class="control-label">计量单位：</form:label>
-				<div class="controls">
-					<select name="measureunitid"
-						data-bind="options: measureunits,
-                       optionsText: 'description',
-                       optionsValue: 'measureunitid',
-                       value: currentPagetagRow().measureunitid,
-                       optionsCaption: '选择...'">
-					</select>
-				</div>
-			</div>
-
-			<div class="control-group">
-				<form:label path="controlid" class="control-label">标签组件：</form:label>
-				<div class="controls">
-					&nbsp;&nbsp;&nbsp;&nbsp;设备列表： <select id="controlid"
-						name="controlid"
-						data-bind="options: controls,
-                       optionsText: 'ctrlname',
-                       optionsValue: 'controlid',
-                       value: currentPagetagRow().controlid,
-                       optionsCaption: '选择...'">
-					</select> <br /> 系统结构图： <select id="controlid" name="controlid"
-						data-bind="options: controls,
-                       optionsText: 'ctrlname',
-                       optionsValue: 'controlid',
-                       value: currentPagetagRow().controlid2,
-                       optionsCaption: '选择...'">
-					</select> <br /> 系统平面图： <select id="controlid" name="controlid"
-						data-bind="options: controls,
-                       optionsText: 'ctrlname',
-                       optionsValue: 'controlid',
-                       value: currentPagetagRow().controlid3,
-                       optionsCaption: '选择...'">
-					</select>
-
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="showrange" class="control-label">作用范围：</label>
-				<div class="controls">
-					<select multiple="true" style="width:300px;"
-						data-bind="options: showranges, 
-						optionsText: 'name',
-                        optionsValue: 'value',
-						selectedOptions: currentPagetagRow().showrange,
-						select2: { placeholder: '选择范围' }">
-					</select>
-
-
-				</div>
-			</div>
-
-			<div class="control-group">
-				<form:label path="comments" class="control-label">设备备注：</form:label>
-				<div class="controls">
-					<textarea name="comments" placeholder="设备备注"
-						data-bind="value:currentPagetagRow().comments"></textarea>
-					<input type="hidden" name="pagetagtype"
-						data-bind="value:currentPagetagRow().pagetagtype">
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="zindex" class="control-label">空间位置：</label>
-				<div class="controls">
-					<input type="number" id="zindex" name="zindex" data-bind="value:currentPagetagRow().zindex"  required="required" />
-				</div>
-			</div>
-		</form:form>
-
-		<!-- <pre data-bind="text: ko.toJSON(currentPagetagRow(), null, 2)"></pre> -->
-	</div>
-	<div class="modal-footer">
-		<button class="btn btn-primary" id="btnSubmitPagetag"
-			data-bind="click:submitPagetag">保存</button>
-		<button class="btn btn-default" data-dismiss="modal"
-			aria-hidden="true">关闭</button>
-	</div>
-
 </div>
 
 <!-- 背景图片上传 -->

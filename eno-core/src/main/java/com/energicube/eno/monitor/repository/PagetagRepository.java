@@ -1,6 +1,9 @@
 package com.energicube.eno.monitor.repository;
 
 import com.energicube.eno.monitor.model.Pagetag;
+import com.energicube.eno.monitor.model.Tags;
+import com.energicube.eno.monitor.model.UcPassengerFlowDetail;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -21,7 +24,18 @@ public interface PagetagRepository extends JpaRepository<Pagetag, Long> {
      * @return Tag List Collection
      * @author CHENPING
      */
+	@Query("select a from Pagetag a where a.layoutid = ?1 order by a.orderindex asc")
     public List<Pagetag> findByLayoutid(String layoutid) throws DataAccessException;
+
+	/**
+	 * 根据classstructureid查询指定页面的对应的数据
+	 * @param layoutid
+	 * @param classid
+	 * @return
+	 * @throws DataAccessException
+	 */
+	@Query("select a from Pagetag a where a.layoutid = ?1 and a.classstructureid = ?2 order by a.orderindex asc")
+	public List<Pagetag> findByLayoutidAndClassId(String layoutid, String classid) throws DataAccessException;
 
     /**
      * 根据主键id查询对应的记录
@@ -59,4 +73,23 @@ public interface PagetagRepository extends JpaRepository<Pagetag, Long> {
     @Modifying
     @Query("update Pagetag a set a.classstructureid = ?1 where a.tagid = ?2")
     public void updateParentClassId(String classstructureid, String parentid) throws DataAccessException;
+
+    @Transactional
+    @Query("select a from UcPassengerFlowDetail a ")
+    public List<UcPassengerFlowDetail> findUcPassengerFlowDetailAll();
+    
+    @Query("select a from Pagetag a where a.layoutid = ?1 and a.parentid = '' order by orderindex asc")
+    public List<Pagetag> findParentTagByLayoutid(String layoutid) throws DataAccessException;
+
+    @Query("select a from Tags a ")
+	public List<Tags> findTagsAll();
+    
+    /**
+     * 根据tagname求对应的tagid
+     * 
+     * @param tagname
+     * @return
+     */
+    @Query("select a from Tags a where valuetag = ?1")
+    public List<Tags> findTagsByTagName(String tagname);
 }

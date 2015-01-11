@@ -147,7 +147,7 @@ public class DeviceConfigController {
                 DeviceConfigDTO deviceConfigDTO = new DeviceConfigDTO();
                 deviceConfigDTO.setId(deviceConfig.getId());
 //			 ClassStructure classStructure1=classStructureRepository.findByClassstructureid(deviceConfig.getSystem()).get(0);
-//			 deviceConfigDTO.setSystem(deviceConfig.getSystem());
+			 deviceConfigDTO.setSystem(deviceConfig.getSystem());
 //			 deviceConfigDTO.setSystemdesc(classStructure1.getDescription());
                 ClassStructure classStructure2 = classStructureRepository.findByClassstructureid(deviceConfig.getClassid()).get(0);
                 deviceConfigDTO.setClassid(deviceConfig.getClassid());

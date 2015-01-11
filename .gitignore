@@ -61,5 +61,6 @@ target/
 ### SVN ###
 */.svn/
 
+*.log
 
 

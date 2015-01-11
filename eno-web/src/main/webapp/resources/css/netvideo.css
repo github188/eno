@@ -1,0 +1,291 @@
+/*閫氱敤鏍峰紡*/
+.green_table {
+	width: 100%;
+	text-align: left;
+}
+
+.green_table thead tr{
+	background:#7c9261; 
+	color:#FFF;
+	height:34px; 
+	line-height:34px;
+}
+
+.blue_btn {
+	cursor: pointer;
+	padding: 0px 18px;
+	background: #236fa0;
+	border: 0px;
+	border-radius: 3px;
+	color: #FFF;
+	height: 25px;
+	line-height: 25px;
+	margin-left:10px;
+}
+
+.blue_sbtn {
+	cursor: pointer;
+	background: #236fa0;
+	border: 0px;
+	border-radius: 3px;
+	color: #FFF;
+	height: 25px;
+	line-height: 25px;
+}
+
+.cover_div{
+	display:none;
+	width: 1920px;
+	height: 1080px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	opacity: 0.2;
+	z-index: 1;
+}
+
+.add_dvr{
+	display:none;
+	border-style:groove;
+	width: 330px;
+	height: auto;
+	background-color: white;
+	position: absolute;
+	left: 47%;
+	top: 25%;
+	z-index: 2;
+}
+.commTable{
+	width:100%;	
+}
+
+.commTable tr:nth-child(odd){
+	background:#e2f0f6; 
+	line-height:21px;
+}
+
+.commTable tr:nth-child(even) {
+	background:#d8e7e7; 
+	line-height:21px;
+}
+
+.commTable tr:nth-child(odd) input{
+	background:#e2f0f6; 
+	line-height:21px;
+}
+
+.commTable tr:nth-child(even) input{
+	background:#d8e7e7; 
+	line-height:21px;
+}
+
+/*table琛岄�変腑鏍峰紡*/
+.on{
+	background-color: #D2DEEF !important;
+}
+
+.commTable tr:hover {
+	background-color: #D2DEEF !important;
+}
+
+.commTable tr:hover input{
+	background-color: #D2DEEF !important;
+}
+
+/*DVR閰嶇疆瀵嗙爜閮ㄥ垎*/
+.password_td{
+	border: none;
+	height: 100%;
+	width: 100%;
+	font-size: 14px;
+	line-height: 20px;
+	background-color: #EEF1F3;
+}
+
+tr.odd {
+	background: none repeat scroll 0% 0% #D8E7E7;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+tr.even {
+	background: none repeat scroll 0% 0% #CCC;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+/*鐩戣鍣ㄧ嫭鏈�*/
+#detail td {
+	width: 30%;
+}
+/*琛岄�変腑*/
+.clicked {
+	color: blue;
+}
+
+.form-group {
+	text-align: center;
+	font-size: 18px;
+	margin: 10px 80px;
+}
+
+#detail tr:hover,#cam_detail tr:hover {
+	background: none repeat scroll 0% 0% #FFF;
+}
+
+#cam_detail>tbody td {
+	width: 16.7%;
+}
+
+#add_cam {
+	display: none;
+	border-style: groove;
+	padding: 8px;
+	background-color: #FFF;
+	position: absolute;
+	left: 42%;
+	top: 25%;
+	z-index: 2;
+}
+
+div#group_op{
+	display: none;
+	border-style: groove;
+	width: 530px;
+	padding: 8px;
+	background-color: #FFF;
+	position: absolute;
+	left: 42%;
+	top: 25%;
+	z-index: 2;
+}
+
+div#group_show{
+	display: none;
+	border-style: groove;
+	width: 410px;
+	padding: 8px;
+	background-color: #FFF;
+	position: absolute;
+	left: 45%;
+	top: 34%;
+	z-index: 3;
+}
+
+ul#group_tree {
+	margin-top: 10px;
+	border: 1px solid #617775;
+	background: #f0f6e4;
+	width:400px;
+	height:412px;
+	overflow-y:scroll;
+	overflow-x:auto;
+}
+
+ul#group_sys {
+	margin-top: 0px;
+	border: 1px solid #617775;
+	background: #F0F6E4;
+	width: 270px;
+	height: 197px;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+ul#show_tree {
+	margin-top: 0px;
+	border: 1px solid #617775;
+	background: #F0F6E4;
+	width: 226px;
+	height: 88px;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+div.btn_op button{
+	width: 115px;
+	display: block;
+}
+
+/*鐭╅樀閮ㄥ垎css*/
+.filedGroup{
+	width:48%;
+	height:45%;
+	float:left;
+	margin: 15px 0px 0px 10px;
+	border: 2px groove threedface !important;
+}
+/*鐭╅樀鍒嗙粍妯″潡鏍囬css*/
+.groupTitle{
+	padding: 0px 10px 0px 10px;
+	margin: 0px 10px 0px 10px;
+}
+/*鐭╅樀閮ㄥ垎锛屾暣浣撹〃鍗曟牱寮�*/
+.matrixform{
+	height: 90%; 
+	width: 96%; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+/*绯荤粺閰嶇疆閮ㄥ垎css*/
+.sysBody{
+	width: 98%;
+	height: 100%;
+	float: left;
+	margin: 10px 0px 0px 9px;
+	border: 2px groove threedface !important;
+}
+
+.sysDiv {
+	border: 2px groove threedface !important;
+	width: 95%;
+	height: 75%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.sysPart{
+	float:left;
+	border-width: 0px 0px 0px 0px;
+	border-style:groove;
+	border-color:threedface;
+}
+
+.radioMargin{
+	margin-top:10px;
+	margin-left:15px;
+}
+
+.uploadBtn{
+	width: 20px;
+	cursor: pointer;
+	background: #236fa0;
+	border: 0px;
+	border-radius: 3px;
+	color: #FFF;
+	height: 20px;
+	line-height: 20px;
+}
+
+.siteInput{
+	width:18%;
+	margin-left:15px;
+}
+#files_tree #file_tree{
+	margin-top: 10px;
+	border: 1px solid #617775;
+	background: #f0f6e4;
+	width: 400px;
+	height: 412px;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+#files_tree .btn_op>a{
+	width: 115px;
+	display: block;
+	margin-top: 20px;
+}
+.ztree li span.button.switch.level0 {visibility:hidden; width:1px;}
+.ztree li ul.level0 {padding:0; background:none;}

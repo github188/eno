@@ -54,5 +54,5 @@
         <!-- needed otherwise exceptions won't be logged anywhere -->
     </bean>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-          p:maxUploadSize="5120000" p:maxInMemorySize="512" p:defaultEncoding="UTF-8" />
+          p:maxUploadSize="20480000" p:maxInMemorySize="2048" p:defaultEncoding="UTF-8" />
 </beans>

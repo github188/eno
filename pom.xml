@@ -681,6 +681,12 @@
         	<artifactId>ojdbc6</artifactId>
         	<version>11.0.1.0</version>
         </dependency>
+        
+        <dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.11</version>
+		</dependency>
     </dependencies>
 
     <!-- all Maven plugin versions are mentioned in order to guarantee the build
@@ -722,12 +728,36 @@
                     </archive>
                 </configuration>
             </plugin>
+            
+            <plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<path>/</path>
+					<systemProperties>
+						<JAVA_OPTS>-Xms512m -Xmx1024m -XX:MaxPermSize=256m</JAVA_OPTS>
+					</systemProperties>
+				</configuration>
+			</plugin>
+			
         </plugins>
 
     </build>
 
-    <!-- <build> <plugins> <plugin> <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId> <version>2.0</version> <configuration>
-        <path>/</path> <systemProperties> <JAVA_OPTS>-Xms512m -Xmx1024m -XX:MaxPermSize=256m</JAVA_OPTS>
-        </systemProperties> </configuration> </plugin> </plugins> </build> -->
+<!--     <build> -->
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.tomcat.maven</groupId> -->
+<!-- 				<artifactId>tomcat7-maven-plugin</artifactId> -->
+<!-- 				<version>2.0</version> -->
+<!-- 				<configuration> -->
+<!-- 					<path>/</path> -->
+<!-- 					<systemProperties> -->
+<!-- 						<JAVA_OPTS>-Xms512m -Xmx1024m -XX:MaxPermSize=256m</JAVA_OPTS> -->
+<!-- 					</systemProperties> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+<!-- 		</plugins> -->
+<!-- 	</build> -->
 </project>

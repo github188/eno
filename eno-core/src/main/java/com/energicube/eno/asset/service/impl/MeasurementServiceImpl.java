@@ -5,6 +5,8 @@ import com.energicube.eno.asset.repository.MeasurementRepository;
 import com.energicube.eno.asset.service.MeasurementService;
 import com.energicube.eno.common.jsonquery.jpa.request.DataTablesRequestParams;
 import com.energicube.eno.common.jsonquery.jpa.response.DataTablesResponse;
+import com.energicube.eno.monitor.model.Tags;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,7 +107,7 @@ public class MeasurementServiceImpl implements MeasurementService {
             for (Object obj : arrObj) {
                 if (obj instanceof Measurement) {
                     ret.setAssetnum(((Measurement) obj).getAssetnum());
-                    ret.setValuetag(((Measurement) obj).getValuetag());
+//                    ret.setValuetag(((Measurement) obj).getValuetag());
                     ret.setMetername(((Measurement) obj).getMetername());
                 }
                 if (obj instanceof AssetAttribute) {
@@ -116,11 +118,14 @@ public class MeasurementServiceImpl implements MeasurementService {
                 if (obj instanceof MeasureSpec) { // 为适应WEB版万达设备列表和面板数据字典对应而加[2014-10-16,zzx]
                     ret.setClassstructureid(((MeasureSpec) obj).getClassstructureid());
                 }
+                if (obj instanceof Tags) { // 转换tagname为tagid
+                	ret.setValuetag(((Tags) obj).getTagid());
+                }
             }
             results.add(ret);
-            if (logger.isDebugEnabled()) {
-                logger.debug(ret);
-            }
+//            if (logger.isDebugEnabled()) {
+//                logger.debug(ret);
+//            }
         }
         return results;
     }
@@ -178,5 +183,13 @@ public class MeasurementServiceImpl implements MeasurementService {
         return measurementSet;
     }
 
-
+    @Transactional(readOnly = true)
+    public Measurement findMeasurementByAssetnum(String assetNum) {
+    	Measurement measuremen = null;
+        List<Measurement> list = measurementRepository.findByAssetNum(assetNum);
+        if (list != null && list.size() > 0) {
+        	measuremen = list.get(0);
+        }
+        return measuremen;
+    }
 }

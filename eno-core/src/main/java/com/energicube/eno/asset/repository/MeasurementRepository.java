@@ -63,8 +63,8 @@ public interface MeasurementRepository extends JpaRepository<Measurement, Long> 
                                                      String metername, String siteid, String orgid) throws DataAccessException;
 
 
-    @Query("select m,spec,point,attr from Measurement m,MeasureSpec spec,MeasurePoint point,AssetAttribute attr" +
-            " where m.measurespecid=spec.measurespecid and point.isspec=true " +
+    @Query("select m,spec,point,attr,tags from Measurement m,MeasureSpec spec,MeasurePoint point,AssetAttribute attr, Tags tags" +
+            " where tags.valuetag = m.valuetag and m.measurespecid=spec.measurespecid and point.isspec=true " +
             "and m.pointnum=point.pointnum and spec.assetattrid=attr.assetattrid " +
             "and m.siteid=point.siteid and m.orgid=point.orgid " +
             "and m.assetnum=?1 and coalesce(m.siteid,'')=?2 and coalesce(m.orgid,'')=?3")
@@ -100,6 +100,14 @@ public interface MeasurementRepository extends JpaRepository<Measurement, Long> 
             "and m.siteid=point.siteid and m.orgid=point.orgid " +
             "and m.measurementid=?")
     public List<Object[]> findByMeasurementid(long measurementid) throws DataAccessException;
+    
+    /**
+     * 获取计量读数相关信息
+     *
+     * @param 计量器读数ID
+     */
+    @Query("select m from Measurement m where m.assetnum = ?1")
+    public List<Measurement> findByAssetNum(String assetnum) throws DataAccessException;
 
 
 }

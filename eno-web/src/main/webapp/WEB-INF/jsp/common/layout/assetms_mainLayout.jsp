@@ -48,24 +48,24 @@
 			
 			<ul class="nav pull-left" id="navigation">
 			
-				<li class="" id="MCTRL"><a href="${hostpath}/eno/mctrl/monitorsum.html">监测与控制</a>
+				<li class="" id="MCTRL"><a href="${hostpath}/portal/mctrl/monitorsum.html">监测与控制</a>
 				</li>
-				<li class="" id="SSRUN"><a href="${hostpath}/eno/shifts/shiftsView.html">运行管理</a>
+				<li class="" id="SSRUN"><a href="${hostpath}/portal/shifts/shiftsView.html">运行管理</a>
 				</li>
 			
 				<li class="" id="ASSET"><a href="${hostpath}/asset/asset/list">设备管理</a>
 				</li>
 			
-				<li class="" id="SAASC"><a href="${hostpath}/eno/pattern/menu/HVAC.html">模式管理</a>
+				<li class="" id="SAASC"><a href="${hostpath}/portal/pattern/menu/HVAC.html">模式管理</a>
 				</li>
 			
-				<li class="" id="CALTL"><a href="${hostpath}/eno/calendar/showMonthCalendar.html">系统日历</a>
+				<li class="" id="CALTL"><a href="${hostpath}/portal/calendar/showMonthCalendar.html">系统日历</a>
 				</li>
 			
-				<li class="" id="OKCSYS"><a href="${hostpath}/eno/okcsys/user.html">系统管理</a>
+				<li class="" id="OKCSYS"><a href="${hostpath}/portal/okcsys/user.html">系统管理</a>
 				</li>
 			
-				<li class="" id="PACS"><a href="${hostpath}/eno/noticeBoard/noticeBoardView.html">门户管理</a>
+				<li class="" id="PACS"><a href="${hostpath}/portal/noticeBoard/noticeBoardView.html">门户管理</a>
 				</li>
 			 		
 			</ul>

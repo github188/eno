@@ -42,7 +42,7 @@
 
 	<!-- 使用配置文件管理 -->
 	<bean id="iniRealm" class="org.apache.shiro.realm.text.IniRealm">
-		<property name="resourcePath" value="classpath:/shiro.ini" />
+		<property name="resourcePath" value="classpath:shiro.ini" />
 		<property name="credentialsMatcher" ref="credentialsMatcher" />
 	</bean>
 

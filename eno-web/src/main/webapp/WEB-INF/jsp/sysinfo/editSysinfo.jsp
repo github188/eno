@@ -51,7 +51,7 @@
 
                     <div class="button">浏览</div>
                     <input type="text" style="margin-bottom:0px" class="filename" id="filetextfield" name="filetextfield">
-                    <input type="file" data-url="/eno/okcsys/import/dataconfig/index/upload" onchange="document.getElementById('filetextfield').value=this.value" name="files[]" style="left:0px;width:60px" class="file" id="fileupload">
+                    <input type="file" data-url="/portal/okcsys/import/dataconfig/index/upload" onchange="document.getElementById('filetextfield').value=this.value" name="files[]" style="left:0px;width:60px" class="file" id="fileupload">
                     <div class="button startupload2">上传</div>
                     <div >请点击"浏览"按钮选择文件,选择后会自动上传</div>
                     <br/>

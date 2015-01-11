@@ -5,18 +5,25 @@ import com.energicube.eno.asset.model.ClassSpec;
 import com.energicube.eno.asset.model.ClassStructure;
 import com.energicube.eno.asset.model.Locations;
 import com.energicube.eno.monitor.model.ClassSpecTemp;
+import com.energicube.eno.monitor.service.impl.SubSystemServiceImpl;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class AssetMeasurementRepository {
-
+	
+	private final static Log logger = LogFactory.getLog(AssetMeasurementRepository.class);
+	
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -104,15 +111,17 @@ public class AssetMeasurementRepository {
     /**
      * 查询指定分类下的非设定值属性
      *
+     * @param assetnum 设备编号
      * @param classstructureid 分类id
      * @param isNot            空则模糊查询设定值，传not查询非设定值
      * @return
      */
-    public List<Object> findNotSetAttribute(String classstructureid, String isNot) {
+    public List<Object> findNotSetAttribute(String assetnum, String classstructureid, String isNot) {
 
-        String sqlString = "select c.assetattrid,c.description,c.measureunitid,c.classstructureid from ClassSpec c where c.classstructureid = '" + classstructureid + "' and c.assetattrid " + isNot + " like '%_sp'";
+//    	String sqlString = "select c.assetattrid,c.description,c.measureunitid,c.classstructureid from ClassSpec c where c.classstructureid = '" + classstructureid + "' and c.assetattrid " + isNot + " like '%_sp'";
+        String sqlString = "select c.assetattrid,c.description,c.measureunitid,c.classstructureid, t.tagid, t.valuetag from measurement m, classspec c, tags t where m.assetnum = '" + assetnum + "' and c.classstructureid='" + classstructureid + "' and t.valuetag = m.valuetag and t.tagid is not null and t.tagid <> '' and m.assetattrid = c.assetattrid and c.assetattrid " + isNot + " like '%_sp'";
+        logger.info("----findNotSetAttribute----" + sqlString);
         Query query = entityManager.createNativeQuery(sqlString);
-
         @SuppressWarnings("unchecked")
         List<Object> result = query.getResultList();
 
@@ -127,10 +136,11 @@ public class AssetMeasurementRepository {
      * @return
      */
     public List<ClassSpec> findSetAttribute(String classstructureid, String isNot) {
-        String specSQL = "select c.APPLYDOWNHIER, c.ASSETATTRIBUTEID, c.ASSETATTRID, c.ATTRDESCPREFIX, c.CLASSSPECID, c.CLASSSTRUCTUREID,"
-                + " c.DOMAINID, c.INHERITEDFROM, c.INHERITEDFROMID, c.LOOKUPNAME, c.MEASUREUNITID, c.ORGID, c.SECTION, c.SITEID,"
-                + " c.TABLEATTRIBUTE, c.DESCRIPTION from CLASSSPEC c where c.classstructureid = '" + classstructureid + "' and c.assetattrid " + isNot + " like '%_sp'";
-        Query query = entityManager.createNativeQuery(specSQL, ClassSpec.class);
+//        String sqlString = "select c.APPLYDOWNHIER, c.ASSETATTRIBUTEID, c.ASSETATTRID, c.ATTRDESCPREFIX, c.CLASSSPECID, c.CLASSSTRUCTUREID,"
+//                + " c.DOMAINID, c.INHERITEDFROM, c.INHERITEDFROMID, c.LOOKUPNAME, c.MEASUREUNITID, c.ORGID, c.SECTION, c.SITEID,"
+//                + " c.TABLEATTRIBUTE, c.DESCRIPTION from CLASSSPEC c where c.classstructureid = '" + classstructureid + "' and c.assetattrid " + isNot + " like '%_sp'";
+    	String sqlString = "select c.assetattrid,c.description,c.measureunitid,c.classstructureid, t.tagid, t.valuetag from measurement m, classspec c, tags t where c.classstructureid='" + classstructureid + "' and t.valuetag = m.valuetag and t.tagid is not null and t.tagid <> '' and m.assetattrid = c.assetattrid and c.assetattrid " + isNot + " like '%_sp'";
+    	Query query = entityManager.createNativeQuery(sqlString, ClassSpec.class);
 
         @SuppressWarnings("unchecked")
         List<ClassSpec> result = query.getResultList();

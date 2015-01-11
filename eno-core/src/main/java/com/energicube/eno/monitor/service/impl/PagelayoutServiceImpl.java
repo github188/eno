@@ -101,9 +101,11 @@ public class PagelayoutServiceImpl implements PagelayoutService {
         boolean isnew = pagelayout.getPagelayoutuid() == 0;
         if (isnew) {
             pagelayout = pagelayoutRepository.save(pagelayout);
-            if (StringUtils.hasLength(pagelayout.getLayoutid())) {
-                pagelayout.setLayoutid("" + pagelayout.getPagelayoutuid());
-            }
+            pagelayout.setLayoutid(pagelayout.getPagelayoutuid()+"");
+            pagelayout = pagelayoutRepository.saveAndFlush(pagelayout);
+//            if (StringUtils.hasLength(pagelayout.getLayoutid())) {
+//                pagelayout.setLayoutid("" + pagelayout.getPagelayoutuid());
+//            }
         } else {
             Pagelayout oldPagelayout = pagelayoutRepository.findOne(pagelayout.getPagelayoutuid());
             pagelayout.setLayoutid(oldPagelayout.getLayoutid());

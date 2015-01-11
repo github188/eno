@@ -3,10 +3,9 @@ package com.energicube.eno.monitor.web;
 import com.energicube.eno.common.PatternConst;
 import com.energicube.eno.common.model.Message;
 import com.energicube.eno.common.model.MessageResult;
-import com.energicube.eno.message.redis.TagInfo;
 import com.energicube.eno.monitor.model.*;
-import com.energicube.eno.monitor.repository.PagelayoutRepository;
 import com.energicube.eno.monitor.service.*;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.JsonGenerationException;
@@ -25,8 +24,11 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern.Flag;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -39,25 +41,10 @@ import java.util.*;
 @RequestMapping("/okcsys/page")
 public class PageManageController extends BaseController {
 
-    private static final Log logger = LogFactory
-            .getLog(PageManageController.class);
-
-    // 启动tomcat，初始化所有tagid的数据
-    private List<TagInfo> taginfo = new ArrayList<TagInfo>();
-    private Map<String, Dict> contextMap = new HashMap<String, Dict>();
-    ;
-
-    public PageManageController() {
-        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-        taginfo = (List<TagInfo>) wac.getServletContext().getAttribute("taglist");
-        contextMap = (Map<String, Dict>) wac.getServletContext().getAttribute("context");
-    }
+    private static final Log logger = LogFactory.getLog(PageManageController.class);
 
     @Autowired
     private PagelayoutService pagelayoutService;
-
-    @Autowired
-    private PagelayoutRepository pagelayoutRepository;
 
     @Autowired
     private PagetagService pagetagService;
@@ -323,20 +310,19 @@ public class PageManageController extends BaseController {
      */
     @RequestMapping(value = "/getpagetag/{pagelayoutuid}", method = RequestMethod.POST)
     @ResponseBody
-    public String findPagetagsListByLayoutid(@PathVariable long pagelayoutuid) {
+    public String findPagetagsListByLayoutid(@PathVariable long pagelayoutuid, @RequestParam(value = "classid", defaultValue = "") String classid) {
         try {
-            List<Pagetag> list = pagetagService.findByPagelayoutuid(pagelayoutuid);
+            List<Pagetag> list = pagetagService.findByLayoutidAndClassId(pagelayoutuid, classid);
             com.fasterxml.jackson.databind.ObjectMapper objectMapper = new com.fasterxml.jackson.databind.ObjectMapper();
             String pagetag = objectMapper.writeValueAsString(list);
             String str = "{\"rows\":" + pagetag.replace("parentid", "_parentId").replace("undefined", "") + "}";
-            logger.info("str--" + str);
+//            logger.info("str--" + str);
             return str;
         } catch (Exception e) {
             logger.error("findPagetagsListByLayoutid", e);
         }
         return "";
     }
-
     /**
      * 获取面板内容
      *
@@ -348,7 +334,7 @@ public class PageManageController extends BaseController {
     public List<Object> findPanelContent(HttpServletRequest request) {
         String layoutid = request.getParameter("layoutid"); // 布局id
         String pagetagid = request.getParameter("pagetagid"); // pagetag表主键
-        return subSystemService.findPanelContent(layoutid, pagetagid, taginfo, contextMap);
+        return subSystemService.findPanelContent(layoutid, pagetagid);
     }
 
     /**
@@ -374,6 +360,31 @@ public class PageManageController extends BaseController {
 
         }
 
+    }
+    
+    /**
+     * 保存客流页面TAG信息
+     *
+     * @param pagelayoutuid 页面布局ID
+     * @param pagetag       页面TAG对象
+     */
+    @RequestMapping(value = "/passengerPagetag/{pagelayoutuid}", method = RequestMethod.POST)
+    @ResponseBody
+    public MessageResult<Pagetag> processPassengerPagetagForm(
+    		@PathVariable("pagelayoutuid") Long pagelayoutuid,
+    		@Valid Pagetag pagetag, BindingResult result, SessionStatus status,
+    		RedirectAttributes redirectAttrs) {
+    	
+    	if (result.hasErrors()) {
+    		return new MessageResult<Pagetag>(new Message(false, result), pagetag);
+    	} else {
+    		
+    		pagetag = pagetagService.savePassengerPagetag(pagetag);
+    		status.setComplete();
+    		return new MessageResult<Pagetag>(new Message(true, "设备点更新成功"), pagetag);
+    		
+    	}
+    	
     }
 
     /**
@@ -560,6 +571,35 @@ public class PageManageController extends BaseController {
         status.setComplete();
         redirectAttrs.addFlashAttribute("message", "设备点新增成功");
         return ret;
+    }
+    @RequestMapping(value = "/sorttags/{pagetagid}/{type}", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean sortTags(@PathVariable long pagetagid, @PathVariable boolean type) {
+    	logger.info(pagetagid + "-----------" + type);
+    	boolean flag = true;
+    	try {
+			pagetagService.sortTags(pagetagid, type);
+		} catch (Exception e) {
+			logger.error(e);
+		}
+		return flag;
+    }
+    
+    @RequestMapping(value = "/deletePagetags", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean deletePageTags(HttpServletRequest request) {
+    	String ids = request.getParameter("ids");
+    	String[] pagetagids = ids.split(",");
+    	boolean flag = true;
+    	Message message = new Message();
+    	try {
+			pagetagService.deletePagetags(pagetagids);
+			message.setSuccess(true);
+		} catch (Exception e) {
+			logger.error(e);
+			flag = false;
+		}
+    	return flag;
     }
     /**
      * 保存临时坐标点

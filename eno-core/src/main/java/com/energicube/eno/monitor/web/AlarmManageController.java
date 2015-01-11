@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.energicube.eno.common.Config;
-
 /**
  * 报警管理页面控制
  * @author zouzhixiang
@@ -18,8 +16,6 @@ import com.energicube.eno.common.Config;
 public class AlarmManageController extends BaseController {
 
 	private static final Log logger = LogFactory.getLog(AlarmManageController.class);
-
-	private Config config = new Config();
 
 	/**
 	 * 报警管理主页面

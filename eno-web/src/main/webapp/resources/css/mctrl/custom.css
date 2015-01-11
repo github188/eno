@@ -1,0 +1,506 @@
+@CHARSET "UTF-8";
+
+.structure .meter .desc {
+	margin-left: 40px;
+	line-height: 30px;
+}
+
+.panel.prop {
+	border-top: 2px solid #B8B8B8;
+	min-height: 240px;
+}
+
+.panel .params .caption {
+	border-bottom: 1px solid #BABABA;
+	color: #565656;
+	margin-top: 5px;
+	line-height: 40px;
+}
+
+.panel .params .caption .name {
+	font-size: 28px;
+}
+
+.panel .params .caption .pattern {
+	font-size: 16px;
+	margin-left: 30px;
+}
+
+.panel .params .caption .runtimes {
+	font-size: 16px;
+}
+
+.panel .params .caption .status {
+	font-size: 20px;
+}
+
+.panel .settings {
+	border: 1px solid #C1C1C1;
+	background: #D4D4D4;
+	height: 219px;
+	margin-top: 10px;
+	padding: 10px 20px;
+}
+
+.panel .params .attrspec {
+	width: 100%;
+	margin-top: 30px;
+	margin-left: 10px;
+	font-size: 16px;
+	line-height: 22px;
+}
+
+.devicelist {
+	
+}
+
+.devicelist  .listitem {
+	border-top: 2px solid #e3e3e3;
+	border-left: 2px solid #e3e3e3;
+	border-right: 2px solid #e3e3e3;
+}
+
+.listitem .cont {
+	border-right: 2px solid #74BEBD;
+	height: 126px;
+}
+
+.check_grid {
+	margin-top: -2px !important;
+	zoom: 125%;
+}
+/* 鼠标全选框颜色 */
+.tempDiv {
+	border: 1px dashed blue;
+	background: #5a72f8;
+	position: absolute;
+	width: 0;
+	height: 0;
+	filter: alpha(opacity : 10);
+	opacity: 0.1
+}
+
+.xz {
+	background-color: blue;
+}
+
+.post_div {
+	height: 30px;
+	float: left;
+	cursor: pointer;
+	position: absolute;
+	border-left: 0px solid #34C4BC !important;
+	border-top: 0px solid #34C4BC !important;
+}
+
+.favu_icon_style {
+	width: 35px;
+	height: 30px;
+	float: left;
+	background: url("../../images/sys_icon1.png") -749px -98px no-repeat;
+}
+
+.text_class {
+	padding: 5px 8px 0 44px;
+	font-size: 16px;
+}
+
+.assetclass {
+	float: left;
+	margin-top: 3px;
+	margin-left: 24px;
+}
+
+.btnleft {
+	margin-left: 100px;
+}
+
+.tablist {
+	margin-top: 24px;
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	font-family: "Microsoft YaHei";
+	background-color: #fff;
+}
+
+.tablist th :first-child {
+	width: 200px;
+}
+.tablist th {
+	font-size: 14px;
+	border-bottom: #ccc solid 1px;
+	line-height: 30px;
+	padding-bottom: 10px;
+}
+.tablist td:first-child {
+	text-align: left;
+	padding-left: 50px;
+}
+
+.tablist td {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: #ccc solid 1px;
+}
+
+.tablist tr:nth-child(even) {
+	background-color: #f9fafc;
+}
+
+.color_1 {
+	color: #4eacab;
+}
+
+.color_2 {
+	color: #48a753;
+}
+
+.panellist td {
+	padding: 9px 5px 8px 25px;
+	font-size: 14px;
+}
+
+.panellist .panelTd_1 {
+	width: 170px;
+	text-align: left;
+}
+
+.panellist .panelTd_2 {
+	width: 15px;
+	text-align: center;
+}
+
+.leftdiv {
+	color: #7D7D7D;
+	margin: 4px 0 0 10px;
+	float: left;
+	width: 65%;
+	height: 268px;
+}
+
+.firstdiv {
+	font-size: 24px;
+	color: #7D7D7D;
+	border-bottom: #ccc solid 2px;
+	margin-bottom: 10px;
+	padding: 5px 0 10px 20px;
+}
+
+.setdiv .td_bg {
+	background-color: #FFF;
+}
+
+.setdiv .tdspan_1 {
+	color: #60BB60;
+	padding: 5px;
+	float: left;
+	width: 50px;
+	background-color: #FFF;
+}
+
+.setdiv .tdspan_2 {
+	float: left;
+	padding-right: 5px;
+	width: 30px;
+	background-color: #FFF;
+	margin: 0px;
+}
+
+.setdiv td {
+	padding: 5px 5px 10px 12px;
+	font-size: 16px;
+}
+
+.setdiv .panelTd_1 {
+	width: 120px;
+	text-align: left;
+}
+
+.setdiv .panelTd_2 {
+	width: 81px;
+	text-align: center;
+}
+
+.rightdiv {
+	float: left;
+	width: 33%;
+	background-color: #D4D4D4;
+	margin: 10px 0 0 10px;
+	height: 200px;
+}
+
+.righttext {
+	padding-left: 20px;
+}
+
+ul,li {
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft YaHei";
+}
+
+ul li {
+	list-style: none;
+}
+
+.detail_param {
+	float: right;
+	width: 446px;
+	height: 273px;
+	background-color: #d9d9d9;
+	color: #666;
+}
+
+.detail_tit {
+	border-bottom: #999 solid 1px;
+	padding-left: 15px;
+	overflow: hidden;
+	padding: 3px 5px;
+}
+
+.decribe_tit {
+	font-size: 28px;
+	line-height: 37px;
+	float: left;
+}
+
+.switch_btn {
+	float: right;
+	margin-right: 16px;
+}
+
+.detail_con ul {
+	padding: 5px 0 0 4px;
+}
+
+.detail_con ul li {
+	float: left;
+	margin: 0 16px 0px 10px;
+}
+
+.detail_con ul li>* {
+	float: left;
+}
+
+.param_mode {
+	width: 105px;
+	line-height: 25px;
+}
+
+.input_div {
+	width: 81px;
+	line-height: 24px;
+	border: #ccc solid 1px;
+	height: 20px;
+	background-color: #fff;
+	margin-left: 5px;
+}
+
+.input_div span.param_unit {
+	float: right;
+	margin-right: 5px;
+}
+
+.input_div input[type="text"] {
+	width: 40px;
+	height: 18px;
+	line-height: 24px;
+	border: 0;
+	background-color: transparent;
+	font-size: 16px;
+	color: #0e810e;
+	padding-left: 5px;
+	margin-bottom: 1px;
+}
+
+.hvac_favu {
+	padding: 7px 8px 0 44px;
+	font-size: 16px;
+	height: 23px;
+	background-color: #fff;
+}
+
+.msem_pos {
+	position: absolute;
+	z-index: 1;
+	line-height: 14px;
+	width: 33px;
+	color: #FFF;
+	text-align: center;
+}
+
+.msem_direct {
+	position: absolute;
+	z-index: 1;
+	color: #FFF;
+	line-height: 31px;
+	zoom: 1.5;
+	width: 22px;
+	text-align: center;
+}
+
+/* 变配电 右上角面板  start */
+.etd_right_panel {
+	float: right;
+	width: 800px;
+	background-color: #FFFFFF;
+	height: 200px;
+}
+
+ul,li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+strong {
+	font-weight: normal;
+}
+
+.parameter_box {
+	width: 800px;
+	font-family: "Microsoft Yahei";
+}
+
+.parameter_title {
+	height: 40px;
+	background-color: #26c3bc;
+	border-bottom: #ccc solid 1px;
+	color: #fff;
+	line-height: 40px;
+	padding: 0 15px;
+}
+.parameter_detail {
+	margin-left: 10px;
+}
+
+.parameter_title h3 {
+	font-size: 24px;
+	font-weight: normal;
+}
+
+.parameter_title .on_off {
+	float: right;
+	font-size: 18px;
+}
+
+.parameter_detail li {
+	float: left;
+	width: 190px;
+	height: 30px;
+	margin-right: 10px;
+	color: #333;
+	line-height: 30px;
+}
+
+.parameter_detail li.w600 {
+	width: 600px;
+}
+
+.parameter_detail li span.unit {
+	float: right;
+	width: 40px;
+}
+
+.parameter_detail li span.options {
+	float: left;
+	width: 120px;
+}
+
+.parameter_detail li strong {
+	float: right;
+	width: 40px;
+	margin-left: 5px;
+	color: #10C2BE;
+}
+/* 变配电 右上角面板  end */
+
+/* 变配电下方列表  start */
+.tab_elec {
+	width: 1430px;
+	height: 100px;
+	font-family: "Microsoft Yahei";
+}
+
+.tab_elec tr:nth-child(even) {
+	background-color: #dbdbea;
+}
+
+.tab_elec tr:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+
+.tab_elec th {
+	height: 40px;
+	background-color: #b9b9c8;
+	border-right: #a8a8b7 dashed 1px;
+	font-size: 13px;
+	font-weight: normal;
+	color: #fff;
+}
+
+.tab_elec td {
+	height: 32px;
+	border-right: #a8a8b7 dashed 1px;
+	padding-left: 10px;
+	font-size: 12px;
+	color: #999;
+	line-height: 32px;
+}
+
+.tab_elec td:first-child {
+	font-size: 16px;
+}
+
+.tab_elec td span.unit {
+	float: right;
+	margin-right: 10px;
+}
+
+.tab_elec td strong {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.tab_elec th:last-child,.tab_elec td:last-child {
+	border: 0;
+}
+/* 变配电下方列表  end */
+
+/* 设备列表配置  start */
+.modul {
+	padding-left: 7px;
+}
+
+.NORMAL_1 {
+	width: 35px;
+	height: 30px;
+	float: left;
+	background: url("../../images/sys_icon1.png") -749px -98px no-repeat;
+}
+/* 设备列表配置  end */
+
+/*门禁弹出框样式ztl-10-09*/
+ul, li { margin:0; padding:0; }
+ul, li { list-style-type:none; }
+.sideLine { float:left; position:relative;}
+.doorList { float:left; width:200px; background-color:#fff; border:#ccc solid 1px;border-left: #26c3bc solid 5px;}
+.doorList ul { margin:12px 15px; }
+.doorList li { width:169px; height:42px; background-color:#68c8ca; border-radius:4px; margin-bottom:8px; font-size:20px; color:#fff; text-align:center; line-height:42px; cursor:pointer; }
+.doorList li:hover{ width:169px; height:42px; background-color:#68C89A; border-radius:4px; margin-bottom:8px; font-size:20px; color:#fff; text-align:center; line-height:42px; cursor:pointer; }
+.doorList li:active{ width:169px; height:42px; background-color:#68C7F2; border-radius:4px; margin-bottom:8px; font-size:20px; color:#fff; text-align:center; line-height:42px; cursor:pointer; }
+.doorList li:last-child { margin:0; }
+.icon_triangle { position:absolute; top:10px; right:0px; width:9px; height:20px; background:url(<spring:url value="/resources/icons/icon_triangle.png"></spring:url>) no-repeat; }
+.popover .arrow{border-width: 0px;border-right-width: 0px;}
+.popover .arrow:after{border-style: none;}
+/*统计面板样式*/
+.P_98 tr td { padding: 15px;}
+#panel_title{font-size:50px;color:#333333;border-bottom:#ccc solid 2px;line-height: 65px;}
+#panel_title span{margin-left:10px;}
+.P_98 table{color:#666666;font-size:20px;font-family:"Microsoft YaHei","SimSun","宋体","Arial Narrow",HELVETICA;border-collapse:collapse;width:auto;}
+.0_color{color:#666666;}
+.write_n{color:#0092BF;}
+.normal_n{color:#7AD000;}
+.break_n{color:#FF5F5F;}
+.warn_n{color:#FF5F5F;}

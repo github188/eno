@@ -1,6 +1,6 @@
-<%@page import="com.ibms.intebase.portal.model.KeyValue"%>
+<%@page import="com.energicube.eno.monitor.model.KeyValue"%>
 <%@page import="java.util.List"%>
-<%@page import="com.ibms.intebase.portal.common.Const"%>
+<%@page import="com.energicube.eno.common.Const"%>
 <%@page import="org.joda.time.DateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

@@ -6,18 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.energicube.eno.common.Config;
-
 /**
  * reportForm页面控制
  */
 @Controller
 @RequestMapping("/reportForm")
-public class reportFormController extends BaseController {
+public class ReportFormController extends BaseController {
 
-	private static final Log logger = LogFactory.getLog(reportFormController.class);
-
-	private Config config = new Config();
+	private static final Log logger = LogFactory.getLog(ReportFormController.class);
 
 	/**
 	 * 报表管理页面控制首页（子系统概要页）

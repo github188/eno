@@ -11,9 +11,10 @@ import java.util.List;
 
 public interface UsersRepository extends JpaRepository<Users, Long> {
 
-//    @Query("select a from Persons a where a.userid in (select b.userid from Users b where b.status='0' and b.type='1') order by a.jobcode,a.userid")
-//    public List<Persons> selectUserorderBy() throws DataAccessException;
-
+	//@Query("select a from Persons a where a.userid in (select b.userid from Users b where b.status='0' and b.type='1') order by a.jobcode,a.userid")
+	@Query("select u from Users u where 1=1 ")
+	public List<Persons> selectUserorderBy() throws DataAccessException;
+	
     public List<Users> findByUserid(String userid);
     
     @Query("select u from Users u where u.userid=?1 ")

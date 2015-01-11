@@ -160,6 +160,10 @@ public class PatternConst {
     public static final String LOG_ID = "MAX_LOG_ID";//日志截止的logint
     public static final String LOGIN_USER = "LOGIN_USER"; //当前登录的用户
 
+    //客流厂家
+    public static final String PFE_HN = "HN";//汇纳
+    public static final String PFE_NEC = "NEC";//NEC厂商
+
     /**
      * 获取是否国家假日
      *

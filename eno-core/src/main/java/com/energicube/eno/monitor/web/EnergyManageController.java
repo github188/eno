@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.energicube.eno.common.Config;
-
 /**
  * energyManage页面控制
  */
@@ -16,8 +14,6 @@ import com.energicube.eno.common.Config;
 public class EnergyManageController extends BaseController {
 
 	private static final Log logger = LogFactory.getLog(EnergyManageController.class);
-
-	private Config config = new Config();
 
 	/**
 	 * 能源管理页面控制首页（子系统概要页）

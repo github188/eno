@@ -74,4 +74,12 @@ public interface MeasurementService {
      * @return {@link MeasurementSet} object
      */
     public MeasurementSet findByMeasurementid(long measurementid);
+
+    /**
+     * 获取计量器读数信息
+     *
+     * @param measurementid 读数ID
+     * @return {@link MeasurementSet} object
+     */
+	public Measurement findMeasurementByAssetnum(String tagid);
 }

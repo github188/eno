@@ -1,7 +1,6 @@
 package com.energicube.eno.monitor.web;
 
 
-import com.energicube.eno.asset.model.Asset;
 import com.energicube.eno.asset.repository.AssetRepository;
 import com.energicube.eno.message.redis.CommandInfo;
 import com.energicube.eno.message.redis.PassengerCmdInfo;
@@ -12,6 +11,7 @@ import com.energicube.eno.monitor.repository.PagetagRepository;
 import com.energicube.eno.monitor.repository.jpa.AssetMeasurementRepository;
 import com.energicube.eno.monitor.service.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,7 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletRequest;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -72,19 +73,6 @@ public class SocketMsgController {
     @Autowired
     private AssetMeasurementRepository assetMeasurementRepository;
 
-    private HttpServletRequest request;
-
-    // 启动tomcat，初始化所有tagid的数据
-    private List<TagInfo> taginfo = new ArrayList<TagInfo>();
-    private Map<String, Dict> contextMap = new HashMap<String, Dict>();
-    ;
-
-    public SocketMsgController() {
-        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-        taginfo = (List<TagInfo>) wac.getServletContext().getAttribute("taglist");
-        contextMap = (Map<String, Dict>) wac.getServletContext().getAttribute("context");
-    }
-
     /**
      * 返回指定菜单对应的设备
      *
@@ -103,7 +91,7 @@ public class SocketMsgController {
         }
 
         // 返回指定布局的测量点和控件信息
-        Map<String, List> map = pagetagService.findPagetagAndControlByMenuid(menuid, layoutid, elementvalue, taginfo, contextMap);
+        Map<String, List> map = pagetagService.findPagetagAndControlByMenuid(menuid, layoutid, elementvalue);
         // 表达式列表
         List<Expression> expressions = expressionService.findAllExp();
         map.put("expressions", expressions);
@@ -137,7 +125,7 @@ public class SocketMsgController {
         logger.info("web ajax request positions for menuid:" + menuid);
         Map<String, List> map = new HashMap<String, List>();
         if (StringUtils.hasLength(menuid)) {
-            map = pagetagService.findPagetagAndControlByMenuid(menuid, "", elementvalue, taginfo, contextMap);
+            map = pagetagService.findPagetagAndControlByMenuid(menuid, "", elementvalue);
         } else {
             throw new IllegalArgumentException("菜单ID不能为空");
         }
@@ -164,7 +152,7 @@ public class SocketMsgController {
         logger.info("--进来--" + sf.format(new Date()));
         List<Pagetag> lastValues = null;
         if (StringUtils.hasLength(menuid)) {
-            lastValues = pagetagService.getTagLastValues(menuid, taginfo);
+            lastValues = pagetagService.getTagLastValues(menuid);
         }
 
         logger.info("--执行完--" + sf.format(new Date()));
@@ -446,48 +434,14 @@ public class SocketMsgController {
     @ResponseBody
     public Map<String, Object> getETDClassSpecList(@Header Map<String, List<String>> nativeHeaders) throws Exception {
 
-        String layoutid = nativeHeaders.get("layoutid") != null ? nativeHeaders.get("layoutid").get(0) : "";
-        logger.debug("getETDClassSpecList by layoutid:" + layoutid);
-
-        Map<String, Object> retMap = new HashMap<String, Object>();
-
-        List<Map<String, Object>> returnList = new ArrayList<Map<String, Object>>();
-
-        List<List<String>> returnListForTable = new ArrayList<List<String>>();
-
-        if (StringUtils.hasLength(layoutid)) {
-            // 获取页面上所有设备
-            List<Pagetag> pagetagList = pagetagRepository.findByLayoutid(layoutid);
-            // 获取每个设备的ClassSpec
-            for (Pagetag pt : pagetagList) {
-                Map<String, Object> tmpMap = new HashMap<String, Object>();
-                List<String> tmpMapForTable = new ArrayList<String>();
-                Asset asset = assetRepository.findByAssetnum(pt.getTagid());
-                tmpMap.put("ASSETNUM", asset.getDescription());
-                tmpMapForTable.add(asset.getDescription());
-                List<Object> notSetList = assetMeasurementRepository.findNotSetAttribute(asset.getClassstructureid(), "not");
-                List<Map<String, String>> etdClassSpecList = new ArrayList<Map<String, String>>();
-                for (int i = 0; i < 10; i++) {//演示数据只取10个
-                    Object cs = notSetList.get(i);
-                    Object[] objs = (Object[]) cs;
-                    Map<String, String> classSpecMap = new HashMap<String, String>();
-                    if (objs != null && objs.length != 0) {
-                        classSpecMap.put("ASSETATTRID", objs[0].toString());
-                        classSpecMap.put("DESCRIPTION", objs[1].toString());
-                        classSpecMap.put("MEASUREUNITID", objs[2].toString().equals("—") ? "" : objs[2].toString());
-
-                        tmpMapForTable.add(objs[2].toString().equals("—") ? "" : objs[2].toString());
-                    }
-                    etdClassSpecList.add(classSpecMap);
-                }
-                tmpMap.put("etdClassSpecList", etdClassSpecList);
-                returnList.add(tmpMap);
-                returnListForTable.add(tmpMapForTable);
-            }
-        }
-
-        retMap.put("assetAndClassSpecMapList", returnList);
-        retMap.put("assetAndClassSpecMapListForTable", returnListForTable);
+        String pagelayoutuid = nativeHeaders.get("pagelayoutuid") != null ? nativeHeaders.get("pagelayoutuid").get(0) : "";
+        logger.info("getETDClassSpecList by pagelayoutuid:" + pagelayoutuid);
+        Map<String, Object> retMap = null;
+		try {
+			retMap = pagetagService.findETDPanelDatas(pagelayoutuid);
+		} catch (Exception e) {
+			logger.debug(e);
+		}
         return retMap;
 
     }

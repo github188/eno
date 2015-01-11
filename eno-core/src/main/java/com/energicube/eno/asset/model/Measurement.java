@@ -97,7 +97,20 @@ public class Measurement implements java.io.Serializable {
      */
     private String valuetag;
 
-    public Measurement() {
+    /**
+     * 属性id
+     */
+    private String assetattrid;
+
+    public String getAssetattrid() {
+		return assetattrid;
+	}
+
+	public void setAssetattrid(String assetattrid) {
+		this.assetattrid = assetattrid;
+	}
+
+	public Measurement() {
     }
 
     public Measurement(long measurementid) {

@@ -1,7 +1,9 @@
 package com.energicube.eno.message.redis;
 
+import com.energicube.eno.common.Const;
 import com.energicube.eno.message.activemq.MessageSender;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +54,8 @@ public class RedisMessageListener implements MessageListener {
                 Integer p = Integer.parseInt(jsonObject.get("p").toString());
                 Double t = Double.parseDouble(jsonObject.get("t").toString());
                 String v = jsonObject.get("v").toString();
-                taginfo = new TagInfo(id, f, p, t, v);
-                logger.info("--------chan:cov_tag-------" + id + "---" + v);
+                taginfo = new TagInfo(id, f, p, t, Const.formatValue(v));
+//                logger.info("--------chan:cov_tag-------" + id + "---" + v);
                 //for(int i=0; i<1000; i++)
                 {
                     //taginfo=new TagInfo(i+1, 0, 1, 43456.0, v);
@@ -77,7 +79,7 @@ public class RedisMessageListener implements MessageListener {
                 }    // End For
 
                 //TaginfoCollection.setList(list);
-            } else if ("chan:cov_alarm".equals(channelName)) {
+            } else if ("chan:cov_alarm1".equals(channelName)) {
                 AlarmsInfo alarmsInfo = null;
                 String jsonString = message.toString().substring(1, message.toString().length() - 1);
 //            JSONObject jsonObject = JSONObject.fromObject(jsonString);
