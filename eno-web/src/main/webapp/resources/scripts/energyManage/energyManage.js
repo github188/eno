@@ -1,1057 +1,129 @@
 $(function() {
+			var start = getCurrentTime(), end = getTimeByDays(start, 1);
 
-			energyManage.buildEnergySexChart(); // 生成六宫格图表
+			buildEnergyNineChart(start, start, end, "hour", "4"); // 生成九宫格图表
+			buildEnergySexChart(start, start, end, "hour", "4"); // 生成六宫格图表
 			
-			energyManage.buildEnergyNineEnergyTotal(); // 生成九宫格-1.建筑总能耗图表
-			energyManage.buildEnergyNineEnergySubentry(); // 生成九宫格-2.建筑总能耗分项
-			energyManage.buildEnergyNineElectricityTotal(); // 生成九宫格-3.建筑总用电图表
-			energyManage.buildEnergyNineWaterTotal(); // 生成九宫格-4.建筑总用水图表
-			energyManage.buildEnergyNineGasTotal(); // 生成九宫格-5.建筑总用气图表
-			energyManage.buildEnergyNineBuildSubentry(); // 生成九宫格-6.建筑用电分项
-			energyManage.buildEnergyNineHvacSubentry(); // 生成九宫格-7.空调系统用电分项
-			energyManage.buildEnergyNineDataCenter(); // 生成九宫格-8.数据中心用电图表
-			energyManage.buildEnergyNineDeviceEnergy(); // 生成九宫格-9.建筑设备能耗图表
+		});
+		
+var sexEnergyTotalName = 'CO10_RA#KT_3F_2,CO18_RA#KT_5_5'; // 六宫格-1.建筑总能耗图表
+// 生成六宫格-2.建筑总能耗分项
+var sexEnergySubentry =  'CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5' ;
+var sexEnergySubentrySum =  'CO10_RA#KT_3F_2' ;
+var sexElectricityTotalName = 'CO10_RA#KT_3F_2,CO18_RA#KT_5_5'; // 六宫格-3.建筑总能耗图表
+// 生成六宫格-4.空调系统用电分项
+var sexHvacSubentry =  'CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5' ;
+var sexHvacSubentrySum =  'CO10_RA#KT_3F_2' ;
+var sexDataCenterName = 'CO10_RA#KT_3F_2,CO18_RA#KT_5_5'; // 六宫格-5.数据中心用电图表
+var sexDeviceEnergyName = 'CO10_RA#KT_3F_2,CO18_RA#KT_5_5'; // 六宫格-6.建筑设备能耗图表
 
-		});
+var nineEnergyTotalName = 'CO10_RA#KT_3F_2'; // 九宫格-1.建筑总能耗图表
+var nineElectricityTotalName = 'CO10_RA#KT_3F_2'; // 九宫格-3.建筑总能耗图表
+var nineWaterTotalName = 'CO10_RA#KT_3F_2'; // 九宫格-4.建筑总用水图表
+var nineGasTotalName = 'CO10_RA#KT_3F_2'; // 九宫格-5.建筑总用气图表
+var nineDataCenterName = 'CO10_RA#KT_3F_2'; // 九宫格-8.数据中心用电图表
+var nineDeviceEnergyName = 'CO10_RA#KT_3F_2'; // 九宫格-9.建筑设备能耗图表
 
-var energyManage = {
-	
-	// 生成六宫格图表
-	buildEnergySexChart : function() {
-		energyManage.buildEnergySexEnergyTotal(); // 生成六宫格-1.建筑总能耗图表
-		energyManage.buildEnergySexEnergySubentry(); // 生成六宫格-2.建筑总能耗分项
-		energyManage.buildEnergySexElectricityTotal(); // 生成六宫格-3.建筑总能耗图表
-		energyManage.buildEnergySexHvacSubentry(); // 生成六宫格-4.空调系统用电分项
-		energyManage.buildEnergySexDataCenter(); // 生成六宫格-5.数据中心用电图表
-		energyManage.buildEnergySexDeviceEnergy(); // 生成六宫格-6.建筑设备能耗图表
-	},
-	
-	// 生成六宫格-1.建筑总能耗图表
-	buildEnergySexEnergyTotal : function() {
+// 生成九宫格-2.建筑总能耗分项
+var nineEnergyTotal =  'CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5' ;
+var nineEnergyTotalSum =  'CO10_RA#KT_3F_2' ;
+// 生成九宫格-6.建筑用电分项
+var nineBuildSubentry =  'CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5' ;
+var nineBuildSubentrySum =  'CO10_RA#KT_3F_2' ;
+// 生成九宫格-7.空调系统用电分项
+var nineHvacSubentry =  'CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5,CO18_RA#KT_5_5' ;
+var nineHvacSubentrySum =  'CO10_RA#KT_3F_2' ;
 
-		// 实际能耗
-		var columnData = [28, 72, 66, 111, 55, 68, 75];
-		var columnColor = "#3DBA90";
-		// 室外温度
-		var lineData = [114.5, 170, 173.54, 183.54, 193.54, 183.54, 173.54];
-		var lineColor = "#FFB400";
-		var catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_sex_energytotal').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#FFFFFF',
-					fontFamily: '微软雅黑'
-				},
-				x: 10,
-				text: '2014 - 8 - 10 ~ 2014 - 08 - 16'
-			},
-			legend : {
-				verticalAlign: 'top',
-				x: 150,
-				y: -7,
-				itemStyle: {
-					color: '#C7C7C7',
-					fontWeight: 'normal',
-					fontSize: '16px',
-					fontFamily: '微软雅黑'
-				},
-				borderWidth: 0
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-		    yAxis: [{ // Primary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			}, { // Secondary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				},
-				opposite: true
-			}],
-			series: [{
-				type: 'column',
-				color: columnColor, 
-				name: '实际能耗(kWh)',
-				data: columnData
-			}, {
-				type: 'line',
-				name: '室外温度(℃)',
-				yAxis: 1,
-				data: lineData,
-				color: lineColor, 
-				marker: {
-					lineWidth: 2,
-					radius: radius,
-					lineColor: lineColor,
-					fillColor: lineColor
-				}
-			}]
-		});
-	},
-	
-	// 生成六宫格-2.建筑总能耗分项
-	buildEnergySexEnergySubentry : function() {
-		$('#energy_sex_energysubentry').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: -10,
-				plotBackgroundColor: null,
-				plotBorderWidth: null,
-				plotShadow: false
-			},
-			title: {
-				align: 'right',
-				style: {
-					color: '#FFFFFF',
-					fontFamily: '微软雅黑'
-				},
-				x: -45,
-				y: 50,
-				text: '2014 - 8 - 10 ~ 2014 - 8 -16'
-			},
-			legend : {
-				verticalAlign: 'middle',
-				align: 'right',
-				itemMarginTop: 6,
-				width: 300,
-				itemWidth: 150,
-				itemStyle: {
-					color: '#FFF',
-					fontWeight: 'normal',
-					fontSize: '14px',
-					fontFamily: '微软雅黑'
-				},
-				borderWidth: 0
-			},
-			plotOptions: {
-				pie: {
-					allowPointSelect: true,
-					cursor: 'pointer',
-					dataLabels: {
-						enabled: false
-					},
-					showInLegend: true
-				}
-			},
-			colors: [
-				'#3DBA90', 
-				'#A7C91D', 
-				'#FFD600', 
-				'#FF9326', 
-				'#FB605E', 
-				'#FFB59C', 
-				'#74DCFF', 
-				'#00B7D9'
-			],
-			tooltip: {
-				pointFormat: ''
-			},
-			series: [{
-				type: 'pie',
-				innerSize: '100%',
-				size : '150%',
-				// 空调,照明,  数据中心, 电梯, 给排水,消防,其他
-				data: [
-					['空调25%',   25.0],
-					['照明25%',    20],
-					['数据中心25%',    15],
-					['电梯25%',     11],
-					['给排水25%',     9],
-					['消防25%',     18],
-					['其他25%',     12]
-				]
-			}]
-		});
-	},
-	
-	// 生成六宫格-3.建筑总能耗图表
-	buildEnergySexElectricityTotal : function() {
-		// 实际用电
-		var columnData = [];
-		var columnColor = "#3DBA90";
-		// 室外温度
-		var lineData = [];
-		var lineColor = "#FFB400";
-		var catalist = [];
-		for(var i=0;i<24;i++){
-			catalist.push(i + ":00");
-			columnData.push(Math.floor(Math.random()*200));
-			lineData.push(Math.floor(Math.random()*20));
-		}
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_sex_electricitytotal').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#FFFFFF',
-					fontFamily: '微软雅黑'
-				},
-				x: 10,
-				text: '2014 - 8 - 10'
-			},
-			legend : {
-				verticalAlign: 'top',
-				x: 150,
-				y: -7,
-				itemStyle: {
-					color: '#C7C7C7',
-					fontWeight: 'normal',
-					fontSize: '16px',
-					fontFamily: '微软雅黑'
-				},
-				borderWidth: 0
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					step: 4,
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: [{ // Primary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			}, { // Secondary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				},
-				opposite: true
-			}],
-			series: [{
-				type: 'line',
-				color: columnColor, 
-				name: '实际用电(kWh)',
-				data: columnData
-			}, {
-				type: 'line',
-				name: '室外温度(℃)',
-				yAxis: 1,
-				data: lineData,
-				color: lineColor, 
-				marker: {
-					lineWidth: 2,
-					radius: radius,
-					lineColor: lineColor,
-					fillColor: lineColor
-				}
-			}]
-		});
-	},
-	
-	// 生成六宫格-4.空调系统用电分项
-	buildEnergySexHvacSubentry : function() {
-		$('#energy_sex_hvacsubentry').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: -10,
-				plotBackgroundColor: null,
-				plotBorderWidth: null,
-				plotShadow: false
-			},
-			title: {
-				align: 'right',
-				style: {
-					color: '#FFFFFF',
-					fontFamily: '微软雅黑'
-				},
-				x: -45,
-				y: 50,
-				text: '2014 - 8 - 10 ~ 2014 - 8 -16'
-			},
-			legend : {
-				verticalAlign: 'middle',
-				align: 'right',
-				itemMarginTop: 6,
-				width: 300,
-				itemWidth: 150,
-				itemStyle: {
-					color: '#FFF',
-					fontWeight: 'normal',
-					fontSize: '14px',
-					fontFamily: '微软雅黑'
-				},
-				borderWidth: 0
-			},
-			plotOptions: {
-				pie: {
-					allowPointSelect: true,
-					cursor: 'pointer',
-					dataLabels: {
-						enabled: false
-					},
-					showInLegend: true
-				}
-			},
-			colors: [
-				'#3DBA90', 
-				'#A7C91D', 
-				'#FFD600', 
-				'#FF9326', 
-				'#FB605E', 
-				'#FFB59C', 
-				'#74DCFF', 
-				'#00B7D9'
-			],
-			tooltip: {
-				pointFormat: ''
-			},
-			series: [{
-				type: 'pie',
-				innerSize: '100%',
-				size : '150%',
-				// 空调,照明,  数据中心, 电梯, 给排水,消防,其他
-				data : [['冷机25%', 25.0], ['空调水泵25%', 20], ['冷却塔25%', 15],
-						['空调箱25%', 11], ['ACU用电25%', 9], ['其他30%', 30]]
-			}]
-		});
-	},
-	
-	// 生成六宫格-5.数据中心用电图表
-	buildEnergySexDataCenter : function() {
-		// 实际能耗
-		var columnData = [];
-		var columnColor = "#3DBA90";
-		// 室外温度
-		var lineData = [];
-		var lineColor = "#FFB400";
-		var catalist = ['一月' , '二月' , '三月' , '四月' , '五月' , '六月' , '七月' , '八月' , '九月' , '十月' , '十一月' , '十二月'];
-		for(var i=0;i<12;i++){
-			columnData.push(Math.floor(Math.random()*200));
-			lineData.push(Math.floor(Math.random()*20));
-		}
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_sex_datacenter').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#FFFFFF',
-					fontFamily: '微软雅黑'
-				},
-				x: 10,
-				text: '2014'
-			},
-			legend : {
-				verticalAlign: 'top',
-				x: 150,
-				y: -7,
-				itemStyle: {
-					color: '#C7C7C7',
-					fontWeight: 'normal',
-					fontSize: '16px',
-					fontFamily: '微软雅黑'
-				},
-				borderWidth: 0
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					staggerLines: 1,
-					step: 2,
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: [{ // Primary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			}, { // Secondary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				},
-				opposite: true
-			}],
-			series: [{
-				type: 'area',
-				color: columnColor, 
-				name: '实际能耗(kWh)',
-				data: columnData, 
-				marker: {
-					lineWidth: 1,
-					radius: radius,
-					lineColor: columnColor
-				}
-			}, {
-				type: 'line',
-				name: '室外温度(℃)',
-				yAxis: 1,
-				data: lineData,
-				color: lineColor, 
-				marker: {
-					lineWidth: 2,
-					radius: radius,
-					lineColor: lineColor,
-					fillColor: lineColor
-				}
-			}]
-		});
-	},
-	
-	// 生成六宫格-6.建筑设备能耗图表
-	buildEnergySexDeviceEnergy : function() {
-		// 实际能耗
-		var columnData = [];
-		var columnColor = "#3DBA90";
-		// 室外温度
-		var lineData = [];
-		var lineColor = "#FFB400";
-		var catalist = [];
-		for (var i = 0; i < 31; i++) {
-			catalist.push(i);
-			columnData.push(Math.floor(Math.random() * 200));
-			lineData.push(Math.floor(Math.random() * 20));
-		}
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_sex_deviceenergy').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#FFFFFF',
-					fontFamily: '微软雅黑'
-				},
-				x: 10,
-				text: '2014'
-			},
-			legend : {
-				verticalAlign: 'top',
-				x: 150,
-				y: -7,
-				itemStyle: {
-					color: '#C7C7C7',
-					fontWeight: 'normal',
-					fontSize: '16px',
-					fontFamily: '微软雅黑'
-				},
-				borderWidth: 0
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					staggerLines: 1,
-					step: 2,
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: [{ // Primary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			}, { // Secondary yAxis
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				},
-				opposite: true
-			}],
-			series: [{
-				type: 'column',
-				color: columnColor,
-				name: '实际能耗(kWh)',
-				data: columnData
-			}, {
-				type: 'line',
-				name: '室外温度(℃)',
-				yAxis: 1,
-				data: lineData,
-				color: lineColor, 
-				marker: {
-					lineWidth: 2,
-					radius: radius,
-					lineColor: lineColor,
-					fillColor: lineColor
-				}
-			}]
-		});
-	},
-	
-	// 生成九宫格图表
-	buildEnergyNineChart : function() {
-		energyManage.buildEnergyNineEnergyTotal(); // 生成九宫格-1.建筑总能耗图表
-		energyManage.buildEnergyNineEnergySubentry(); // 生成九宫格-2.建筑总能耗分项
-		energyManage.buildEnergyNineElectricityTotal(); // 生成九宫格-3.建筑总能耗图表
-		energyManage.buildEnergyNineWaterTotal(); // 生成九宫格-4.建筑总用水图表
-		energyManage.buildEnergyNineGasTotal(); // 生成九宫格-5.建筑总用气图表
-		energyManage.buildEnergyNineBuildSubentry(); // 生成九宫格-6.建筑用电分项
-		energyManage.buildEnergyNineHvacSubentry(); // 生成九宫格-7.空调系统用电分项
-		energyManage.buildEnergyNineDataCenter(); // 生成九宫格-8.数据中心用电图表
-		energyManage.buildEnergyNineDeviceEnergy(); // 生成九宫格-9.建筑设备能耗图表
-	},
-	
-	// 生成九宫格-1.建筑总能耗图表
-	buildEnergyNineEnergyTotal : function() {
-		// 实际能耗
-		var columnData = [28, 72, 66, 111, 55, 68, 75];
-		var columnColor = "#00C28E";
-		
-		var catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_nine_energytotal').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#9fa0a2',
-					fontSize: '10px'
-					//, fontFamily: '微软雅黑'
-				},
-				x: 0,
-				text: '(kWh)'
-			},
-			legend : {
-				enabled: false
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: {
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			},
-			series: [{
-				type: 'column',
-				color: columnColor, 
-				name: '实际能耗(kWh)',
-				data: columnData
-			}]
-		});
-	},
-	
-	// 生成九宫格-2.建筑总能耗分项
-	buildEnergyNineEnergySubentry : function() {
-		
-		$('#energy_nine_energysubentry').highcharts({
-			chart : {
-				backgroundColor : '#343434',
-				marginBottom : 25,
-				marginTop : 20,
-				plotBackgroundColor : null,
-				plotBorderWidth : null,
-				plotShadow : false
-			},
-			legend : {
-				verticalAlign : 'middle',
-				align : 'right',
-				itemMarginTop : 1,
-				width : 300,
-				itemWidth : 150,
-				itemStyle : {
-					color : '#FFF',
-					fontWeight : 'normal',
-					fontFamily : '微软雅黑'
-				},
-				itemHeight : 240,
-				borderWidth : 0
-			},
-			plotOptions : {
-				pie : {
-					allowPointSelect : true,
-					cursor : 'pointer',
-					dataLabels : {
-						enabled : false
-					},
-					showInLegend : true
-				}
-			},
-			colors : ['#3DBA90', '#A7C91D', '#FFD600', '#FF9326', '#FB605E',
-					'#FFB59C', '#74DCFF', '#00B7D9'],
-			tooltip : {
-				pointFormat : ''
-			},
-			series : [{
-				type : 'pie',
-				innerSize : '100%',
-				size : '160%', // 空调,照明,  数据中心, 电梯, 给排水,消防,其他
-				data : [['空调25%', 25.0], ['照明25%', 20], ['数据中心25%', 15],
-						['电梯25%', 11], ['给排水25%', 9], ['消防25%', 18],
-						['其他25%', 12]]
-			}]
-		});
-	},
+// 生成六宫格图表
+function buildEnergySexChart(title, start, end, timescales, step) {
+	renderMoreCharts(buildChart.buildEnergySexEnergyTotal, sexEnergyTotalName, title, start, end, timescales, step); // 生成六宫格-1.建筑总能耗图表
+	renderPieCharts(buildChart.buildEnergySexEnergySubentry, sexEnergySubentry, sexEnergySubentrySum, start, end, timescales); // 生成六宫格-2.建筑总能耗分项
+	renderMoreCharts(buildChart.buildEnergySexElectricityTotal, sexElectricityTotalName, title, start, end, timescales, step); // 生成六宫格-3.建筑总能耗图表
+	renderPieCharts(buildChart.buildEnergySexHvacSubentry, sexHvacSubentry, sexHvacSubentrySum, start, end, timescales); // 生成六宫格-4.空调系统用电分项
+	renderMoreCharts(buildChart.buildEnergySexDataCenter, sexDataCenterName, title, start, end, timescales, step); // 生成六宫格-5.数据中心用电图表
+	renderMoreCharts(buildChart.buildEnergySexDeviceEnergy, sexDeviceEnergyName, title, start, end, timescales, step); // 生成六宫格-6.建筑设备能耗图表
+}
 
-	// 生成九宫格-3.建筑总用电图表
-	buildEnergyNineElectricityTotal : function() {
+// 生成九宫格图表
+function buildEnergyNineChart(title, start, end, timescales, step, catalist, timeformat) {
 
-		var columnData = [28, 72, 66, 111, 55, 68, 75];
-		var columnColor = "#00C28E";
-		var catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_nine_electricitytotal').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#9fa0a2',
-					fontSize: '10px'
-					, fontFamily: '微软雅黑'
-				},
-				x: 0,
-				text: '(kWh)'
-			},
-			legend : {
-				enabled: false
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: {
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			},
-			series: [{
-				type: 'line',
-				color: columnColor, 
-				name: '实际用电(kWh)',
-				data: columnData
-			}]
-		});
-	},
+	renderMoreCharts(buildChart.buildEnergyNineEnergyTotal, nineEnergyTotalName, title, start, end, timescales, step, catalist, timeformat); // 生成九宫格-1.建筑总能耗图表
+	renderPieCharts(buildChart.buildEnergyNineEnergySubentry, nineEnergyTotal, nineEnergyTotalSum, start, end, timescales); // 生成九宫格-2.建筑总能耗分项
+	renderMoreCharts(buildChart.buildEnergyNineElectricityTotal, nineElectricityTotalName, title, start, end, timescales, step, catalist, timeformat); // 生成九宫格-3.建筑总能耗图表
+	renderMoreCharts(buildChart.buildEnergyNineWaterTotal, nineWaterTotalName, title, start, end, timescales, step, catalist, timeformat); // 生成九宫格-4.建筑总用水图表
+	renderMoreCharts(buildChart.buildEnergyNineGasTotal, nineGasTotalName, title, start, end, timescales, step, catalist, timeformat); // 生成九宫格-5.建筑总用气图表
+	renderPieCharts(buildChart.buildEnergyNineBuildSubentry, nineBuildSubentry, nineBuildSubentrySum, start, end, timescales); // 生成九宫格-6.建筑用电分项
+	renderPieCharts(buildChart.buildEnergyNineHvacSubentry, nineHvacSubentry, nineHvacSubentrySum, start, end, timescales); // 生成九宫格-7.空调系统用电分项
+	renderMoreCharts(buildChart.buildEnergyNineDataCenter, nineDataCenterName, title, start, end, timescales, step, catalist, timeformat); // 生成九宫格-8.数据中心用电图表
+	renderMoreCharts(buildChart.buildEnergyNineDeviceEnergy, nineDeviceEnergyName, title, start, end, timescales, step, catalist, timeformat); // 生成九宫格-9.建筑设备能耗图表
+}
 
-	// 生成九宫格-4.建筑总用水图表
-	buildEnergyNineWaterTotal : function() {
-		
-		var columnData = [28, 72, 66, 111, 55, 68, 75];
-		var columnColor = "#5CC8E4";
-		var catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_nine_watertotal').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#9fa0a2',
-					fontSize: '10px'
-					//, fontFamily: '微软雅黑'
-				},
-				x: 0,
-				text: '(kWh)'
-			},
-			legend : {
-				enabled: false
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: {
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			},
-			series: [{
-				type: 'column',
-				color: columnColor, 
-				name: '实际能耗(kWh)',
-				data: columnData
-			}]
-		});
-	},
-	
-	// 生成九宫格-5.建筑总用气图表
-	buildEnergyNineGasTotal : function() {
-		
-		var columnData = [28, 72, 66, 111, 55, 68, 75];
-		var columnColor = "#5CC9DE";
-		var catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_nine_gastotal').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#9fa0a2',
-					fontSize: '10px'
-					//, fontFamily: '微软雅黑'
-				},
-				x: 0,
-				text: '(kWh)'
-			},
-			legend : {
-				enabled: false
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: {
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			},
-			series: [{
-				type: 'area',
-				color: columnColor, 
-				name: '总用气(kWh)',
-				data: columnData
-			}]
-		});
-	},
-	
-	// 生成九宫格-6.建筑用电分项
-	buildEnergyNineBuildSubentry : function() {
-		
-		$('#energy_nine_buildsubentry').highcharts({
-			chart : {
-				backgroundColor : '#343434',
-				marginBottom : 25,
-				marginTop : 20,
-				plotBackgroundColor : null,
-				plotBorderWidth : null,
-				plotShadow : false
-			},
-			legend : {
-				verticalAlign : 'middle',
-				align : 'right',
-				itemMarginTop : 1,
-				width : 300,
-				itemWidth : 150,
-				itemStyle : {
-					color : '#FFF',
-					fontWeight : 'normal',
-					fontFamily : '微软雅黑'
-				},
-				itemHeight : 240,
-				borderWidth : 0
-			},
-			plotOptions : {
-				pie : {
-					allowPointSelect : true,
-					cursor : 'pointer',
-					dataLabels : {
-						enabled : false
-					},
-					showInLegend : true
-				}
-			},
-			colors : ['#3DBA90', '#A7C91D', '#FFD600', '#FF9326', '#FB605E',
-					'#FFB59C', '#74DCFF', '#00B7D9'],
-			tooltip : {
-				pointFormat : ''
-			},
-			series : [{
-				type : 'pie',
-				innerSize : '100%',
-				size : '160%', // 空调,照明,  数据中心, 电梯, 给排水,消防,其他
-				data : [['空调25%', 25.0], ['照明25%', 20], ['数据中心25%', 15],
-						['电梯25%', 11], ['给排水25%', 9], ['消防25%', 18],
-						['其他25%', 12]]
-			}]
-		});
-	},
-	
-	// 生成九宫格-7.空调系统用电分项
-	buildEnergyNineHvacSubentry : function() {
-		
-		$('#energy_nine_hvacsubentry').highcharts({
-			chart : {
-				backgroundColor : '#343434',
-				marginBottom : 25,
-				marginTop : 20,
-				plotBackgroundColor : null,
-				plotBorderWidth : null,
-				plotShadow : false
-			},
-			legend : {
-				verticalAlign : 'middle',
-				align : 'right',
-				itemMarginTop : 1,
-				width : 300,
-				itemWidth : 150,
-				itemStyle : {
-					color : '#FFF',
-					fontWeight : 'normal',
-					fontFamily : '微软雅黑'
-				},
-				itemHeight : 240,
-				borderWidth : 0
-			},
-			plotOptions : {
-				pie : {
-					allowPointSelect : true,
-					cursor : 'pointer',
-					dataLabels : {
-						enabled : false
-					},
-					showInLegend : true
-				}
-			},
-			colors : ['#3DBA90', '#A7C91D', '#FFD600', '#FF9326', '#FB605E',
-					'#FFB59C', '#74DCFF', '#00B7D9'],
-			tooltip : {
-				pointFormat : ''
-			},
-			series : [{
-				type : 'pie',
-				innerSize : '100%',
-				size : '160%', // 空调,照明,  数据中心, 电梯, 给排水,消防,其他
-				data : [['空调25%', 25.0], ['照明25%', 20], ['数据中心25%', 15],
-						['电梯25%', 11], ['给排水25%', 9], ['消防25%', 18],
-						['其他25%', 12]]
-			}]
-		});
-	},
-
-	// 生成九宫格-8.数据中心用电图表
-	buildEnergyNineDataCenter : function() {
-		
-		var columnData = [28, 72, 66, 111, 55, 68, 75];
-		var columnColor = "#EFCB1D";
-		var catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_nine_datacenter').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#9fa0a2',
-					fontSize: '10px'
-					//, fontFamily: '微软雅黑'
-				},
-				x: 0,
-				text: '(kWh)'
-			},
-			legend : {
-				enabled: false
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: {
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			},
-			series: [{
-				type: 'area',
-				color: columnColor, 
-				name: '总用气(kWh)',
-				data: columnData
-			}]
-		});
-	}, 
-	
-	// 生成九宫格-9.建筑设备能耗图表
-	buildEnergyNineDeviceEnergy : function() {
-
-		var columnData = [28, 72, 66, 111, 55, 68, 75];
-		var columnColor = "#EFD318";
-		var catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-		var radius = 2; // 数据点的大小
-		
-		$('#energy_nine_deviceenergy').highcharts({
-			chart: {
-				backgroundColor: '#343434',
-				marginBottom: 35,
-				marginLeft: 50
-			},
-			title: {
-				align: 'left',
-				style: {
-					color: '#9fa0a2',
-					fontSize: '10px'
-					, fontFamily: '微软雅黑'
-				},
-				x: 0,
-				text: '(kWh)'
-			},
-			legend : {
-				enabled: false
-			},
-			xAxis: {
-				tickColor:"#343434",
-				categories: catalist,
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontSize: '16px',
-						fontFamily: '微软雅黑'
-					}
-				}
-			},
-			yAxis: {
-				labels: {
-					style: {
-						color: '#C7C7C7',
-						fontWeight: 'normal',
-						fontSize: '14px'
-					}
-				}
-			},
-			series: [{
-				type: 'line',
-				color: columnColor, 
-				name: '实际用电(kWh)',
-				data: columnData
-			}]
-		});
+/**
+ * 生成一个或多个曲线
+ * 
+ * @param {} callback 回调函数
+ * @param {} pointname
+ * @param {} title
+ * @param {} start
+ * @param {} end
+ * @param {} timescales
+ * @param {} step
+ * @param {} clist
+ * @param {} timeformat
+ */
+function renderMoreCharts(callback, pointname, title, start, end, timescales, step, clist, timeformat) {
+	var aggregatefunction = 'sum,sum';
+	var starts = [], ends = [], timescaleses = [];
+	for (var i = 0; i < pointname.split(",").length; i++) {
+		starts.push(start);
+		ends.push(end);
+		timescaleses.push(timescales);
 	}
-	
-};
+	var action = CONTEXT_PATH + "/energyManage/getDataAndCataList";
+	var params = {
+		pointname : pointname,
+		aggregatefunction : aggregatefunction,
+		timeend : ends.join(),
+		timescales : timescaleses.join(),
+		timestart : starts.join(),
+		timeformat : timeformat ? timeformat : "HH"
+	};
+	$.post(action, params, function(data) {
+				var datalist = data.data, ca = [];
+				try {
+					var ca = data.cata[0];
+					if (clist && clist.length > 0) {
+						ca = clist;
+					}
+				} catch (e) {
+					console.log(e);
+				}
+				callback(title, ca, datalist, step);
+			});
+}
+
+/**
+ * 生成饼图
+ * 
+ * @param {} callback 回调函数
+ * @param {} pointname
+ * @param {} additioncontion
+ * @param {} start
+ * @param {} end
+ * @param {} timescales
+ */
+function renderPieCharts(callback, pointname, additioncontion, start, end, timescales) {
+	var action = CONTEXT_PATH + "/energyManage/getPieDataList";
+	var params = {
+		pointname : pointname,
+		aggregatefunction : 'percent',
+		range : 'sum',
+		additioncontion : additioncontion,
+		timeend : end,
+		timescales : timescales,
+		timestart : start
+	};
+	$.post(action, params, function(data) {
+				callback(data.data);
+			});
+}

@@ -14,8 +14,8 @@
     <div class="span12 js_tab_content w_max" style="margin-left: -2px !important;">
         <div class="span12 energy_content">
         	<ul class="js_Echart_nav" id="js_Echart_nav_one">
-            	<li class="js_Echart_nav_current"><a href="#" class="icon_small Echart_viewOne"></a></li>
-                <li><a href="#" class="icon_small Echart_viewSix"></a></li>
+            	<li><a href="#" class="icon_small Echart_viewOne"></a></li>
+                <li class="js_Echart_nav_current"><a href="#" class="icon_small Echart_viewSix"></a></li>
                 <li><a href="#" class="icon_small Echart_viewNine"></a></li>
             </ul>
             <!-- 一宫格 开始 -->
@@ -44,8 +44,8 @@
                     <div class="Echart_main">
                     	<div class="Echart_viewBar">
                         	<ul class="viewList">
-                                <li dtype="day"><i class="icon_small"></i>日视图</li>
-                                <li class="changeColor" dtype="week"><i class="icon_small"></i>周视图</li>
+                                <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                                <li dtype="week"><i class="icon_small"></i>周视图</li>
                                 <li dtype="month"><i class="icon_small"></i>月视图</li>
                                 <li dtype="year"><i class="icon_small"></i>年视图</li>
                                 <li dtype="all"><i class="icon_small"></i>全生命周期</li>
@@ -103,7 +103,7 @@
             </div>
             <!-- 一宫格 结束 -->
             <!-- 六宫格 开始 -->
-            <div class="js_Echart_content" style="display: none;">
+            <div class="js_Echart_content" style="display: block;">
             	<div class="Echart_view_con">
                 	<div class="Echart_view_box">
                         <div class="pubBox mr15">
@@ -113,9 +113,9 @@
                                     <div class="download_btn mt15 mr15"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
                                 </div>
                                 <div class="Echart_viewBar_s">
-                                    <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
-                                        <li dtype="week" class="changeColor"><i class="icon_small"></i>周视图</li>
+                                    <ul class="viewList" func="SexEnergyTotal">
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
@@ -133,9 +133,9 @@
                                     <div class="download_btn mt15 mr15"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
                                 </div>
                                 <div class="Echart_viewBar_s">
-                                    <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
-                                        <li dtype="week" class="changeColor"><i class="icon_small"></i>周视图</li>
+                                    <ul class="viewList" func="SexEnergySubentry">
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
@@ -153,7 +153,7 @@
                                     <div class="download_btn mt15 mr15"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
                                 </div>
                                 <div class="Echart_viewBar_s">
-                                    <ul class="viewList">
+                                    <ul class="viewList" func="SexElectricityTotal">
                                         <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
                                         <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
@@ -173,10 +173,10 @@
                                     <div class="download_btn mt15 mr15"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
                                 </div>
                                 <div class="Echart_viewBar_s">
-                                    <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
+                                    <ul class="viewList" func="SexHvacSubentry">
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
                                         <li dtype="week"><i class="icon_small"></i>周视图</li>
-                                        <li dtype="month" class="changeColor"><i class="icon_small"></i>月视图</li>
+                                        <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
                                     </ul>
@@ -193,11 +193,11 @@
                                     <div class="download_btn mt15 mr15"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
                                 </div>
                                 <div class="Echart_viewBar_s">
-                                    <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
+                                    <ul class="viewList" func="SexDataCenter">
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
                                         <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
-                                        <li dtype="year" class="changeColor"><i class="icon_small"></i>年视图</li>
+                                        <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
                                     </ul>
                                 </div>
@@ -213,9 +213,9 @@
                                     <div class="download_btn mt15 mr15"><a href="#" class="btn_pub btn_blue">下载图表</a></div>
                                 </div>
                                 <div class="Echart_viewBar_s">
-                                    <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
-                                        <li dtype="week" class="changeColor"><i class="icon_small"></i>周视图</li>
+                                    <ul class="viewList" func="SexDeviceEnergy">
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
@@ -242,13 +242,13 @@
             </div>
             <!-- 六宫格 结束 -->
             <!-- 九宫格 开始 -->
-            <div class="js_Echart_content js_Echart_content_special" style="display:block;">
+            <div class="js_Echart_content js_Echart_content_special" style="display:none;">
             	<div class="Echart_view_con">
                 	<div class="Echart_viewBar_n">
                     	<i class="flag_h60 flag_blue_light"></i>
-                    	<ul class="viewList ml15 mt15">
-                            <li dtype="day"><i class="icon_small"></i>日视图</li>
-                            <li dtype="week" class="changeColor"><i class="icon_small"></i>周视图</li>
+                    	<ul class="viewList ml15 mt15" func="NineEnergy">
+                            <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                            <li dtype="week"><i class="icon_small"></i>周视图</li>
                             <li dtype="month"><i class="icon_small"></i>月视图</li>
                             <li dtype="year"><i class="icon_small"></i>年视图</li>
                             <li dtype="all"><i class="icon_small"></i>全生命周期</li>
@@ -361,9 +361,9 @@
                     <div class="Echart_main">
                         <div class="Echart_viewBar">
                             <ul class="viewList">
-                                <li dtype="day"><i class="icon_small"></i>日视图</li>
+                                <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
                                 <li dtype="week"><i class="icon_small"></i>周视图</li>
-                                <li class="changeColor" dtype="month"><i class="icon_small"></i>月视图</li>
+                                <li dtype="month"><i class="icon_small"></i>月视图</li>
                                 <li dtype="year"><i class="icon_small"></i>年视图</li>
                                 <li dtype="all"><i class="icon_small"></i>全生命周期</li>
                                 <li class="compare"><label>与</label>
@@ -432,9 +432,9 @@
                                 </div>
                                 <div class="Echart_viewBar_s">
                                     <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
                                         <li dtype="week"><i class="icon_small"></i>周视图</li>
-                                        <li dtype="month" class="changeColor"><i class="icon_small"></i>月视图</li>
+                                        <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
                                     </ul>
@@ -453,8 +453,8 @@
                                 </div>
                                 <div class="Echart_viewBar_s">
                                     <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
-                                        <li dtype="week" class="changeColor"><i class="icon_small"></i>周视图</li>
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
@@ -495,9 +495,9 @@
                                 </div>
                                 <div class="Echart_viewBar_s">
                                     <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
                                         <li dtype="week"><i class="icon_small"></i>周视图</li>
-                                        <li dtype="month" class="changeColor"><i class="icon_small"></i>月视图</li>
+                                        <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
                                     </ul>
@@ -516,10 +516,10 @@
                                 </div>
                                 <div class="Echart_viewBar_s">
                                     <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
                                         <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
-                                        <li dtype="year" class="changeColor"><i class="icon_small"></i>年视图</li>
+                                        <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
                                     </ul>
                                 </div>
@@ -537,8 +537,8 @@
                                 </div>
                                 <div class="Echart_viewBar_s">
                                     <ul class="viewList">
-                                        <li dtype="day"><i class="icon_small"></i>日视图</li>
-                                        <li dtype="week" class="changeColor"><i class="icon_small"></i>周视图</li>
+                                        <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                                        <li dtype="week"><i class="icon_small"></i>周视图</li>
                                         <li dtype="month"><i class="icon_small"></i>月视图</li>
                                         <li dtype="year"><i class="icon_small"></i>年视图</li>
                                         <li dtype="all"><i class="icon_small"></i>全生命周期</li>
@@ -571,8 +571,8 @@
                     <div class="Echart_viewBar_n">
                         <i class="flag_h60 flag_blue_light"></i>
                         <ul class="viewList ml15 mt15">
-                            <li dtype="day"><i class="icon_small"></i>日视图</li>
-                            <li dtype="week" class="changeColor"><i class="icon_small"></i>周视图</li>
+                            <li dtype="day" class="changeColor"><i class="icon_small"></i>日视图</li>
+                            <li dtype="week"><i class="icon_small"></i>周视图</li>
                             <li dtype="month"><i class="icon_small"></i>月视图</li>
                             <li dtype="year"><i class="icon_small"></i>年视图</li>
                             <li dtype="all"><i class="icon_small"></i>全生命周期</li>

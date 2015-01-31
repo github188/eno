@@ -3,4 +3,5 @@
 <!-- HighCharts -->
 <script src="${pageContext.request.contextPath}/resources/plugins/highcharts/highcharts.js"></script>
 
+<script src="${pageContext.request.contextPath}/resources/scripts/energyManage/buildEnergyCharts.js"></script>
 <script src="${pageContext.request.contextPath}/resources/scripts/energyManage/energyManage.js"></script>

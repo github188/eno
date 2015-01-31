@@ -44,7 +44,6 @@ public class DataServiceImpl implements DataService {
 		List<Object> datalist = new ArrayList<Object>();// 存储数据
 		List<Object> catalist = new ArrayList<Object>();// 存储时间数据
 		DecimalFormat df = new DecimalFormat(StringUtils.isNotEmpty(dm.getFormat()) ? dm.getFormat() : "0.0"); // 保留小数位数，0.0表示保留一位小数
-		List list = new ArrayList();
 		String sql = "";
 
 		String timescales = dm.getTimescales();
@@ -66,26 +65,27 @@ public class DataServiceImpl implements DataService {
 			sql = findSqlByTimeScales(timescales, aggregatefunction, pointname, number, timestart, timeend);
 		}
 		
-		 // PERCENT需要特殊处理，PERCENT需要取两个值，并且进行运算
+		// PERCENT需要特殊处理，PERCENT需要取两个值，并且进行运算
 		if (Const.PERCENT.equalsIgnoreCase(aggregatefunction)) {
-			map = findPrecentValue(timescales, aggregatefunction, pointname, number, timestart, timeend, range, dm.getAdditioncontion(), map);
+			String per = findPrecentValue(timescales, aggregatefunction, pointname, number, timestart, timeend, range, dm.getAdditioncontion());
+			map.put("percent", per);
 		}
 		
 		logger.debug("sql--" + sql);
 		if (StringUtils.isNotEmpty(sql)) {
-			list = dataSourceTemplate.query(sql, new ChartModelMapper());
+			List list = dataSourceTemplate.query(sql, new ChartModelMapper());
 			for (int i = 0; i < list.size(); i++) {
 				ChartModel cm = (ChartModel) list.get(i);
-				datalist.add(Double.parseDouble(df.format(Double.parseDouble(cm.getValue()))));
 				try {
+					datalist.add(Double.parseDouble(df.format(Double.parseDouble(cm.getValue()))));
 					catalist.add(aFormat.format(bFormat.parse(cm.getTime())));
 				} catch (ParseException e) {
-					logger.error("--时间转换出错了--" + cm.getTime());
+					logger.error(cm.getValue() + "--时间转换出错了--" + cm.getTime());
 				}
 			}
-			map.put("sql", sql);
 		}
 		
+		map.put("sql", sql);
 		map.put("catalist", catalist);
 		map.put("datalist", datalist);
 		return map;
@@ -107,7 +107,7 @@ public class DataServiceImpl implements DataService {
 	 * 
 	 * @return
 	 */
-	private Map<String, Object> findPrecentValue(String timescales, String aggregatefunction, String pointname, String number, String timestart, String timeend, String range, String additioncontion, Map<String, Object> map) {
+	private String findPrecentValue(String timescales, String aggregatefunction, String pointname, String number, String timestart, String timeend, String range, String additioncontion) {
 		ChartModelMapper chartModelMapper = new ChartModelMapper();
 		// 计算第一个值
 		String sql = findSqlByTimeScales(timescales, range, pointname, number, timestart, timeend);
@@ -121,9 +121,8 @@ public class DataServiceImpl implements DataService {
 		String number2 = !list.isEmpty() ? ((ChartModel)list.get(0)).getValue() : "0";
 		logger.debug("number2---" + number2);
 
-		String percent = String.format("{0:F1}", Double.parseDouble(number1) / Double.parseDouble(number2) * 100) + "%";
-		map.put("percent", percent);
-		return map;
+		DecimalFormat df = new DecimalFormat("0.0");
+		return df.format(Double.parseDouble(number1) / Double.parseDouble(number2) * 100);
 	}
 	
 	/**
@@ -226,4 +225,138 @@ public class DataServiceImpl implements DataService {
 		map.put("bFormat", bFormat);
 		return map;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public Map<String, Object> getDataAndCataList(DataModel dm) {
+		Map<String, Object> map = new HashedMap<String, Object>();
+		DecimalFormat df = new DecimalFormat(StringUtils.isNotEmpty(dm.getFormat()) ? dm.getFormat() : "0.0"); // 保留小数位数，0.0表示保留一位小数
+		String sql = "";
+		
+		List<Object> returnDataList = new ArrayList<Object>(); // 数据存储
+		List<Object> returnCataList = new ArrayList<Object>(); // 数据存储
+		
+		String format = dm.getTimeformat();
+		String[] points = dm.getPointname().split(",");
+		String[] timescaleses = dm.getTimescales().split(",");
+		String[] aggregatefunctions = dm.getAggregatefunction().split(",");
+		String[] timestarts = dm.getTimestart().split(",");
+		String[] timeends = dm.getTimeend().split(",");
+		
+		for (int i = 0; i < points.length; i++) {
+			List<Object> tempDataList = new ArrayList<Object>(); // 数据存储
+			List<Object> tempCataList = new ArrayList<Object>(); // 存储
+
+			String timescales = timescaleses[i];
+			Map<String, String> numberAndFormatMap = findSubStringLengthAndFormat(timescales);
+			String number = numberAndFormatMap.get("number"); // 根据TimeScales决定截串位数
+			SimpleDateFormat bFormat = new SimpleDateFormat(numberAndFormatMap.get("bFormat")); // 格式化字符串,根据TimeScales决定格式化位数
+			SimpleDateFormat aFormat = new SimpleDateFormat(StringUtils.isNotEmpty(format) ? format : numberAndFormatMap.get("aFormat"));
+			String aggregatefunction = aggregatefunctions[i]; // MAX,MIN,SUM,AVG,CHANGE,PERCENT
+			String pointname = points[i];
+			String timestart = timestarts[i];
+			String timeend = timeends[i];
+			
+			// 当AggregateFunction为MAX,MIN,SUM,AVG,PERCENT时，执行SQL如下：
+			if (Const.MAX.equalsIgnoreCase(aggregatefunction)
+					|| Const.MIN.equalsIgnoreCase(aggregatefunction)
+					|| Const.SUM.equalsIgnoreCase(aggregatefunction)
+					|| Const.AVG.equalsIgnoreCase(aggregatefunction)) {
+				sql = findSqlByTimeScales(timescales, aggregatefunction, pointname, number, timestart, timeend);
+			}
+			
+			 // PERCENT需要特殊处理，PERCENT需要取两个值，并且进行运算
+			if (Const.PERCENT.equalsIgnoreCase(aggregatefunction)) {
+				String[] additioncontions = dm.getAdditioncontion().split(",");
+				String[] ranges = dm.getRange().split(",");
+				String per = findPrecentValue(timescales, aggregatefunction, pointname, number, timestart, timeend, ranges[i], additioncontions[i]);
+				map.put("percent", per);
+			}
+			
+			logger.debug("sql--" + sql);
+			if (StringUtils.isNotEmpty(sql)) {
+				List list = dataSourceTemplate.query(sql, new ChartModelMapper());
+				for (int k = 0; k < list.size(); k++) {
+					List<Object> datalist = new ArrayList<Object>();// 存储数据
+					List<Object> catalist = new ArrayList<Object>();// 存储时间数据
+					ChartModel cm = (ChartModel) list.get(k);
+					try {
+						datalist.add(Double.parseDouble(df.format(Double.parseDouble(cm.getValue()))));
+						catalist.add(aFormat.format(bFormat.parse(cm.getTime())));
+					} catch (ParseException e) {
+						logger.error(cm.getValue() + "--时间转换出错了--" + cm.getTime());
+					}
+					tempDataList.add(datalist);
+					tempCataList.add(catalist);
+				}
+			}
+			
+			returnDataList.add(tempDataList);
+			returnCataList.add(tempCataList);
+		}
+		
+		map.put("sql", sql);
+		map.put("data", returnDataList);
+		map.put("cata", returnCataList);
+		
+		return map;
+	}
+	
+	
+	
+	@Override
+	public Map<String, Object> getPieDataList(DataModel dm) {
+		Map<String, Object> map = new HashedMap<String, Object>();
+		List<Object> returnDataList = new ArrayList<Object>(); // 数据存储
+		
+		Map<String, String> numberAndFormatMap = findSubStringLengthAndFormat(dm.getTimescales());
+		String number = numberAndFormatMap.get("number"); // 根据TimeScales决定截串位数
+		
+		String[] points = dm.getPointname().split(",");
+		for (int i = 0; i < points.length; i++) {
+			try {
+				String per = findPrecentValue(dm.getTimescales(), dm.getAggregatefunction(), points[i], number, dm.getTimestart(), dm.getTimeend(), dm.getRange(), dm.getAdditioncontion());
+				returnDataList.add(per);
+			} catch (Exception e) {
+				returnDataList.add("0");
+				logger.error("-----计算percent值的时候出错了-----", e);
+			}
+		}
+		map.put("data", returnDataList);
+		return map;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

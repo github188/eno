@@ -48,6 +48,30 @@ function renderChart() {
 			});
 }
 
+
+// 点击“1渲染1”触发的事件
+function testRenderChart() {
+	var action = CONTEXT_PATH + "/energyManage/getDataAndCataList";
+	var params = {
+		pointname : $("#pointname1").val(),
+//		additioncontion : '1,1', //$("#additioncontion1").val(),
+		aggregatefunction : $("#aggregatefunction1").val(),
+		timeend : $("#timeend1").val(),
+		timescales : $("#timescales1").val(),
+		timestart : $("#timestart1").val(),
+//		range : '1,1', //$("#range1").val(),
+		timeformat : 'HH'
+	};
+	$.post(action, params, function(data) {
+				console.log(data);
+				var catalist = data.cata;
+				console.log(catalist[0].length>catalist[1].length);
+				console.log(catalist);
+				var datalist = data.data;
+				console.log(datalist);
+			});
+}
+
 var dashboard = {
 
 	// 生成今日用能图表

@@ -105,7 +105,7 @@ $(function(){
             format = "yyyy-MM-dd";
         }
 //        console.log(format);
-        chooseTime(format);
+        chooseTime(format, dtype, $(this).parent().attr("func"));
     });
     $(".viewList_language li").click(function(){
         $(this).siblings().removeClass("changeColor");
@@ -214,18 +214,114 @@ function GetTime() {
     }
 }
 
+// 获取当前时间，格式为：2013-10-09
+function getCurrentTime() {
+	var Nowdate = new Date();
+	var day = (Nowdate.getDate() + "");
+	day = day.length == 1 ? ("0" + day) : day;
+	var month = ((Nowdate.getMonth() + 1) + "");
+	month = month.length == 1 ? ("0" + month) : month;
+	t = [Nowdate.getFullYear(), month, day];
+	return t.join('-');
+}
+
+// 根据给出的时间s往后推d天，例如：s=2013-10-13，d=2，则返回2013-10-15
+function getTimeByDays(s, d) {
+	var Nowdate = new Date(Date.parse(s.replace(/-/g, '/')));
+	// var WeekFirstDay=new Date(Nowdate-((Nowdate.getDay() == 0 ? 7 :
+	// Nowdate.getDay())-d)*86400000);
+	var WeekFirstDay = new Date(Nowdate.getTime() + (d * 86400000));
+	var day = (WeekFirstDay.getDate() + "");
+	day = day.length == 1 ? ("0" + day) : day;
+	var month = ((WeekFirstDay.getMonth() + 1) + "");
+	month = month.length == 1 ? ("0" + month) : month;
+	t = [WeekFirstDay.getFullYear(), month, day];
+	return t.join('-');
+}
+
+// 显示当前日期对应的周的第一天
+function showWeekFirstDay(s) {
+	var Nowdate = new Date(Date.parse(s.replace(/-/g, '/')));
+	var WeekFirstDay = new Date(Nowdate
+			- ((Nowdate.getDay() == 0 ? 7 : Nowdate.getDay()) - 1) * 86400000);
+	var day = (WeekFirstDay.getDate() + "");
+	day = day.length == 1 ? ("0" + day) : day;
+	var month = ((WeekFirstDay.getMonth() + 1) + "");
+	month = month.length == 1 ? ("0" + month) : month;
+	t = [WeekFirstDay.getFullYear(), month, day];
+	return t.join('-');
+}
+
+// 显示传递日期对应的下个月的第一天
+function showNextMonthFirstDay(s) {
+	var Nowdate = new Date(Date.parse(s.replace(/-/g, '/')));
+	Nowdate.setMonth(Nowdate.getMonth() + 1); // 当前月份往后推一个月
+	var month = ((Nowdate.getMonth() + 1) + "");
+	month = month.length == 1 ? ("0" + month) : month;
+	t = [Nowdate.getFullYear(), month, "01"];
+	return t.join('-');
+}
+
+// 显示当前日期对应的周的最后一天
+function showWeekLastDay(s) {
+	var Nowdate = new Date(Date.parse(s.replace(/-/g, '/')));
+	var WeekFirstDay = new Date(Nowdate
+			- ((Nowdate.getDay() == 0 ? 7 : Nowdate.getDay()) - 1) * 86400000);
+	var WeekLastDay = new Date((WeekFirstDay / 1000 + 6 * 86400) * 1000);
+	var day = (WeekLastDay.getDate() + "");
+	day = day.length == 1 ? ("0" + day) : day;
+	var month = ((WeekLastDay.getMonth() + 1) + "");
+	month = month.length == 1 ? ("0" + month) : month;
+	t = [WeekLastDay.getFullYear(), month, day];
+	return t.join('-');
+}
+
+
 // 选择时间
-function chooseTime(format) {
-	alert(format);
+function chooseTime(format, dtype, func) {
     WdatePicker({
         el : 'hidden_date',	//只操作这个日历控件
         dateFmt : format, //定义时间的格式
         onpicked : function(dp) {
             // 具体的对比时间，格式为（yyyy-MM-dd），此时间会传递到后台
             var paretime= dp.cal.getDateStr(format);
+            
+            var start = '', end = '', querytype = dtype, step = '4', timeformat = 'HH'; // 开始、结束时间、查询类型、图表间隔、时间格式
+            var catalist = [];
+            if (dtype == "day") {
+	            start = paretime, end = getTimeByDays(start, 1), querytype = 'hour', step = '4', timeformat = 'HH';
+	            title = start;
+	        } else if (dtype == "week") {
+	            start = showWeekFirstDay(paretime), end = showWeekLastDay(paretime), querytype = 'day', step = '1', timeformat = 'yyyy-MM-dd';
+	            title = start + " ~ " + end;
+	            catalist = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+	        } else if (dtype == "month") {
+	            start = dp.cal.getDateStr("yyyy-MM-dd"), end = showNextMonthFirstDay(paretime), querytype = 'day', step = '4', timeformat = 'dd';
+	            title = paretime;
+	        } else if (dtype == "year") {
+	            start = dp.cal.getDateStr("yyyy-MM-dd"), end = (parseInt(paretime) + 1) + "-01-01", querytype = 'month', step = '4', timeformat = 'yyyy-MM';
+	            title = paretime;
+	        } else if (dtype == "all") {
+	        	
+	        }
+	        
+//            console.log(func + "--start--" + start + "----end----" + end + "----dtype----" + dtype + "----querytype----" + querytype + "----step----" + step);
+            if (func == "SexEnergyTotal") { // 六宫格-1.建筑总能耗图表
+            	renderMoreCharts(buildChart.buildEnergySexEnergyTotal, sexEnergyTotalName, title, start, end, querytype, step, catalist, timeformat);
+            } else if (func == "SexEnergySubentry") { // 六宫格-2.建筑总能耗分项
+            	renderPieCharts(buildChart.buildEnergySexEnergySubentry, sexEnergySubentry, sexEnergySubentrySum, start, end, querytype);
+            } else if (func == "SexElectricityTotal") { // 六宫格-3.建筑总能耗图表
+            	renderMoreCharts(buildChart.buildEnergySexElectricityTotal, sexElectricityTotalName, title, start, end, querytype, step, catalist, timeformat);
+            } else if (func == "SexHvacSubentry") { // 六宫格-4.空调系统用电分项
+            	renderPieCharts(buildChart.buildEnergySexHvacSubentry, sexHvacSubentry, sexHvacSubentrySum, start, end, querytype);
+            } else if (func == "SexDataCenter") {// 生成六宫格-5.数据中心用电图表
+            	renderMoreCharts(buildChart.buildEnergySexDataCenter, sexDataCenterName, title, start, end, querytype, step, catalist, timeformat);
+            } else if (func == "SexDeviceEnergy") { // 生成六宫格-6.建筑设备能耗图表
+            	renderMoreCharts(buildChart.buildEnergySexDeviceEnergy, sexDeviceEnergyName, title, start, end, querytype, step, catalist, timeformat);
+            } else if (func == "NineEnergy") { // 生成九宫格图表
+            	buildEnergyNineChart(title, start, end, querytype, step, catalist, timeformat);
+            }
+            
         }
     });
 }
-
-
-

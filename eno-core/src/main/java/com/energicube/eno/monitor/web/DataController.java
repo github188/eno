@@ -10,11 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.energicube.eno.common.ChartModel;
-import com.energicube.eno.common.Config;
 import com.energicube.eno.common.DataModel;
 import com.energicube.eno.monitor.service.DataService;
-import com.energicube.eno.monitor.service.UserService;
 
 /**
  * All rights Reserved, Designed By ZCLF Copyright: Copyright(C) 2013-2014
@@ -33,42 +30,28 @@ public class DataController extends BaseController {
 
 	@Autowired
 	private DataService dataService;
-	
+
 	/**
 	 * Dahboard页面
 	 */
-	@RequestMapping(value = "/databoard", method = RequestMethod.GET)
+	@RequestMapping(value = "/databoard")
 	public String initMctrlView(Model model) {
 		return "databoard/databoard";
 	}
-	
+
 	/**
-     * 根据以下参数，返回图表需要的数据
-     */
-    @RequestMapping(value = "/findRequestData", method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
-    public Map<String, Object> findRequestData(
-    		@ModelAttribute("datamodel") DataModel datamodel,
-    		@RequestParam(value = "pointname", required = true, defaultValue = "") String pointname,
-            @RequestParam(value = "additioncontion", required = true, defaultValue = "") String additioncontion,
-            @RequestParam(value = "aggregatefunction", required = true, defaultValue = "") String aggregatefunction,
-            @RequestParam(value = "timeend", required = true, defaultValue = "") String timeend,
-            @RequestParam(value = "timescales", required = true, defaultValue = "") String timescales,
-            @RequestParam(value = "timestart", required = true, defaultValue = "") String timestart) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        try {
-        	DataModel dm = new DataModel();
-        	dm.setAdditioncontion(additioncontion);
-        	dm.setAggregatefunction(aggregatefunction);
-        	dm.setPointname(pointname);
-        	dm.setTimeend(timeend);
-        	dm.setTimescales(timescales);
-        	dm.setTimestart(timestart);
-        	map = dataService.findRequestData(datamodel);
-        } catch (Exception e) {
-            logger.error("获取数据失败------" + e);
-        }
-        return map;
-    }
+	 * 根据以下参数，返回图表需要的数据
+	 */
+	@RequestMapping(value = "/findRequestData")
+	@ResponseBody
+	public Map<String, Object> findRequestData(@ModelAttribute("datamodel") DataModel datamodel) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			map = dataService.findRequestData(datamodel);
+		} catch (Exception e) {
+			logger.error("findRequestData获取数据失败------" + e);
+		}
+		return map;
+	}
 
 }

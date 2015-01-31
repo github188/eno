@@ -85,5 +85,21 @@
                 <div id="sql"></div>
             </div>
         </div>
+        
+        
+        <div>
+        	<form action="#" id="datamodel" modelAttribute="datamodel">
+                    	<div><span style="float: left;">点位名称：</span><input type="text" id="pointname1" value="CO10_RA#KT_3F_2,CO18_RA#KT_5_5" /></div>
+                    	<div><span style="float: left;">查询时间：</span><input type="text" id="timescales1" value="hour,hour" /></div>
+                    	<div><span style="float: left;">求值范围：</span><input type="text" id="aggregatefunction1" value="sum,sum" /></div>
+                    	<div><span style="float: left;">点位名称：</span><input type="text" id="timestart1" value="2014-12-09,2014-12-09" /></div>
+                    	<div><span style="float: left;">点位名称：</span><input type="text" id="timeend1" value="2014-12-10,2014-12-10" /></div>
+                    	<div>
+                    		<input type="button" value="渲染" onclick="testRenderChart()" style="width: 64px; margin-left: 122px;background-color: #5ab3d7;" />
+                    	</div>
+                    </form>
+        </div>
+        
+        
     </div>
 </div>

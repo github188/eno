@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<input type="hidden" id="hidden_date" />
 <div class="modal hide fade alert_box w1455" id="userManager">
     <div class="modal-header alert_box_header"> <a href="#" class="icon_small alert_close" data-dismiss="modal"></a>
         <h4>用户管理</h4>
